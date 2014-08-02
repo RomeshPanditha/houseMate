@@ -1,8 +1,9 @@
 houseMate
 =========
 
-house mate management application for INFT3930
+HouseMate Management Application for INFT3930
 
-Put your names here:
+Team:
+Harrison Dempsey (http://harrisondempsey.com)
 
 -
