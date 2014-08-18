@@ -15,8 +15,8 @@ namespace houseMateService
 
         [OperationContract]
         [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
-            ResponseFormat = WebMessageFormat.Json, UriTemplate = "getData")]
-        string GetData();
+            ResponseFormat = WebMessageFormat.Json, UriTemplate = "getData?houseID={houseID}")]
+        string GetData(int houseID);
 
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);

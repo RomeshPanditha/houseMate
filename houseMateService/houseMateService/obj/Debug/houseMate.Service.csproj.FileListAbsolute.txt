@@ -1,0 +1,9 @@
+D:\Documents\GitHub\houseMate\houseMateService\houseMateService\bin\houseMateService.dll
+D:\Documents\GitHub\houseMate\houseMateService\houseMateService\bin\houseMateService.pdb
+D:\Documents\GitHub\houseMate\houseMateService\houseMateService\bin\BL.dll
+D:\Documents\GitHub\houseMate\houseMateService\houseMateService\bin\DAL.dll
+D:\Documents\GitHub\houseMate\houseMateService\houseMateService\bin\BL.pdb
+D:\Documents\GitHub\houseMate\houseMateService\houseMateService\bin\DAL.pdb
+D:\Documents\GitHub\houseMate\houseMateService\houseMateService\obj\Debug\houseMate.Service.csprojResolveAssemblyReference.cache
+D:\Documents\GitHub\houseMate\houseMateService\houseMateService\obj\Debug\houseMateService.dll
+D:\Documents\GitHub\houseMate\houseMateService\houseMateService\obj\Debug\houseMateService.pdb

@@ -6,8 +6,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using System.Data;
-using MySql.Data.Common;
-using MySql.Data.MySqlClient;
+
 
 namespace houseMateService
 {
@@ -15,32 +14,11 @@ namespace houseMateService
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Service1 : IService1
     {
-        public string GetData()
+        BL.testBL bl = new BL.testBL();
+
+        public string GetData(int houseID)
         {
-            try
-            {
-                string result = "something else";
-                string conStr = @"server=houseMate.db.12005856.hostedresource.com; Uid=houseMate;database=houseMate; Pwd= M!cr0s0ft";
-                MySqlConnection conn = new MySqlConnection(conStr);
-                MySqlCommand cmd = conn.CreateCommand();
-                cmd.CommandText = "SELECT houseName FROM house WHERE PK_houseId = 1";
-
-                conn.Open();
-
-
-                MySqlDataReader reader = cmd.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    result = reader.GetString(0);
-                }
-
-                return result;
-            }
-            catch
-            {
-                return "sql didn't work";
-            }
+            return bl.getData(houseID);
         }
 
         public CompositeType GetDataUsingDataContract(CompositeType composite)
