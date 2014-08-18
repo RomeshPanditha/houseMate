@@ -17,24 +17,30 @@ namespace houseMateService
     {
         public string GetData()
         {
-            string result = "error";
-            string conStr = "server=houseMate.db.12005856.hostedresource.com;user id=houseMate;database=houseMate";
-            MySqlConnection conn = new MySqlConnection(conStr);
-            MySqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "SELECT houseName FROM house WHERE PK_houseId = 2";
-
-            conn.Open();
-            
-
-            using (MySqlDataReader reader = cmd.ExecuteReader())
+            try
             {
+                string result = "something else";
+                string conStr = @"server=houseMate.db.12005856.hostedresource.com; Uid=houseMate;database=houseMate; Pwd= M!cr0s0ft";
+                MySqlConnection conn = new MySqlConnection(conStr);
+                MySqlCommand cmd = conn.CreateCommand();
+                cmd.CommandText = "SELECT houseName FROM house WHERE PK_houseId = 1";
+
+                conn.Open();
+
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+
                 while (reader.Read())
                 {
-                    result = reader.GetString(reader.GetOrdinal("houseName"));
+                    result = reader.GetString(0);
                 }
-            }
 
-            return result;
+                return result;
+            }
+            catch
+            {
+                return "sql didn't work";
+            }
         }
 
         public CompositeType GetDataUsingDataContract(CompositeType composite)
