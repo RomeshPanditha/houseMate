@@ -34,7 +34,7 @@ namespace DAL
             }
             catch
             {
-                return "sql didn't work";
+                return "error retrieving data";
             }
         }
 
