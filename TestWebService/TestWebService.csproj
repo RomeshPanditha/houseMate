@@ -63,7 +63,9 @@
     <Content Include="myTestService.svc" />
     <Content Include="Scripts\jquery-1.11.1.js" />
     <Content Include="SecondTestService.svc" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BL\DogKeeper.cs" />
@@ -82,6 +84,7 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\PublishProfiles\mesh.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

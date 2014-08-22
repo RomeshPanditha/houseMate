@@ -3,3 +3,7 @@ d:\documents\visual studio 2012\Projects\TestWebService\TestWebService\bin\TestW
 d:\documents\visual studio 2012\Projects\TestWebService\TestWebService\obj\Debug\TestWebService.dll
 d:\documents\visual studio 2012\Projects\TestWebService\TestWebService\obj\Debug\TestWebService.pdb
 d:\documents\visual studio 2012\Projects\TestWebService\TestWebService\obj\Debug\TestWebService.csprojResolveAssemblyReference.cache
+C:\Users\Romesh\Documents\houseMate\TestWebService\bin\TestWebService.dll
+C:\Users\Romesh\Documents\houseMate\TestWebService\bin\TestWebService.pdb
+C:\Users\Romesh\Documents\houseMate\TestWebService\obj\Debug\TestWebService.dll
+C:\Users\Romesh\Documents\houseMate\TestWebService\obj\Debug\TestWebService.pdb
