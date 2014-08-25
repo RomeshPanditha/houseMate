@@ -1,10 +1,12 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using System.Data.Entity;
 
 namespace TestWebService
 {
@@ -13,12 +15,34 @@ namespace TestWebService
     public class myTestService : ImyTestService
     {
         public BL.DogKeeper keeper = new BL.DogKeeper();
+        
 
         [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
             ResponseFormat = WebMessageFormat.Json, UriTemplate = "getMessage")]
         public string getMessage()
         {
-            return keeper.message ;
+            try
+            {
+                string result = "houses: ";
+
+                houseMateEntities hm = new houseMateEntities();
+                List<house> houseL = hm.houses.ToList<house>();
+                foreach (house h in houseL)
+                {
+                    result += "   " + h.houseName.ToString();
+                    
+                }
+                
+
+                return result;
+
+                
+                
+            }
+            catch
+            {
+                return "error retrieving data";
+            }
         }
 
         

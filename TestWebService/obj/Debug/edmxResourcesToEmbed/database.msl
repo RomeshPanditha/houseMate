@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="houseMateModelStoreContainer" CdmEntityContainer="houseMateEntities">
+    <EntitySetMapping Name="chore_allocation">
+      <EntityTypeMapping TypeName="houseMateModel.chore_allocation">
+        <MappingFragment StoreEntitySet="chore_allocation">
+          <ScalarProperty Name="PK_allocationID" ColumnName="PK_allocationID" />
+          <ScalarProperty Name="FK_choreID" ColumnName="FK_choreID" />
+          <ScalarProperty Name="FK_tenantID" ColumnName="FK_tenantID" />
+          <ScalarProperty Name="dayOfWeek" ColumnName="dayOfWeek" />
+          <ScalarProperty Name="cycle" ColumnName="cycle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="chores">
+      <EntityTypeMapping TypeName="houseMateModel.chore">
+        <MappingFragment StoreEntitySet="chores">
+          <ScalarProperty Name="PK_choreID" ColumnName="PK_choreID" />
+          <ScalarProperty Name="FK_houseID" ColumnName="FK_houseID" />
+          <ScalarProperty Name="choreName" ColumnName="choreName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="houses">
+      <EntityTypeMapping TypeName="houseMateModel.house">
+        <MappingFragment StoreEntitySet="house">
+          <ScalarProperty Name="PK_houseID" ColumnName="PK_houseID" />
+          <ScalarProperty Name="houseName" ColumnName="houseName" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="postcode" ColumnName="postcode" />
+          <ScalarProperty Name="state" ColumnName="state" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="house_bill">
+      <EntityTypeMapping TypeName="houseMateModel.house_bill">
+        <MappingFragment StoreEntitySet="house_bill">
+          <ScalarProperty Name="PK_houseBillID" ColumnName="PK_houseBillID" />
+          <ScalarProperty Name="FK_houseID" ColumnName="FK_houseID" />
+          <ScalarProperty Name="billType" ColumnName="billType" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="dueDate" ColumnName="dueDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="individual_bills">
+      <EntityTypeMapping TypeName="houseMateModel.individual_bills">
+        <MappingFragment StoreEntitySet="individual_bills">
+          <ScalarProperty Name="PK_indivBillID" ColumnName="PK_indivBillID" />
+          <ScalarProperty Name="FK_houseBillID" ColumnName="FK_houseBillID" />
+          <ScalarProperty Name="FK_tenantID" ColumnName="FK_tenantID" />
+          <ScalarProperty Name="splitAmount" ColumnName="splitAmount" />
+          <ScalarProperty Name="datePaid" ColumnName="datePaid" />
+          <ScalarProperty Name="dueDate" ColumnName="dueDate" />
+          <ScalarProperty Name="billType" ColumnName="billType" />
+          <ScalarProperty Name="recurring_" ColumnName="recurring?" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="items">
+      <EntityTypeMapping TypeName="houseMateModel.item">
+        <MappingFragment StoreEntitySet="item">
+          <ScalarProperty Name="PK_itemID" ColumnName="PK_itemID" />
+          <ScalarProperty Name="FK_listID" ColumnName="FK_listID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="category" ColumnName="category" />
+          <ScalarProperty Name="bought_" ColumnName="bought?" />
+          <ScalarProperty Name="store_" ColumnName="store?" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lists">
+      <EntityTypeMapping TypeName="houseMateModel.list">
+        <MappingFragment StoreEntitySet="list">
+          <ScalarProperty Name="PK_listID" ColumnName="PK_listID" />
+          <ScalarProperty Name="FK_houseID" ColumnName="FK_houseID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="list_records">
+      <EntityTypeMapping TypeName="houseMateModel.list_records">
+        <MappingFragment StoreEntitySet="list_records">
+          <ScalarProperty Name="PK_recordID" ColumnName="PK_recordID" />
+          <ScalarProperty Name="FK_itemID" ColumnName="FK_itemID" />
+          <ScalarProperty Name="FK_tenantID" ColumnName="FK_tenantID" />
+          <ScalarProperty Name="dateBought" ColumnName="dateBought" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="notices">
+      <EntityTypeMapping TypeName="houseMateModel.notice">
+        <MappingFragment StoreEntitySet="notice">
+          <ScalarProperty Name="PK_noticeID" ColumnName="PK_noticeID" />
+          <ScalarProperty Name="FK_noticeBoardID" ColumnName="FK_noticeBoardID" />
+          <ScalarProperty Name="FK_tenantID" ColumnName="FK_tenantID" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="datePosted" ColumnName="datePosted" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="notice_board">
+      <EntityTypeMapping TypeName="houseMateModel.notice_board">
+        <MappingFragment StoreEntitySet="notice_board">
+          <ScalarProperty Name="PK_noticeBoardID" ColumnName="PK_noticeBoardID" />
+          <ScalarProperty Name="FK_houseID" ColumnName="FK_houseID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tenants">
+      <EntityTypeMapping TypeName="houseMateModel.tenant">
+        <MappingFragment StoreEntitySet="tenant">
+          <ScalarProperty Name="PK_tenantID" ColumnName="PK_tenantID" />
+          <ScalarProperty Name="FK_houseID" ColumnName="FK_houseID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="username" ColumnName="username" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -5,3 +5,10 @@ D:\Documents\GitHub\houseMate\houseMateService\BL\bin\DAL.pdb
 D:\Documents\GitHub\houseMate\houseMateService\BL\obj\Debug\houseMate.BL.csprojResolveAssemblyReference.cache
 D:\Documents\GitHub\houseMate\houseMateService\BL\obj\Debug\BL.dll
 D:\Documents\GitHub\houseMate\houseMateService\BL\obj\Debug\BL.pdb
+C:\Users\Romesh\Documents\houseMate\houseMateService\BL\bin\BL.dll
+C:\Users\Romesh\Documents\houseMate\houseMateService\BL\bin\BL.pdb
+C:\Users\Romesh\Documents\houseMate\houseMateService\BL\bin\DAL.dll
+C:\Users\Romesh\Documents\houseMate\houseMateService\BL\bin\DAL.pdb
+C:\Users\Romesh\Documents\houseMate\houseMateService\BL\obj\Debug\houseMate.BL.csprojResolveAssemblyReference.cache
+C:\Users\Romesh\Documents\houseMate\houseMateService\BL\obj\Debug\BL.dll
+C:\Users\Romesh\Documents\houseMate\houseMateService\BL\obj\Debug\BL.pdb

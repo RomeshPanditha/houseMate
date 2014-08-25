@@ -7,3 +7,12 @@ D:\Documents\GitHub\houseMate\houseMateService\houseMateService\bin\DAL.pdb
 D:\Documents\GitHub\houseMate\houseMateService\houseMateService\obj\Debug\houseMate.Service.csprojResolveAssemblyReference.cache
 D:\Documents\GitHub\houseMate\houseMateService\houseMateService\obj\Debug\houseMateService.dll
 D:\Documents\GitHub\houseMate\houseMateService\houseMateService\obj\Debug\houseMateService.pdb
+C:\Users\Romesh\Documents\houseMate\houseMateService\houseMateService\bin\houseMateService.dll
+C:\Users\Romesh\Documents\houseMate\houseMateService\houseMateService\bin\houseMateService.pdb
+C:\Users\Romesh\Documents\houseMate\houseMateService\houseMateService\bin\BL.dll
+C:\Users\Romesh\Documents\houseMate\houseMateService\houseMateService\bin\DAL.dll
+C:\Users\Romesh\Documents\houseMate\houseMateService\houseMateService\bin\BL.pdb
+C:\Users\Romesh\Documents\houseMate\houseMateService\houseMateService\bin\DAL.pdb
+C:\Users\Romesh\Documents\houseMate\houseMateService\houseMateService\obj\Debug\houseMate.Service.csprojResolveAssemblyReference.cache
+C:\Users\Romesh\Documents\houseMate\houseMateService\houseMateService\obj\Debug\houseMateService.dll
+C:\Users\Romesh\Documents\houseMate\houseMateService\houseMateService\obj\Debug\houseMateService.pdb

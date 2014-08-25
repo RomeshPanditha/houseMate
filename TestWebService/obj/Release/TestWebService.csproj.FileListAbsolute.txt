@@ -3,3 +3,5 @@ C:\Users\Romesh\Documents\houseMate\TestWebService\bin\TestWebService.pdb
 C:\Users\Romesh\Documents\houseMate\TestWebService\obj\Release\TestWebService.csprojResolveAssemblyReference.cache
 C:\Users\Romesh\Documents\houseMate\TestWebService\obj\Release\TestWebService.dll
 C:\Users\Romesh\Documents\houseMate\TestWebService\obj\Release\TestWebService.pdb
+C:\Users\Romesh\Documents\houseMate\TestWebService\bin\EntityFramework.dll
+C:\Users\Romesh\Documents\houseMate\TestWebService\bin\EntityFramework.xml

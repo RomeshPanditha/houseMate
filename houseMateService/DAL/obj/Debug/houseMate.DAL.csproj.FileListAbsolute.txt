@@ -3,3 +3,8 @@ D:\Documents\GitHub\houseMate\houseMateService\DAL\bin\DAL.pdb
 D:\Documents\GitHub\houseMate\houseMateService\DAL\obj\Debug\houseMate.DAL.csprojResolveAssemblyReference.cache
 D:\Documents\GitHub\houseMate\houseMateService\DAL\obj\Debug\DAL.dll
 D:\Documents\GitHub\houseMate\houseMateService\DAL\obj\Debug\DAL.pdb
+C:\Users\Romesh\Documents\houseMate\houseMateService\DAL\bin\DAL.dll
+C:\Users\Romesh\Documents\houseMate\houseMateService\DAL\bin\DAL.pdb
+C:\Users\Romesh\Documents\houseMate\houseMateService\DAL\obj\Debug\houseMate.DAL.csprojResolveAssemblyReference.cache
+C:\Users\Romesh\Documents\houseMate\houseMateService\DAL\obj\Debug\DAL.dll
+C:\Users\Romesh\Documents\houseMate\houseMateService\DAL\obj\Debug\DAL.pdb

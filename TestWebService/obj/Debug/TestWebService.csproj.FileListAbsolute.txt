@@ -7,3 +7,5 @@ C:\Users\Romesh\Documents\houseMate\TestWebService\bin\TestWebService.dll
 C:\Users\Romesh\Documents\houseMate\TestWebService\bin\TestWebService.pdb
 C:\Users\Romesh\Documents\houseMate\TestWebService\obj\Debug\TestWebService.dll
 C:\Users\Romesh\Documents\houseMate\TestWebService\obj\Debug\TestWebService.pdb
+C:\Users\Romesh\Documents\houseMate\TestWebService\bin\EntityFramework.dll
+C:\Users\Romesh\Documents\houseMate\TestWebService\bin\EntityFramework.xml
