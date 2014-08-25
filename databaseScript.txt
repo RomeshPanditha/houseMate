@@ -1,0 +1,335 @@
+-- phpMyAdmin SQL Dump
+-- version 2.11.11.3
+-- http://www.phpmyadmin.net
+--
+-- Host: 166.62.8.8
+-- Generation Time: Aug 24, 2014 at 08:02 PM
+-- Server version: 5.5.37
+-- PHP Version: 5.1.6
+
+--
+-- Database: `houseMate`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chores`
+--
+
+CREATE TABLE `chores` (
+  `PK_choreID` int(11) NOT NULL DEFAULT '1',
+  `FK_houseID` int(11) DEFAULT NULL,
+  `choreName` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`PK_choreID`),
+  KEY `chore_to_house_idx` (`FK_houseID`)
+) TYPE=InnoDB;
+
+--
+-- Dumping data for table `chores`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chore_allocation`
+--
+
+CREATE TABLE `chore_allocation` (
+  `PK_allocationID` int(11) NOT NULL DEFAULT '1',
+  `FK_choreID` int(11) NOT NULL,
+  `FK_tenantID` int(11) NOT NULL,
+  `dayOfWeek` varchar(10) DEFAULT NULL,
+  `cycle` int(11) DEFAULT NULL,
+  PRIMARY KEY (`PK_allocationID`),
+  KEY `allocation_to_chore_idx` (`FK_choreID`),
+  KEY `allocation_to_tenant_idx` (`FK_tenantID`)
+) TYPE=InnoDB;
+
+--
+-- Dumping data for table `chore_allocation`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `house`
+--
+
+CREATE TABLE `house` (
+  `PK_houseID` int(11) NOT NULL DEFAULT '1',
+  `houseName` varchar(45) NOT NULL,
+  `address` varchar(45) DEFAULT NULL,
+  `city` varchar(45) DEFAULT NULL,
+  `postcode` int(11) DEFAULT NULL,
+  `state` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`PK_houseID`),
+  UNIQUE KEY `houseName_UNIQUE` (`houseName`)
+) TYPE=InnoDB;
+
+--
+-- Dumping data for table `house`
+--
+
+INSERT INTO `house` VALUES(1, 'Madhouse', NULL, NULL, NULL, NULL);
+INSERT INTO `house` VALUES(2, 'Babetown', '59 Mitchell St', 'Merewether', 2291, 'NSW');
+INSERT INTO `house` VALUES(3, 'Werehouse', NULL, NULL, NULL, NULL);
+INSERT INTO `house` VALUES(4, 'Ben''s Place', NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `house_bill`
+--
+
+CREATE TABLE `house_bill` (
+  `PK_houseBillID` int(11) NOT NULL DEFAULT '1',
+  `FK_houseID` int(11) NOT NULL,
+  `billType` varchar(45) NOT NULL,
+  `amount` double NOT NULL,
+  `dueDate` date NOT NULL,
+  PRIMARY KEY (`PK_houseBillID`),
+  KEY `FK_houseID_idx` (`FK_houseID`)
+) TYPE=InnoDB;
+
+--
+-- Dumping data for table `house_bill`
+--
+
+INSERT INTO `house_bill` VALUES(1, 2, 'electricity', 120.35, '2014-08-25');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `individual_bills`
+--
+
+CREATE TABLE `individual_bills` (
+  `PK_indivBillID` int(11) NOT NULL DEFAULT '1',
+  `FK_houseBillID` int(11) NOT NULL,
+  `FK_tenantID` int(11) NOT NULL,
+  `splitAmount` double DEFAULT NULL,
+  `datePaid` date DEFAULT NULL,
+  `dueDate` date DEFAULT NULL,
+  `billType` varchar(45) DEFAULT NULL,
+  `recurring?` binary(1) DEFAULT NULL,
+  PRIMARY KEY (`PK_indivBillID`),
+  KEY `individual_bill_constraint_idx` (`FK_houseBillID`),
+  KEY `individual_tenant_constraint_idx` (`FK_tenantID`)
+) TYPE=InnoDB;
+
+--
+-- Dumping data for table `individual_bills`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `item`
+--
+
+CREATE TABLE `item` (
+  `PK_itemID` int(11) NOT NULL DEFAULT '1',
+  `FK_listID` int(11) NOT NULL,
+  `name` varchar(45) DEFAULT NULL,
+  `description` varchar(100) DEFAULT NULL,
+  `category` varchar(25) DEFAULT NULL,
+  `bought?` binary(1) DEFAULT NULL,
+  `store?` binary(1) DEFAULT NULL,
+  PRIMARY KEY (`PK_itemID`),
+  KEY `item_to_list_idx` (`FK_listID`)
+) TYPE=InnoDB;
+
+--
+-- Dumping data for table `item`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `list`
+--
+
+CREATE TABLE `list` (
+  `PK_listID` int(11) NOT NULL DEFAULT '1',
+  `FK_houseID` int(11) NOT NULL,
+  PRIMARY KEY (`PK_listID`),
+  KEY `list_to_house_idx` (`FK_houseID`)
+) TYPE=InnoDB;
+
+--
+-- Dumping data for table `list`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `list_records`
+--
+
+CREATE TABLE `list_records` (
+  `PK_recordID` int(11) NOT NULL AUTO_INCREMENT,
+  `FK_itemID` int(11) NOT NULL,
+  `FK_tenantID` int(11) NOT NULL,
+  `dateBought` date NOT NULL,
+  PRIMARY KEY (`PK_recordID`),
+  KEY `item_to_record_idx` (`FK_itemID`),
+  KEY `tenant_to_record_idx` (`FK_tenantID`)
+) TYPE=InnoDB AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `list_records`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notice`
+--
+
+CREATE TABLE `notice` (
+  `PK_noticeID` int(11) NOT NULL DEFAULT '1',
+  `FK_noticeBoardID` int(11) NOT NULL,
+  `FK_tenantID` int(11) NOT NULL,
+  `title` varchar(45) NOT NULL,
+  `message` varchar(200) NOT NULL,
+  `datePosted` datetime NOT NULL,
+  `type` varchar(15) NOT NULL,
+  PRIMARY KEY (`PK_noticeID`),
+  KEY `notice_constraint_idx` (`FK_noticeBoardID`),
+  KEY `tenant-notice_constraint_idx` (`FK_tenantID`)
+) TYPE=InnoDB;
+
+--
+-- Dumping data for table `notice`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notice_board`
+--
+
+CREATE TABLE `notice_board` (
+  `PK_noticeBoardID` int(11) NOT NULL DEFAULT '1',
+  `FK_houseID` int(11) NOT NULL,
+  PRIMARY KEY (`PK_noticeBoardID`),
+  KEY `noticeboard_constraint_idx` (`FK_houseID`)
+) TYPE=InnoDB;
+
+--
+-- Dumping data for table `notice_board`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tenant`
+--
+
+CREATE TABLE `tenant` (
+  `PK_tenantID` int(11) NOT NULL DEFAULT '1',
+  `FK_houseID` int(11) NOT NULL,
+  `name` varchar(45) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `username` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`PK_tenantID`),
+  KEY `FK_houseID_idx` (`FK_houseID`)
+) TYPE=InnoDB;
+
+--
+-- Dumping data for table `tenant`
+--
+
+INSERT INTO `tenant` VALUES(1, 2, 'Romesh', 'Romesh@email.com', 'Borange');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `test`
+--
+
+CREATE TABLE `test` (
+  `sadasd` varchar(10) DEFAULT NULL
+) TYPE=MyISAM;
+
+--
+-- Dumping data for table `test`
+--
+
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `chores`
+--
+ALTER TABLE `chores`
+  ADD CONSTRAINT `chore_to_house` FOREIGN KEY (`FK_houseID`) REFERENCES `house` (`PK_houseID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `chore_allocation`
+--
+ALTER TABLE `chore_allocation`
+  ADD CONSTRAINT `allocation_to_chore` FOREIGN KEY (`FK_choreID`) REFERENCES `chores` (`PK_choreID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `allocation_to_tenant` FOREIGN KEY (`FK_tenantID`) REFERENCES `tenant` (`PK_tenantID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `house_bill`
+--
+ALTER TABLE `house_bill`
+  ADD CONSTRAINT `bill_constraint` FOREIGN KEY (`FK_houseID`) REFERENCES `house` (`PK_houseID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `individual_bills`
+--
+ALTER TABLE `individual_bills`
+  ADD CONSTRAINT `individual_bill_constraint` FOREIGN KEY (`FK_houseBillID`) REFERENCES `house_bill` (`PK_houseBillID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `individual_tenant_constraint` FOREIGN KEY (`FK_tenantID`) REFERENCES `tenant` (`PK_tenantID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `item`
+--
+ALTER TABLE `item`
+  ADD CONSTRAINT `item_to_list` FOREIGN KEY (`FK_listID`) REFERENCES `list` (`PK_listID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `list`
+--
+ALTER TABLE `list`
+  ADD CONSTRAINT `list_to_house` FOREIGN KEY (`FK_houseID`) REFERENCES `house` (`PK_houseID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `list_records`
+--
+ALTER TABLE `list_records`
+  ADD CONSTRAINT `item_to_record` FOREIGN KEY (`FK_itemID`) REFERENCES `item` (`PK_itemID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `tenant_to_record` FOREIGN KEY (`FK_tenantID`) REFERENCES `tenant` (`PK_tenantID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `notice`
+--
+ALTER TABLE `notice`
+  ADD CONSTRAINT `notice_constraint` FOREIGN KEY (`FK_noticeBoardID`) REFERENCES `notice_board` (`PK_noticeBoardID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `tenant-notice_constraint` FOREIGN KEY (`FK_tenantID`) REFERENCES `tenant` (`PK_tenantID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `notice_board`
+--
+ALTER TABLE `notice_board`
+  ADD CONSTRAINT `noticeboard_constraint` FOREIGN KEY (`FK_houseID`) REFERENCES `house` (`PK_houseID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `tenant`
+--
+ALTER TABLE `tenant`
+  ADD CONSTRAINT `tenant_constraint` FOREIGN KEY (`FK_houseID`) REFERENCES `house` (`PK_houseID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
