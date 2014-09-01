@@ -351,18 +351,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--Errors Found During Generation:
-      warning 6013: The table/view 'def.houseMate.test' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-      
-      <EntityType Name="test">
-        <Property Name="sadasd" Type="varchar" MaxLength="10" />
-      </EntityType>-->
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="houseMateModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="houseMateEntities" p1:LazyLoadingEnabled="true">
+        <EntityContainer Name="MyHouseMateEntities" p1:LazyLoadingEnabled="true">
           <EntitySet Name="chore_allocation" EntityType="houseMateModel.chore_allocation" />
           <EntitySet Name="chores" EntityType="houseMateModel.chore" />
           <EntitySet Name="houses" EntityType="houseMateModel.house" />
@@ -741,7 +735,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="houseMateModelStoreContainer" CdmEntityContainer="houseMateEntities">
+        <EntityContainerMapping StorageEntityContainer="houseMateModelStoreContainer" CdmEntityContainer="MyHouseMateEntities">
           <EntitySetMapping Name="chore_allocation">
             <EntityTypeMapping TypeName="houseMateModel.chore_allocation">
               <MappingFragment StoreEntitySet="chore_allocation">

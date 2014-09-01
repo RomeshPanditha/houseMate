@@ -346,10 +346,4 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <!--Errors Found During Generation:
-      warning 6013: The table/view 'def.houseMate.test' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-      
-      <EntityType Name="test">
-        <Property Name="sadasd" Type="varchar" MaxLength="10" />
-      </EntityType>-->
 </Schema>

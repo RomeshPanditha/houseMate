@@ -13,10 +13,10 @@ namespace TestWebService
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class houseMateEntities : DbContext
+    public partial class MyHouseMateEntities : DbContext
     {
-        public houseMateEntities()
-            : base("name=houseMateEntities")
+        public MyHouseMateEntities()
+            : base("name=MyHouseMateEntities")
         {
         }
     

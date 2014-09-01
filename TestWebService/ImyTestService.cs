@@ -13,8 +13,13 @@ namespace TestWebService
     [ServiceContract]
     public interface ImyTestService
     {
+        
+
         [OperationContract]
         string getMessage();
+
+        [OperationContract]
+        string getMessageTwo();
 
         [OperationContract]
         Person[] GetPeople();

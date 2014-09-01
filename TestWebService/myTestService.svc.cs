@@ -21,11 +21,10 @@ namespace TestWebService
             ResponseFormat = WebMessageFormat.Json, UriTemplate = "getMessage")]
         public string getMessage()
         {
-            try
-            {
+         
                 string result = "houses: ";
 
-                houseMateEntities hm = new houseMateEntities();
+                MyHouseMateEntities hm = new MyHouseMateEntities();
                 List<house> houseL = hm.houses.ToList<house>();
                 foreach (house h in houseL)
                 {
@@ -38,6 +37,37 @@ namespace TestWebService
 
                 
                 
+            
+           
+                
+        }
+
+        [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
+            ResponseFormat = WebMessageFormat.Json, UriTemplate = "getMessageTwo")]
+        public string getMessageTwo()
+        {
+            try
+            {
+                string result = "something else";
+                string conStr = @"server=houseMate.db.12005856.hostedresource.com; Uid=houseMate;database=houseMate; Pwd= M!cr0s0ft";
+                MySqlConnection conn = new MySqlConnection(conStr);
+                MySqlCommand cmd = conn.CreateCommand();
+                cmd.CommandText = "SELECT houseName FROM house WHERE PK_houseId = 2";
+
+                conn.Open();
+
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    result = reader.GetString(reader.GetOrdinal("houseName"));
+                }
+
+                return result;
+
+
+
             }
             catch
             {

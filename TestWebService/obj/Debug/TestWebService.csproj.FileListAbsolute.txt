@@ -9,3 +9,14 @@ C:\Users\Romesh\Documents\houseMate\TestWebService\obj\Debug\TestWebService.dll
 C:\Users\Romesh\Documents\houseMate\TestWebService\obj\Debug\TestWebService.pdb
 C:\Users\Romesh\Documents\houseMate\TestWebService\bin\EntityFramework.dll
 C:\Users\Romesh\Documents\houseMate\TestWebService\bin\EntityFramework.xml
+C:\Users\Romesh\Documents\houseMate\TestWebService\obj\Debug\TestWebService.csprojResolveAssemblyReference.cache
+C:\Users\Romesh\Documents\houseMate\TestWebService\bin\Microsoft.Data.Edm.dll
+C:\Users\Romesh\Documents\houseMate\TestWebService\bin\Microsoft.Data.OData.dll
+C:\Users\Romesh\Documents\houseMate\TestWebService\bin\Microsoft.Data.Services.Client.dll
+C:\Users\Romesh\Documents\houseMate\TestWebService\bin\Microsoft.Data.Services.dll
+C:\Users\Romesh\Documents\houseMate\TestWebService\bin\System.Spatial.dll
+C:\Users\Romesh\Documents\houseMate\TestWebService\bin\Microsoft.Data.Edm.xml
+C:\Users\Romesh\Documents\houseMate\TestWebService\bin\Microsoft.Data.OData.xml
+C:\Users\Romesh\Documents\houseMate\TestWebService\bin\Microsoft.Data.Services.xml
+C:\Users\Romesh\Documents\houseMate\TestWebService\bin\Microsoft.Data.Services.Client.xml
+C:\Users\Romesh\Documents\houseMate\TestWebService\bin\System.Spatial.xml

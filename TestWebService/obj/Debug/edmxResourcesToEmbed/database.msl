@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="houseMateModelStoreContainer" CdmEntityContainer="houseMateEntities">
+  <EntityContainerMapping StorageEntityContainer="houseMateModelStoreContainer" CdmEntityContainer="MyHouseMateEntities">
     <EntitySetMapping Name="chore_allocation">
       <EntityTypeMapping TypeName="houseMateModel.chore_allocation">
         <MappingFragment StoreEntitySet="chore_allocation">
