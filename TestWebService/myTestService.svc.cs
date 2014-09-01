@@ -15,7 +15,7 @@ namespace TestWebService
     public class myTestService : ImyTestService
     {
         public BL.DogKeeper keeper = new BL.DogKeeper();
-        
+        MyHouseMateEntities hm = new MyHouseMateEntities();
 
         [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
             ResponseFormat = WebMessageFormat.Json, UriTemplate = "getMessage")]
@@ -23,8 +23,7 @@ namespace TestWebService
         {
          
                 string result = "houses: ";
-
-                MyHouseMateEntities hm = new MyHouseMateEntities();
+ 
                 List<house> houseL = hm.houses.ToList<house>();
                 foreach (house h in houseL)
                 {
@@ -33,13 +32,7 @@ namespace TestWebService
                 }
                 
 
-                return result;
-
-                
-                
-            
-           
-                
+                return result;        
         }
 
         [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
@@ -69,9 +62,9 @@ namespace TestWebService
 
 
             }
-            catch
+            catch(Exception e)
             {
-                return "error retrieving data";
+                return "error retrieving data" + e.Message;
             }
         }
 
