@@ -6,17 +6,19 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 
-namespace houseMateService
+namespace HouseMateService
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
     [ServiceContract]
     public interface IService1
-    {
-
+    { 
+       //[WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
+       //  ResponseFormat = WebMessageFormat.Json, UriTemplate = "getMessageTwo")]
+        // ^^ This goes on each function that is to be used by the app
         [OperationContract]
         [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
-            ResponseFormat = WebMessageFormat.Json, UriTemplate = "getData?houseID={houseID}")]
-        string GetData(int houseID);
+         ResponseFormat = WebMessageFormat.Json, UriTemplate = "getMessage?value={value}")]
+        string GetData(int value);
 
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);
@@ -45,5 +47,11 @@ namespace houseMateService
             get { return stringValue; }
             set { stringValue = value; }
         }
+    }
+
+    [DataContract]
+    public class loldongs
+    {
+
     }
 }

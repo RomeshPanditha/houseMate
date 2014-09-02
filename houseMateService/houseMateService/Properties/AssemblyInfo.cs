@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("houseMateService")]
+[assembly: AssemblyTitle("HouseMateService")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("houseMateService")]
+[assembly: AssemblyProduct("HouseMateService")]
 [assembly: AssemblyCopyright("Copyright © Microsoft 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("f96292ed-70b3-41fc-b8eb-6e7d2c236f07")]
+[assembly: Guid("00243e6e-dbce-4786-8220-6671ba4c9fab")]
 
 // Version information for an assembly consists of the following four values:
 //

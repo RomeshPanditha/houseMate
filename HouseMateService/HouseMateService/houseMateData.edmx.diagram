@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8a9d2b9e30a7485da33f00c6f1f67802" Name="Diagram1">
+        <EntityTypeShape EntityType="houseMateModel.chore_allocation" Width="1.5" PointX="8.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="houseMateModel.chore" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="houseMateModel.house" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="houseMateModel.house_bill" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="houseMateModel.individual_bills" Width="1.5" PointX="5.25" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="houseMateModel.item" Width="1.5" PointX="5.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="houseMateModel.list" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="houseMateModel.list_records" Width="1.5" PointX="7.5" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="houseMateModel.notice" Width="1.5" PointX="8.25" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="houseMateModel.notice_board" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="houseMateModel.tenant" Width="1.5" PointX="3" PointY="14.5" IsExpanded="true" />
+        <AssociationConnector Association="houseMateModel.allocation_to_chore" ManuallyRouted="false" />
+        <AssociationConnector Association="houseMateModel.allocation_to_tenant" ManuallyRouted="false" />
+        <AssociationConnector Association="houseMateModel.chore_to_house" ManuallyRouted="false" />
+        <AssociationConnector Association="houseMateModel.bill_constraint" ManuallyRouted="false" />
+        <AssociationConnector Association="houseMateModel.list_to_house" ManuallyRouted="false" />
+        <AssociationConnector Association="houseMateModel.noticeboard_constraint" ManuallyRouted="false" />
+        <AssociationConnector Association="houseMateModel.tenant_constraint" ManuallyRouted="false" />
+        <AssociationConnector Association="houseMateModel.individual_bill_constraint" ManuallyRouted="false" />
+        <AssociationConnector Association="houseMateModel.individual_tenant_constraint" ManuallyRouted="false" />
+        <AssociationConnector Association="houseMateModel.item_to_list" ManuallyRouted="false" />
+        <AssociationConnector Association="houseMateModel.item_to_record" ManuallyRouted="false" />
+        <AssociationConnector Association="houseMateModel.tenant_to_record" ManuallyRouted="false" />
+        <AssociationConnector Association="houseMateModel.notice_constraint" ManuallyRouted="false" />
+        <AssociationConnector Association="houseMateModel.tenant_notice_constraint" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
