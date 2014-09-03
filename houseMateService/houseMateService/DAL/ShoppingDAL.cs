@@ -18,19 +18,19 @@ namespace HouseMateService.DAL
         public List<Item> getShoppingList(int houseID)
         {
             List<Item> shoppingList = new List<Item>();
-            int li = 0;
+            
             using(var context = new houseMateEntities())
             {
-                li = Convert.ToInt32((from list in context.lists
+                int listID = Convert.ToInt32((from list in context.lists
                                      where  list.FK_houseID == houseID
                                      select list.PK_listID).Single());
 
-                if (li != 0)
+                if (listID != 0)
                 {
                     List<item> itemz = context.items.ToList<item>();
                     foreach (item i in itemz)
                     {
-                        if (i.FK_listID == li && i.bought_ == 0)
+                        if (i.FK_listID == listID && i.bought_ == 0)
                         {
                             shoppingList.Add(new Item(i.name.ToString(), i.description.ToString(), i.category.ToString()));
                         }
@@ -38,6 +38,18 @@ namespace HouseMateService.DAL
                 }
             }   
             return shoppingList;
+        }
+
+        public void addItem(int houseID)
+        {
+            using (var context = new houseMateEntities())
+            {
+                int listID = Convert.ToInt32((from list in context.lists
+                                      where list.FK_houseID == houseID
+                                      select list.PK_listID).Single());
+
+
+            }
         }
     }
 }
