@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8a9d2b9e30a7485da33f00c6f1f67802" Name="Diagram1">
+      <Diagram DiagramId="bc78707f476447d99834127638d1335e" Name="Diagram1">
         <EntityTypeShape EntityType="houseMateModel.chore_allocation" Width="1.5" PointX="8.25" PointY="8.875" IsExpanded="true" />
         <EntityTypeShape EntityType="houseMateModel.chore" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
         <EntityTypeShape EntityType="houseMateModel.house" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />

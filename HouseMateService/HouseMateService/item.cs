@@ -24,8 +24,8 @@ namespace HouseMateService
         public string name { get; set; }
         public string description { get; set; }
         public string category { get; set; }
-        public byte[] bought_ { get; set; }
-        public byte[] store_ { get; set; }
+        public Nullable<sbyte> bought_ { get; set; }
+        public Nullable<sbyte> store_ { get; set; }
     
         public virtual list list { get; set; }
         public virtual ICollection<list_records> list_records { get; set; }

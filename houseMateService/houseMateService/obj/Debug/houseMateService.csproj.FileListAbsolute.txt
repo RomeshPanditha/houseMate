@@ -9,3 +9,14 @@ D:\Documents\GitHub\houseMate\HouseMateService\HouseMateService\bin\EntityFramew
 D:\Documents\GitHub\houseMate\HouseMateService\HouseMateService\obj\Debug\HouseMateService.csprojResolveAssemblyReference.cache
 D:\Documents\GitHub\houseMate\HouseMateService\HouseMateService\obj\Debug\HouseMateService.dll
 D:\Documents\GitHub\houseMate\HouseMateService\HouseMateService\obj\Debug\HouseMateService.pdb
+C:\Users\Romesh\Documents\houseMate\houseMateService\HouseMateService\bin\HouseMateService.dll
+C:\Users\Romesh\Documents\houseMate\houseMateService\HouseMateService\bin\HouseMateService.pdb
+C:\Users\Romesh\Documents\houseMate\houseMateService\HouseMateService\bin\EntityFramework.dll
+C:\Users\Romesh\Documents\houseMate\houseMateService\HouseMateService\bin\EntityFramework.SqlServer.dll
+C:\Users\Romesh\Documents\houseMate\houseMateService\HouseMateService\bin\MySql.Data.dll
+C:\Users\Romesh\Documents\houseMate\houseMateService\HouseMateService\bin\mysql.data.entity.EF6.dll
+C:\Users\Romesh\Documents\houseMate\houseMateService\HouseMateService\bin\EntityFramework.xml
+C:\Users\Romesh\Documents\houseMate\houseMateService\HouseMateService\bin\EntityFramework.SqlServer.xml
+C:\Users\Romesh\Documents\houseMate\houseMateService\HouseMateService\obj\Debug\HouseMateService.dll
+C:\Users\Romesh\Documents\houseMate\houseMateService\HouseMateService\obj\Debug\HouseMateService.pdb
+C:\Users\Romesh\Documents\houseMate\houseMateService\HouseMateService\obj\Debug\HouseMateService.csprojResolveAssemblyReference.cache

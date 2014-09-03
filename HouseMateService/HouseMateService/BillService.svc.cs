@@ -16,7 +16,5 @@ namespace HouseMateService
         public void DoWork()
         {
         }
-
-
     }
 }

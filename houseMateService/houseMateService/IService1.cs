@@ -17,7 +17,7 @@ namespace HouseMateService
         // ^^ This goes on each function that is to be used by the app
         [OperationContract]
         [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
-         ResponseFormat = WebMessageFormat.Json, UriTemplate = "getMessage?value={value}")]
+         ResponseFormat = WebMessageFormat.Json, UriTemplate = "getData?value={value}")]
         string GetData(int value);
 
         [OperationContract]
@@ -47,11 +47,5 @@ namespace HouseMateService
             get { return stringValue; }
             set { stringValue = value; }
         }
-    }
-
-    [DataContract]
-    public class loldongs
-    {
-
     }
 }

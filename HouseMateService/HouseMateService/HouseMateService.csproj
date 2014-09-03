@@ -77,90 +77,96 @@
   <ItemGroup>
     <Content Include="BillService.svc" />
     <Content Include="Service1.svc" />
+    <Content Include="ShoppingService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BillService.svc.cs">
       <DependentUpon>BillService.svc</DependentUpon>
     </Compile>
-    <Compile Include="DAL\BillsDAL.cs" />
     <Compile Include="chore.cs">
-      <DependentUpon>houseMateData.tt</DependentUpon>
+      <DependentUpon>houseMateDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="chore_allocation.cs">
-      <DependentUpon>houseMateData.tt</DependentUpon>
+      <DependentUpon>houseMateDatabase.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAL\BillsDAL.cs" />
+    <Compile Include="DAL\ShoppingDAL.cs" />
     <Compile Include="house.cs">
-      <DependentUpon>houseMateData.tt</DependentUpon>
+      <DependentUpon>houseMateDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="houseMateData.Context.cs">
+    <Compile Include="houseMateDatabase.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>houseMateData.Context.tt</DependentUpon>
+      <DependentUpon>houseMateDatabase.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="houseMateData.cs">
+    <Compile Include="houseMateDatabase.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>houseMateData.tt</DependentUpon>
+      <DependentUpon>houseMateDatabase.tt</DependentUpon>
     </Compile>
-    <Compile Include="houseMateData.Designer.cs">
+    <Compile Include="houseMateDatabase.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>houseMateData.edmx</DependentUpon>
+      <DependentUpon>houseMateDatabase.edmx</DependentUpon>
     </Compile>
     <Compile Include="house_bill.cs">
-      <DependentUpon>houseMateData.tt</DependentUpon>
+      <DependentUpon>houseMateDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="IBillService.cs" />
     <Compile Include="individual_bills.cs">
-      <DependentUpon>houseMateData.tt</DependentUpon>
+      <DependentUpon>houseMateDatabase.tt</DependentUpon>
     </Compile>
+    <Compile Include="IShoppingService.cs" />
     <Compile Include="item.cs">
-      <DependentUpon>houseMateData.tt</DependentUpon>
+      <DependentUpon>houseMateDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="list.cs">
-      <DependentUpon>houseMateData.tt</DependentUpon>
+      <DependentUpon>houseMateDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="list_records.cs">
-      <DependentUpon>houseMateData.tt</DependentUpon>
+      <DependentUpon>houseMateDatabase.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Item.cs" />
     <Compile Include="notice.cs">
-      <DependentUpon>houseMateData.tt</DependentUpon>
+      <DependentUpon>houseMateDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="notice_board.cs">
-      <DependentUpon>houseMateData.tt</DependentUpon>
+      <DependentUpon>houseMateDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>
     </Compile>
     <Compile Include="IService1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShoppingService.svc.cs">
+      <DependentUpon>ShoppingService.svc</DependentUpon>
+    </Compile>
     <Compile Include="tenant.cs">
-      <DependentUpon>houseMateData.tt</DependentUpon>
+      <DependentUpon>houseMateDatabase.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <EntityDeploy Include="houseMateData.edmx">
+    <EntityDeploy Include="houseMateDatabase.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>houseMateData.Designer.cs</LastGenOutput>
+      <LastGenOutput>houseMateDatabase.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="houseMateData.Context.tt">
+    <Content Include="houseMateDatabase.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>houseMateData.edmx</DependentUpon>
-      <LastGenOutput>houseMateData.Context.cs</LastGenOutput>
+      <DependentUpon>houseMateDatabase.edmx</DependentUpon>
+      <LastGenOutput>houseMateDatabase.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="houseMateData.edmx.diagram">
-      <DependentUpon>houseMateData.edmx</DependentUpon>
+    <Content Include="houseMateDatabase.edmx.diagram">
+      <DependentUpon>houseMateDatabase.edmx</DependentUpon>
     </Content>
-    <Content Include="houseMateData.tt">
+    <Content Include="houseMateDatabase.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>houseMateData.edmx</DependentUpon>
-      <LastGenOutput>houseMateData.cs</LastGenOutput>
+      <DependentUpon>houseMateDatabase.edmx</DependentUpon>
+      <LastGenOutput>houseMateDatabase.cs</LastGenOutput>
     </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

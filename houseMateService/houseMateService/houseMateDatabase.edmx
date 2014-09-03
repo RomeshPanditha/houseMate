@@ -135,8 +135,8 @@
           <Property Name="name" Type="varchar" MaxLength="45" />
           <Property Name="description" Type="varchar" MaxLength="100" />
           <Property Name="category" Type="varchar" MaxLength="25" />
-          <Property Name="bought?" Type="binary" MaxLength="1" />
-          <Property Name="store?" Type="binary" MaxLength="1" />
+          <Property Name="bought?" Type="tinyint" />
+          <Property Name="store?" Type="tinyint" />
         </EntityType>
         <EntityType Name="list">
           <Key>
@@ -499,8 +499,8 @@
           <Property Name="name" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
           <Property Name="description" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
           <Property Name="category" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
-          <Property Name="bought_" Type="Binary" MaxLength="1" FixedLength="true" />
-          <Property Name="store_" Type="Binary" MaxLength="1" FixedLength="true" />
+          <Property Name="bought_" Type="SByte" />
+          <Property Name="store_" Type="SByte" />
           <NavigationProperty Name="list" Relationship="houseMateModel.item_to_list" FromRole="item" ToRole="list" />
           <NavigationProperty Name="list_records" Relationship="houseMateModel.item_to_record" FromRole="item" ToRole="list_records" />
         </EntityType>

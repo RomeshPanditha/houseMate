@@ -143,8 +143,8 @@
     <Property Name="name" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
     <Property Name="description" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
     <Property Name="category" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
-    <Property Name="bought_" Type="Binary" />
-    <Property Name="store_" Type="Binary" />
+    <Property Name="bought_" Type="SByte" />
+    <Property Name="store_" Type="SByte" />
     <NavigationProperty Name="list" Relationship="houseMateModel.item_to_list" FromRole="item" ToRole="list" />
     <NavigationProperty Name="list_records" Relationship="houseMateModel.item_to_record" FromRole="item" ToRole="list_records" />
   </EntityType>
