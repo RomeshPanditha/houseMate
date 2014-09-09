@@ -12,21 +12,10 @@ namespace HouseMateService
     using System;
     using System.Collections.Generic;
     
-    public partial class item
+    public partial class itemDescription
     {
-        public item()
-        {
-            this.list_records = new HashSet<list_records>();
-        }
-    
-        public int PK_itemID { get; set; }
-        public int FK_listID { get; set; }
-        public string name { get; set; }
-        public string category { get; set; }
-        public Nullable<sbyte> bought_ { get; set; }
+        public int PK_itemDescriptionsID { get; set; }
+        public int FK_itemID { get; set; }
         public string description { get; set; }
-    
-        public virtual list list { get; set; }
-        public virtual ICollection<list_records> list_records { get; set; }
     }
 }

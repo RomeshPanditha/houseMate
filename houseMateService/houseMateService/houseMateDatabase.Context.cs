@@ -36,5 +36,6 @@ namespace HouseMateService
         public DbSet<notice> notices { get; set; }
         public DbSet<notice_board> notice_board { get; set; }
         public DbSet<tenant> tenants { get; set; }
+        public DbSet<itemDescription> itemDescriptions { get; set; }
     }
 }

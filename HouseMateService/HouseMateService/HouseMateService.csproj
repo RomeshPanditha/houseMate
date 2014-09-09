@@ -121,6 +121,9 @@
     <Compile Include="item.cs">
       <DependentUpon>houseMateDatabase.tt</DependentUpon>
     </Compile>
+    <Compile Include="itemDescription.cs">
+      <DependentUpon>houseMateDatabase.tt</DependentUpon>
+    </Compile>
     <Compile Include="list.cs">
       <DependentUpon>houseMateDatabase.tt</DependentUpon>
     </Compile>
@@ -128,6 +131,7 @@
       <DependentUpon>houseMateDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\ItemName.cs" />
     <Compile Include="notice.cs">
       <DependentUpon>houseMateDatabase.tt</DependentUpon>
     </Compile>

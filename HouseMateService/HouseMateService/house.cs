@@ -29,6 +29,8 @@ namespace HouseMateService
         public string city { get; set; }
         public Nullable<int> postcode { get; set; }
         public string state { get; set; }
+        public int FK_listID { get; set; }
+        public string housecol { get; set; }
     
         public virtual ICollection<chore> chores { get; set; }
         public virtual ICollection<house_bill> house_bill { get; set; }

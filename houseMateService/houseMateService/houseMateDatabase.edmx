@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="houseMateModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="houseMateModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="houseMateModelStoreContainer">
           <EntitySet Name="chore_allocation" EntityType="houseMateModel.Store.chore_allocation" store:Type="Tables" Schema="houseMate" />
           <EntitySet Name="chores" EntityType="houseMateModel.Store.chores" store:Type="Tables" Schema="houseMate" />
@@ -12,6 +12,7 @@
           <EntitySet Name="house_bill" EntityType="houseMateModel.Store.house_bill" store:Type="Tables" Schema="houseMate" />
           <EntitySet Name="individual_bills" EntityType="houseMateModel.Store.individual_bills" store:Type="Tables" Schema="houseMate" />
           <EntitySet Name="item" EntityType="houseMateModel.Store.item" store:Type="Tables" Schema="houseMate" />
+          <EntitySet Name="itemDescriptions" EntityType="houseMateModel.Store.itemDescriptions" store:Type="Tables" Schema="houseMate" />
           <EntitySet Name="list" EntityType="houseMateModel.Store.list" store:Type="Tables" Schema="houseMate" />
           <EntitySet Name="list_records" EntityType="houseMateModel.Store.list_records" store:Type="Tables" Schema="houseMate" />
           <EntitySet Name="notice" EntityType="houseMateModel.Store.notice" store:Type="Tables" Schema="houseMate" />
@@ -33,6 +34,10 @@
             <End Role="house" EntitySet="house" />
             <End Role="chores" EntitySet="chores" />
           </AssociationSet>
+          <AssociationSet Name="houseConstr" Association="houseMateModel.Store.houseConstr">
+            <End Role="house" EntitySet="house" />
+            <End Role="list" EntitySet="list" />
+          </AssociationSet>
           <AssociationSet Name="individual_bill_constraint" Association="houseMateModel.Store.individual_bill_constraint">
             <End Role="house_bill" EntitySet="house_bill" />
             <End Role="individual_bills" EntitySet="individual_bills" />
@@ -41,17 +46,9 @@
             <End Role="tenant" EntitySet="tenant" />
             <End Role="individual_bills" EntitySet="individual_bills" />
           </AssociationSet>
-          <AssociationSet Name="item_to_list" Association="houseMateModel.Store.item_to_list">
-            <End Role="list" EntitySet="list" />
-            <End Role="item" EntitySet="item" />
-          </AssociationSet>
           <AssociationSet Name="item_to_record" Association="houseMateModel.Store.item_to_record">
             <End Role="item" EntitySet="item" />
             <End Role="list_records" EntitySet="list_records" />
-          </AssociationSet>
-          <AssociationSet Name="list_to_house" Association="houseMateModel.Store.list_to_house">
-            <End Role="house" EntitySet="house" />
-            <End Role="list" EntitySet="list" />
           </AssociationSet>
           <AssociationSet Name="notice_constraint" Association="houseMateModel.Store.notice_constraint">
             <End Role="notice_board" EntitySet="notice_board" />
@@ -96,12 +93,14 @@
           <Key>
             <PropertyRef Name="PK_houseID" />
           </Key>
-          <Property Name="PK_houseID" Type="int" Nullable="false" />
+          <Property Name="PK_houseID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FK_listID" Type="int" Nullable="false" />
           <Property Name="houseName" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="address" Type="varchar" MaxLength="45" />
           <Property Name="city" Type="varchar" MaxLength="45" />
           <Property Name="postcode" Type="int" />
           <Property Name="state" Type="varchar" MaxLength="20" />
+          <Property Name="housecol" Type="varchar" MaxLength="45" />
         </EntityType>
         <EntityType Name="house_bill">
           <Key>
@@ -130,19 +129,26 @@
           <Key>
             <PropertyRef Name="PK_itemID" />
           </Key>
-          <Property Name="PK_itemID" Type="int" Nullable="false" />
+          <Property Name="PK_itemID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="FK_listID" Type="int" Nullable="false" />
-          <Property Name="name" Type="varchar" MaxLength="45" />
-          <Property Name="description" Type="varchar" MaxLength="100" />
-          <Property Name="category" Type="varchar" MaxLength="25" />
+          <Property Name="name" Type="varchar" MaxLength="20" />
+          <Property Name="category" Type="varchar" MaxLength="10" />
           <Property Name="bought?" Type="tinyint" />
-          <Property Name="store?" Type="tinyint" />
+          <Property Name="description" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="itemDescriptions">
+          <Key>
+            <PropertyRef Name="PK_itemDescriptionsID" />
+          </Key>
+          <Property Name="PK_itemDescriptionsID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FK_itemID" Type="int" Nullable="false" />
+          <Property Name="description" Type="varchar" Nullable="false" MaxLength="45" />
         </EntityType>
         <EntityType Name="list">
           <Key>
             <PropertyRef Name="PK_listID" />
           </Key>
-          <Property Name="PK_listID" Type="int" Nullable="false" />
+          <Property Name="PK_listID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="FK_houseID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="list_records">
@@ -231,6 +237,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="houseConstr">
+          <End Role="house" Type="houseMateModel.Store.house" Multiplicity="1" />
+          <End Role="list" Type="houseMateModel.Store.list" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="house">
+              <PropertyRef Name="PK_houseID" />
+            </Principal>
+            <Dependent Role="list">
+              <PropertyRef Name="FK_houseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="individual_bill_constraint">
           <End Role="house_bill" Type="houseMateModel.Store.house_bill" Multiplicity="1" />
           <End Role="individual_bills" Type="houseMateModel.Store.individual_bills" Multiplicity="*" />
@@ -255,18 +273,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="item_to_list">
-          <End Role="list" Type="houseMateModel.Store.list" Multiplicity="1" />
-          <End Role="item" Type="houseMateModel.Store.item" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="list">
-              <PropertyRef Name="PK_listID" />
-            </Principal>
-            <Dependent Role="item">
-              <PropertyRef Name="FK_listID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="item_to_record">
           <End Role="item" Type="houseMateModel.Store.item" Multiplicity="1" />
           <End Role="list_records" Type="houseMateModel.Store.list_records" Multiplicity="*" />
@@ -276,18 +282,6 @@
             </Principal>
             <Dependent Role="list_records">
               <PropertyRef Name="FK_itemID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="list_to_house">
-          <End Role="house" Type="houseMateModel.Store.house" Multiplicity="1" />
-          <End Role="list" Type="houseMateModel.Store.list" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="house">
-              <PropertyRef Name="PK_houseID" />
-            </Principal>
-            <Dependent Role="list">
-              <PropertyRef Name="FK_houseID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -351,8 +345,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="houseMateModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -424,6 +417,7 @@
             <End Role="tenant" EntitySet="tenants" />
             <End Role="notice" EntitySet="notices" />
           </AssociationSet>
+          <EntitySet Name="itemDescriptions" EntityType="houseMateModel.itemDescription" />
         </EntityContainer>
         <EntityType Name="chore_allocation">
           <Key>
@@ -462,6 +456,8 @@
           <NavigationProperty Name="lists" Relationship="houseMateModel.list_to_house" FromRole="house" ToRole="list" />
           <NavigationProperty Name="notice_board" Relationship="houseMateModel.noticeboard_constraint" FromRole="house" ToRole="notice_board" />
           <NavigationProperty Name="tenants" Relationship="houseMateModel.tenant_constraint" FromRole="house" ToRole="tenant" />
+          <Property Type="Int32" Name="FK_listID" Nullable="false" />
+          <Property Type="String" Name="housecol" MaxLength="45" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="house_bill">
           <Key>
@@ -496,13 +492,12 @@
           </Key>
           <Property Name="PK_itemID" Type="Int32" Nullable="false" />
           <Property Name="FK_listID" Type="Int32" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
-          <Property Name="description" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
-          <Property Name="category" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+          <Property Name="name" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="category" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
           <Property Name="bought_" Type="SByte" />
-          <Property Name="store_" Type="SByte" />
           <NavigationProperty Name="list" Relationship="houseMateModel.item_to_list" FromRole="item" ToRole="list" />
           <NavigationProperty Name="list_records" Relationship="houseMateModel.item_to_record" FromRole="item" ToRole="list_records" />
+          <Property Type="String" Name="description" MaxLength="45" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="list">
           <Key>
@@ -730,6 +725,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="itemDescription">
+          <Key>
+            <PropertyRef Name="PK_itemDescriptionsID" />
+          </Key>
+          <Property Type="Int32" Name="PK_itemDescriptionsID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="FK_itemID" Nullable="false" />
+          <Property Type="String" Name="description" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -759,6 +762,8 @@
           <EntitySetMapping Name="houses">
             <EntityTypeMapping TypeName="houseMateModel.house">
               <MappingFragment StoreEntitySet="house">
+                <ScalarProperty Name="housecol" ColumnName="housecol" />
+                <ScalarProperty Name="FK_listID" ColumnName="FK_listID" />
                 <ScalarProperty Name="PK_houseID" ColumnName="PK_houseID" />
                 <ScalarProperty Name="houseName" ColumnName="houseName" />
                 <ScalarProperty Name="address" ColumnName="address" />
@@ -796,13 +801,12 @@
           <EntitySetMapping Name="items">
             <EntityTypeMapping TypeName="houseMateModel.item">
               <MappingFragment StoreEntitySet="item">
+                <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="PK_itemID" ColumnName="PK_itemID" />
                 <ScalarProperty Name="FK_listID" ColumnName="FK_listID" />
                 <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="category" ColumnName="category" />
                 <ScalarProperty Name="bought_" ColumnName="bought?" />
-                <ScalarProperty Name="store_" ColumnName="store?" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -853,6 +857,15 @@
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="username" ColumnName="username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="itemDescriptions">
+            <EntityTypeMapping TypeName="houseMateModel.itemDescription">
+              <MappingFragment StoreEntitySet="itemDescriptions">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="FK_itemID" ColumnName="FK_itemID" />
+                <ScalarProperty Name="PK_itemDescriptionsID" ColumnName="PK_itemDescriptionsID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

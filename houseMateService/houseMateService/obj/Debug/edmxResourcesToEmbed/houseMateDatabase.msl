@@ -24,6 +24,8 @@
     <EntitySetMapping Name="houses">
       <EntityTypeMapping TypeName="houseMateModel.house">
         <MappingFragment StoreEntitySet="house">
+          <ScalarProperty Name="housecol" ColumnName="housecol" />
+          <ScalarProperty Name="FK_listID" ColumnName="FK_listID" />
           <ScalarProperty Name="PK_houseID" ColumnName="PK_houseID" />
           <ScalarProperty Name="houseName" ColumnName="houseName" />
           <ScalarProperty Name="address" ColumnName="address" />
@@ -61,13 +63,12 @@
     <EntitySetMapping Name="items">
       <EntityTypeMapping TypeName="houseMateModel.item">
         <MappingFragment StoreEntitySet="item">
+          <ScalarProperty Name="description" ColumnName="description" />
           <ScalarProperty Name="PK_itemID" ColumnName="PK_itemID" />
           <ScalarProperty Name="FK_listID" ColumnName="FK_listID" />
           <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="description" ColumnName="description" />
           <ScalarProperty Name="category" ColumnName="category" />
           <ScalarProperty Name="bought_" ColumnName="bought?" />
-          <ScalarProperty Name="store_" ColumnName="store?" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -118,6 +119,15 @@
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="username" ColumnName="username" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="itemDescriptions">
+      <EntityTypeMapping TypeName="houseMateModel.itemDescription">
+        <MappingFragment StoreEntitySet="itemDescriptions">
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="FK_itemID" ColumnName="FK_itemID" />
+          <ScalarProperty Name="PK_itemDescriptionsID" ColumnName="PK_itemDescriptionsID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

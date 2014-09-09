@@ -68,6 +68,7 @@
       <End Role="tenant" EntitySet="tenants" />
       <End Role="notice" EntitySet="notices" />
     </AssociationSet>
+    <EntitySet Name="itemDescriptions" EntityType="houseMateModel.itemDescription" />
   </EntityContainer>
   <EntityType Name="chore_allocation">
     <Key>
@@ -106,6 +107,8 @@
     <NavigationProperty Name="lists" Relationship="houseMateModel.list_to_house" FromRole="house" ToRole="list" />
     <NavigationProperty Name="notice_board" Relationship="houseMateModel.noticeboard_constraint" FromRole="house" ToRole="notice_board" />
     <NavigationProperty Name="tenants" Relationship="houseMateModel.tenant_constraint" FromRole="house" ToRole="tenant" />
+    <Property Type="Int32" Name="FK_listID" Nullable="false" />
+    <Property Type="String" Name="housecol" MaxLength="45" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="house_bill">
     <Key>
@@ -140,13 +143,12 @@
     </Key>
     <Property Name="PK_itemID" Type="Int32" Nullable="false" />
     <Property Name="FK_listID" Type="Int32" Nullable="false" />
-    <Property Name="name" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
-    <Property Name="description" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
-    <Property Name="category" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="name" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="category" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
     <Property Name="bought_" Type="SByte" />
-    <Property Name="store_" Type="SByte" />
     <NavigationProperty Name="list" Relationship="houseMateModel.item_to_list" FromRole="item" ToRole="list" />
     <NavigationProperty Name="list_records" Relationship="houseMateModel.item_to_record" FromRole="item" ToRole="list_records" />
+    <Property Type="String" Name="description" MaxLength="45" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="list">
     <Key>
@@ -374,4 +376,12 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="itemDescription">
+    <Key>
+      <PropertyRef Name="PK_itemDescriptionsID" />
+    </Key>
+    <Property Type="Int32" Name="PK_itemDescriptionsID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="FK_itemID" Nullable="false" />
+    <Property Type="String" Name="description" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

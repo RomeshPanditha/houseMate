@@ -18,17 +18,29 @@ namespace HouseMateService
 
         public Item[] getList(int houseID)
         {
-            /*List<Item> myList = new List<Item>();
-            myList.Add(new Item("Milk", "Low Fat", "food", false, false));
-            myList.Add(new Item("Bread", "Multigrain", "food", false, false));
-            myList.Add(new Item("ClingWrap", "any", "util", false, false));*/
             return DAL.getShoppingList(houseID).ToArray();
         }
 
-
-        public string getThing()
+        public Item[] addItem(int houseID, string name, string desc, string category)
         {
-            return "This String";
+            DAL.addItem(houseID, name, desc, category);
+            return getList(houseID);
+        }
+
+        /*
+        public ItemName[] getNames(int houseID, string name)
+        {
+            return DAL.getNames(houseID, name).ToArray();
+        } */
+
+        public string[] getNames(int houseID, string name)
+        {
+            return DAL.getNames(houseID, name);
+        }
+
+        public string[] getDescs(int houseID, string name)
+        {
+            return DAL.getDescs(houseID, name);
         }
     }
 }

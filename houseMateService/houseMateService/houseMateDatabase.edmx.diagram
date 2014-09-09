@@ -30,6 +30,7 @@
         <AssociationConnector Association="houseMateModel.tenant_to_record" ManuallyRouted="false" />
         <AssociationConnector Association="houseMateModel.notice_constraint" ManuallyRouted="false" />
         <AssociationConnector Association="houseMateModel.tenant_notice_constraint" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="houseMateModel.itemDescription" Width="1.5" PointX="11.129771539536199" PointY="19.448872992512246" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
