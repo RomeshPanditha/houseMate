@@ -172,6 +172,7 @@
       <DependentUpon>houseMateDatabase.edmx</DependentUpon>
       <LastGenOutput>houseMateDatabase.cs</LastGenOutput>
     </Content>
+    <None Include="Properties\PublishProfiles\mesh.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

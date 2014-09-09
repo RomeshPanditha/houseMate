@@ -1,0 +1,13 @@
+Shopping List query strings
+
+"getList?houseID={houseID}" : returns a name, description and category for each item.
+-Use this to get a list of all unbought items
+
+"addItem?houseID={houseID}&name={name}&desc={desc}&category={category}" : returns the same as 'getList'
+-Use this to add a new item to a list, it will bring you an updated list.
+
+"getNames?houseID={houseID}&name={name}" : returns an array of names(string)
+-use this in the 'Item name' text box
+
+"getDescs?houseID={houseID}&name={name}" : returns an array of descriptions(string)
+-use this in the 'Item description' text box
