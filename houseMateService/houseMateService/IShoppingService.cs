@@ -38,5 +38,10 @@ namespace HouseMateService
         [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
             ResponseFormat = WebMessageFormat.Json, UriTemplate = "getDescs?houseID={houseID}&name={name}")]
         string[] getDescs(int houseID, string name);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
+            ResponseFormat = WebMessageFormat.Json, UriTemplate = "buyItem?itemID={itemID}&houseID={houseID}")]
+        Item[] buyItem(int itemID, int houseID);
     }
 }

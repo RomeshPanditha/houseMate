@@ -30,37 +30,15 @@ namespace HouseMateService.DAL
                                   select item;
 
                     itemList.AddRange(itemVar);
-
+                    
                     foreach (item i in itemList)
                     {
-                        shoppingList.Add(new Item(i.name.ToString(), i.description.ToString(), i.category.ToString()));
+                        shoppingList.Add(new Item(i.PK_itemID,i.name.ToString(), i.description.ToString(), i.category.ToString()));
                     }
                 }
             }   
             return shoppingList;
         }
-
-        /*
-        public List<ItemName> getNames(int houseID, string partialName)
-        {
-            List<ItemName> nameList = new List<ItemName>();
-            using (var context = new houseMateEntities())
-            {
-                int listID = getListID(houseID);
-
-                List<item> itemList = new List<item>();
-                var items = from item in context.items
-                              where item.FK_listID == listID
-                              select item;
-                itemList.AddRange(items);
-                foreach (item i in itemList)
-                {
-                    nameList.Add(new ItemName(i.name, i.PK_itemID));  
-                }
-            }
-            return nameList;
-        } */
-
 
         public string[] getNames(int houseID, string nameFragment)
         {
@@ -93,8 +71,20 @@ namespace HouseMateService.DAL
             using (var context = new houseMateEntities())
             {
                 return Convert.ToInt32((from list in context.lists
-                                              where list.FK_houseID == houseID
-                                              select list.PK_listID).Single());
+                                        where list.FK_houseID == houseID
+                                        select list.PK_listID).Single());
+            }
+        }
+
+        public void buyItem(int itemID)
+        {
+            using (var context = new houseMateEntities())
+            {
+                var boughtItem = (from item in context.items
+                                    where item.PK_itemID == itemID
+                                    select item).FirstOrDefault();
+                boughtItem.bought_ = 1;
+                context.SaveChanges();
             }
         }
 
@@ -125,7 +115,8 @@ namespace HouseMateService.DAL
                     {
                         if (i.name.ToLower().Equals(newItem.name.ToLower()) && i.description.ToLower().Equals(newItem.description.ToLower()))
                         {
-                            i.bought_ = 1;
+                            i.bought_ = 0;
+                            context.SaveChanges();
                             added = true;
                         }
                     }

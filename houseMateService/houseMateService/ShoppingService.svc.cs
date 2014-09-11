@@ -27,11 +27,11 @@ namespace HouseMateService
             return getList(houseID);
         }
 
-        /*
-        public ItemName[] getNames(int houseID, string name)
+        public Item[] buyItem(int itemID, int houseID)
         {
-            return DAL.getNames(houseID, name).ToArray();
-        } */
+            DAL.buyItem(itemID);
+            return getList(houseID);
+        }
 
         public string[] getNames(int houseID, string name)
         {
@@ -41,6 +41,13 @@ namespace HouseMateService
         public string[] getDescs(int houseID, string name)
         {
             return DAL.getDescs(houseID, name);
+        }
+
+        private string[] removeDoubles(string[] arr)
+        {
+            string[] newArr = new string[arr.Length];
+
+            return newArr;
         }
     }
 }
