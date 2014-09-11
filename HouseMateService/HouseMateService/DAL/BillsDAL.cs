@@ -9,7 +9,6 @@ namespace HouseMateService
 {
     public class BillsDAL
     {
-        private houseMateEntities database = new houseMateEntities();
 
         public BillsDAL()
         {

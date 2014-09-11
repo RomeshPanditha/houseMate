@@ -9,14 +9,16 @@ namespace HouseMateService.Models
     [DataContract]
     public class Item
     {
+        private int itemID_;
         private string name_;
         private string desc_;
         private string category_;
        // private bool bought_;
        // private bool store_;
 
-        public Item(string name, string desc, string cat)
+        public Item(int itemID, string name, string desc, string cat)
         {
+            itemID_ = itemID;
             name_ = name;
             desc_ = desc;
             category_ = cat;
@@ -24,6 +26,8 @@ namespace HouseMateService.Models
             //store_ = store;
         }
 
+        [DataMember]
+        public int itemID { get { return itemID_; } set { itemID_ = value; } }
         [DataMember]
         public string name { get { return name_; } set { name_ = value; } }
         [DataMember]
