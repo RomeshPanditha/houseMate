@@ -15,7 +15,6 @@ namespace HouseMateService
     {
         DAL.ShoppingDAL DAL = new DAL.ShoppingDAL();
 
-
         public Item[] getList(int houseID)
         {
             return DAL.getShoppingList(houseID).ToArray();

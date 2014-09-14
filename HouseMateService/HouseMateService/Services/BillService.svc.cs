@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HouseMateService.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -11,10 +12,18 @@ namespace HouseMateService
     // NOTE: In order to launch WCF Test Client for testing this service, please select BillService.svc or BillService.svc.cs at the Solution Explorer and start debugging.
     public class BillService : IBillService
     {
-        private BillsDAL DAL = new BillsDAL();
 
-        public void DoWork()
+        private DAL.BillsDAL DAL = new DAL.BillsDAL();
+
+
+        public Bill[] getBills(int houseID)
         {
+            return DAL.getBills(houseID).ToArray();
+        }
+
+        public tenantBill[] getIndividuals(int billID)
+        {
+            return DAL.getInividuals(billID).ToArray();
         }
     }
 }

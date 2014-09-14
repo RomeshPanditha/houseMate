@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 
 
-namespace HouseMateService
+namespace HouseMateService.DAL
 {
     public class BillsDAL
     {
@@ -30,10 +30,26 @@ namespace HouseMateService
                 foreach (house_bill h in billL)
                 {
                     billList.Add(new Bill(h.PK_houseBillID, h.amount, h.billType, h.dueDate, tNum));
-                    
-                }
+                } 
             }
             return billList;
+        }
+
+        public List<tenantBill> getInividuals(int billID)
+        {
+            List<tenantBill> tenList = new List<tenantBill>();
+            using(var context = new houseMateEntities())
+            {
+                List<individual_bills> tenL = new List<individual_bills>();
+                tenL.AddRange(from individual_bills in context.individual_bills
+                              where individual_bills.PK_indivBillID == billID
+                              select individual_bills);
+                foreach (individual_bills i in tenL)
+                {
+                    tenList.Add(new tenantBill(i.PK_indivBillID, i.tenant.name, Convert.ToDouble(i.splitAmount)));
+                }
+            }
+            return tenList;
         }
 
         private int getNumTenants(int houseID)
