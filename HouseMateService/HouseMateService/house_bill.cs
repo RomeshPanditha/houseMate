@@ -24,6 +24,7 @@ namespace HouseMateService
         public string billType { get; set; }
         public double amount { get; set; }
         public System.DateTime dueDate { get; set; }
+        public sbyte paid_ { get; set; }
     
         public virtual house house { get; set; }
         public virtual ICollection<individual_bills> individual_bills { get; set; }

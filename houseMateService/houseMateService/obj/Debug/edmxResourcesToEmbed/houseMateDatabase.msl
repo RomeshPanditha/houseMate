@@ -38,6 +38,7 @@
     <EntitySetMapping Name="house_bill">
       <EntityTypeMapping TypeName="houseMateModel.house_bill">
         <MappingFragment StoreEntitySet="house_bill">
+          <ScalarProperty Name="paid_" ColumnName="paid?" />
           <ScalarProperty Name="PK_houseBillID" ColumnName="PK_houseBillID" />
           <ScalarProperty Name="FK_houseID" ColumnName="FK_houseID" />
           <ScalarProperty Name="billType" ColumnName="billType" />
@@ -54,8 +55,6 @@
           <ScalarProperty Name="FK_tenantID" ColumnName="FK_tenantID" />
           <ScalarProperty Name="splitAmount" ColumnName="splitAmount" />
           <ScalarProperty Name="datePaid" ColumnName="datePaid" />
-          <ScalarProperty Name="dueDate" ColumnName="dueDate" />
-          <ScalarProperty Name="billType" ColumnName="billType" />
           <ScalarProperty Name="recurring_" ColumnName="recurring?" />
         </MappingFragment>
       </EntityTypeMapping>

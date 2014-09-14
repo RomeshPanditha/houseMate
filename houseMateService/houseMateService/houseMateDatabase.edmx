@@ -106,23 +106,22 @@
           <Key>
             <PropertyRef Name="PK_houseBillID" />
           </Key>
-          <Property Name="PK_houseBillID" Type="int" Nullable="false" />
+          <Property Name="PK_houseBillID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="FK_houseID" Type="int" Nullable="false" />
           <Property Name="billType" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="amount" Type="double" Nullable="false" />
           <Property Name="dueDate" Type="date" Nullable="false" />
+          <Property Name="paid?" Type="tinyint" Nullable="false" />
         </EntityType>
         <EntityType Name="individual_bills">
           <Key>
             <PropertyRef Name="PK_indivBillID" />
           </Key>
-          <Property Name="PK_indivBillID" Type="int" Nullable="false" />
+          <Property Name="PK_indivBillID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="FK_houseBillID" Type="int" Nullable="false" />
           <Property Name="FK_tenantID" Type="int" Nullable="false" />
           <Property Name="splitAmount" Type="double" />
           <Property Name="datePaid" Type="date" />
-          <Property Name="dueDate" Type="date" />
-          <Property Name="billType" Type="varchar" MaxLength="45" />
           <Property Name="recurring?" Type="binary" MaxLength="1" />
         </EntityType>
         <EntityType Name="item">
@@ -183,7 +182,7 @@
           <Key>
             <PropertyRef Name="PK_tenantID" />
           </Key>
-          <Property Name="PK_tenantID" Type="int" Nullable="false" />
+          <Property Name="PK_tenantID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="FK_houseID" Type="int" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="45" />
           <Property Name="email" Type="varchar" MaxLength="45" />
@@ -470,6 +469,7 @@
           <Property Name="dueDate" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="house" Relationship="houseMateModel.bill_constraint" FromRole="house_bill" ToRole="house" />
           <NavigationProperty Name="individual_bills" Relationship="houseMateModel.individual_bill_constraint" FromRole="house_bill" ToRole="individual_bills" />
+          <Property Type="SByte" Name="paid_" Nullable="false" />
         </EntityType>
         <EntityType Name="individual_bills">
           <Key>
@@ -480,8 +480,6 @@
           <Property Name="FK_tenantID" Type="Int32" Nullable="false" />
           <Property Name="splitAmount" Type="Double" />
           <Property Name="datePaid" Type="DateTime" Precision="0" />
-          <Property Name="dueDate" Type="DateTime" Precision="0" />
-          <Property Name="billType" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
           <Property Name="recurring_" Type="Binary" MaxLength="1" FixedLength="true" />
           <NavigationProperty Name="house_bill" Relationship="houseMateModel.individual_bill_constraint" FromRole="individual_bills" ToRole="house_bill" />
           <NavigationProperty Name="tenant" Relationship="houseMateModel.individual_tenant_constraint" FromRole="individual_bills" ToRole="tenant" />
@@ -776,6 +774,7 @@
           <EntitySetMapping Name="house_bill">
             <EntityTypeMapping TypeName="houseMateModel.house_bill">
               <MappingFragment StoreEntitySet="house_bill">
+                <ScalarProperty Name="paid_" ColumnName="paid?" />
                 <ScalarProperty Name="PK_houseBillID" ColumnName="PK_houseBillID" />
                 <ScalarProperty Name="FK_houseID" ColumnName="FK_houseID" />
                 <ScalarProperty Name="billType" ColumnName="billType" />
@@ -792,8 +791,6 @@
                 <ScalarProperty Name="FK_tenantID" ColumnName="FK_tenantID" />
                 <ScalarProperty Name="splitAmount" ColumnName="splitAmount" />
                 <ScalarProperty Name="datePaid" ColumnName="datePaid" />
-                <ScalarProperty Name="dueDate" ColumnName="dueDate" />
-                <ScalarProperty Name="billType" ColumnName="billType" />
                 <ScalarProperty Name="recurring_" ColumnName="recurring?" />
               </MappingFragment>
             </EntityTypeMapping>

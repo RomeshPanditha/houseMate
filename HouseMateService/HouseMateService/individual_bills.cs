@@ -19,8 +19,6 @@ namespace HouseMateService
         public int FK_tenantID { get; set; }
         public Nullable<double> splitAmount { get; set; }
         public Nullable<System.DateTime> datePaid { get; set; }
-        public Nullable<System.DateTime> dueDate { get; set; }
-        public string billType { get; set; }
         public byte[] recurring_ { get; set; }
     
         public virtual house_bill house_bill { get; set; }
