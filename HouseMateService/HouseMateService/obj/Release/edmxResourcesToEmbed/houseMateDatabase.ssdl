@@ -101,23 +101,22 @@
     <Key>
       <PropertyRef Name="PK_houseBillID" />
     </Key>
-    <Property Name="PK_houseBillID" Type="int" Nullable="false" />
+    <Property Name="PK_houseBillID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="FK_houseID" Type="int" Nullable="false" />
     <Property Name="billType" Type="varchar" Nullable="false" MaxLength="45" />
     <Property Name="amount" Type="double" Nullable="false" />
     <Property Name="dueDate" Type="date" Nullable="false" />
+    <Property Name="paid?" Type="tinyint" Nullable="false" />
   </EntityType>
   <EntityType Name="individual_bills">
     <Key>
       <PropertyRef Name="PK_indivBillID" />
     </Key>
-    <Property Name="PK_indivBillID" Type="int" Nullable="false" />
+    <Property Name="PK_indivBillID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="FK_houseBillID" Type="int" Nullable="false" />
     <Property Name="FK_tenantID" Type="int" Nullable="false" />
     <Property Name="splitAmount" Type="double" />
     <Property Name="datePaid" Type="date" />
-    <Property Name="dueDate" Type="date" />
-    <Property Name="billType" Type="varchar" MaxLength="45" />
     <Property Name="recurring?" Type="binary" MaxLength="1" />
   </EntityType>
   <EntityType Name="item">
@@ -178,7 +177,7 @@
     <Key>
       <PropertyRef Name="PK_tenantID" />
     </Key>
-    <Property Name="PK_tenantID" Type="int" Nullable="false" />
+    <Property Name="PK_tenantID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="FK_houseID" Type="int" Nullable="false" />
     <Property Name="name" Type="varchar" MaxLength="45" />
     <Property Name="email" Type="varchar" MaxLength="45" />

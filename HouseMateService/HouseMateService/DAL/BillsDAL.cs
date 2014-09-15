@@ -29,7 +29,7 @@ namespace HouseMateService.DAL
 
                 foreach (house_bill h in billL)
                 {
-                    billList.Add(new Bill(h.PK_houseBillID, h.amount, h.billType, h.dueDate, tNum));
+                    billList.Add(new Bill(h.PK_houseBillID, h.amount, h.billType, Convert.ToDateTime(h.dueDate), tNum));
                 } 
             }
             return billList;

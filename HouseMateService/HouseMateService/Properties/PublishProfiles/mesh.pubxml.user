@@ -11,7 +11,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="BillService.svc">
-      <publishTime>09/03/2014 09:26:54</publishTime>
+      <publishTime>09/14/2014 14:18:49</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>09/03/2014 09:26:54</publishTime>
@@ -20,7 +20,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/03/2014 09:26:54</publishTime>
     </File>
     <File Include="bin/HouseMateService.dll">
-      <publishTime>09/10/2014 10:52:55</publishTime>
+      <publishTime>09/15/2014 15:00:48</publishTime>
     </File>
     <File Include="bin/MySql.Data.dll">
       <publishTime>09/03/2014 09:26:54</publishTime>
@@ -37,17 +37,32 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="houseMateDatabase.tt">
       <publishTime>09/03/2014 16:53:21</publishTime>
     </File>
+    <File Include="NoticeBoardService.svc">
+      <publishTime>09/15/2014 13:51:30</publishTime>
+    </File>
     <File Include="packages.config">
       <publishTime>09/03/2014 09:26:54</publishTime>
     </File>
     <File Include="Service1.svc">
-      <publishTime>09/03/2014 09:26:55</publishTime>
+      <publishTime>09/14/2014 14:18:49</publishTime>
+    </File>
+    <File Include="Services/BillService.svc">
+      <publishTime>09/14/2014 14:18:49</publishTime>
+    </File>
+    <File Include="Services/NoticeBoardService.svc">
+      <publishTime>09/15/2014 13:51:30</publishTime>
+    </File>
+    <File Include="Services/Service1.svc">
+      <publishTime>09/14/2014 14:18:49</publishTime>
+    </File>
+    <File Include="Services/ShoppingService.svc">
+      <publishTime>09/14/2014 14:18:49</publishTime>
     </File>
     <File Include="ShoppingService.svc">
-      <publishTime>09/03/2014 11:22:27</publishTime>
+      <publishTime>09/14/2014 14:18:49</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>09/10/2014 10:52:57</publishTime>
+      <publishTime>09/15/2014 15:05:40</publishTime>
     </File>
   </ItemGroup>
 </Project>

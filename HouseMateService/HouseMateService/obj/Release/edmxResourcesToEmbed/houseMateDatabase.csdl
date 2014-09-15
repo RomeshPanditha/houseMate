@@ -121,6 +121,7 @@
     <Property Name="dueDate" Type="DateTime" Nullable="false" Precision="0" />
     <NavigationProperty Name="house" Relationship="houseMateModel.bill_constraint" FromRole="house_bill" ToRole="house" />
     <NavigationProperty Name="individual_bills" Relationship="houseMateModel.individual_bill_constraint" FromRole="house_bill" ToRole="individual_bills" />
+    <Property Type="SByte" Name="paid_" Nullable="false" />
   </EntityType>
   <EntityType Name="individual_bills">
     <Key>
@@ -131,8 +132,6 @@
     <Property Name="FK_tenantID" Type="Int32" Nullable="false" />
     <Property Name="splitAmount" Type="Double" />
     <Property Name="datePaid" Type="DateTime" Precision="0" />
-    <Property Name="dueDate" Type="DateTime" Precision="0" />
-    <Property Name="billType" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
     <Property Name="recurring_" Type="Binary" MaxLength="1" FixedLength="true" />
     <NavigationProperty Name="house_bill" Relationship="houseMateModel.individual_bill_constraint" FromRole="individual_bills" ToRole="house_bill" />
     <NavigationProperty Name="tenant" Relationship="houseMateModel.individual_tenant_constraint" FromRole="individual_bills" ToRole="tenant" />
