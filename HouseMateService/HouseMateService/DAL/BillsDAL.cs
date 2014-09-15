@@ -42,11 +42,11 @@ namespace HouseMateService.DAL
             {
                 List<individual_bills> tenL = new List<individual_bills>();
                 tenL.AddRange(from individual_bills in context.individual_bills
-                              where individual_bills.PK_indivBillID == billID
+                              where individual_bills.FK_houseBillID == billID
                               select individual_bills);
                 foreach (individual_bills i in tenL)
                 {
-                    tenList.Add(new tenantBill(i.PK_indivBillID, i.tenant.name, Convert.ToDouble(i.splitAmount)));
+                    tenList.Add(new tenantBill(i.FK_houseBillID, i.tenant.name, Convert.ToDouble(i.splitAmount)));
                 }
             }
             return tenList;
