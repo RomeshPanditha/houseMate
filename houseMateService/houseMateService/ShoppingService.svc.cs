@@ -34,19 +34,34 @@ namespace HouseMateService
 
         public string[] getNames(int houseID, string name)
         {
-            return DAL.getNames(houseID, name);
+            return removeDoubles(DAL.getNames(houseID, name));
         }
 
         public string[] getDescs(int houseID, string name)
         {
-            return DAL.getDescs(houseID, name);
+            return removeDoubles(DAL.getDescs(houseID, name));
         }
 
         private string[] removeDoubles(string[] arr)
         {
-            string[] newArr = new string[arr.Length];
-
-            return newArr;
+            List<string> newArr = new List<string>();
+            for (int i = 0; i < arr.Length; i++)
+            {
+                bool added = false;
+                bool noDoubles = true;
+                foreach(string s in newArr)
+                {
+                    if(s.Equals(arr[i]))
+                    {
+                        noDoubles = false;
+                    }
+                }
+                if(noDoubles)
+                {
+                    newArr.Add(arr[i]);
+                }
+            }
+            return newArr.ToArray();
         }
     }
 }
