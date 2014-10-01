@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="bc78707f476447d99834127638d1335e" Name="Diagram1">
+      <Diagram DiagramId="bc78707f476447d99834127638d1335e" Name="Diagram1" ZoomLevel="64">
         <EntityTypeShape EntityType="houseMateModel.chore_allocation" Width="1.5" PointX="8.25" PointY="8.875" IsExpanded="true" />
         <EntityTypeShape EntityType="houseMateModel.chore" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
         <EntityTypeShape EntityType="houseMateModel.house" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
@@ -31,6 +31,14 @@
         <AssociationConnector Association="houseMateModel.notice_constraint" ManuallyRouted="false" />
         <AssociationConnector Association="houseMateModel.tenant_notice_constraint" ManuallyRouted="false" />
         <EntityTypeShape EntityType="houseMateModel.itemDescription" Width="1.5" PointX="11.129771539536199" PointY="19.448872992512246" />
+        <EntityTypeShape EntityType="houseMateModel.my_aspnet_applications" Width="1.5" PointX="14" PointY="16.125" />
+        <EntityTypeShape EntityType="houseMateModel.my_aspnet_membership" Width="1.5" PointX="11.125" PointY="13.5" />
+        <EntityTypeShape EntityType="houseMateModel.my_aspnet_profiles" Width="1.5" PointX="0.625" PointY="17.375" />
+        <EntityTypeShape EntityType="houseMateModel.my_aspnet_roles" Width="1.5" PointX="3.125" PointY="18.875" />
+        <EntityTypeShape EntityType="houseMateModel.my_aspnet_sessioncleanup" Width="1.5" PointX="5.375" PointY="19" />
+        <EntityTypeShape EntityType="houseMateModel.my_aspnet_sessions" Width="1.5" PointX="8.375" PointY="19.875" />
+        <EntityTypeShape EntityType="houseMateModel.my_aspnet_users" Width="1.5" PointX="0.5" PointY="20" />
+        <EntityTypeShape EntityType="houseMateModel.my_aspnet_usersinroles" Width="1.5" PointX="4" PointY="21.5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

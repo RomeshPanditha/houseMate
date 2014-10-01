@@ -38,5 +38,13 @@ namespace HouseMateService
         public DbSet<notice_board> notice_board { get; set; }
         public DbSet<tenant> tenants { get; set; }
         public DbSet<itemDescription> itemDescriptions { get; set; }
+        public DbSet<my_aspnet_applications> my_aspnet_applications { get; set; }
+        public DbSet<my_aspnet_membership> my_aspnet_membership { get; set; }
+        public DbSet<my_aspnet_profiles> my_aspnet_profiles { get; set; }
+        public DbSet<my_aspnet_roles> my_aspnet_roles { get; set; }
+        public DbSet<my_aspnet_sessioncleanup> my_aspnet_sessioncleanup { get; set; }
+        public DbSet<my_aspnet_sessions> my_aspnet_sessions { get; set; }
+        public DbSet<my_aspnet_users> my_aspnet_users { get; set; }
+        public DbSet<my_aspnet_usersinroles> my_aspnet_usersinroles { get; set; }
     }
 }
