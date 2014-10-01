@@ -139,6 +139,30 @@
     </Compile>
     <Compile Include="Models\Bill.cs" />
     <Compile Include="Models\Item.cs" />
+    <Compile Include="my_aspnet_applications.cs">
+      <DependentUpon>houseMateDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="my_aspnet_membership.cs">
+      <DependentUpon>houseMateDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="my_aspnet_profiles.cs">
+      <DependentUpon>houseMateDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="my_aspnet_roles.cs">
+      <DependentUpon>houseMateDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="my_aspnet_sessioncleanup.cs">
+      <DependentUpon>houseMateDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="my_aspnet_sessions.cs">
+      <DependentUpon>houseMateDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="my_aspnet_users.cs">
+      <DependentUpon>houseMateDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="my_aspnet_usersinroles.cs">
+      <DependentUpon>houseMateDatabase.tt</DependentUpon>
+    </Compile>
     <Compile Include="notice.cs">
       <DependentUpon>houseMateDatabase.tt</DependentUpon>
     </Compile>

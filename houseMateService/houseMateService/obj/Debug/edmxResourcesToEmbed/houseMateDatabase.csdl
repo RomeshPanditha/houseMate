@@ -69,6 +69,14 @@
       <End Role="notice" EntitySet="notices" />
     </AssociationSet>
     <EntitySet Name="itemDescriptions" EntityType="houseMateModel.itemDescription" />
+    <EntitySet Name="my_aspnet_applications" EntityType="houseMateModel.my_aspnet_applications" />
+    <EntitySet Name="my_aspnet_membership" EntityType="houseMateModel.my_aspnet_membership" />
+    <EntitySet Name="my_aspnet_profiles" EntityType="houseMateModel.my_aspnet_profiles" />
+    <EntitySet Name="my_aspnet_roles" EntityType="houseMateModel.my_aspnet_roles" />
+    <EntitySet Name="my_aspnet_sessioncleanup" EntityType="houseMateModel.my_aspnet_sessioncleanup" />
+    <EntitySet Name="my_aspnet_sessions" EntityType="houseMateModel.my_aspnet_sessions" />
+    <EntitySet Name="my_aspnet_users" EntityType="houseMateModel.my_aspnet_users" />
+    <EntitySet Name="my_aspnet_usersinroles" EntityType="houseMateModel.my_aspnet_usersinroles" />
   </EntityContainer>
   <EntityType Name="chore_allocation">
     <Key>
@@ -382,5 +390,97 @@
     <Property Type="Int32" Name="PK_itemDescriptionsID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Type="Int32" Name="FK_itemID" Nullable="false" />
     <Property Type="String" Name="description" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="my_aspnet_applications">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="name" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="description" MaxLength="256" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="my_aspnet_membership">
+    <Key>
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Type="Int32" Name="userId" Nullable="false" />
+    <Property Type="String" Name="Email" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Comment" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PasswordKey" MaxLength="32" FixedLength="true" Unicode="false" />
+    <Property Type="SByte" Name="PasswordFormat" />
+    <Property Type="String" Name="PasswordQuestion" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PasswordAnswer" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="IsApproved" />
+    <Property Type="DateTime" Name="LastActivityDate" Precision="0" />
+    <Property Type="DateTime" Name="LastLoginDate" Precision="0" />
+    <Property Type="DateTime" Name="LastPasswordChangedDate" Precision="0" />
+    <Property Type="DateTime" Name="CreationDate" Precision="0" />
+    <Property Type="Boolean" Name="IsLockedOut" />
+    <Property Type="DateTime" Name="LastLockedOutDate" Precision="0" />
+    <Property Type="Int64" Name="FailedPasswordAttemptCount" />
+    <Property Type="DateTime" Name="FailedPasswordAttemptWindowStart" Precision="0" />
+    <Property Type="Int64" Name="FailedPasswordAnswerAttemptCount" />
+    <Property Type="DateTime" Name="FailedPasswordAnswerAttemptWindowStart" Precision="0" />
+  </EntityType>
+  <EntityType Name="my_aspnet_profiles">
+    <Key>
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Type="Int32" Name="userId" Nullable="false" />
+    <Property Type="String" Name="valueindex" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="stringdata" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="Binary" Name="binarydata" MaxLength="Max" FixedLength="false" />
+    <Property Type="DateTime" Name="lastUpdatedDate" Nullable="false" Precision="0" />
+  </EntityType>
+  <EntityType Name="my_aspnet_roles">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="applicationId" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="my_aspnet_sessioncleanup">
+    <Key>
+      <PropertyRef Name="ApplicationId" />
+    </Key>
+    <Property Type="DateTime" Name="LastRun" Nullable="false" Precision="0" />
+    <Property Type="Int32" Name="IntervalMinutes" Nullable="false" />
+    <Property Type="Int32" Name="ApplicationId" Nullable="false" />
+  </EntityType>
+  <EntityType Name="my_aspnet_sessions">
+    <Key>
+      <PropertyRef Name="SessionId" />
+      <PropertyRef Name="ApplicationId" />
+    </Key>
+    <Property Type="String" Name="SessionId" Nullable="false" MaxLength="191" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="ApplicationId" Nullable="false" />
+    <Property Type="DateTime" Name="Created" Nullable="false" Precision="0" />
+    <Property Type="DateTime" Name="Expires" Nullable="false" Precision="0" />
+    <Property Type="DateTime" Name="LockDate" Nullable="false" Precision="0" />
+    <Property Type="Int32" Name="LockId" Nullable="false" />
+    <Property Type="Int32" Name="Timeout" Nullable="false" />
+    <Property Type="Boolean" Name="Locked" Nullable="false" />
+    <Property Type="Binary" Name="SessionItems" MaxLength="Max" FixedLength="false" />
+    <Property Type="Int32" Name="Flags" Nullable="false" />
+  </EntityType>
+  <EntityType Name="my_aspnet_users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="applicationId" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="isAnonymous" Nullable="false" />
+    <Property Type="DateTime" Name="lastActivityDate" Precision="0" />
+  </EntityType>
+  <EntityType Name="my_aspnet_usersinroles">
+    <Key>
+      <PropertyRef Name="userId" />
+      <PropertyRef Name="roleId" />
+    </Key>
+    <Property Type="Int32" Name="userId" Nullable="false" />
+    <Property Type="Int32" Name="roleId" Nullable="false" />
   </EntityType>
 </Schema>
