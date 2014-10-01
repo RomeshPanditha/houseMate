@@ -1,6 +1,7 @@
 ﻿using HouseMateService.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -25,5 +26,13 @@ namespace HouseMateService
         {
             return DAL.getInividuals(billID).ToArray();
         }
+
+
+        public Bill[] addBill(int houseID, string billType, double amount, string tenantIDs, string tenantAmounts)
+        {
+            DAL.addBill(houseID, billType, amount, tenantIDs.Split('~'), tenantAmounts.Split('~'));
+            return getBills(houseID);
+        }
+
     }
 }

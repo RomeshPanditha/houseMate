@@ -52,6 +52,34 @@ namespace HouseMateService.DAL
             return tenList;
         }
 
+        public void addBill(int _houseID, string _billType, double _amount, string[] _tenantID, string[] _tenantAmounts)
+        {
+            using (var context = new houseMateEntities())
+            {
+                house_bill newHouseBill = new house_bill
+                {
+                    FK_houseID = _houseID,
+                    billType = _billType,
+                    amount = _amount,
+                    dueDate = DateTime.Now,
+                    paid_ = 0
+                };
+                context.house_bill.Add(newHouseBill);
+                context.SaveChanges();
+                for (int i = 0; i < _tenantID.Length; i++)
+                {
+                    individual_bills newIndividualBill = new individual_bills
+                    {
+                        FK_houseBillID = newHouseBill.PK_houseBillID,
+                        FK_tenantID = Convert.ToInt32(_tenantID[i]),
+                        splitAmount = Convert.ToDouble(_tenantAmounts[i])
+                    };
+                    context.individual_bills.Add(newIndividualBill);
+                    context.SaveChanges();
+                }
+            }
+        }
+
         private int getNumTenants(int houseID)
         {
             int numTenants = 0;
