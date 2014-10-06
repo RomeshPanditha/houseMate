@@ -24,14 +24,13 @@ namespace HouseMateService
     
         public int PK_tenantID { get; set; }
         public int FK_houseID { get; set; }
-        public string name { get; set; }
-        public string email { get; set; }
-        public string username { get; set; }
+        public int FK_aspMemberID { get; set; }
     
         public virtual ICollection<chore_allocation> chore_allocation { get; set; }
         public virtual house house { get; set; }
         public virtual ICollection<individual_bills> individual_bills { get; set; }
         public virtual ICollection<list_records> list_records { get; set; }
         public virtual ICollection<notice> notices { get; set; }
+        public virtual my_aspnet_membership my_aspnet_membership { get; set; }
     }
 }

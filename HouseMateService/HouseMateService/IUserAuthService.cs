@@ -1,0 +1,35 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.ServiceModel.Web;
+using System.Text;
+
+namespace HouseMateService
+{
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IUserAuthService" in both code and config file together.
+    [ServiceContract]
+    public interface IUserAuthService
+    {
+        [OperationContract]
+        [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
+            ResponseFormat = WebMessageFormat.Json, UriTemplate = "createUser?username={username}&password={password}&email={email}")]
+        string createUser(string username, string password, string email);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
+            ResponseFormat = WebMessageFormat.Json, UriTemplate = "login?username={username}&password={password}")]
+        string login(string username, string password);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
+            ResponseFormat = WebMessageFormat.Json, UriTemplate = "logout")]
+        string logout();
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
+         ResponseFormat = WebMessageFormat.Json, UriTemplate = "getData?value={value}")]
+        string GetData(int value);
+    }
+}

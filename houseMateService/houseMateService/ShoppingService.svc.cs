@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using System.Web;
 
 namespace HouseMateService
 {
@@ -17,7 +18,15 @@ namespace HouseMateService
 
         public Item[] getList(int houseID)
         {
-            return DAL.getShoppingList(houseID).ToArray();
+
+            if(HttpContext.Current.Session["loggedIn"].Equals("logged"))
+            {
+                return DAL.getShoppingList(houseID).ToArray();
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public Item[] addItem(int houseID, string name, string desc, string category)

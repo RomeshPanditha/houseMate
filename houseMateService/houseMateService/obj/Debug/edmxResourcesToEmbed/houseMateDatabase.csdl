@@ -77,6 +77,10 @@
     <EntitySet Name="my_aspnet_sessions" EntityType="houseMateModel.my_aspnet_sessions" />
     <EntitySet Name="my_aspnet_users" EntityType="houseMateModel.my_aspnet_users" />
     <EntitySet Name="my_aspnet_usersinroles" EntityType="houseMateModel.my_aspnet_usersinroles" />
+    <AssociationSet Name="memberConstraint" Association="houseMateModel.memberConstraint">
+      <End Role="my_aspnet_membership" EntitySet="my_aspnet_membership" />
+      <End Role="tenant" EntitySet="tenants" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="chore_allocation">
     <Key>
@@ -206,14 +210,13 @@
     </Key>
     <Property Name="PK_tenantID" Type="Int32" Nullable="false" />
     <Property Name="FK_houseID" Type="Int32" Nullable="false" />
-    <Property Name="name" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
-    <Property Name="email" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
-    <Property Name="username" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
     <NavigationProperty Name="chore_allocation" Relationship="houseMateModel.allocation_to_tenant" FromRole="tenant" ToRole="chore_allocation" />
     <NavigationProperty Name="house" Relationship="houseMateModel.tenant_constraint" FromRole="tenant" ToRole="house" />
     <NavigationProperty Name="individual_bills" Relationship="houseMateModel.individual_tenant_constraint" FromRole="tenant" ToRole="individual_bills" />
     <NavigationProperty Name="list_records" Relationship="houseMateModel.tenant_to_record" FromRole="tenant" ToRole="list_records" />
     <NavigationProperty Name="notices" Relationship="houseMateModel.tenant_notice_constraint" FromRole="tenant" ToRole="notice" />
+    <Property Type="Int32" Name="FK_aspMemberID" Nullable="false" />
+    <NavigationProperty Name="my_aspnet_membership" Relationship="houseMateModel.memberConstraint" FromRole="tenant" ToRole="my_aspnet_membership" />
   </EntityType>
   <Association Name="allocation_to_chore">
     <End Role="chores" Type="houseMateModel.chore" Multiplicity="1" />
@@ -422,6 +425,7 @@
     <Property Type="DateTime" Name="FailedPasswordAttemptWindowStart" Precision="0" />
     <Property Type="Int64" Name="FailedPasswordAnswerAttemptCount" />
     <Property Type="DateTime" Name="FailedPasswordAnswerAttemptWindowStart" Precision="0" />
+    <NavigationProperty Name="tenants" Relationship="houseMateModel.memberConstraint" FromRole="my_aspnet_membership" ToRole="tenant" />
   </EntityType>
   <EntityType Name="my_aspnet_profiles">
     <Key>
@@ -483,4 +487,16 @@
     <Property Type="Int32" Name="userId" Nullable="false" />
     <Property Type="Int32" Name="roleId" Nullable="false" />
   </EntityType>
+  <Association Name="memberConstraint">
+    <End Type="houseMateModel.my_aspnet_membership" Role="my_aspnet_membership" Multiplicity="1" />
+    <End Type="houseMateModel.tenant" Role="tenant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="my_aspnet_membership">
+        <PropertyRef Name="userId" />
+      </Principal>
+      <Dependent Role="tenant">
+        <PropertyRef Name="FK_aspMemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

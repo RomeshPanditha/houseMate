@@ -46,7 +46,11 @@ namespace HouseMateService.DAL
                               select individual_bills);
                 foreach (individual_bills i in tenL)
                 {
-                    tenList.Add(new tenantBill(i.FK_houseBillID, i.tenant.name, Convert.ToDouble(i.splitAmount)));
+                    string name = (from my_aspnet_users in context.my_aspnet_users
+                                    where my_aspnet_users.id == i.tenant.FK_aspMemberID
+                                    select my_aspnet_users.name).ToString();
+
+                    tenList.Add(new tenantBill(i.FK_houseBillID, name, Convert.ToDouble(i.splitAmount)));
                 }
             }
             return tenList;

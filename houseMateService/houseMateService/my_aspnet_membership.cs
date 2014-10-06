@@ -14,6 +14,11 @@ namespace HouseMateService
     
     public partial class my_aspnet_membership
     {
+        public my_aspnet_membership()
+        {
+            this.tenants = new HashSet<tenant>();
+        }
+    
         public int userId { get; set; }
         public string Email { get; set; }
         public string Comment { get; set; }
@@ -33,5 +38,7 @@ namespace HouseMateService
         public Nullable<System.DateTime> FailedPasswordAttemptWindowStart { get; set; }
         public Nullable<long> FailedPasswordAnswerAttemptCount { get; set; }
         public Nullable<System.DateTime> FailedPasswordAnswerAttemptWindowStart { get; set; }
+    
+        public virtual ICollection<tenant> tenants { get; set; }
     }
 }

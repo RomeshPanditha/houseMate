@@ -76,15 +76,22 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="BillService.svc" />
+    <Content Include="Global.asax" />
     <Content Include="NoticeBoardService.svc" />
     <Content Include="Service1.svc" />
     <Content Include="ShoppingService.svc" />
+    <Content Include="UserAuthService.svc" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\NoticeDAL.cs" />
+    <Compile Include="DAL\UsersDAL.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="IUserAuthService.cs" />
     <Compile Include="Models\Notice.cs" />
     <Compile Include="Models\tenantBill.cs" />
     <Compile Include="BillService.svc.cs">
@@ -182,6 +189,9 @@
     </Compile>
     <Compile Include="tenant.cs">
       <DependentUpon>houseMateDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserAuthService.svc.cs">
+      <DependentUpon>UserAuthService.svc</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="bc78707f476447d99834127638d1335e" Name="Diagram1" ZoomLevel="34">
+      <Diagram DiagramId="bc78707f476447d99834127638d1335e" Name="Diagram1" ZoomLevel="74">
         <EntityTypeShape EntityType="houseMateModel.chore_allocation" Width="1.5" PointX="7.625" PointY="2.375" IsExpanded="true" />
         <EntityTypeShape EntityType="houseMateModel.chore" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
         <EntityTypeShape EntityType="houseMateModel.house" Width="1.5" PointX="0.5" PointY="6.375" IsExpanded="true" />
@@ -31,14 +31,15 @@
         <AssociationConnector Association="houseMateModel.notice_constraint" ManuallyRouted="false" />
         <AssociationConnector Association="houseMateModel.tenant_notice_constraint" ManuallyRouted="false" />
         <EntityTypeShape EntityType="houseMateModel.itemDescription" Width="1.5" PointX="10.5" PointY="18.875" />
-        <EntityTypeShape EntityType="houseMateModel.my_aspnet_applications" Width="1.5" PointX="13.25" PointY="15" />
-        <EntityTypeShape EntityType="houseMateModel.my_aspnet_membership" Width="1.5" PointX="11.125" PointY="13.5" />
+        <EntityTypeShape EntityType="houseMateModel.my_aspnet_applications" Width="1.5" PointX="12.625" PointY="16" />
+        <EntityTypeShape EntityType="houseMateModel.my_aspnet_membership" Width="1.5" PointX="12.25" PointY="10.625" />
         <EntityTypeShape EntityType="houseMateModel.my_aspnet_profiles" Width="1.5" PointX="0.875" PointY="14.375" />
         <EntityTypeShape EntityType="houseMateModel.my_aspnet_roles" Width="1.5" PointX="3.25" PointY="15.125" />
         <EntityTypeShape EntityType="houseMateModel.my_aspnet_sessioncleanup" Width="1.5" PointX="5.625" PointY="14.5" />
         <EntityTypeShape EntityType="houseMateModel.my_aspnet_sessions" Width="1.5" PointX="7.875" PointY="16.375" />
         <EntityTypeShape EntityType="houseMateModel.my_aspnet_users" Width="1.5" PointX="1.75" PointY="17.75" />
         <EntityTypeShape EntityType="houseMateModel.my_aspnet_usersinroles" Width="1.5" PointX="4.625" PointY="18.125" />
+        <AssociationConnector Association="houseMateModel.memberConstraint" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -113,11 +113,9 @@
     <EntitySetMapping Name="tenants">
       <EntityTypeMapping TypeName="houseMateModel.tenant">
         <MappingFragment StoreEntitySet="tenant">
+          <ScalarProperty Name="FK_aspMemberID" ColumnName="FK_aspMemberID" />
           <ScalarProperty Name="PK_tenantID" ColumnName="PK_tenantID" />
           <ScalarProperty Name="FK_houseID" ColumnName="FK_houseID" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="email" ColumnName="email" />
-          <ScalarProperty Name="username" ColumnName="username" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -53,6 +53,10 @@
       <End Role="item" EntitySet="item" />
       <End Role="list_records" EntitySet="list_records" />
     </AssociationSet>
+    <AssociationSet Name="memberConstraint" Association="houseMateModel.Store.memberConstraint">
+      <End Role="my_aspnet_membership" EntitySet="my_aspnet_membership" />
+      <End Role="tenant" EntitySet="tenant" />
+    </AssociationSet>
     <AssociationSet Name="notice_constraint" Association="houseMateModel.Store.notice_constraint">
       <End Role="notice_board" EntitySet="notice_board" />
       <End Role="notice" EntitySet="notice" />
@@ -279,9 +283,7 @@
     </Key>
     <Property Name="PK_tenantID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="FK_houseID" Type="int" Nullable="false" />
-    <Property Name="name" Type="varchar" MaxLength="45" />
-    <Property Name="email" Type="varchar" MaxLength="45" />
-    <Property Name="username" Type="varchar" MaxLength="45" />
+    <Property Name="FK_aspMemberID" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="allocation_to_chore">
     <End Role="chores" Type="houseMateModel.Store.chores" Multiplicity="1" />
@@ -376,6 +378,18 @@
       </Principal>
       <Dependent Role="list_records">
         <PropertyRef Name="FK_itemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="memberConstraint">
+    <End Role="my_aspnet_membership" Type="houseMateModel.Store.my_aspnet_membership" Multiplicity="1" />
+    <End Role="tenant" Type="houseMateModel.Store.tenant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="my_aspnet_membership">
+        <PropertyRef Name="userId" />
+      </Principal>
+      <Dependent Role="tenant">
+        <PropertyRef Name="FK_aspMemberID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
