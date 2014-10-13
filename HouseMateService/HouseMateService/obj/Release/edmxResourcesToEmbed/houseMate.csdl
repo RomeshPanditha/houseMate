@@ -1,0 +1,502 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="houseMateModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="houseMateEntities01" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="chore_allocation" EntityType="houseMateModel.chore_allocation" />
+    <EntitySet Name="chores" EntityType="houseMateModel.chore" />
+    <EntitySet Name="houses" EntityType="houseMateModel.house" />
+    <EntitySet Name="house_bill" EntityType="houseMateModel.house_bill" />
+    <EntitySet Name="individual_bills" EntityType="houseMateModel.individual_bills" />
+    <EntitySet Name="items" EntityType="houseMateModel.item" />
+    <EntitySet Name="itemDescriptions" EntityType="houseMateModel.itemDescription" />
+    <EntitySet Name="lists" EntityType="houseMateModel.list" />
+    <EntitySet Name="list_records" EntityType="houseMateModel.list_records" />
+    <EntitySet Name="my_aspnet_applications" EntityType="houseMateModel.my_aspnet_applications" />
+    <EntitySet Name="my_aspnet_membership" EntityType="houseMateModel.my_aspnet_membership" />
+    <EntitySet Name="my_aspnet_profiles" EntityType="houseMateModel.my_aspnet_profiles" />
+    <EntitySet Name="my_aspnet_roles" EntityType="houseMateModel.my_aspnet_roles" />
+    <EntitySet Name="my_aspnet_sessioncleanup" EntityType="houseMateModel.my_aspnet_sessioncleanup" />
+    <EntitySet Name="my_aspnet_sessions" EntityType="houseMateModel.my_aspnet_sessions" />
+    <EntitySet Name="my_aspnet_users" EntityType="houseMateModel.my_aspnet_users" />
+    <EntitySet Name="my_aspnet_usersinroles" EntityType="houseMateModel.my_aspnet_usersinroles" />
+    <EntitySet Name="notices" EntityType="houseMateModel.notice" />
+    <EntitySet Name="notice_board" EntityType="houseMateModel.notice_board" />
+    <EntitySet Name="tenants" EntityType="houseMateModel.tenant" />
+    <AssociationSet Name="allocation_to_chore" Association="houseMateModel.allocation_to_chore">
+      <End Role="chores" EntitySet="chores" />
+      <End Role="chore_allocation" EntitySet="chore_allocation" />
+    </AssociationSet>
+    <AssociationSet Name="allocation_to_tenant" Association="houseMateModel.allocation_to_tenant">
+      <End Role="tenant" EntitySet="tenants" />
+      <End Role="chore_allocation" EntitySet="chore_allocation" />
+    </AssociationSet>
+    <AssociationSet Name="chore_to_house" Association="houseMateModel.chore_to_house">
+      <End Role="house" EntitySet="houses" />
+      <End Role="chores" EntitySet="chores" />
+    </AssociationSet>
+    <AssociationSet Name="bill_constraint" Association="houseMateModel.bill_constraint">
+      <End Role="house" EntitySet="houses" />
+      <End Role="house_bill" EntitySet="house_bill" />
+    </AssociationSet>
+    <AssociationSet Name="houseConstr" Association="houseMateModel.houseConstr">
+      <End Role="house" EntitySet="houses" />
+      <End Role="list" EntitySet="lists" />
+    </AssociationSet>
+    <AssociationSet Name="noticeboard_constraint" Association="houseMateModel.noticeboard_constraint">
+      <End Role="house" EntitySet="houses" />
+      <End Role="notice_board" EntitySet="notice_board" />
+    </AssociationSet>
+    <AssociationSet Name="tenant_constraint" Association="houseMateModel.tenant_constraint">
+      <End Role="house" EntitySet="houses" />
+      <End Role="tenant" EntitySet="tenants" />
+    </AssociationSet>
+    <AssociationSet Name="individual_bill_constraint" Association="houseMateModel.individual_bill_constraint">
+      <End Role="house_bill" EntitySet="house_bill" />
+      <End Role="individual_bills" EntitySet="individual_bills" />
+    </AssociationSet>
+    <AssociationSet Name="individual_tenant_constraint" Association="houseMateModel.individual_tenant_constraint">
+      <End Role="tenant" EntitySet="tenants" />
+      <End Role="individual_bills" EntitySet="individual_bills" />
+    </AssociationSet>
+    <AssociationSet Name="item_to_record" Association="houseMateModel.item_to_record">
+      <End Role="item" EntitySet="items" />
+      <End Role="list_records" EntitySet="list_records" />
+    </AssociationSet>
+    <AssociationSet Name="tenant_to_record" Association="houseMateModel.tenant_to_record">
+      <End Role="tenant" EntitySet="tenants" />
+      <End Role="list_records" EntitySet="list_records" />
+    </AssociationSet>
+    <AssociationSet Name="memberConstraint" Association="houseMateModel.memberConstraint">
+      <End Role="my_aspnet_membership" EntitySet="my_aspnet_membership" />
+      <End Role="tenant" EntitySet="tenants" />
+    </AssociationSet>
+    <AssociationSet Name="notice_constraint" Association="houseMateModel.notice_constraint">
+      <End Role="notice_board" EntitySet="notice_board" />
+      <End Role="notice" EntitySet="notices" />
+    </AssociationSet>
+    <AssociationSet Name="tenant_notice_constraint" Association="houseMateModel.tenant_notice_constraint">
+      <End Role="tenant" EntitySet="tenants" />
+      <End Role="notice" EntitySet="notices" />
+    </AssociationSet>
+    <AssociationSet Name="item_to_list" Association="houseMateModel.item_to_list">
+      <End Role="list" EntitySet="lists" />
+      <End Role="item" EntitySet="items" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="chore_allocation">
+    <Key>
+      <PropertyRef Name="PK_allocationID" />
+    </Key>
+    <Property Name="PK_allocationID" Type="Int32" Nullable="false" />
+    <Property Name="FK_choreID" Type="Int32" Nullable="false" />
+    <Property Name="FK_tenantID" Type="Int32" Nullable="false" />
+    <Property Name="dayOfWeek" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="cycle" Type="Int32" />
+    <NavigationProperty Name="chore" Relationship="houseMateModel.allocation_to_chore" FromRole="chore_allocation" ToRole="chores" />
+    <NavigationProperty Name="tenant" Relationship="houseMateModel.allocation_to_tenant" FromRole="chore_allocation" ToRole="tenant" />
+  </EntityType>
+  <EntityType Name="chore">
+    <Key>
+      <PropertyRef Name="PK_choreID" />
+    </Key>
+    <Property Name="PK_choreID" Type="Int32" Nullable="false" />
+    <Property Name="FK_houseID" Type="Int32" />
+    <Property Name="choreName" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="chore_allocation" Relationship="houseMateModel.allocation_to_chore" FromRole="chores" ToRole="chore_allocation" />
+    <NavigationProperty Name="house" Relationship="houseMateModel.chore_to_house" FromRole="chores" ToRole="house" />
+  </EntityType>
+  <EntityType Name="house">
+    <Key>
+      <PropertyRef Name="PK_houseID" />
+    </Key>
+    <Property Name="PK_houseID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_listID" Type="Int32" Nullable="false" />
+    <Property Name="houseName" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="address" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="city" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="postcode" Type="Int32" />
+    <Property Name="state" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="housecol" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="chores" Relationship="houseMateModel.chore_to_house" FromRole="house" ToRole="chores" />
+    <NavigationProperty Name="house_bill" Relationship="houseMateModel.bill_constraint" FromRole="house" ToRole="house_bill" />
+    <NavigationProperty Name="lists" Relationship="houseMateModel.houseConstr" FromRole="house" ToRole="list" />
+    <NavigationProperty Name="notice_board" Relationship="houseMateModel.noticeboard_constraint" FromRole="house" ToRole="notice_board" />
+    <NavigationProperty Name="tenants" Relationship="houseMateModel.tenant_constraint" FromRole="house" ToRole="tenant" />
+  </EntityType>
+  <EntityType Name="house_bill">
+    <Key>
+      <PropertyRef Name="PK_houseBillID" />
+    </Key>
+    <Property Name="PK_houseBillID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_houseID" Type="Int32" Nullable="false" />
+    <Property Name="billType" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="amount" Type="Double" Nullable="false" />
+    <Property Name="dueDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="paid_" Type="SByte" Nullable="false" />
+    <NavigationProperty Name="house" Relationship="houseMateModel.bill_constraint" FromRole="house_bill" ToRole="house" />
+    <NavigationProperty Name="individual_bills" Relationship="houseMateModel.individual_bill_constraint" FromRole="house_bill" ToRole="individual_bills" />
+  </EntityType>
+  <EntityType Name="individual_bills">
+    <Key>
+      <PropertyRef Name="PK_indivBillID" />
+    </Key>
+    <Property Name="PK_indivBillID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_houseBillID" Type="Int32" Nullable="false" />
+    <Property Name="FK_tenantID" Type="Int32" Nullable="false" />
+    <Property Name="splitAmount" Type="Double" />
+    <Property Name="datePaid" Type="DateTime" Precision="0" />
+    <Property Name="recurring_" Type="Binary" MaxLength="1" FixedLength="true" />
+    <NavigationProperty Name="house_bill" Relationship="houseMateModel.individual_bill_constraint" FromRole="individual_bills" ToRole="house_bill" />
+    <NavigationProperty Name="tenant" Relationship="houseMateModel.individual_tenant_constraint" FromRole="individual_bills" ToRole="tenant" />
+  </EntityType>
+  <EntityType Name="item">
+    <Key>
+      <PropertyRef Name="PK_itemID" />
+    </Key>
+    <Property Name="PK_itemID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_listID" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="category" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="bought_" Type="SByte" />
+    <Property Name="description" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="list_records" Relationship="houseMateModel.item_to_record" FromRole="item" ToRole="list_records" />
+    <NavigationProperty Name="list" Relationship="houseMateModel.item_to_list" FromRole="item" ToRole="list" />
+  </EntityType>
+  <EntityType Name="itemDescription">
+    <Key>
+      <PropertyRef Name="PK_itemDescriptionsID" />
+    </Key>
+    <Property Name="PK_itemDescriptionsID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_itemID" Type="Int32" Nullable="false" />
+    <Property Name="description" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="list">
+    <Key>
+      <PropertyRef Name="PK_listID" />
+    </Key>
+    <Property Name="PK_listID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_houseID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="house" Relationship="houseMateModel.houseConstr" FromRole="list" ToRole="house" />
+    <NavigationProperty Name="items" Relationship="houseMateModel.item_to_list" FromRole="list" ToRole="item" />
+  </EntityType>
+  <EntityType Name="list_records">
+    <Key>
+      <PropertyRef Name="PK_recordID" />
+    </Key>
+    <Property Name="PK_recordID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_itemID" Type="Int32" Nullable="false" />
+    <Property Name="FK_tenantID" Type="Int32" Nullable="false" />
+    <Property Name="dateBought" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="item" Relationship="houseMateModel.item_to_record" FromRole="list_records" ToRole="item" />
+    <NavigationProperty Name="tenant" Relationship="houseMateModel.tenant_to_record" FromRole="list_records" ToRole="tenant" />
+  </EntityType>
+  <EntityType Name="my_aspnet_applications">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="256" Unicode="false" FixedLength="false" />
+    <Property Name="description" Type="String" MaxLength="256" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="my_aspnet_membership">
+    <Key>
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Name="userId" Type="Int32" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="128" Unicode="false" FixedLength="false" />
+    <Property Name="Comment" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+    <Property Name="PasswordKey" Type="String" MaxLength="32" Unicode="false" FixedLength="true" />
+    <Property Name="PasswordFormat" Type="SByte" />
+    <Property Name="PasswordQuestion" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="PasswordAnswer" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="IsApproved" Type="Boolean" />
+    <Property Name="LastActivityDate" Type="DateTime" Precision="0" />
+    <Property Name="LastLoginDate" Type="DateTime" Precision="0" />
+    <Property Name="LastPasswordChangedDate" Type="DateTime" Precision="0" />
+    <Property Name="CreationDate" Type="DateTime" Precision="0" />
+    <Property Name="IsLockedOut" Type="Boolean" />
+    <Property Name="LastLockedOutDate" Type="DateTime" Precision="0" />
+    <Property Name="FailedPasswordAttemptCount" Type="Int64" />
+    <Property Name="FailedPasswordAttemptWindowStart" Type="DateTime" Precision="0" />
+    <Property Name="FailedPasswordAnswerAttemptCount" Type="Int64" />
+    <Property Name="FailedPasswordAnswerAttemptWindowStart" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="tenants" Relationship="houseMateModel.memberConstraint" FromRole="my_aspnet_membership" ToRole="tenant" />
+  </EntityType>
+  <EntityType Name="my_aspnet_profiles">
+    <Key>
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Name="userId" Type="Int32" Nullable="false" />
+    <Property Name="valueindex" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="stringdata" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="binarydata" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="lastUpdatedDate" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <EntityType Name="my_aspnet_roles">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="applicationId" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="my_aspnet_sessioncleanup">
+    <Key>
+      <PropertyRef Name="ApplicationId" />
+    </Key>
+    <Property Name="LastRun" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IntervalMinutes" Type="Int32" Nullable="false" />
+    <Property Name="ApplicationId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="my_aspnet_sessions">
+    <Key>
+      <PropertyRef Name="SessionId" />
+      <PropertyRef Name="ApplicationId" />
+    </Key>
+    <Property Name="SessionId" Type="String" Nullable="false" MaxLength="191" Unicode="false" FixedLength="false" />
+    <Property Name="ApplicationId" Type="Int32" Nullable="false" />
+    <Property Name="Created" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Expires" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="LockDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="LockId" Type="Int32" Nullable="false" />
+    <Property Name="Timeout" Type="Int32" Nullable="false" />
+    <Property Name="Locked" Type="Boolean" Nullable="false" />
+    <Property Name="SessionItems" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Flags" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="my_aspnet_users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="applicationId" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="256" Unicode="false" FixedLength="false" />
+    <Property Name="isAnonymous" Type="Boolean" Nullable="false" />
+    <Property Name="lastActivityDate" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="my_aspnet_usersinroles">
+    <Key>
+      <PropertyRef Name="userId" />
+      <PropertyRef Name="roleId" />
+    </Key>
+    <Property Name="userId" Type="Int32" Nullable="false" />
+    <Property Name="roleId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="notice">
+    <Key>
+      <PropertyRef Name="PK_noticeID" />
+    </Key>
+    <Property Name="PK_noticeID" Type="Int32" Nullable="false" />
+    <Property Name="FK_noticeBoardID" Type="Int32" Nullable="false" />
+    <Property Name="FK_tenantID" Type="Int32" Nullable="false" />
+    <Property Name="title" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
+    <Property Name="message" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="datePosted" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="type" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="notice_board" Relationship="houseMateModel.notice_constraint" FromRole="notice" ToRole="notice_board" />
+    <NavigationProperty Name="tenant" Relationship="houseMateModel.tenant_notice_constraint" FromRole="notice" ToRole="tenant" />
+  </EntityType>
+  <EntityType Name="notice_board">
+    <Key>
+      <PropertyRef Name="PK_noticeBoardID" />
+    </Key>
+    <Property Name="PK_noticeBoardID" Type="Int32" Nullable="false" />
+    <Property Name="FK_houseID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="house" Relationship="houseMateModel.noticeboard_constraint" FromRole="notice_board" ToRole="house" />
+    <NavigationProperty Name="notices" Relationship="houseMateModel.notice_constraint" FromRole="notice_board" ToRole="notice" />
+  </EntityType>
+  <EntityType Name="tenant">
+    <Key>
+      <PropertyRef Name="PK_tenantID" />
+    </Key>
+    <Property Name="PK_tenantID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="FK_houseID" Type="Int32" Nullable="false" />
+    <Property Name="FK_aspMemberID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="chore_allocation" Relationship="houseMateModel.allocation_to_tenant" FromRole="tenant" ToRole="chore_allocation" />
+    <NavigationProperty Name="house" Relationship="houseMateModel.tenant_constraint" FromRole="tenant" ToRole="house" />
+    <NavigationProperty Name="individual_bills" Relationship="houseMateModel.individual_tenant_constraint" FromRole="tenant" ToRole="individual_bills" />
+    <NavigationProperty Name="list_records" Relationship="houseMateModel.tenant_to_record" FromRole="tenant" ToRole="list_records" />
+    <NavigationProperty Name="my_aspnet_membership" Relationship="houseMateModel.memberConstraint" FromRole="tenant" ToRole="my_aspnet_membership" />
+    <NavigationProperty Name="notices" Relationship="houseMateModel.tenant_notice_constraint" FromRole="tenant" ToRole="notice" />
+  </EntityType>
+  <Association Name="allocation_to_chore">
+    <End Role="chores" Type="houseMateModel.chore" Multiplicity="1" />
+    <End Role="chore_allocation" Type="houseMateModel.chore_allocation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="chores">
+        <PropertyRef Name="PK_choreID" />
+      </Principal>
+      <Dependent Role="chore_allocation">
+        <PropertyRef Name="FK_choreID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="allocation_to_tenant">
+    <End Role="tenant" Type="houseMateModel.tenant" Multiplicity="1" />
+    <End Role="chore_allocation" Type="houseMateModel.chore_allocation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tenant">
+        <PropertyRef Name="PK_tenantID" />
+      </Principal>
+      <Dependent Role="chore_allocation">
+        <PropertyRef Name="FK_tenantID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="chore_to_house">
+    <End Role="house" Type="houseMateModel.house" Multiplicity="0..1" />
+    <End Role="chores" Type="houseMateModel.chore" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="house">
+        <PropertyRef Name="PK_houseID" />
+      </Principal>
+      <Dependent Role="chores">
+        <PropertyRef Name="FK_houseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="bill_constraint">
+    <End Role="house" Type="houseMateModel.house" Multiplicity="1" />
+    <End Role="house_bill" Type="houseMateModel.house_bill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="house">
+        <PropertyRef Name="PK_houseID" />
+      </Principal>
+      <Dependent Role="house_bill">
+        <PropertyRef Name="FK_houseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="houseConstr">
+    <End Role="house" Type="houseMateModel.house" Multiplicity="1" />
+    <End Role="list" Type="houseMateModel.list" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="house">
+        <PropertyRef Name="PK_houseID" />
+      </Principal>
+      <Dependent Role="list">
+        <PropertyRef Name="FK_houseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="noticeboard_constraint">
+    <End Role="house" Type="houseMateModel.house" Multiplicity="1" />
+    <End Role="notice_board" Type="houseMateModel.notice_board" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="house">
+        <PropertyRef Name="PK_houseID" />
+      </Principal>
+      <Dependent Role="notice_board">
+        <PropertyRef Name="FK_houseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tenant_constraint">
+    <End Role="house" Type="houseMateModel.house" Multiplicity="1" />
+    <End Role="tenant" Type="houseMateModel.tenant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="house">
+        <PropertyRef Name="PK_houseID" />
+      </Principal>
+      <Dependent Role="tenant">
+        <PropertyRef Name="FK_houseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="individual_bill_constraint">
+    <End Role="house_bill" Type="houseMateModel.house_bill" Multiplicity="1" />
+    <End Role="individual_bills" Type="houseMateModel.individual_bills" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="house_bill">
+        <PropertyRef Name="PK_houseBillID" />
+      </Principal>
+      <Dependent Role="individual_bills">
+        <PropertyRef Name="FK_houseBillID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="individual_tenant_constraint">
+    <End Role="tenant" Type="houseMateModel.tenant" Multiplicity="1" />
+    <End Role="individual_bills" Type="houseMateModel.individual_bills" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tenant">
+        <PropertyRef Name="PK_tenantID" />
+      </Principal>
+      <Dependent Role="individual_bills">
+        <PropertyRef Name="FK_tenantID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="item_to_record">
+    <End Role="item" Type="houseMateModel.item" Multiplicity="1" />
+    <End Role="list_records" Type="houseMateModel.list_records" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="item">
+        <PropertyRef Name="PK_itemID" />
+      </Principal>
+      <Dependent Role="list_records">
+        <PropertyRef Name="FK_itemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tenant_to_record">
+    <End Role="tenant" Type="houseMateModel.tenant" Multiplicity="1" />
+    <End Role="list_records" Type="houseMateModel.list_records" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tenant">
+        <PropertyRef Name="PK_tenantID" />
+      </Principal>
+      <Dependent Role="list_records">
+        <PropertyRef Name="FK_tenantID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="memberConstraint">
+    <End Role="my_aspnet_membership" Type="houseMateModel.my_aspnet_membership" Multiplicity="1" />
+    <End Role="tenant" Type="houseMateModel.tenant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="my_aspnet_membership">
+        <PropertyRef Name="userId" />
+      </Principal>
+      <Dependent Role="tenant">
+        <PropertyRef Name="FK_aspMemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="notice_constraint">
+    <End Role="notice_board" Type="houseMateModel.notice_board" Multiplicity="1" />
+    <End Role="notice" Type="houseMateModel.notice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="notice_board">
+        <PropertyRef Name="PK_noticeBoardID" />
+      </Principal>
+      <Dependent Role="notice">
+        <PropertyRef Name="FK_noticeBoardID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="tenant_notice_constraint">
+    <End Role="tenant" Type="houseMateModel.tenant" Multiplicity="1" />
+    <End Role="notice" Type="houseMateModel.notice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tenant">
+        <PropertyRef Name="PK_tenantID" />
+      </Principal>
+      <Dependent Role="notice">
+        <PropertyRef Name="FK_tenantID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="item_to_list">
+    <End Type="houseMateModel.list" Role="list" Multiplicity="1" />
+    <End Type="houseMateModel.item" Role="item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="list">
+        <PropertyRef Name="PK_listID" />
+      </Principal>
+      <Dependent Role="item">
+        <PropertyRef Name="FK_listID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

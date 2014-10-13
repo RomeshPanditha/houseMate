@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HouseMateService.DAL;
+using HouseMateService.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -12,23 +14,29 @@ namespace HouseMateService
     // NOTE: In order to launch WCF Test Client for testing this service, please select UserAuthService.svc or UserAuthService.svc.cs at the Solution Explorer and start debugging.
     public class UserAuthService : IUserAuthService
     {
+        UsersDAL DAL = new UsersDAL();
+
         public string createUser(string username, string password, string email)
         {
             System.Web.Security.Membership.CreateUser(username, password, email);
             return "success";
         }
 
-        public string login(string username, string password)
+        public UserAuth login(string username, string password)
         {
             if (System.Web.Security.Membership.ValidateUser(username, password))
             {
-                HttpContext.Current.Session["loggedIn"] = "logged";
-                return "logged";
+                //String UID = DAL.getUid(username).ToString();
+                //int uid = System.Web.HttpContext.Current.User.Identity.GetUserId();
+                System.Web.Security.MembershipUser CurrentUser = System.Web.Security.Membership.GetUser(username);
+                int uid = Convert.ToInt32(CurrentUser.ProviderUserKey);
+                HttpContext.Current.Session["loggedIn"] = uid.ToString();
+                return new UserAuth(true, uid);
             }
             else
             {
-                HttpContext.Current.Session["loggedIn"] = "failed";
-                return "failed";
+                HttpContext.Current.Session["loggedIn"] = -1;
+                return new UserAuth(false, -1);
             }
         }
 

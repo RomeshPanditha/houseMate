@@ -12,11 +12,12 @@ namespace HouseMateService
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
-    public partial class houseMateEntities : DbContext
+
+    [DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]
+    public partial class houseMateEntities01 : DbContext
     {
-        public houseMateEntities()
-            : base("name=houseMateEntities")
+        public houseMateEntities01()
+            : base("name=houseMateEntities01")
         {
         }
     
@@ -31,12 +32,9 @@ namespace HouseMateService
         public DbSet<house_bill> house_bill { get; set; }
         public DbSet<individual_bills> individual_bills { get; set; }
         public DbSet<item> items { get; set; }
+        public DbSet<itemDescription> itemDescriptions { get; set; }
         public DbSet<list> lists { get; set; }
         public DbSet<list_records> list_records { get; set; }
-        public DbSet<notice> notices { get; set; }
-        public DbSet<notice_board> notice_board { get; set; }
-        public DbSet<tenant> tenants { get; set; }
-        public DbSet<itemDescription> itemDescriptions { get; set; }
         public DbSet<my_aspnet_applications> my_aspnet_applications { get; set; }
         public DbSet<my_aspnet_membership> my_aspnet_membership { get; set; }
         public DbSet<my_aspnet_profiles> my_aspnet_profiles { get; set; }
@@ -45,5 +43,8 @@ namespace HouseMateService
         public DbSet<my_aspnet_sessions> my_aspnet_sessions { get; set; }
         public DbSet<my_aspnet_users> my_aspnet_users { get; set; }
         public DbSet<my_aspnet_usersinroles> my_aspnet_usersinroles { get; set; }
+        public DbSet<notice> notices { get; set; }
+        public DbSet<notice_board> notice_board { get; set; }
+        public DbSet<tenant> tenants { get; set; }
     }
 }

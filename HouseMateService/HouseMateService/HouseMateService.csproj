@@ -53,6 +53,10 @@
     <Reference Include="mysql.data.entity.EF6, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySQL.Data.Entities.6.8.3.0\lib\net45\mysql.data.entity.EF6.dll</HintPath>
     </Reference>
+    <Reference Include="MySql.Web, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\MySql.Web.6.8.3\lib\net45\MySql.Web.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Security" />
@@ -77,6 +81,7 @@
   <ItemGroup>
     <Content Include="BillService.svc" />
     <Content Include="Global.asax" />
+    <Content Include="HouseService.svc" />
     <Content Include="NoticeBoardService.svc" />
     <Content Include="Service1.svc" />
     <Content Include="ShoppingService.svc" />
@@ -86,98 +91,103 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="chore.cs">
+      <DependentUpon>houseMate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="chore_allocation.cs">
+      <DependentUpon>houseMate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\HouseDAL.cs" />
     <Compile Include="DAL\NoticeDAL.cs" />
     <Compile Include="DAL\UsersDAL.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="house.cs">
+      <DependentUpon>houseMate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="houseMate.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>houseMate.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="houseMate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>houseMate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="houseMate.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>houseMate.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="HouseService.svc.cs">
+      <DependentUpon>HouseService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="house_bill.cs">
+      <DependentUpon>houseMate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IHouseService.cs" />
+    <Compile Include="individual_bills.cs">
+      <DependentUpon>houseMate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="item.cs">
+      <DependentUpon>houseMate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="itemDescription.cs">
+      <DependentUpon>houseMate.tt</DependentUpon>
+    </Compile>
     <Compile Include="IUserAuthService.cs" />
+    <Compile Include="list.cs">
+      <DependentUpon>houseMate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="list_records.cs">
+      <DependentUpon>houseMate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Notice.cs" />
     <Compile Include="Models\tenantBill.cs" />
     <Compile Include="BillService.svc.cs">
       <DependentUpon>BillService.svc</DependentUpon>
     </Compile>
-    <Compile Include="chore.cs">
-      <DependentUpon>houseMateDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="chore_allocation.cs">
-      <DependentUpon>houseMateDatabase.tt</DependentUpon>
-    </Compile>
     <Compile Include="DAL\BillsDAL.cs" />
     <Compile Include="DAL\ShoppingDAL.cs" />
-    <Compile Include="house.cs">
-      <DependentUpon>houseMateDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="houseMateDatabase.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>houseMateDatabase.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="houseMateDatabase.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>houseMateDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="houseMateDatabase.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>houseMateDatabase.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="house_bill.cs">
-      <DependentUpon>houseMateDatabase.tt</DependentUpon>
-    </Compile>
     <Compile Include="IBillService.cs" />
-    <Compile Include="individual_bills.cs">
-      <DependentUpon>houseMateDatabase.tt</DependentUpon>
-    </Compile>
     <Compile Include="INoticeBoardService.cs" />
     <Compile Include="IShoppingService.cs" />
-    <Compile Include="item.cs">
-      <DependentUpon>houseMateDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="itemDescription.cs">
-      <DependentUpon>houseMateDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="list.cs">
-      <DependentUpon>houseMateDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="list_records.cs">
-      <DependentUpon>houseMateDatabase.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Bill.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="my_aspnet_applications.cs">
-      <DependentUpon>houseMateDatabase.tt</DependentUpon>
+      <DependentUpon>houseMate.tt</DependentUpon>
     </Compile>
     <Compile Include="my_aspnet_membership.cs">
-      <DependentUpon>houseMateDatabase.tt</DependentUpon>
+      <DependentUpon>houseMate.tt</DependentUpon>
     </Compile>
     <Compile Include="my_aspnet_profiles.cs">
-      <DependentUpon>houseMateDatabase.tt</DependentUpon>
+      <DependentUpon>houseMate.tt</DependentUpon>
     </Compile>
     <Compile Include="my_aspnet_roles.cs">
-      <DependentUpon>houseMateDatabase.tt</DependentUpon>
+      <DependentUpon>houseMate.tt</DependentUpon>
     </Compile>
     <Compile Include="my_aspnet_sessioncleanup.cs">
-      <DependentUpon>houseMateDatabase.tt</DependentUpon>
+      <DependentUpon>houseMate.tt</DependentUpon>
     </Compile>
     <Compile Include="my_aspnet_sessions.cs">
-      <DependentUpon>houseMateDatabase.tt</DependentUpon>
+      <DependentUpon>houseMate.tt</DependentUpon>
     </Compile>
     <Compile Include="my_aspnet_users.cs">
-      <DependentUpon>houseMateDatabase.tt</DependentUpon>
+      <DependentUpon>houseMate.tt</DependentUpon>
     </Compile>
     <Compile Include="my_aspnet_usersinroles.cs">
-      <DependentUpon>houseMateDatabase.tt</DependentUpon>
+      <DependentUpon>houseMate.tt</DependentUpon>
     </Compile>
     <Compile Include="notice.cs">
-      <DependentUpon>houseMateDatabase.tt</DependentUpon>
-    </Compile>
-    <Compile Include="notice_board.cs">
-      <DependentUpon>houseMateDatabase.tt</DependentUpon>
+      <DependentUpon>houseMate.tt</DependentUpon>
     </Compile>
     <Compile Include="NoticeBoardService.svc.cs">
       <DependentUpon>NoticeBoardService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="notice_board.cs">
+      <DependentUpon>houseMate.tt</DependentUpon>
     </Compile>
     <Compile Include="Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>
@@ -188,7 +198,7 @@
       <DependentUpon>ShoppingService.svc</DependentUpon>
     </Compile>
     <Compile Include="tenant.cs">
-      <DependentUpon>houseMateDatabase.tt</DependentUpon>
+      <DependentUpon>houseMate.tt</DependentUpon>
     </Compile>
     <Compile Include="UserAuthService.svc.cs">
       <DependentUpon>UserAuthService.svc</DependentUpon>
@@ -200,22 +210,22 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <EntityDeploy Include="houseMateDatabase.edmx">
+    <EntityDeploy Include="houseMate.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>houseMateDatabase.Designer.cs</LastGenOutput>
+      <LastGenOutput>houseMate.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="houseMateDatabase.Context.tt">
+    <Content Include="houseMate.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>houseMateDatabase.edmx</DependentUpon>
-      <LastGenOutput>houseMateDatabase.Context.cs</LastGenOutput>
+      <DependentUpon>houseMate.edmx</DependentUpon>
+      <LastGenOutput>houseMate.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="houseMateDatabase.edmx.diagram">
-      <DependentUpon>houseMateDatabase.edmx</DependentUpon>
+    <Content Include="houseMate.edmx.diagram">
+      <DependentUpon>houseMate.edmx</DependentUpon>
     </Content>
-    <Content Include="houseMateDatabase.tt">
+    <Content Include="houseMate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>houseMateDatabase.edmx</DependentUpon>
-      <LastGenOutput>houseMateDatabase.cs</LastGenOutput>
+      <DependentUpon>houseMate.edmx</DependentUpon>
+      <LastGenOutput>houseMate.cs</LastGenOutput>
     </Content>
     <None Include="Properties\PublishProfiles\mesh.pubxml" />
     <None Include="Web.Debug.config">

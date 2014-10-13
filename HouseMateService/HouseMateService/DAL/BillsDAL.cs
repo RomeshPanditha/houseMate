@@ -18,7 +18,7 @@ namespace HouseMateService.DAL
         public List<Bill> getBills(int houseID)
         {
             List<Bill> billList = new List<Bill>();
-            using(var context = new houseMateEntities())
+            using(var context = new houseMateEntities01())
             {
                 List<house_bill> billL = new List<house_bill>();
                 billL.AddRange(from house_bill in context.house_bill
@@ -38,7 +38,7 @@ namespace HouseMateService.DAL
         public List<tenantBill> getInividuals(int billID)
         {
             List<tenantBill> tenList = new List<tenantBill>();
-            using(var context = new houseMateEntities())
+            using(var context = new houseMateEntities01())
             {
                 List<individual_bills> tenL = new List<individual_bills>();
                 tenL.AddRange(from individual_bills in context.individual_bills
@@ -46,9 +46,8 @@ namespace HouseMateService.DAL
                               select individual_bills);
                 foreach (individual_bills i in tenL)
                 {
-                    string name = (from my_aspnet_users in context.my_aspnet_users
-                                    where my_aspnet_users.id == i.tenant.FK_aspMemberID
-                                    select my_aspnet_users.name).ToString();
+                    string name = System.Web.Security.Membership.GetUserNameByEmail(i.tenant.my_aspnet_membership.Email);
+                    
 
                     tenList.Add(new tenantBill(i.FK_houseBillID, name, Convert.ToDouble(i.splitAmount)));
                 }
@@ -58,7 +57,7 @@ namespace HouseMateService.DAL
 
         public void addBill(int _houseID, string _billType, double _amount, string[] _tenantID, string[] _tenantAmounts)
         {
-            using (var context = new houseMateEntities())
+            using (var context = new houseMateEntities01())
             {
                 house_bill newHouseBill = new house_bill
                 {
@@ -87,7 +86,7 @@ namespace HouseMateService.DAL
         private int getNumTenants(int houseID)
         {
             int numTenants = 0;
-            using(var context = new houseMateEntities())
+            using(var context = new houseMateEntities01())
             {
                 List<tenant> tenantList = new List<tenant>();
                 tenantList.AddRange(from tenant in context.tenants

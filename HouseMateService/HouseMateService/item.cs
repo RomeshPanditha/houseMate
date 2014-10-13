@@ -26,7 +26,7 @@ namespace HouseMateService
         public Nullable<sbyte> bought_ { get; set; }
         public string description { get; set; }
     
-        public virtual list list { get; set; }
         public virtual ICollection<list_records> list_records { get; set; }
+        public virtual list list { get; set; }
     }
 }

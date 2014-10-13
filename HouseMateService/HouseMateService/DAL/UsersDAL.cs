@@ -7,6 +7,6 @@ namespace HouseMateService.DAL
 {
     public class UsersDAL
     {
-        
+       
     }
 }

@@ -20,7 +20,7 @@ namespace HouseMateService
         [OperationContract]
         [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
             ResponseFormat = WebMessageFormat.Json, UriTemplate = "login?username={username}&password={password}")]
-        string login(string username, string password);
+        String login(string username, string password);
 
         [OperationContract]
         [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,

@@ -18,8 +18,7 @@ namespace HouseMateService
 
         public Item[] getList(int houseID)
         {
-
-            if(HttpContext.Current.Session["loggedIn"].Equals("logged"))
+            if(Convert.ToInt32(HttpContext.Current.Session["loggedIn"]) >= 0)
             {
                 return DAL.getShoppingList(houseID).ToArray();
             }
@@ -31,24 +30,52 @@ namespace HouseMateService
 
         public Item[] addItem(int houseID, string name, string desc, string category)
         {
-            DAL.addItem(houseID, name, desc, category);
-            return getList(houseID);
+            if (Convert.ToInt32(HttpContext.Current.Session["loggedIn"]) >= 0)
+            {
+                DAL.addItem(houseID, name, desc, category);
+                return getList(houseID);
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public Item[] buyItem(int itemID, int houseID)
         {
-            DAL.buyItem(itemID);
-            return getList(houseID);
+            if (Convert.ToInt32(HttpContext.Current.Session["loggedIn"]) >= 0)
+            {
+                DAL.buyItem(itemID);
+                return getList(houseID);
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public string[] getNames(int houseID, string name)
         {
-            return removeDoubles(DAL.getNames(houseID, name));
+            if (Convert.ToInt32(HttpContext.Current.Session["loggedIn"]) >= 0)
+            {
+                return removeDoubles(DAL.getNames(houseID, name));
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public string[] getDescs(int houseID, string name)
         {
-            return removeDoubles(DAL.getDescs(houseID, name));
+            if (Convert.ToInt32(HttpContext.Current.Session["loggedIn"]) >= 0)
+            {
+                return removeDoubles(DAL.getDescs(houseID, name));
+            }
+            else
+            {
+                return null;
+            }
         }
 
         private string[] removeDoubles(string[] arr)

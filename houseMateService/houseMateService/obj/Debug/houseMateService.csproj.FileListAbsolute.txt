@@ -31,3 +31,4 @@ D:\Documents\GitHub\houseMatePC\houseMate\HouseMateService\HouseMateService\bin\
 D:\Documents\GitHub\houseMatePC\houseMate\HouseMateService\HouseMateService\obj\Debug\HouseMateService.csprojResolveAssemblyReference.cache
 D:\Documents\GitHub\houseMatePC\houseMate\HouseMateService\HouseMateService\obj\Debug\HouseMateService.dll
 D:\Documents\GitHub\houseMatePC\houseMate\HouseMateService\HouseMateService\obj\Debug\HouseMateService.pdb
+D:\Documents\GitHub\houseMatePC\houseMate\HouseMateService\HouseMateService\bin\MySql.Web.dll

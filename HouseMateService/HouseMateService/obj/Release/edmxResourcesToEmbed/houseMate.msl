@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="houseMateModelStoreContainer" CdmEntityContainer="houseMateEntities01">
+    <EntitySetMapping Name="chore_allocation">
+      <EntityTypeMapping TypeName="houseMateModel.chore_allocation">
+        <MappingFragment StoreEntitySet="chore_allocation">
+          <ScalarProperty Name="PK_allocationID" ColumnName="PK_allocationID" />
+          <ScalarProperty Name="FK_choreID" ColumnName="FK_choreID" />
+          <ScalarProperty Name="FK_tenantID" ColumnName="FK_tenantID" />
+          <ScalarProperty Name="dayOfWeek" ColumnName="dayOfWeek" />
+          <ScalarProperty Name="cycle" ColumnName="cycle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="chores">
+      <EntityTypeMapping TypeName="houseMateModel.chore">
+        <MappingFragment StoreEntitySet="chores">
+          <ScalarProperty Name="PK_choreID" ColumnName="PK_choreID" />
+          <ScalarProperty Name="FK_houseID" ColumnName="FK_houseID" />
+          <ScalarProperty Name="choreName" ColumnName="choreName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="houses">
+      <EntityTypeMapping TypeName="houseMateModel.house">
+        <MappingFragment StoreEntitySet="house">
+          <ScalarProperty Name="PK_houseID" ColumnName="PK_houseID" />
+          <ScalarProperty Name="FK_listID" ColumnName="FK_listID" />
+          <ScalarProperty Name="houseName" ColumnName="houseName" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="postcode" ColumnName="postcode" />
+          <ScalarProperty Name="state" ColumnName="state" />
+          <ScalarProperty Name="housecol" ColumnName="housecol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="house_bill">
+      <EntityTypeMapping TypeName="houseMateModel.house_bill">
+        <MappingFragment StoreEntitySet="house_bill">
+          <ScalarProperty Name="PK_houseBillID" ColumnName="PK_houseBillID" />
+          <ScalarProperty Name="FK_houseID" ColumnName="FK_houseID" />
+          <ScalarProperty Name="billType" ColumnName="billType" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="dueDate" ColumnName="dueDate" />
+          <ScalarProperty Name="paid_" ColumnName="paid?" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="individual_bills">
+      <EntityTypeMapping TypeName="houseMateModel.individual_bills">
+        <MappingFragment StoreEntitySet="individual_bills">
+          <ScalarProperty Name="PK_indivBillID" ColumnName="PK_indivBillID" />
+          <ScalarProperty Name="FK_houseBillID" ColumnName="FK_houseBillID" />
+          <ScalarProperty Name="FK_tenantID" ColumnName="FK_tenantID" />
+          <ScalarProperty Name="splitAmount" ColumnName="splitAmount" />
+          <ScalarProperty Name="datePaid" ColumnName="datePaid" />
+          <ScalarProperty Name="recurring_" ColumnName="recurring?" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="items">
+      <EntityTypeMapping TypeName="houseMateModel.item">
+        <MappingFragment StoreEntitySet="item">
+          <ScalarProperty Name="PK_itemID" ColumnName="PK_itemID" />
+          <ScalarProperty Name="FK_listID" ColumnName="FK_listID" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="category" ColumnName="category" />
+          <ScalarProperty Name="bought_" ColumnName="bought?" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="itemDescriptions">
+      <EntityTypeMapping TypeName="houseMateModel.itemDescription">
+        <MappingFragment StoreEntitySet="itemDescriptions">
+          <ScalarProperty Name="PK_itemDescriptionsID" ColumnName="PK_itemDescriptionsID" />
+          <ScalarProperty Name="FK_itemID" ColumnName="FK_itemID" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lists">
+      <EntityTypeMapping TypeName="houseMateModel.list">
+        <MappingFragment StoreEntitySet="list">
+          <ScalarProperty Name="PK_listID" ColumnName="PK_listID" />
+          <ScalarProperty Name="FK_houseID" ColumnName="FK_houseID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="list_records">
+      <EntityTypeMapping TypeName="houseMateModel.list_records">
+        <MappingFragment StoreEntitySet="list_records">
+          <ScalarProperty Name="PK_recordID" ColumnName="PK_recordID" />
+          <ScalarProperty Name="FK_itemID" ColumnName="FK_itemID" />
+          <ScalarProperty Name="FK_tenantID" ColumnName="FK_tenantID" />
+          <ScalarProperty Name="dateBought" ColumnName="dateBought" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="my_aspnet_applications">
+      <EntityTypeMapping TypeName="houseMateModel.my_aspnet_applications">
+        <MappingFragment StoreEntitySet="my_aspnet_applications">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="my_aspnet_membership">
+      <EntityTypeMapping TypeName="houseMateModel.my_aspnet_membership">
+        <MappingFragment StoreEntitySet="my_aspnet_membership">
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="PasswordKey" ColumnName="PasswordKey" />
+          <ScalarProperty Name="PasswordFormat" ColumnName="PasswordFormat" />
+          <ScalarProperty Name="PasswordQuestion" ColumnName="PasswordQuestion" />
+          <ScalarProperty Name="PasswordAnswer" ColumnName="PasswordAnswer" />
+          <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+          <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
+          <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+          <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
+          <ScalarProperty Name="LastLockedOutDate" ColumnName="LastLockedOutDate" />
+          <ScalarProperty Name="FailedPasswordAttemptCount" ColumnName="FailedPasswordAttemptCount" />
+          <ScalarProperty Name="FailedPasswordAttemptWindowStart" ColumnName="FailedPasswordAttemptWindowStart" />
+          <ScalarProperty Name="FailedPasswordAnswerAttemptCount" ColumnName="FailedPasswordAnswerAttemptCount" />
+          <ScalarProperty Name="FailedPasswordAnswerAttemptWindowStart" ColumnName="FailedPasswordAnswerAttemptWindowStart" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="my_aspnet_profiles">
+      <EntityTypeMapping TypeName="houseMateModel.my_aspnet_profiles">
+        <MappingFragment StoreEntitySet="my_aspnet_profiles">
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="valueindex" ColumnName="valueindex" />
+          <ScalarProperty Name="stringdata" ColumnName="stringdata" />
+          <ScalarProperty Name="binarydata" ColumnName="binarydata" />
+          <ScalarProperty Name="lastUpdatedDate" ColumnName="lastUpdatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="my_aspnet_roles">
+      <EntityTypeMapping TypeName="houseMateModel.my_aspnet_roles">
+        <MappingFragment StoreEntitySet="my_aspnet_roles">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="applicationId" ColumnName="applicationId" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="my_aspnet_sessioncleanup">
+      <EntityTypeMapping TypeName="houseMateModel.my_aspnet_sessioncleanup">
+        <MappingFragment StoreEntitySet="my_aspnet_sessioncleanup">
+          <ScalarProperty Name="LastRun" ColumnName="LastRun" />
+          <ScalarProperty Name="IntervalMinutes" ColumnName="IntervalMinutes" />
+          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="my_aspnet_sessions">
+      <EntityTypeMapping TypeName="houseMateModel.my_aspnet_sessions">
+        <MappingFragment StoreEntitySet="my_aspnet_sessions">
+          <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Expires" ColumnName="Expires" />
+          <ScalarProperty Name="LockDate" ColumnName="LockDate" />
+          <ScalarProperty Name="LockId" ColumnName="LockId" />
+          <ScalarProperty Name="Timeout" ColumnName="Timeout" />
+          <ScalarProperty Name="Locked" ColumnName="Locked" />
+          <ScalarProperty Name="SessionItems" ColumnName="SessionItems" />
+          <ScalarProperty Name="Flags" ColumnName="Flags" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="my_aspnet_users">
+      <EntityTypeMapping TypeName="houseMateModel.my_aspnet_users">
+        <MappingFragment StoreEntitySet="my_aspnet_users">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="applicationId" ColumnName="applicationId" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="isAnonymous" ColumnName="isAnonymous" />
+          <ScalarProperty Name="lastActivityDate" ColumnName="lastActivityDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="my_aspnet_usersinroles">
+      <EntityTypeMapping TypeName="houseMateModel.my_aspnet_usersinroles">
+        <MappingFragment StoreEntitySet="my_aspnet_usersinroles">
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="roleId" ColumnName="roleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="notices">
+      <EntityTypeMapping TypeName="houseMateModel.notice">
+        <MappingFragment StoreEntitySet="notice">
+          <ScalarProperty Name="PK_noticeID" ColumnName="PK_noticeID" />
+          <ScalarProperty Name="FK_noticeBoardID" ColumnName="FK_noticeBoardID" />
+          <ScalarProperty Name="FK_tenantID" ColumnName="FK_tenantID" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="datePosted" ColumnName="datePosted" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="notice_board">
+      <EntityTypeMapping TypeName="houseMateModel.notice_board">
+        <MappingFragment StoreEntitySet="notice_board">
+          <ScalarProperty Name="PK_noticeBoardID" ColumnName="PK_noticeBoardID" />
+          <ScalarProperty Name="FK_houseID" ColumnName="FK_houseID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tenants">
+      <EntityTypeMapping TypeName="houseMateModel.tenant">
+        <MappingFragment StoreEntitySet="tenant">
+          <ScalarProperty Name="PK_tenantID" ColumnName="PK_tenantID" />
+          <ScalarProperty Name="FK_houseID" ColumnName="FK_houseID" />
+          <ScalarProperty Name="FK_aspMemberID" ColumnName="FK_aspMemberID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

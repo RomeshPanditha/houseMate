@@ -20,3 +20,15 @@ C:\Users\Romesh\Documents\houseMate\houseMateService\HouseMateService\bin\Entity
 C:\Users\Romesh\Documents\houseMate\houseMateService\HouseMateService\obj\Release\HouseMateService.csprojResolveAssemblyReference.cache
 C:\Users\Romesh\Documents\houseMate\houseMateService\HouseMateService\obj\Release\HouseMateService.dll
 C:\Users\Romesh\Documents\houseMate\houseMateService\HouseMateService\obj\Release\HouseMateService.pdb
+D:\Documents\GitHub\houseMatePC\houseMate\HouseMateService\HouseMateService\bin\HouseMateService.dll
+D:\Documents\GitHub\houseMatePC\houseMate\HouseMateService\HouseMateService\bin\HouseMateService.pdb
+D:\Documents\GitHub\houseMatePC\houseMate\HouseMateService\HouseMateService\bin\EntityFramework.dll
+D:\Documents\GitHub\houseMatePC\houseMate\HouseMateService\HouseMateService\bin\EntityFramework.SqlServer.dll
+D:\Documents\GitHub\houseMatePC\houseMate\HouseMateService\HouseMateService\bin\MySql.Data.dll
+D:\Documents\GitHub\houseMatePC\houseMate\HouseMateService\HouseMateService\bin\mysql.data.entity.EF6.dll
+D:\Documents\GitHub\houseMatePC\houseMate\HouseMateService\HouseMateService\bin\EntityFramework.xml
+D:\Documents\GitHub\houseMatePC\houseMate\HouseMateService\HouseMateService\bin\EntityFramework.SqlServer.xml
+D:\Documents\GitHub\houseMatePC\houseMate\HouseMateService\HouseMateService\obj\Release\HouseMateService.csprojResolveAssemblyReference.cache
+D:\Documents\GitHub\houseMatePC\houseMate\HouseMateService\HouseMateService\obj\Release\HouseMateService.dll
+D:\Documents\GitHub\houseMatePC\houseMate\HouseMateService\HouseMateService\obj\Release\HouseMateService.pdb
+D:\Documents\GitHub\houseMatePC\houseMate\HouseMateService\HouseMateService\bin\MySql.Web.dll

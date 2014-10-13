@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Web;
 
 namespace HouseMateService
 {
@@ -19,19 +20,42 @@ namespace HouseMateService
 
         public Bill[] getBills(int houseID)
         {
-            return DAL.getBills(houseID).ToArray();
+            if (Convert.ToInt32(HttpContext.Current.Session["loggedIn"]) >= 0)
+            {
+                return DAL.getBills(houseID).ToArray();
+            }
+            else
+            {
+                return null;
+            }
+            
         }
 
         public tenantBill[] getIndividuals(int billID)
         {
-            return DAL.getInividuals(billID).ToArray();
+            if (Convert.ToInt32(HttpContext.Current.Session["loggedIn"]) >= 0)
+            {
+                return DAL.getInividuals(billID).ToArray();
+            }
+            else
+            {
+                return null;
+            }
+            
         }
 
 
         public Bill[] addBill(int houseID, string billType, double amount, string tenantIDs, string tenantAmounts)
         {
-            DAL.addBill(houseID, billType, amount, tenantIDs.Split('~'), tenantAmounts.Split('~'));
+            if (Convert.ToInt32(HttpContext.Current.Session["loggedIn"]) >= 0)
+            {
+                DAL.addBill(houseID, billType, amount, tenantIDs.Split('~'), tenantAmounts.Split('~'));
             return getBills(houseID);
+            }
+            else
+            {
+                return null;
+            }
         }
 
     }

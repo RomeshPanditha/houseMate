@@ -30,7 +30,7 @@ namespace HouseMateService
         public virtual house house { get; set; }
         public virtual ICollection<individual_bills> individual_bills { get; set; }
         public virtual ICollection<list_records> list_records { get; set; }
-        public virtual ICollection<notice> notices { get; set; }
         public virtual my_aspnet_membership my_aspnet_membership { get; set; }
+        public virtual ICollection<notice> notices { get; set; }
     }
 }

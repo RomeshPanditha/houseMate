@@ -17,7 +17,7 @@ namespace HouseMateService.DAL
         {
             List<Item> shoppingList = new List<Item>();
             
-            using(var context = new houseMateEntities())
+            using(var context = new houseMateEntities01())
             {
                 int listID = getListID(houseID);
 
@@ -42,7 +42,7 @@ namespace HouseMateService.DAL
 
         public string[] getNames(int houseID, string nameFragment)
         {
-            using (var context = new houseMateEntities())
+            using (var context = new houseMateEntities01())
             {
                 int listID = getListID(houseID);
                 
@@ -55,7 +55,7 @@ namespace HouseMateService.DAL
 
         public string[] getDescs(int houseID, string nameFragment)
         {
-            using (var context = new houseMateEntities())
+            using (var context = new houseMateEntities01())
             {
                 int listID = getListID(houseID);
                 
@@ -68,7 +68,7 @@ namespace HouseMateService.DAL
 
         private int getListID(int houseID)
         {
-            using (var context = new houseMateEntities())
+            using (var context = new houseMateEntities01())
             {
                 return Convert.ToInt32((from list in context.lists
                                         where list.FK_houseID == houseID
@@ -78,7 +78,7 @@ namespace HouseMateService.DAL
 
         public void buyItem(int itemID)
         {
-            using (var context = new houseMateEntities())
+            using (var context = new houseMateEntities01())
             {
                 var boughtItem = (from item in context.items
                                     where item.PK_itemID == itemID
@@ -90,7 +90,7 @@ namespace HouseMateService.DAL
 
         public void addItem(int houseID, string name_, string desc_, string category_)
         {
-            using (var context = new houseMateEntities())
+            using (var context = new houseMateEntities01())
             {
                 int listID = getListID(houseID);
                 bool added = false;

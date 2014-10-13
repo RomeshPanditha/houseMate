@@ -54,6 +54,10 @@
             <End Role="tenant" EntitySet="tenant" />
             <End Role="individual_bills" EntitySet="individual_bills" />
           </AssociationSet>
+          <AssociationSet Name="item to list" Association="houseMateModel.Store.item to list">
+            <End Role="list" EntitySet="list" />
+            <End Role="item" EntitySet="item" />
+          </AssociationSet>
           <AssociationSet Name="item_to_record" Association="houseMateModel.Store.item_to_record">
             <End Role="item" EntitySet="item" />
             <End Role="list_records" EntitySet="list_records" />
@@ -374,6 +378,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="item to list">
+          <End Role="list" Type="houseMateModel.Store.list" Multiplicity="1" />
+          <End Role="item" Type="houseMateModel.Store.item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="list">
+              <PropertyRef Name="PK_listID" />
+            </Principal>
+            <Dependent Role="item">
+              <PropertyRef Name="FK_listID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="item_to_record">
           <End Role="item" Type="houseMateModel.Store.item" Multiplicity="1" />
           <End Role="list_records" Type="houseMateModel.Store.list_records" Multiplicity="*" />
@@ -468,15 +484,24 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="houseMateModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="houseMateEntities" p1:LazyLoadingEnabled="true">
+        <EntityContainer Name="houseMateEntities01" p1:LazyLoadingEnabled="true">
           <EntitySet Name="chore_allocation" EntityType="houseMateModel.chore_allocation" />
           <EntitySet Name="chores" EntityType="houseMateModel.chore" />
           <EntitySet Name="houses" EntityType="houseMateModel.house" />
           <EntitySet Name="house_bill" EntityType="houseMateModel.house_bill" />
           <EntitySet Name="individual_bills" EntityType="houseMateModel.individual_bills" />
           <EntitySet Name="items" EntityType="houseMateModel.item" />
+          <EntitySet Name="itemDescriptions" EntityType="houseMateModel.itemDescription" />
           <EntitySet Name="lists" EntityType="houseMateModel.list" />
           <EntitySet Name="list_records" EntityType="houseMateModel.list_records" />
+          <EntitySet Name="my_aspnet_applications" EntityType="houseMateModel.my_aspnet_applications" />
+          <EntitySet Name="my_aspnet_membership" EntityType="houseMateModel.my_aspnet_membership" />
+          <EntitySet Name="my_aspnet_profiles" EntityType="houseMateModel.my_aspnet_profiles" />
+          <EntitySet Name="my_aspnet_roles" EntityType="houseMateModel.my_aspnet_roles" />
+          <EntitySet Name="my_aspnet_sessioncleanup" EntityType="houseMateModel.my_aspnet_sessioncleanup" />
+          <EntitySet Name="my_aspnet_sessions" EntityType="houseMateModel.my_aspnet_sessions" />
+          <EntitySet Name="my_aspnet_users" EntityType="houseMateModel.my_aspnet_users" />
+          <EntitySet Name="my_aspnet_usersinroles" EntityType="houseMateModel.my_aspnet_usersinroles" />
           <EntitySet Name="notices" EntityType="houseMateModel.notice" />
           <EntitySet Name="notice_board" EntityType="houseMateModel.notice_board" />
           <EntitySet Name="tenants" EntityType="houseMateModel.tenant" />
@@ -496,7 +521,7 @@
             <End Role="house" EntitySet="houses" />
             <End Role="house_bill" EntitySet="house_bill" />
           </AssociationSet>
-          <AssociationSet Name="list_to_house" Association="houseMateModel.list_to_house">
+          <AssociationSet Name="houseConstr" Association="houseMateModel.houseConstr">
             <End Role="house" EntitySet="houses" />
             <End Role="list" EntitySet="lists" />
           </AssociationSet>
@@ -516,10 +541,6 @@
             <End Role="tenant" EntitySet="tenants" />
             <End Role="individual_bills" EntitySet="individual_bills" />
           </AssociationSet>
-          <AssociationSet Name="item_to_list" Association="houseMateModel.item_to_list">
-            <End Role="list" EntitySet="lists" />
-            <End Role="item" EntitySet="items" />
-          </AssociationSet>
           <AssociationSet Name="item_to_record" Association="houseMateModel.item_to_record">
             <End Role="item" EntitySet="items" />
             <End Role="list_records" EntitySet="list_records" />
@@ -527,6 +548,10 @@
           <AssociationSet Name="tenant_to_record" Association="houseMateModel.tenant_to_record">
             <End Role="tenant" EntitySet="tenants" />
             <End Role="list_records" EntitySet="list_records" />
+          </AssociationSet>
+          <AssociationSet Name="memberConstraint" Association="houseMateModel.memberConstraint">
+            <End Role="my_aspnet_membership" EntitySet="my_aspnet_membership" />
+            <End Role="tenant" EntitySet="tenants" />
           </AssociationSet>
           <AssociationSet Name="notice_constraint" Association="houseMateModel.notice_constraint">
             <End Role="notice_board" EntitySet="notice_board" />
@@ -536,18 +561,9 @@
             <End Role="tenant" EntitySet="tenants" />
             <End Role="notice" EntitySet="notices" />
           </AssociationSet>
-          <EntitySet Name="itemDescriptions" EntityType="houseMateModel.itemDescription" />
-          <EntitySet Name="my_aspnet_applications" EntityType="houseMateModel.my_aspnet_applications" />
-          <EntitySet Name="my_aspnet_membership" EntityType="houseMateModel.my_aspnet_membership" />
-          <EntitySet Name="my_aspnet_profiles" EntityType="houseMateModel.my_aspnet_profiles" />
-          <EntitySet Name="my_aspnet_roles" EntityType="houseMateModel.my_aspnet_roles" />
-          <EntitySet Name="my_aspnet_sessioncleanup" EntityType="houseMateModel.my_aspnet_sessioncleanup" />
-          <EntitySet Name="my_aspnet_sessions" EntityType="houseMateModel.my_aspnet_sessions" />
-          <EntitySet Name="my_aspnet_users" EntityType="houseMateModel.my_aspnet_users" />
-          <EntitySet Name="my_aspnet_usersinroles" EntityType="houseMateModel.my_aspnet_usersinroles" />
-          <AssociationSet Name="memberConstraint" Association="houseMateModel.memberConstraint">
-            <End Role="my_aspnet_membership" EntitySet="my_aspnet_membership" />
-            <End Role="tenant" EntitySet="tenants" />
+          <AssociationSet Name="item_to_list" Association="houseMateModel.item_to_list">
+            <End Role="list" EntitySet="lists" />
+            <End Role="item" EntitySet="items" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="chore_allocation">
@@ -576,38 +592,38 @@
           <Key>
             <PropertyRef Name="PK_houseID" />
           </Key>
-          <Property Name="PK_houseID" Type="Int32" Nullable="false" />
+          <Property Name="PK_houseID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_listID" Type="Int32" Nullable="false" />
           <Property Name="houseName" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
           <Property Name="address" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
           <Property Name="city" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
           <Property Name="postcode" Type="Int32" />
           <Property Name="state" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="housecol" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="chores" Relationship="houseMateModel.chore_to_house" FromRole="house" ToRole="chores" />
           <NavigationProperty Name="house_bill" Relationship="houseMateModel.bill_constraint" FromRole="house" ToRole="house_bill" />
-          <NavigationProperty Name="lists" Relationship="houseMateModel.list_to_house" FromRole="house" ToRole="list" />
+          <NavigationProperty Name="lists" Relationship="houseMateModel.houseConstr" FromRole="house" ToRole="list" />
           <NavigationProperty Name="notice_board" Relationship="houseMateModel.noticeboard_constraint" FromRole="house" ToRole="notice_board" />
           <NavigationProperty Name="tenants" Relationship="houseMateModel.tenant_constraint" FromRole="house" ToRole="tenant" />
-          <Property Type="Int32" Name="FK_listID" Nullable="false" />
-          <Property Type="String" Name="housecol" MaxLength="45" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="house_bill">
           <Key>
             <PropertyRef Name="PK_houseBillID" />
           </Key>
-          <Property Name="PK_houseBillID" Type="Int32" Nullable="false" />
+          <Property Name="PK_houseBillID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="FK_houseID" Type="Int32" Nullable="false" />
           <Property Name="billType" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
           <Property Name="amount" Type="Double" Nullable="false" />
           <Property Name="dueDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="paid_" Type="SByte" Nullable="false" />
           <NavigationProperty Name="house" Relationship="houseMateModel.bill_constraint" FromRole="house_bill" ToRole="house" />
           <NavigationProperty Name="individual_bills" Relationship="houseMateModel.individual_bill_constraint" FromRole="house_bill" ToRole="individual_bills" />
-          <Property Type="SByte" Name="paid_" Nullable="false" />
         </EntityType>
         <EntityType Name="individual_bills">
           <Key>
             <PropertyRef Name="PK_indivBillID" />
           </Key>
-          <Property Name="PK_indivBillID" Type="Int32" Nullable="false" />
+          <Property Name="PK_indivBillID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="FK_houseBillID" Type="Int32" Nullable="false" />
           <Property Name="FK_tenantID" Type="Int32" Nullable="false" />
           <Property Name="splitAmount" Type="Double" />
@@ -620,22 +636,30 @@
           <Key>
             <PropertyRef Name="PK_itemID" />
           </Key>
-          <Property Name="PK_itemID" Type="Int32" Nullable="false" />
+          <Property Name="PK_itemID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="FK_listID" Type="Int32" Nullable="false" />
           <Property Name="name" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
           <Property Name="category" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
           <Property Name="bought_" Type="SByte" />
-          <NavigationProperty Name="list" Relationship="houseMateModel.item_to_list" FromRole="item" ToRole="list" />
+          <Property Name="description" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="list_records" Relationship="houseMateModel.item_to_record" FromRole="item" ToRole="list_records" />
-          <Property Type="String" Name="description" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="list" Relationship="houseMateModel.item_to_list" FromRole="item" ToRole="list" />
+        </EntityType>
+        <EntityType Name="itemDescription">
+          <Key>
+            <PropertyRef Name="PK_itemDescriptionsID" />
+          </Key>
+          <Property Name="PK_itemDescriptionsID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_itemID" Type="Int32" Nullable="false" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
         </EntityType>
         <EntityType Name="list">
           <Key>
             <PropertyRef Name="PK_listID" />
           </Key>
-          <Property Name="PK_listID" Type="Int32" Nullable="false" />
+          <Property Name="PK_listID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="FK_houseID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="house" Relationship="houseMateModel.list_to_house" FromRole="list" ToRole="house" />
+          <NavigationProperty Name="house" Relationship="houseMateModel.houseConstr" FromRole="list" ToRole="house" />
           <NavigationProperty Name="items" Relationship="houseMateModel.item_to_list" FromRole="list" ToRole="item" />
         </EntityType>
         <EntityType Name="list_records">
@@ -648,6 +672,99 @@
           <Property Name="dateBought" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="item" Relationship="houseMateModel.item_to_record" FromRole="list_records" ToRole="item" />
           <NavigationProperty Name="tenant" Relationship="houseMateModel.tenant_to_record" FromRole="list_records" ToRole="tenant" />
+        </EntityType>
+        <EntityType Name="my_aspnet_applications">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="256" Unicode="false" FixedLength="false" />
+          <Property Name="description" Type="String" MaxLength="256" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="my_aspnet_membership">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="128" Unicode="false" FixedLength="false" />
+          <Property Name="Comment" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+          <Property Name="PasswordKey" Type="String" MaxLength="32" Unicode="false" FixedLength="true" />
+          <Property Name="PasswordFormat" Type="SByte" />
+          <Property Name="PasswordQuestion" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="PasswordAnswer" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="IsApproved" Type="Boolean" />
+          <Property Name="LastActivityDate" Type="DateTime" Precision="0" />
+          <Property Name="LastLoginDate" Type="DateTime" Precision="0" />
+          <Property Name="LastPasswordChangedDate" Type="DateTime" Precision="0" />
+          <Property Name="CreationDate" Type="DateTime" Precision="0" />
+          <Property Name="IsLockedOut" Type="Boolean" />
+          <Property Name="LastLockedOutDate" Type="DateTime" Precision="0" />
+          <Property Name="FailedPasswordAttemptCount" Type="Int64" />
+          <Property Name="FailedPasswordAttemptWindowStart" Type="DateTime" Precision="0" />
+          <Property Name="FailedPasswordAnswerAttemptCount" Type="Int64" />
+          <Property Name="FailedPasswordAnswerAttemptWindowStart" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="tenants" Relationship="houseMateModel.memberConstraint" FromRole="my_aspnet_membership" ToRole="tenant" />
+        </EntityType>
+        <EntityType Name="my_aspnet_profiles">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="Int32" Nullable="false" />
+          <Property Name="valueindex" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="stringdata" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="binarydata" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="lastUpdatedDate" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="my_aspnet_roles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="applicationId" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="my_aspnet_sessioncleanup">
+          <Key>
+            <PropertyRef Name="ApplicationId" />
+          </Key>
+          <Property Name="LastRun" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IntervalMinutes" Type="Int32" Nullable="false" />
+          <Property Name="ApplicationId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="my_aspnet_sessions">
+          <Key>
+            <PropertyRef Name="SessionId" />
+            <PropertyRef Name="ApplicationId" />
+          </Key>
+          <Property Name="SessionId" Type="String" Nullable="false" MaxLength="191" Unicode="false" FixedLength="false" />
+          <Property Name="ApplicationId" Type="Int32" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Expires" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="LockDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="LockId" Type="Int32" Nullable="false" />
+          <Property Name="Timeout" Type="Int32" Nullable="false" />
+          <Property Name="Locked" Type="Boolean" Nullable="false" />
+          <Property Name="SessionItems" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Flags" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="my_aspnet_users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="applicationId" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="256" Unicode="false" FixedLength="false" />
+          <Property Name="isAnonymous" Type="Boolean" Nullable="false" />
+          <Property Name="lastActivityDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="my_aspnet_usersinroles">
+          <Key>
+            <PropertyRef Name="userId" />
+            <PropertyRef Name="roleId" />
+          </Key>
+          <Property Name="userId" Type="Int32" Nullable="false" />
+          <Property Name="roleId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="notice">
           <Key>
@@ -676,15 +793,15 @@
           <Key>
             <PropertyRef Name="PK_tenantID" />
           </Key>
-          <Property Name="PK_tenantID" Type="Int32" Nullable="false" />
+          <Property Name="PK_tenantID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="FK_houseID" Type="Int32" Nullable="false" />
+          <Property Name="FK_aspMemberID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="chore_allocation" Relationship="houseMateModel.allocation_to_tenant" FromRole="tenant" ToRole="chore_allocation" />
           <NavigationProperty Name="house" Relationship="houseMateModel.tenant_constraint" FromRole="tenant" ToRole="house" />
           <NavigationProperty Name="individual_bills" Relationship="houseMateModel.individual_tenant_constraint" FromRole="tenant" ToRole="individual_bills" />
           <NavigationProperty Name="list_records" Relationship="houseMateModel.tenant_to_record" FromRole="tenant" ToRole="list_records" />
-          <NavigationProperty Name="notices" Relationship="houseMateModel.tenant_notice_constraint" FromRole="tenant" ToRole="notice" />
-          <Property Type="Int32" Name="FK_aspMemberID" Nullable="false" />
           <NavigationProperty Name="my_aspnet_membership" Relationship="houseMateModel.memberConstraint" FromRole="tenant" ToRole="my_aspnet_membership" />
+          <NavigationProperty Name="notices" Relationship="houseMateModel.tenant_notice_constraint" FromRole="tenant" ToRole="notice" />
         </EntityType>
         <Association Name="allocation_to_chore">
           <End Role="chores" Type="houseMateModel.chore" Multiplicity="1" />
@@ -734,7 +851,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="list_to_house">
+        <Association Name="houseConstr">
           <End Role="house" Type="houseMateModel.house" Multiplicity="1" />
           <End Role="list" Type="houseMateModel.list" Multiplicity="*" />
           <ReferentialConstraint>
@@ -794,18 +911,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="item_to_list">
-          <End Role="list" Type="houseMateModel.list" Multiplicity="1" />
-          <End Role="item" Type="houseMateModel.item" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="list">
-              <PropertyRef Name="PK_listID" />
-            </Principal>
-            <Dependent Role="item">
-              <PropertyRef Name="FK_listID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="item_to_record">
           <End Role="item" Type="houseMateModel.item" Multiplicity="1" />
           <End Role="list_records" Type="houseMateModel.list_records" Multiplicity="*" />
@@ -827,6 +932,18 @@
             </Principal>
             <Dependent Role="list_records">
               <PropertyRef Name="FK_tenantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="memberConstraint">
+          <End Role="my_aspnet_membership" Type="houseMateModel.my_aspnet_membership" Multiplicity="1" />
+          <End Role="tenant" Type="houseMateModel.tenant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="my_aspnet_membership">
+              <PropertyRef Name="userId" />
+            </Principal>
+            <Dependent Role="tenant">
+              <PropertyRef Name="FK_aspMemberID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -854,116 +971,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="itemDescription">
-          <Key>
-            <PropertyRef Name="PK_itemDescriptionsID" />
-          </Key>
-          <Property Type="Int32" Name="PK_itemDescriptionsID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="FK_itemID" Nullable="false" />
-          <Property Type="String" Name="description" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="my_aspnet_applications">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="name" MaxLength="256" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="description" MaxLength="256" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="my_aspnet_membership">
-          <Key>
-            <PropertyRef Name="userId" />
-          </Key>
-          <Property Type="Int32" Name="userId" Nullable="false" />
-          <Property Type="String" Name="Email" MaxLength="128" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Comment" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Password" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="PasswordKey" MaxLength="32" FixedLength="true" Unicode="false" />
-          <Property Type="SByte" Name="PasswordFormat" />
-          <Property Type="String" Name="PasswordQuestion" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="PasswordAnswer" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Type="Boolean" Name="IsApproved" />
-          <Property Type="DateTime" Name="LastActivityDate" Precision="0" />
-          <Property Type="DateTime" Name="LastLoginDate" Precision="0" />
-          <Property Type="DateTime" Name="LastPasswordChangedDate" Precision="0" />
-          <Property Type="DateTime" Name="CreationDate" Precision="0" />
-          <Property Type="Boolean" Name="IsLockedOut" />
-          <Property Type="DateTime" Name="LastLockedOutDate" Precision="0" />
-          <Property Type="Int64" Name="FailedPasswordAttemptCount" />
-          <Property Type="DateTime" Name="FailedPasswordAttemptWindowStart" Precision="0" />
-          <Property Type="Int64" Name="FailedPasswordAnswerAttemptCount" />
-          <Property Type="DateTime" Name="FailedPasswordAnswerAttemptWindowStart" Precision="0" />
-          <NavigationProperty Name="tenants" Relationship="houseMateModel.memberConstraint" FromRole="my_aspnet_membership" ToRole="tenant" />
-        </EntityType>
-        <EntityType Name="my_aspnet_profiles">
-          <Key>
-            <PropertyRef Name="userId" />
-          </Key>
-          <Property Type="Int32" Name="userId" Nullable="false" />
-          <Property Type="String" Name="valueindex" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="stringdata" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Type="Binary" Name="binarydata" MaxLength="Max" FixedLength="false" />
-          <Property Type="DateTime" Name="lastUpdatedDate" Nullable="false" Precision="0" />
-        </EntityType>
-        <EntityType Name="my_aspnet_roles">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="applicationId" Nullable="false" />
-          <Property Type="String" Name="name" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="my_aspnet_sessioncleanup">
-          <Key>
-            <PropertyRef Name="ApplicationId" />
-          </Key>
-          <Property Type="DateTime" Name="LastRun" Nullable="false" Precision="0" />
-          <Property Type="Int32" Name="IntervalMinutes" Nullable="false" />
-          <Property Type="Int32" Name="ApplicationId" Nullable="false" />
-        </EntityType>
-        <EntityType Name="my_aspnet_sessions">
-          <Key>
-            <PropertyRef Name="SessionId" />
-            <PropertyRef Name="ApplicationId" />
-          </Key>
-          <Property Type="String" Name="SessionId" Nullable="false" MaxLength="191" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="ApplicationId" Nullable="false" />
-          <Property Type="DateTime" Name="Created" Nullable="false" Precision="0" />
-          <Property Type="DateTime" Name="Expires" Nullable="false" Precision="0" />
-          <Property Type="DateTime" Name="LockDate" Nullable="false" Precision="0" />
-          <Property Type="Int32" Name="LockId" Nullable="false" />
-          <Property Type="Int32" Name="Timeout" Nullable="false" />
-          <Property Type="Boolean" Name="Locked" Nullable="false" />
-          <Property Type="Binary" Name="SessionItems" MaxLength="Max" FixedLength="false" />
-          <Property Type="Int32" Name="Flags" Nullable="false" />
-        </EntityType>
-        <EntityType Name="my_aspnet_users">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="applicationId" Nullable="false" />
-          <Property Type="String" Name="name" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
-          <Property Type="Boolean" Name="isAnonymous" Nullable="false" />
-          <Property Type="DateTime" Name="lastActivityDate" Precision="0" />
-        </EntityType>
-        <EntityType Name="my_aspnet_usersinroles">
-          <Key>
-            <PropertyRef Name="userId" />
-            <PropertyRef Name="roleId" />
-          </Key>
-          <Property Type="Int32" Name="userId" Nullable="false" />
-          <Property Type="Int32" Name="roleId" Nullable="false" />
-        </EntityType>
-        <Association Name="memberConstraint">
-          <End Type="houseMateModel.my_aspnet_membership" Role="my_aspnet_membership" Multiplicity="1" />
-          <End Type="houseMateModel.tenant" Role="tenant" Multiplicity="*" />
+        <Association Name="item_to_list">
+          <End Type="houseMateModel.list" Role="list" Multiplicity="1" />
+          <End Type="houseMateModel.item" Role="item" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="my_aspnet_membership">
-              <PropertyRef Name="userId" />
+            <Principal Role="list">
+              <PropertyRef Name="PK_listID" />
             </Principal>
-            <Dependent Role="tenant">
-              <PropertyRef Name="FK_aspMemberID" />
+            <Dependent Role="item">
+              <PropertyRef Name="FK_listID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -972,7 +988,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="houseMateModelStoreContainer" CdmEntityContainer="houseMateEntities">
+        <EntityContainerMapping StorageEntityContainer="houseMateModelStoreContainer" CdmEntityContainer="houseMateEntities01">
           <EntitySetMapping Name="chore_allocation">
             <EntityTypeMapping TypeName="houseMateModel.chore_allocation">
               <MappingFragment StoreEntitySet="chore_allocation">
@@ -996,26 +1012,26 @@
           <EntitySetMapping Name="houses">
             <EntityTypeMapping TypeName="houseMateModel.house">
               <MappingFragment StoreEntitySet="house">
-                <ScalarProperty Name="housecol" ColumnName="housecol" />
-                <ScalarProperty Name="FK_listID" ColumnName="FK_listID" />
                 <ScalarProperty Name="PK_houseID" ColumnName="PK_houseID" />
+                <ScalarProperty Name="FK_listID" ColumnName="FK_listID" />
                 <ScalarProperty Name="houseName" ColumnName="houseName" />
                 <ScalarProperty Name="address" ColumnName="address" />
                 <ScalarProperty Name="city" ColumnName="city" />
                 <ScalarProperty Name="postcode" ColumnName="postcode" />
                 <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="housecol" ColumnName="housecol" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="house_bill">
             <EntityTypeMapping TypeName="houseMateModel.house_bill">
               <MappingFragment StoreEntitySet="house_bill">
-                <ScalarProperty Name="paid_" ColumnName="paid?" />
                 <ScalarProperty Name="PK_houseBillID" ColumnName="PK_houseBillID" />
                 <ScalarProperty Name="FK_houseID" ColumnName="FK_houseID" />
                 <ScalarProperty Name="billType" ColumnName="billType" />
                 <ScalarProperty Name="amount" ColumnName="amount" />
                 <ScalarProperty Name="dueDate" ColumnName="dueDate" />
+                <ScalarProperty Name="paid_" ColumnName="paid?" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1034,12 +1050,21 @@
           <EntitySetMapping Name="items">
             <EntityTypeMapping TypeName="houseMateModel.item">
               <MappingFragment StoreEntitySet="item">
-                <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="PK_itemID" ColumnName="PK_itemID" />
                 <ScalarProperty Name="FK_listID" ColumnName="FK_listID" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="category" ColumnName="category" />
                 <ScalarProperty Name="bought_" ColumnName="bought?" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="itemDescriptions">
+            <EntityTypeMapping TypeName="houseMateModel.itemDescription">
+              <MappingFragment StoreEntitySet="itemDescriptions">
+                <ScalarProperty Name="PK_itemDescriptionsID" ColumnName="PK_itemDescriptionsID" />
+                <ScalarProperty Name="FK_itemID" ColumnName="FK_itemID" />
+                <ScalarProperty Name="description" ColumnName="description" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1058,6 +1083,104 @@
                 <ScalarProperty Name="FK_itemID" ColumnName="FK_itemID" />
                 <ScalarProperty Name="FK_tenantID" ColumnName="FK_tenantID" />
                 <ScalarProperty Name="dateBought" ColumnName="dateBought" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="my_aspnet_applications">
+            <EntityTypeMapping TypeName="houseMateModel.my_aspnet_applications">
+              <MappingFragment StoreEntitySet="my_aspnet_applications">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="my_aspnet_membership">
+            <EntityTypeMapping TypeName="houseMateModel.my_aspnet_membership">
+              <MappingFragment StoreEntitySet="my_aspnet_membership">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PasswordKey" ColumnName="PasswordKey" />
+                <ScalarProperty Name="PasswordFormat" ColumnName="PasswordFormat" />
+                <ScalarProperty Name="PasswordQuestion" ColumnName="PasswordQuestion" />
+                <ScalarProperty Name="PasswordAnswer" ColumnName="PasswordAnswer" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+                <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
+                <ScalarProperty Name="LastLockedOutDate" ColumnName="LastLockedOutDate" />
+                <ScalarProperty Name="FailedPasswordAttemptCount" ColumnName="FailedPasswordAttemptCount" />
+                <ScalarProperty Name="FailedPasswordAttemptWindowStart" ColumnName="FailedPasswordAttemptWindowStart" />
+                <ScalarProperty Name="FailedPasswordAnswerAttemptCount" ColumnName="FailedPasswordAnswerAttemptCount" />
+                <ScalarProperty Name="FailedPasswordAnswerAttemptWindowStart" ColumnName="FailedPasswordAnswerAttemptWindowStart" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="my_aspnet_profiles">
+            <EntityTypeMapping TypeName="houseMateModel.my_aspnet_profiles">
+              <MappingFragment StoreEntitySet="my_aspnet_profiles">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="valueindex" ColumnName="valueindex" />
+                <ScalarProperty Name="stringdata" ColumnName="stringdata" />
+                <ScalarProperty Name="binarydata" ColumnName="binarydata" />
+                <ScalarProperty Name="lastUpdatedDate" ColumnName="lastUpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="my_aspnet_roles">
+            <EntityTypeMapping TypeName="houseMateModel.my_aspnet_roles">
+              <MappingFragment StoreEntitySet="my_aspnet_roles">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="applicationId" ColumnName="applicationId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="my_aspnet_sessioncleanup">
+            <EntityTypeMapping TypeName="houseMateModel.my_aspnet_sessioncleanup">
+              <MappingFragment StoreEntitySet="my_aspnet_sessioncleanup">
+                <ScalarProperty Name="LastRun" ColumnName="LastRun" />
+                <ScalarProperty Name="IntervalMinutes" ColumnName="IntervalMinutes" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="my_aspnet_sessions">
+            <EntityTypeMapping TypeName="houseMateModel.my_aspnet_sessions">
+              <MappingFragment StoreEntitySet="my_aspnet_sessions">
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Expires" ColumnName="Expires" />
+                <ScalarProperty Name="LockDate" ColumnName="LockDate" />
+                <ScalarProperty Name="LockId" ColumnName="LockId" />
+                <ScalarProperty Name="Timeout" ColumnName="Timeout" />
+                <ScalarProperty Name="Locked" ColumnName="Locked" />
+                <ScalarProperty Name="SessionItems" ColumnName="SessionItems" />
+                <ScalarProperty Name="Flags" ColumnName="Flags" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="my_aspnet_users">
+            <EntityTypeMapping TypeName="houseMateModel.my_aspnet_users">
+              <MappingFragment StoreEntitySet="my_aspnet_users">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="applicationId" ColumnName="applicationId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="isAnonymous" ColumnName="isAnonymous" />
+                <ScalarProperty Name="lastActivityDate" ColumnName="lastActivityDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="my_aspnet_usersinroles">
+            <EntityTypeMapping TypeName="houseMateModel.my_aspnet_usersinroles">
+              <MappingFragment StoreEntitySet="my_aspnet_usersinroles">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="roleId" ColumnName="roleId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1085,116 +1208,9 @@
           <EntitySetMapping Name="tenants">
             <EntityTypeMapping TypeName="houseMateModel.tenant">
               <MappingFragment StoreEntitySet="tenant">
-                <ScalarProperty Name="FK_aspMemberID" ColumnName="FK_aspMemberID" />
                 <ScalarProperty Name="PK_tenantID" ColumnName="PK_tenantID" />
                 <ScalarProperty Name="FK_houseID" ColumnName="FK_houseID" />
-                </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="itemDescriptions">
-            <EntityTypeMapping TypeName="houseMateModel.itemDescription">
-              <MappingFragment StoreEntitySet="itemDescriptions">
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="FK_itemID" ColumnName="FK_itemID" />
-                <ScalarProperty Name="PK_itemDescriptionsID" ColumnName="PK_itemDescriptionsID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="my_aspnet_applications">
-            <EntityTypeMapping TypeName="houseMateModel.my_aspnet_applications">
-              <MappingFragment StoreEntitySet="my_aspnet_applications">
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="my_aspnet_membership">
-            <EntityTypeMapping TypeName="houseMateModel.my_aspnet_membership">
-              <MappingFragment StoreEntitySet="my_aspnet_membership">
-                <ScalarProperty Name="FailedPasswordAnswerAttemptWindowStart" ColumnName="FailedPasswordAnswerAttemptWindowStart" />
-                <ScalarProperty Name="FailedPasswordAnswerAttemptCount" ColumnName="FailedPasswordAnswerAttemptCount" />
-                <ScalarProperty Name="FailedPasswordAttemptWindowStart" ColumnName="FailedPasswordAttemptWindowStart" />
-                <ScalarProperty Name="FailedPasswordAttemptCount" ColumnName="FailedPasswordAttemptCount" />
-                <ScalarProperty Name="LastLockedOutDate" ColumnName="LastLockedOutDate" />
-                <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
-                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
-                <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
-                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
-                <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
-                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
-                <ScalarProperty Name="PasswordAnswer" ColumnName="PasswordAnswer" />
-                <ScalarProperty Name="PasswordQuestion" ColumnName="PasswordQuestion" />
-                <ScalarProperty Name="PasswordFormat" ColumnName="PasswordFormat" />
-                <ScalarProperty Name="PasswordKey" ColumnName="PasswordKey" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Comment" ColumnName="Comment" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="userId" ColumnName="userId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="my_aspnet_profiles">
-            <EntityTypeMapping TypeName="houseMateModel.my_aspnet_profiles">
-              <MappingFragment StoreEntitySet="my_aspnet_profiles">
-                <ScalarProperty Name="lastUpdatedDate" ColumnName="lastUpdatedDate" />
-                <ScalarProperty Name="binarydata" ColumnName="binarydata" />
-                <ScalarProperty Name="stringdata" ColumnName="stringdata" />
-                <ScalarProperty Name="valueindex" ColumnName="valueindex" />
-                <ScalarProperty Name="userId" ColumnName="userId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="my_aspnet_roles">
-            <EntityTypeMapping TypeName="houseMateModel.my_aspnet_roles">
-              <MappingFragment StoreEntitySet="my_aspnet_roles">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="applicationId" ColumnName="applicationId" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="my_aspnet_sessioncleanup">
-            <EntityTypeMapping TypeName="houseMateModel.my_aspnet_sessioncleanup">
-              <MappingFragment StoreEntitySet="my_aspnet_sessioncleanup">
-                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
-                <ScalarProperty Name="IntervalMinutes" ColumnName="IntervalMinutes" />
-                <ScalarProperty Name="LastRun" ColumnName="LastRun" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="my_aspnet_sessions">
-            <EntityTypeMapping TypeName="houseMateModel.my_aspnet_sessions">
-              <MappingFragment StoreEntitySet="my_aspnet_sessions">
-                <ScalarProperty Name="Flags" ColumnName="Flags" />
-                <ScalarProperty Name="SessionItems" ColumnName="SessionItems" />
-                <ScalarProperty Name="Locked" ColumnName="Locked" />
-                <ScalarProperty Name="Timeout" ColumnName="Timeout" />
-                <ScalarProperty Name="LockId" ColumnName="LockId" />
-                <ScalarProperty Name="LockDate" ColumnName="LockDate" />
-                <ScalarProperty Name="Expires" ColumnName="Expires" />
-                <ScalarProperty Name="Created" ColumnName="Created" />
-                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
-                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="my_aspnet_users">
-            <EntityTypeMapping TypeName="houseMateModel.my_aspnet_users">
-              <MappingFragment StoreEntitySet="my_aspnet_users">
-                <ScalarProperty Name="lastActivityDate" ColumnName="lastActivityDate" />
-                <ScalarProperty Name="isAnonymous" ColumnName="isAnonymous" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="applicationId" ColumnName="applicationId" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="my_aspnet_usersinroles">
-            <EntityTypeMapping TypeName="houseMateModel.my_aspnet_usersinroles">
-              <MappingFragment StoreEntitySet="my_aspnet_usersinroles">
-                <ScalarProperty Name="roleId" ColumnName="roleId" />
-                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="FK_aspMemberID" ColumnName="FK_aspMemberID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
