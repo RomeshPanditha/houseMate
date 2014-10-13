@@ -83,7 +83,6 @@ namespace HouseMateService
             List<string> newArr = new List<string>();
             for (int i = 0; i < arr.Length; i++)
             {
-                bool added = false;
                 bool noDoubles = true;
                 foreach(string s in newArr)
                 {

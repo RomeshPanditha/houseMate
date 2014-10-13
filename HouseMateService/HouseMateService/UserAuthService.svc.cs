@@ -16,18 +16,24 @@ namespace HouseMateService
     {
         UsersDAL DAL = new UsersDAL();
 
-        public string createUser(string username, string password, string email)
+        public UserCreated createUser(string username, string password, string email)
         {
-            System.Web.Security.Membership.CreateUser(username, password, email);
-            return "success";
+            try
+            {
+                System.Web.Security.Membership.CreateUser(username, password, email);
+
+                return new UserCreated(true);
+            }
+            catch
+            {
+                return new UserCreated(false);
+            }
         }
 
         public UserAuth login(string username, string password)
         {
             if (System.Web.Security.Membership.ValidateUser(username, password))
             {
-                //String UID = DAL.getUid(username).ToString();
-                //int uid = System.Web.HttpContext.Current.User.Identity.GetUserId();
                 System.Web.Security.MembershipUser CurrentUser = System.Web.Security.Membership.GetUser(username);
                 int uid = Convert.ToInt32(CurrentUser.ProviderUserKey);
                 HttpContext.Current.Session["loggedIn"] = uid.ToString();
@@ -46,10 +52,9 @@ namespace HouseMateService
             return string.Format("You entered: {0}", value);
         }
 
-        public string logout()
+        public void logout()
         {
-            HttpContext.Current.Session["loggedIn"] = "out";
-            return "logged out";
+            HttpContext.Current.Session["loggedIn"] = -1;
         }
     }
 }
