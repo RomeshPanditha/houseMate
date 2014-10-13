@@ -144,6 +144,7 @@
     <Compile Include="list_records.cs">
       <DependentUpon>houseMate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\House.cs" />
     <Compile Include="Models\Notice.cs" />
     <Compile Include="Models\tenantBill.cs" />
     <Compile Include="BillService.svc.cs">

@@ -110,13 +110,12 @@
             <PropertyRef Name="PK_houseID" />
           </Key>
           <Property Name="PK_houseID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="FK_listID" Type="int" Nullable="false" />
           <Property Name="houseName" Type="varchar" Nullable="false" MaxLength="45" />
+          <Property Name="password" Type="varchar" Nullable="false" MaxLength="45" />
           <Property Name="address" Type="varchar" MaxLength="45" />
           <Property Name="city" Type="varchar" MaxLength="45" />
           <Property Name="postcode" Type="int" />
           <Property Name="state" Type="varchar" MaxLength="20" />
-          <Property Name="housecol" Type="varchar" MaxLength="45" />
         </EntityType>
         <EntityType Name="house_bill">
           <Key>
@@ -593,18 +592,17 @@
             <PropertyRef Name="PK_houseID" />
           </Key>
           <Property Name="PK_houseID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="FK_listID" Type="Int32" Nullable="false" />
           <Property Name="houseName" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
           <Property Name="address" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
           <Property Name="city" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
           <Property Name="postcode" Type="Int32" />
           <Property Name="state" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
-          <Property Name="housecol" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="chores" Relationship="houseMateModel.chore_to_house" FromRole="house" ToRole="chores" />
           <NavigationProperty Name="house_bill" Relationship="houseMateModel.bill_constraint" FromRole="house" ToRole="house_bill" />
           <NavigationProperty Name="lists" Relationship="houseMateModel.houseConstr" FromRole="house" ToRole="list" />
           <NavigationProperty Name="notice_board" Relationship="houseMateModel.noticeboard_constraint" FromRole="house" ToRole="notice_board" />
           <NavigationProperty Name="tenants" Relationship="houseMateModel.tenant_constraint" FromRole="house" ToRole="tenant" />
+          <Property Type="String" Name="password" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="house_bill">
           <Key>
@@ -1012,14 +1010,13 @@
           <EntitySetMapping Name="houses">
             <EntityTypeMapping TypeName="houseMateModel.house">
               <MappingFragment StoreEntitySet="house">
+                <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="PK_houseID" ColumnName="PK_houseID" />
-                <ScalarProperty Name="FK_listID" ColumnName="FK_listID" />
                 <ScalarProperty Name="houseName" ColumnName="houseName" />
                 <ScalarProperty Name="address" ColumnName="address" />
                 <ScalarProperty Name="city" ColumnName="city" />
                 <ScalarProperty Name="postcode" ColumnName="postcode" />
                 <ScalarProperty Name="state" ColumnName="state" />
-                <ScalarProperty Name="housecol" ColumnName="housecol" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -105,13 +105,12 @@
       <PropertyRef Name="PK_houseID" />
     </Key>
     <Property Name="PK_houseID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-    <Property Name="FK_listID" Type="int" Nullable="false" />
     <Property Name="houseName" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="password" Type="varchar" Nullable="false" MaxLength="45" />
     <Property Name="address" Type="varchar" MaxLength="45" />
     <Property Name="city" Type="varchar" MaxLength="45" />
     <Property Name="postcode" Type="int" />
     <Property Name="state" Type="varchar" MaxLength="20" />
-    <Property Name="housecol" Type="varchar" MaxLength="45" />
   </EntityType>
   <EntityType Name="house_bill">
     <Key>

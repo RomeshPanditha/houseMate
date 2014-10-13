@@ -24,13 +24,12 @@ namespace HouseMateService
         }
     
         public int PK_houseID { get; set; }
-        public int FK_listID { get; set; }
         public string houseName { get; set; }
         public string address { get; set; }
         public string city { get; set; }
         public Nullable<int> postcode { get; set; }
         public string state { get; set; }
-        public string housecol { get; set; }
+        public string password { get; set; }
     
         public virtual ICollection<chore> chores { get; set; }
         public virtual ICollection<house_bill> house_bill { get; set; }

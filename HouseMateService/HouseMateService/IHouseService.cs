@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HouseMateService.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -14,7 +15,18 @@ namespace HouseMateService
     {
         [OperationContract]
         [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
-            ResponseFormat = WebMessageFormat.Json, UriTemplate = "joinHouse?housename={housename}&password={password}")]
-        string joinHouse(string housename, string password, int uid);
+            ResponseFormat = WebMessageFormat.Json, UriTemplate = "joinHouse?housename={housename}&password={password}&uid={uid}")]
+        House joinHouse(string housename, string password, int uid);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
+            ResponseFormat = WebMessageFormat.Json, UriTemplate = "getHouse?uid={uid}")]
+        House getHouse(int uid);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
+            ResponseFormat = WebMessageFormat.Json, UriTemplate = "createHouse?housename={housename}&password={password}&userID={uid}")]
+
+        House createHouse(string housename, string password, int uid);
     }
 }

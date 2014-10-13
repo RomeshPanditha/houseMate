@@ -109,18 +109,17 @@
       <PropertyRef Name="PK_houseID" />
     </Key>
     <Property Name="PK_houseID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-    <Property Name="FK_listID" Type="Int32" Nullable="false" />
     <Property Name="houseName" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
     <Property Name="address" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
     <Property Name="city" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
     <Property Name="postcode" Type="Int32" />
     <Property Name="state" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
-    <Property Name="housecol" Type="String" MaxLength="45" Unicode="false" FixedLength="false" />
     <NavigationProperty Name="chores" Relationship="houseMateModel.chore_to_house" FromRole="house" ToRole="chores" />
     <NavigationProperty Name="house_bill" Relationship="houseMateModel.bill_constraint" FromRole="house" ToRole="house_bill" />
     <NavigationProperty Name="lists" Relationship="houseMateModel.houseConstr" FromRole="house" ToRole="list" />
     <NavigationProperty Name="notice_board" Relationship="houseMateModel.noticeboard_constraint" FromRole="house" ToRole="notice_board" />
     <NavigationProperty Name="tenants" Relationship="houseMateModel.tenant_constraint" FromRole="house" ToRole="tenant" />
+    <Property Type="String" Name="password" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="house_bill">
     <Key>
