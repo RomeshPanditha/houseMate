@@ -25,9 +25,9 @@ namespace HouseMateService.DAL
                 {
                     List<item> itemList = new List<item>();
 
-                    var itemVar = from item in context.items
-                                  where item.FK_listID == listID && item.bought_ == 0
-                                  select item;
+                    var itemVar = from i in context.items
+                                  where i.FK_listID == listID && i.bought_ == 0
+                                  select i;
 
                     itemList.AddRange(itemVar);
                     
@@ -85,6 +85,9 @@ namespace HouseMateService.DAL
                                     select item).FirstOrDefault();
                 boughtItem.bought_ = 1;
                 context.SaveChanges();
+
+                //Record purchase here
+
             }
         }
 

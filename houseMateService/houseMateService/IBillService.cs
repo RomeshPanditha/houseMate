@@ -27,5 +27,10 @@ namespace HouseMateService
         [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
             ResponseFormat = WebMessageFormat.Json, UriTemplate = "addBill?houseID={houseID}&billType={billType}&amount={amount}&tenantIDs={tenantIDs}&tenantAmounts={tenantAmounts}")]
         Bill[] addBill(int houseID, string billType, double amount, string tenantIDs, string tenantAmounts);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
+            ResponseFormat = WebMessageFormat.Json, UriTemplate = "payBill?billID={billID}&tenantID={tenantID}")]
+        tenantBill[] payBill(int billID, int tenantID);
     }
 }

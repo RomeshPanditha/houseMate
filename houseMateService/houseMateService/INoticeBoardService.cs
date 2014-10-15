@@ -1,8 +1,10 @@
-﻿using System;
+﻿using HouseMateService.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.ServiceModel.Web;
 using System.Text;
 
 namespace HouseMateService.Services
@@ -12,6 +14,13 @@ namespace HouseMateService.Services
     public interface INoticeBoardService
     {
         [OperationContract]
-        void DoWork();
+        [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
+            ResponseFormat = WebMessageFormat.Json, UriTemplate = "getNotices?houseID={houseID}&type={type}")]
+        Notice[] getNotices(int houseID, string type);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
+            ResponseFormat = WebMessageFormat.Json, UriTemplate = "addNotice?houseID={houseID}&tenantID={tenantID}&title={title}&message={message}&type={type}")]
+        Notice[] addNotice(int houseID, int tenantID, string title, string message, string type);
     }
 }

@@ -270,7 +270,7 @@
           <Key>
             <PropertyRef Name="PK_noticeID" />
           </Key>
-          <Property Name="PK_noticeID" Type="int" Nullable="false" />
+          <Property Name="PK_noticeID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="FK_noticeBoardID" Type="int" Nullable="false" />
           <Property Name="FK_tenantID" Type="int" Nullable="false" />
           <Property Name="title" Type="varchar" Nullable="false" MaxLength="45" />
@@ -282,7 +282,7 @@
           <Key>
             <PropertyRef Name="PK_noticeBoardID" />
           </Key>
-          <Property Name="PK_noticeBoardID" Type="int" Nullable="false" />
+          <Property Name="PK_noticeBoardID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="FK_houseID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="tenant">

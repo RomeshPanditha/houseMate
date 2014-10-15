@@ -17,7 +17,7 @@ namespace HouseMateService
 
         protected void Session_Start(object sender, EventArgs e)
         {
-            
+            Session["loggedIn"] = -1;
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)
@@ -37,7 +37,7 @@ namespace HouseMateService
 
         protected void Session_End(object sender, EventArgs e)
         {
-            
+            Session["loggedIn"] = -1;
         }
 
         protected void Application_End(object sender, EventArgs e)

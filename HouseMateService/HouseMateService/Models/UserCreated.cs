@@ -17,6 +17,6 @@ namespace HouseMateService.Models
         }
 
         [DataMember]
-        public bool createdSucess { get { return created; } set { } }
+        public bool createdSuccess { get { return created; } set { } }
     }
 }

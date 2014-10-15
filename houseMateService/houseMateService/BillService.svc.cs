@@ -50,7 +50,7 @@ namespace HouseMateService
             if (Convert.ToInt32(HttpContext.Current.Session["loggedIn"]) >= 0)
             {
                 DAL.addBill(houseID, billType, amount, tenantIDs.Split('~'), tenantAmounts.Split('~'));
-            return getBills(houseID);
+                return getBills(houseID);
             }
             else
             {
@@ -58,5 +58,19 @@ namespace HouseMateService
             }
         }
 
+
+
+        public tenantBill[] payBill(int billID, int tenantID)
+        {
+            if (Convert.ToInt32(HttpContext.Current.Session["loggedIn"]) >= 0)
+            {
+                DAL.payBill(billID, tenantID);
+                return getIndividuals(billID);
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }

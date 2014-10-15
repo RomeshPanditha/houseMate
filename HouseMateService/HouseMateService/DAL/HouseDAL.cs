@@ -10,7 +10,7 @@ namespace HouseMateService.DAL
     {
         public House joinHouse(string houseName, string password, int userID)
         {
-            using (houseMateEntities01 context = new houseMateEntities01())
+            using (var context = new houseMateEntities01())
             {
                 int houseID = Convert.ToInt32((from house in context.houses
                                               where house.houseName.Equals(houseName) && house.password.Equals(password)
@@ -36,16 +36,19 @@ namespace HouseMateService.DAL
         // if a user is associated with a house, return that house
         public House getHouse(int userID)
         {
-            using (houseMateEntities01 context = new houseMateEntities01())
+            using (var context = new houseMateEntities01())
             {
                 try
                 {
-                    return new House(Convert.ToInt32((from tenant in context.tenants
-                                                     where tenant.FK_aspMemberID == userID
-                                                     select tenant.house.PK_houseID).FirstOrDefault()), // house ID
-                                                  (from tenant in context.tenants
-                                                   where tenant.FK_aspMemberID == userID
-                                                   select tenant.house.houseName).ToString()); // house Name
+                    var hn = (from t in context.tenants
+                             where t.FK_aspMemberID == userID
+                             select t.house.houseName).Single();
+                    string hName = hn;
+
+                    return new House(Convert.ToInt32((from t in context.tenants
+                                                     where t.FK_aspMemberID == userID
+                                                     select t.house.PK_houseID).FirstOrDefault()),  hName); 
+                                                 
                 }
                 catch
                 {
@@ -56,7 +59,7 @@ namespace HouseMateService.DAL
 
         public House createHouse(string housename, string password, int userID)
         {
-            using (houseMateEntities01 context = new houseMateEntities01())
+            using (var context = new houseMateEntities01())
             {
                 if (!houseExists(housename))
                 {
@@ -100,13 +103,12 @@ namespace HouseMateService.DAL
 
         private bool houseExists(string housename)
         {
-            using (houseMateEntities01 context = new houseMateEntities01())
+            using (var context = new houseMateEntities01())
             {
-                house existing = (house)(from house in context.houses
-                                            where house.houseName.Equals(housename)
-                                            select house);
 
-                if (existing != null)
+                bool existing = context.houses.Any(h => h.houseName.Equals(housename));
+
+                if (existing)
                 {
                     return true;
                 }

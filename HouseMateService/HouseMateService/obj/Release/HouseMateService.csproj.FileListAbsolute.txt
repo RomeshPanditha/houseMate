@@ -32,3 +32,4 @@ D:\Documents\GitHub\houseMatePC\houseMate\HouseMateService\HouseMateService\obj\
 D:\Documents\GitHub\houseMatePC\houseMate\HouseMateService\HouseMateService\obj\Release\HouseMateService.dll
 D:\Documents\GitHub\houseMatePC\houseMate\HouseMateService\HouseMateService\obj\Release\HouseMateService.pdb
 D:\Documents\GitHub\houseMatePC\houseMate\HouseMateService\HouseMateService\bin\MySql.Web.dll
+C:\Users\Romesh\Documents\houseMate\houseMateService\HouseMateService\bin\MySql.Web.dll
