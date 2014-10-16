@@ -21,6 +21,7 @@ namespace HouseMateService.Models
              amount_ = amount;
              paid_ = paid;
         }
+        
 
         [DataMember]
         public int billID { get { return billID_; } set { billID_ = value; } }
