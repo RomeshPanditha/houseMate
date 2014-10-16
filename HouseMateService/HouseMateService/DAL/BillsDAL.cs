@@ -22,17 +22,14 @@ namespace HouseMateService.DAL
             {
                 List<house_bill> billL = new List<house_bill>();
                 billL.AddRange(from h in context.house_bill
-                               where h.FK_houseID == houseID
+                               where h.FK_houseID == houseID && h.paid_ == 0
                                select h);
 
                 int tNum = getNumTenants(houseID);
 
                 foreach (house_bill h in billL)
                 {
-                    if (h.paid_ != 0)
-                    {
-                        billList.Add(new Bill(h.PK_houseBillID, h.amount, h.billType, Convert.ToDateTime(h.dueDate), tNum));
-                    }
+                    billList.Add(new Bill(h.PK_houseBillID, h.amount, h.billType, Convert.ToDateTime(h.dueDate), tNum));
                 } 
             }
             return billList;

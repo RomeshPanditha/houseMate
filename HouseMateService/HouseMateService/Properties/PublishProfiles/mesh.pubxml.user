@@ -20,7 +20,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/03/2014 09:26:54</publishTime>
     </File>
     <File Include="bin/HouseMateService.dll">
-      <publishTime>10/15/2014 14:28:39</publishTime>
+      <publishTime>10/15/2014 16:17:53</publishTime>
     </File>
     <File Include="bin/MySql.Data.dll">
       <publishTime>09/03/2014 09:26:54</publishTime>
@@ -83,7 +83,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/08/2014 10:22:49</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>10/15/2014 14:28:40</publishTime>
+      <publishTime>10/15/2014 16:17:53</publishTime>
     </File>
   </ItemGroup>
 </Project>
