@@ -321,22 +321,54 @@
 				    <div class="list-container">
 				    	<ul data-role="listview" data-inset="true">
 	                		<ul class="billsList" data-role="listview" data-theme="f" data-inset="true">
-							    <li data-icon="false"> 
-							        <a href="#">
-							             <h3>ELECTRICITY</h3>
-							             <p>DATE:</p>
-							        </a>
-
-							        <div class="right-radio">
-							            <input type="checkbox" id="checkbox-1a" checked="false" />
-							        </div>
-							    </li>
+							    
 							</ul>
 				    	</ul>
 				    </div>
 				</div>
-			</div>	
+			</div>
+            <a href="#undoPurchase" id="undoBillButton" data-rel="popup" role="button" class="ui-shadow ui-btn ui-icon-back ui-btn-icon-notext ui-corner-all" data-transition="slidedown">Undo</a>
+            <a href="#addBill" id="addBillButton" data-rel="popup" role="button" class="ui-shadow ui-btn ui-icon-plus ui-btn-icon-notext ui-corner-all" data-transition="slidedown">Add</a>	
 		</div>
+
+        <!-- ************ ADD BILL POPUP ************* -->
+
+        <div data-role="popup" id="addBill" class="ui-dialog-contain ui-overlay-shadow ui-corner-all" style="min-width: 300px; max-width: 375px;" data-position-to="window" >
+            <div data-role="header" data-theme="d">
+                <h1>Add Item</h1>
+                <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+            </div>
+            <div role="main" class="ui-content">
+                <form action="" method="">
+                    <label for="add-bill-type">Bill Type:</label>
+                    <select name="billTypes">
+                        <option value="electricity">ELECTRICITY</option>
+                        <option value="gas">GAS</option>
+                        <option value="internet">INTERNET</option>
+                        <option value="rent">RENT</option>
+                        <option value="other..">OTHER..</option>
+                    </select>
+                    <label for="add-bill-due-date">Due Date:</label>
+                    <input type="date" id="datepicker">
+                    <!--
+                    <label for="add-item-name">Enter Item Name:</label>
+                    <input type="text" id="add-item-name" placeholder="Milk" required>
+                    <label for="add-item-desc">Description (Optional):</label>
+                    <input type="text" id="add-item-desc" placeholder="Full Cream (Dairy Farmers)">
+
+                    <fieldset data-role="controlgroup" data-type="horizontal" id="addBillCategory">
+                        <input type="radio" name="radio-choice-category" id="radio-choice-food" checked="checked">
+                        <label for="radio-choice-food">Food</label>
+                        <input type="radio" name="radio-choice-category" id="radio-choice-util">
+                        <label for="radio-choice-util">Cleaning</label>
+                        <input type="radio" name="radio-choice-category" id="radio-choice-other">
+                        <label for="radio-choice-other">Other</label>
+                    </fieldset>
+                        <a href="#" id="addBillToList" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-rel="back" data-transition="slide" data-direction="reverse">Add</a>
+                    -->
+                </form>
+            </div>
+        </div>
 	</div>
 
 	<!-- ************ SHOPPING LIST PAGE *************-->

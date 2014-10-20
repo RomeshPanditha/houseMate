@@ -25,9 +25,9 @@ namespace HouseMateService
             return DAL.getHouse(uid);
         }
 
-        public House createHouse(string housename, string password, int uid)
+        public House createHouse(string housename, string password, int uid, string addr, string city, string state, int pCode)
         {
-            return DAL.createHouse(housename, password, uid);
+            return DAL.createHouse(housename, password, uid, addr, city, state, pCode);
         }
     }
 }

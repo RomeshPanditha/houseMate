@@ -29,7 +29,18 @@ namespace HouseMateService.DAL
 
                 foreach (house_bill h in billL)
                 {
-                    billList.Add(new Bill(h.PK_houseBillID, h.amount, h.billType, Convert.ToDateTime(h.dueDate), tNum));
+                    tenantBill[] tenList = getInividuals(h.PK_houseBillID).ToArray();
+                    string[] names = new string[tNum];
+                    string[] amounts = new string[tNum];
+                    string[] paid = new string[tNum];
+                    for (int i = 0; i < tNum; i++ )
+                    {
+                        names[i] = tenList[i].tenantName;
+                        amounts[i] = tenList[i].amount.ToString();
+                        paid[i] = tenList[i].paid;
+                    }
+
+                    billList.Add(new Bill(h.PK_houseBillID, h.amount, h.billType, Convert.ToDateTime(h.dueDate), names, amounts, paid, tNum));
                 } 
             }
             return billList;

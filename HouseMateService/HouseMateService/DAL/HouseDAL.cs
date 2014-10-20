@@ -57,7 +57,7 @@ namespace HouseMateService.DAL
             }
         }
 
-        public House createHouse(string housename, string password, int userID)
+        public House createHouse(string housename, string password, int userID, string _addr, string _city, string _state, int pCode)
         {
             using (var context = new houseMateEntities01())
             {
@@ -68,10 +68,10 @@ namespace HouseMateService.DAL
                     {
                         houseName = housename,
                         password = password,
-                        address = "123 fake St",
-                        city = "Springfield",
-                        postcode = 1111,
-                        state = "NSW"
+                        address = _addr,
+                        city = _city,
+                        postcode = pCode,
+                        state = _state
                     };
                     context.houses.Add(newHouse);
                     context.SaveChanges();

@@ -22,11 +22,11 @@ namespace HouseMateService
             {
                 System.Web.Security.Membership.CreateUser(username, password, email);
 
-                return new UserCreated(true);
+                return new UserCreated(true , getUID(username));
             }
             catch
             {
-                return new UserCreated(false);
+                return new UserCreated(false, -1);
             }
         }
 
@@ -34,8 +34,7 @@ namespace HouseMateService
         {
             if (System.Web.Security.Membership.ValidateUser(username, password))
             {
-                System.Web.Security.MembershipUser CurrentUser = System.Web.Security.Membership.GetUser(username);
-                int uid = Convert.ToInt32(CurrentUser.ProviderUserKey);
+                int uid = getUID(username);
                 HttpContext.Current.Session["loggedIn"] = uid.ToString();
                 return new UserAuth(true, uid);
             }
@@ -44,6 +43,12 @@ namespace HouseMateService
                 HttpContext.Current.Session["loggedIn"] = -1;
                 return new UserAuth(false, -1);
             }
+        }
+
+        private int getUID(string username)
+        {
+            System.Web.Security.MembershipUser CurrentUser = System.Web.Security.Membership.GetUser(username);
+            return Convert.ToInt32(CurrentUser.ProviderUserKey);
         }
 
 

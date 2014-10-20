@@ -14,14 +14,22 @@ namespace HouseMateService.Models
         private double totalAmount_;
         private string category_;
         private DateTime dueDate_;
+        private string[] tenantNames;
+        private string[] tenantAmounts;
+        private string[] tenPaid;
+        private int numT;
         
 
-        public Bill(int billID, double totalAmount, string category, DateTime dueDate, int numTenants)
+        public Bill(int billID, double totalAmount, string category, DateTime dueDate, string[] names, string[] amounts, string[] tPaid, int numTenants)
         {
             billID_ = billID;
             totalAmount_ = totalAmount;
             category_ = category;
             dueDate_ = dueDate;
+            tenantNames = names;
+            tenantAmounts = amounts;
+            tenPaid = tPaid;
+            numT = numTenants;
         }
         
 
@@ -33,7 +41,15 @@ namespace HouseMateService.Models
         [DataMember]
         public string category { get { return category_; } set { category_ = value; } }
         [DataMember]
-        public DateTime dueDate { get { return dueDate_; } set { dueDate_ = value; } } 
+        public DateTime dueDate { get { return dueDate_; } set { dueDate_ = value; } }
+        [DataMember]
+        public string[] tNames { get { return tenantNames; } set { } }
+        [DataMember]
+        public string[] tAmounts { get { return tenantAmounts; } set { } }
+        [DataMember]
+        public string[] tPaid { get { return tenPaid; } set { } }
+        [DataMember]
+        public int tNum { get { return numT; } set {} }
     }
     
 }
