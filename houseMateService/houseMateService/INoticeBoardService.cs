@@ -15,8 +15,8 @@ namespace HouseMateService.Services
     {
         [OperationContract]
         [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
-            ResponseFormat = WebMessageFormat.Json, UriTemplate = "getNotices?houseID={houseID}&type={type}")]
-        Notice[] getNotices(int houseID, string type);
+            ResponseFormat = WebMessageFormat.Json, UriTemplate = "getNotices?houseID={houseID}")]
+        Notice[] getNotices(int houseID);
 
         [OperationContract]
         [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,

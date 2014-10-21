@@ -9,20 +9,21 @@ namespace HouseMateService.DAL
     public class NoticeDAL
     {
 
-        public List<Notice> GetNotices(int houseID, string type_)
+        public List<Notice> GetNotices(int houseID)
         {
             List<Notice> noticeList = new List<Notice>();
             using (var context = new houseMateEntities01())
             {
                 List<notice> nList = new List<notice>();
                 nList.AddRange(from n in context.notices
-                                where n.notice_board.FK_houseID == houseID && n.type.Equals(type_)
+                                where n.notice_board.FK_houseID == houseID
                                 select n);
+                nList.Reverse();
                 foreach (notice n in nList)
                 {
                     string name = System.Web.Security.Membership.GetUserNameByEmail(n.tenant.my_aspnet_membership.Email);
 
-                    noticeList.Add(new Notice(n.PK_noticeID, n.title, n.message, n.datePosted, name));
+                    noticeList.Add(new Notice(n.PK_noticeID, n.title, n.message, n.datePosted, name, n.type));
                 }
             }
 

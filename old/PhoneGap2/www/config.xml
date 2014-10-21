@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+	<widget id="com.housemate-app.houseMate" version="0.5.0">
+        <name>HouseMate</name>
+        <description>
+            Provides a simple way to manage day-to-day sharehouse life.
+        </description>
+        <author email="kane@kanemarzol.com" href="housemate-app.com">
+            HouseMate Team
+        </author>
+        <content src="index.html" />
+        <access origin="*" />
+    	<preference name="permissions" value="none" />
+    	<preference name="phonegap-version" value="3.5.0" />
+    	<preference name="orientation" value="default" />
+    	<preference name="target-device" value="universal" />
+    	<preference name="fullscreen" value="true" />
+	<preference name="DisallowOverscroll" value="true" />
+	<preference name="exit-on-suspend" value="false" />
+	<icon src="res/android/mdpi.png"/>
+	
+    </widget>

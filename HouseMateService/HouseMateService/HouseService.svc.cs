@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Web;
 
 namespace HouseMateService
 {
@@ -17,17 +18,51 @@ namespace HouseMateService
 
         public House joinHouse(string housename, string password, int uid)
         {
-            return DAL.joinHouse(housename, password, uid);
+            if (Convert.ToInt32(HttpContext.Current.Session["loggedIn"]) >= 0)
+            {
+                return DAL.joinHouse(housename, password, uid);
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public House getHouse(int uid)
         {
-            return DAL.getHouse(uid);
+            if (Convert.ToInt32(HttpContext.Current.Session["loggedIn"]) >= 0)
+            {
+                return DAL.getHouse(uid);
+            }
+            else
+            {
+                return null;
+            }
         }
 
-        public House createHouse(string housename, string password, int uid, string addr, string city, string state, int pCode)
+        public House createHouse(string housename, string password, int uid, string addr, string city, string state)
         {
-            return DAL.createHouse(housename, password, uid, addr, city, state, pCode);
+            if (Convert.ToInt32(HttpContext.Current.Session["loggedIn"]) >= 0)
+            {
+                return DAL.createHouse(housename, password, uid, addr, city, state);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+
+        public int getTID(int uid)
+        {
+            if (Convert.ToInt32(HttpContext.Current.Session["loggedIn"]) >= 0)
+            {
+                return DAL.getTID(uid);
+            }
+            else
+            {
+                return -1;
+            }
         }
     }
 }

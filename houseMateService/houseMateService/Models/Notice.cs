@@ -14,16 +14,18 @@ namespace HouseMateService.Models
         private string noticeDesc_;
         private DateTime date_;
         private string tenantName_;
+        private string type_;
         //private bool approve_;
 
 
-        public Notice(int noticeID, string noticeTitle, string noticeDesc, DateTime date, string tenantName)
+        public Notice(int noticeID, string noticeTitle, string noticeDesc, DateTime date, string tenantName, string type)
         {
             noticeID_ = noticeID;
             noticeTitle_ = noticeTitle;
             noticeDesc_ = noticeDesc;
             date_ = date;
             tenantName_ = tenantName;
+            type_ = type;
             //approve_ = approve;
         }
 
@@ -37,6 +39,8 @@ namespace HouseMateService.Models
         public DateTime date { get { return date_; } set { date_ = value; } }
         [DataMember]
         public string tenantName { get { return tenantName_; } set { tenantName_ = value; } }
+        [DataMember]
+        public string type { get { return type_; } set { type_ = value; } }
         /*  [DataMember]
             public bool approve { get { return approve_; } set { approve_ = value; } } */
     }

@@ -25,8 +25,12 @@ namespace HouseMateService
 
         [OperationContract]
         [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
-            ResponseFormat = WebMessageFormat.Json, UriTemplate = "createHouse?housename={housename}&password={password}&uid={uid}&addr={addr}&city={city}&state={state}&pCode={pCode}")]
+            ResponseFormat = WebMessageFormat.Json, UriTemplate = "getTID?uid={uid}")]
+        int getTID(int uid);
 
-        House createHouse(string housename, string password, int uid, string addr, string city, string state, int pCode);
+        [OperationContract]
+        [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
+            ResponseFormat = WebMessageFormat.Json, UriTemplate = "createHouse?housename={housename}&password={password}&uid={uid}&addr={addr}&city={city}&state={state}")]
+        House createHouse(string housename, string password, int uid, string addr, string city, string state);
     }
 }

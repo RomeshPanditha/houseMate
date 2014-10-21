@@ -1,11 +1,23 @@
 
 
-localStorage.setItem("userID", "1");
-var userID = localStorage.getItem("userID");
-$('#signupheader').html(userID);
-console.log(userID);
+// if a userID has been stored in localStorage, attempt to auto-login
+if(localStorage.getItem("userID") > 0) {
+    $.ajax({
+        url: 'http://www.housemate-app.com/Service/UserAuthService.svc/login?username=' + localStorage.getItem("userName") + '&password=' + localStorage.getItem("userPassword"),
+        jsonpCallback: 'jsonCallback',
+        contentType: 'application/json',
+        dataType: 'jsonp',
+        success: function (json) {
+            if(json.UID > 0) {
+                window.location.href = '#housemenu';
+            }
 
-// var userID = 0;
+        }
+    });
+}
+
+
+
 
 // ------------------ LOGIN FUNCTIONS ---------------------
 
@@ -30,7 +42,12 @@ $( document ).on( "pagecreate", "#login", function() {
                     $('.callout-footer').show().css('background', '#d6372d');
                 }
                 if (json.UID > 0) {
-                    window.location.href = '#home';
+                    //sets user details to localStorage on login
+                    localStorage.setItem("userID", json.UID);
+                    localStorage.setItem("userName", loginUsername);
+                    localStorage.setItem("userPassword", loginPassword);
+                    getTennantID();
+                    window.location.href = '#housemenu';
                 }
             }
         });
@@ -60,13 +77,90 @@ $( document ).on( "pagecreate", "#signup", function() {
             dataType: 'jsonp',
             success: function (json) {
                 console.log(json);
-                if(json.createdSuccess == true ) {
-                   window.location.href = 'index.html#housemenu';
-                   $('.callout-footer').hide();
-                } 
-                else if (json.createdSuccess == false) {
-                    $('.calloutMessage').html("<h5>Please ensure all fields are entered correctly.</h5>")
+                if(json.createdSuccess === true ) {
+                    //sets user details to localStorage on signup
+                    localStorage.setItem("userID", json.UID);
+                    localStorage.setItem("userName", signupUsername);
+                    localStorage.setItem("userPassword", signupPassword);
+                    var userID = localStorage.getItem("userID");
+                    console.log(userID);
+
+                    window.location.href = 'index.html#housemenu';
+                    $('.callout-footer').hide();
+                }
+                else if (json.createdSuccess === false) {
+                    $('.calloutMessage').html("<h5>Please ensure all fields are entered correctly.</h5>");
                     $('.callout-footer').show().css('background', '#d6372d');
+                }
+            }
+        });
+    }
+});
+
+
+
+
+// ------------------ HOUSE MENU FUNCTIONS ---------------------
+
+$( document ).on( "pagecreate", "#housemenu", function() {
+
+    checkHouse();
+
+    //checks whether the user currently has a house
+    function checkHouse() {
+
+        $.ajax({
+            url: 'http://www.housemate-app.com/Service/HouseService.svc/getHouse?uid=' + localStorage.getItem("userID"),
+            jsonpCallback: 'jsonCallback',
+            contentType: 'application/json',
+            dataType: 'jsonp',
+            success: function (json) {
+                if (json.HID < 0) {
+                    //console.log("No HouseID");
+                }
+                if (json.HID > 0) {
+                    //console.log("House ID Check worked");
+                    localStorage.setItem("houseID", json.HID);
+                    window.location.href = '#home';
+                }
+            }
+        });
+    }
+});
+
+
+
+// ------------------ CREATE HOUSE FUNCTIONS ---------------------
+
+$( document ).on( "pagecreate", "#createhouse", function() {
+
+    $('#createSubmit').click(function() {
+        createHouse();
+    });
+
+    function createHouse() {
+        var createHouseName = $('#create-name').val();
+        var createHousePass = $('#create-password').val();
+        var createHouseAddress = $('#create-address').val();
+        var createHouseCity = $('#create-city').val();
+        var createHouseState = $('#create-state').val();
+
+
+        $.ajax({
+            url: 'http://www.housemate-app.com/Service/HouseService.svc/createHouse?housename=' + createHouseName + '&password=' + createHousePass + '&uid=' + localStorage.getItem("userID") + '&addr=' +  createHouseAddress + '&city=' + createHouseCity + '&state=' + createHouseState,
+            jsonpCallback: 'jsonCallback',
+            contentType: 'application/json',
+            dataType: 'jsonp',
+            success: function (json) {
+                console.log("success");
+                console.log(json);
+                if (json.HID < 0) {
+                    $('.calloutMessage').html("<h5>Please check that you entered your details correctly.</h5>");
+                    $('.callout-footer').show().css('background', '#d6372d');
+                }
+                if (json.HID > 0) {
+                    localStorage.setItem("houseID", json.HID);
+                    window.location.href = '#home';
                 }
             }
         });
@@ -88,16 +182,18 @@ $( document ).on( "pagecreate", "#joinhouse", function() {
         var joinPassword = $('#join-password').val();
 
         $.ajax({
-            url: 'http://www.housemate-app.com/Service/HouseService.svc/joinHouse?housename=' + joinUsername + '&password=' + joinPassword + '&uid=' + UID,
+            url: 'http://www.housemate-app.com/Service/HouseService.svc/joinHouse?housename=' + joinUsername + '&password=' + joinPassword + '&uid=' + localStorage.getItem("userID"),
             jsonpCallback: 'jsonCallback',
             contentType: 'application/json',
             dataType: 'jsonp',
             success: function (json) {
+                console.log(json);
                 if (json < 0) {
                     $('.calloutMessage').html("<h5>Please check that you entered your details correctly.</h5>");
                     $('.callout-footer').show().css('background', '#d6372d');
                 }
                 if (json > 0) {
+                    localStorage.setItem("houseID", json.HID);
                     window.location.href = '#home';
                 }
             }
@@ -112,10 +208,32 @@ $( document ).on( "pagecreate", "#joinhouse", function() {
 
 $( document ).on( "pagecreate", "#home", function() {
 
+    getTennantID();
+
     $('#logoutButton').click(function() {
         $('.calloutMessage').html("<h5>You have been logged out.</h5>");
         $('.callout-footer').show().css('background', '#384047');
+        localStorage.setItem("userID", -1);
+        localStorage.setItem("userName", null);
+        localStorage.setItem("userPassword", null);
+
     });
+
+    function getTennantID() {
+
+        $.ajax({
+            url: 'http://www.housemate-app.com/Service/HouseService.svc/getTID?uid=' + localStorage.getItem("userID"),
+            jsonpCallback: 'jsonCallback',
+            contentType: 'application/json',
+            dataType: 'jsonp',
+            success: function (json) {
+                console.log(json);
+                if (json> 0) {
+                    localStorage.setItem("tennantID", json);
+                }
+            }
+        });
+    }
 });
 
 
@@ -130,7 +248,7 @@ $( document ).on( "pagecreate", "#shopping", function() {
     // Populates Shopping List with Items
     function getItems() {
         $.ajax({
-            url: 'http://www.housemate-app.com/service/ShoppingService.svc/getList?houseID=1',
+            url: 'http://www.housemate-app.com/service/ShoppingService.svc/getList?houseID=' + localStorage.getItem("houseID"),
             jsonpCallback: 'jsonCallback',
             contentType: 'application/json',
             dataType: 'jsonp',
@@ -139,7 +257,7 @@ $( document ).on( "pagecreate", "#shopping", function() {
                 var foodItem = '';
                 var utilItem = '';
                 var otherItem = '';
-
+                console.log(json);
                 $.each(json, function (index, value) {
 
                     if (value.category == "food") {
@@ -151,7 +269,7 @@ $( document ).on( "pagecreate", "#shopping", function() {
                         $('.cleaningList').append(utilItem).listview("refresh");
                     }
                     else if (value.category == "other") {
-                        otherItem = '<li data-icon="false" class="other"><a href="#"><h3>' + value.name + '</h3><p>' + value.desc + '</p></a><div class="right-radio"><label for="checkbox-other' + value.itemID + '"></label><input type="checkbox" id="checkbox-other' + value.itemID + '" /></div></li>';
+                        otherItem = '<li data-icon="false" class="other"><a href="#"><h3>' + value.name + '</h3><p>' + value.desc + '</p></a><div class="right-radio"></div><label for="checkbox-other' + value.itemID + '"></label><input type="checkbox" id="checkbox-other' + value.itemID + '" /></div></li>';
                         $('.otherList').append(otherItem).listview("refresh");
                     }
                 });
@@ -166,6 +284,7 @@ $( document ).on( "pagecreate", "#shopping", function() {
         addItem();
 
     });
+
 
     // Adds an Item to the Shopping List'
     function addItem() {
@@ -190,7 +309,7 @@ $( document ).on( "pagecreate", "#shopping", function() {
         }
 
         $.ajax({
-            url: 'http://www.housemate-app.com/service/ShoppingService.svc/addItem?houseID=1&name=' + itemName + '&desc=' + itemDesc + '&category=' + itemCategory + '',
+            url: 'http://www.housemate-app.com/service/ShoppingService.svc/addItem?houseID=' + localStorage.getItem("houseID") + '&name=' + itemName + '&desc=' + itemDesc + '&category=' + itemCategory + '',
             jsonpCallback: 'jsonCallback',
             contentType: 'application/json',
             dataType: 'jsonp',
@@ -201,9 +320,6 @@ $( document ).on( "pagecreate", "#shopping", function() {
             }
         });
     }
-
-
-
 });
 
 
@@ -217,10 +333,9 @@ $( document ).on( "pagecreate", "#bills", function() {
     getBills();
 
 
-    function getBills()
-    {
+    function getBills() {
         $.ajax({
-            url: 'http://www.housemate-app.com/service/BillService.svc/getBills?houseID=1',
+            url: 'http://www.housemate-app.com/service/BillService.svc/getBills?houseID=' + localStorage.getItem("houseID"),
             jsonpCallback: 'jsonCallback',
             contentType: 'application/json',
             dataType: 'jsonp',})
@@ -231,7 +346,7 @@ $( document ).on( "pagecreate", "#bills", function() {
                     var tenants = '<div id="tenants" style="">';
                     for(i=0;i<value.tNum;i++)
                     {
-                        tenants += '<li>'+ value.tNames[i] + ' - $' + value.tAmounts[i] +'</li>'
+                        tenants += '<li>'+ value.tNames[i] + ' - $' + value.tAmounts[i] +'</li>';
                     }
                     tenants += "</div>";
 
@@ -243,20 +358,119 @@ $( document ).on( "pagecreate", "#bills", function() {
                     output += '<li data-icon="false" class=" ' + value.category + '"><a href="#"><h3>' + value.category + ' - $' + value.totalAmount + '</h3><p> DUE: ' + shortDate + ' <br /><ul class="' + ulID + '" data-role="listview" data-theme="f" data-inset="true">' + tenants + '</ul><br /></p></a></li>';
                     //getIndv(value.billID, ulID);
 
-                });  
-                 
+                });
+
                 $('.billsList').append(output).listview("refresh");
 
-               // $.each(json, function (index, value) {
-             //       var ulID = 'invList' + value.billID;
-              //      getIndv(value.billID, ulID);
-              //  }); 
+                // $.each(json, function (index, value) {
+                //       var ulID = 'invList' + value.billID;
+                //      getIndv(value.billID, ulID);
+                //  });
             });
-    }
-
-    function formatDate(value)
-    {
-       return value.getDate() + "/" + (value.getMonth() + 1) + "/" + (value.getYear() - 100);
     }
 });
 
+
+$( document ).on( "pagecreate", "#notices", function() {
+
+    getNotices();
+
+    $("#noticeForm").hide();
+    $("#iouForm").hide();
+
+    $(".notices-nav").click(function(){$("#noticeForm").hide();$("#iouForm").hide();});
+
+    $("#addNoticeBtn").click(function(){
+        if($( '#noticeForm' ).is(":visible")){
+            $( '#noticeForm' ).slideUp();
+            addNotice();
+        } else{
+            $( '#noticeForm' ).slideDown();
+        }
+    });
+
+
+    $("#addIouBtn").click(function(){
+        if($( '#iouForm' ).is(":visible")){
+            $( '#iouForm' ).slideUp();
+            addIOU();
+        } else{
+            $( '#iouForm' ).slideDown();
+        }
+    });
+
+    function getNotices()
+    {
+        $.ajax({
+            url: 'http://www.housemate-app.com/service/NoticeBoardService.svc/getNotices?houseID=' + localStorage.getItem("houseID"),
+            jsonpCallback: 'jsonCallback',
+            contentType: 'application/json',
+            dataType: 'jsonp',
+            success: function (json) {
+
+                var notice = '';
+                var iou = '';
+                console.log(json);
+                $.each(json, function (index, value) {
+
+                    var d = new Date(parseInt(value.date.substr(6)));
+                    var shortDate = formatDate(d);
+
+                    if (value.type == "notice") {
+                        notice = '<div class="notice"><h3>' + value.noticeTitle + ' - ' + shortDate + '</h3><p>' + value.noticeDesc + '</p><div class="tenantName">- ' + value.tenantName + '</div></div>';
+                        $('.notice-container').append(notice);
+                    }
+                    else if (value.type == "iou") {
+                        iou = '<div class="iou"><h3>I.O.U - ' + value.noticeTitle + '</h3><p>' + value.noticeDesc + '</p><div class="tenantName">- ' + value.tenantName + ' ' + shortDate + '</div></div>';
+                        $('.iou-container').append(iou);
+                    }
+                });
+            }
+        });
+    }
+
+    function addNotice() {
+        var houseID = localStorage.getItem("houseID");
+        var tenantID = localStorage.getItem("tennantID");
+        var title = $('#add-notice-title').val();
+        var message = $('#add-notice-message').val();
+        var type = "notice";
+
+        $.ajax({
+            url: 'http://www.housemate-app.com/service/NoticeBoardService.svc/addNotice?houseID=' + houseID + '&tenantID=' + tenantID + '&title=' + title + '&message=' + message + '&type=' + type + '',
+            jsonpCallback: 'jsonCallback',
+            contentType: 'application/json',
+            dataType: 'jsonp',
+            success: function (json) {
+                $('.foodList').listview("refresh");
+            }
+        });
+    }
+
+    function addIOU()
+    {
+        var houseID = localStorage.getItem("houseID");
+        var tenantID = localStorage.getItem("houseID");
+        var title = $('#add-iou-title').val();
+        var message = $('#add-iou-message').val();
+        var type = "iou";
+
+        $.ajax({
+            url: 'http://www.housemate-app.com/service/NoticeBoardService.svc/addNotice?houseID=' + houseID + '&tenantID=' + tenantID + '&title=' + title + '&message=' + message + '&type=' + type + '',
+            jsonpCallback: 'jsonCallback',
+            contentType: 'application/json',
+            dataType: 'jsonp',
+            success: function (json) {
+                $('#iouForm').listview("refresh");
+            }
+        });
+    }
+
+});
+
+
+// ------------------ GENERAL FUNCTIONS ---------------------
+
+function formatDate(value) {
+    return value.getDate() + "/" + (value.getMonth() + 1) + "/" + (value.getYear() - 100);
+}

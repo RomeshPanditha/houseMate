@@ -8,14 +8,20 @@ namespace HouseMateService.DAL
 {
     public class HouseDAL
     {
+        public int getTID(int uid)
+        {
+            using (var context = new houseMateEntities01())
+            {
+                return Convert.ToInt32(context.tenants
+                    .Where(t=> t.FK_aspMemberID == uid)
+                    .Select(t=> t.PK_tenantID).FirstOrDefault());
+            }
+        }
+
         public House joinHouse(string houseName, string password, int userID)
         {
             using (var context = new houseMateEntities01())
             {
-                int houseID = Convert.ToInt32((from house in context.houses
-                                              where house.houseName.Equals(houseName) && house.password.Equals(password)
-                                              select house.PK_houseID).FirstOrDefault());
-
                 int hID = Convert.ToInt32(context.houses
                     .Where(h => h.houseName.Equals(houseName) && h.password.Equals(password))
                     .Select(h => h.PK_houseID).FirstOrDefault());
@@ -57,7 +63,7 @@ namespace HouseMateService.DAL
             }
         }
 
-        public House createHouse(string housename, string password, int userID, string _addr, string _city, string _state, int pCode)
+        public House createHouse(string housename, string password, int userID, string _addr, string _city, string _state)
         {
             using (var context = new houseMateEntities01())
             {
@@ -70,7 +76,6 @@ namespace HouseMateService.DAL
                         password = password,
                         address = _addr,
                         city = _city,
-                        postcode = pCode,
                         state = _state
                     };
                     context.houses.Add(newHouse);

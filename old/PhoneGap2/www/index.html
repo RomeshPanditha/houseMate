@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HouseMate</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.2.css" />
+    <link rel="stylesheet" href="css/themes/housemate.min.css" />
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/jquery.mobile-1.4.2.js"></script>
+	<script src="js/functions.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body>
+
+    <!-- ************ SIGNUP *************-->
+
+    <div data-role="page" data-theme="a" id="signup">
+
+        <header data-role="header">
+            <h1><div class="header-placeholder"></div><strong>HouseMate</strong></h1>
+        </header>
+
+        <div data-role="ui-content" class="page-container">
+            <div class="section-container">
+                <div class="form-container" style="margin: 30px auto 30px auto;">
+                    <h2 id="signup">Signup</h2>
+                        <div class="form-item">
+                            <label for="signup-username">Username:</label>
+                            <input type="text" id="signup-username" placeholder="Buzz Lightyear" required>
+                        </div>
+                        <div class="form-item">
+                            <label for="signup-email">Email:</label>
+                            <input type="email" id="signup-email" placeholder="buzz@starcommand.com" required>
+                        </div>
+                        <div class="form-item">
+                            <label for="signup-password">Password:</label>
+                            <input type="password" id="signup-password" placeholder="**********" required>
+                        </div>
+                        <div class="form-item">
+                            <label for="signup-password2">Confirm Password:</label>
+                            <input type="password" id="signup-password2" placeholder="**********" required>
+                        </div>
+                        <div class="form-item" style="text-align: center">
+                            <input type="submit" value="Signup" id="signupSubmit" class="ui-btn ui-corner-all ui-shadow ui-btn-inline"/>
+                        </div>
+                    <h5><a href="#login">Already have an account?</a></h5>
+                </div>
+            </div>
+        </div>
+        <div data-role="footer" data-position="fixed" class="callout-footer">
+            <div class="calloutMessage"></div>
+        </div>
+    </div>
+
+
+
+
+	<!-- ************ LOGIN *************-->
+	
+	<div data-role="page" data-theme="a" id="login">
+		
+		<header data-role="header">
+			 <h1><div class="header-placeholder"></div><strong>HouseMate</strong></h1>
+		</header>
+
+		<div data-role="ui-content" class="page-container">
+			<div class="section-container">
+				<div class="form-container">
+                    <h2>Login</h2>
+                        <div class="form-item">
+                    	    <label for="login-username">Username</label>
+                    	    <input type="text" id="login-username" placeholder="Buzz Lightyear" required>
+                        </div>
+                        <div class="form-item">
+                            <label for="login-password">Password:</label>
+                    	    <input type="text" id="login-password" placeholder="**********" required>
+                        </div>
+                        <div class="form-item center">
+                            <input type="submit" value="Login" id="loginSubmit" class="ui-btn ui-corner-all ui-shadow ui-btn-inline"/>
+                        </div>
+                    <h5><a href="#">Forgot your password?</a></h5>
+				</div>
+			</div>	
+		</div>
+        <div data-role="footer" data-position="fixed" class="callout-footer">
+            <div class="calloutMessage">
+            </div>
+        </div>
+	</div>
+
+
+
+
+    <!-- ************ HOUSE MENU *************-->
+
+    <div data-role="page" data-theme="a" id="housemenu">
+
+        <header data-role="header">
+            <h1><div class="header-placeholder"></div><strong>HouseMate</strong></h1>
+        </header>
+
+        <div data-role="ui-content" class="page-container">
+            <div class="section-container">
+                <div class="menu-container">
+                    <h2>Welcome!</h2>
+                    <div class="form-item center ui-callout-btn">
+                        <h4>Already Setup? Join your friends now.</h4>
+                        <a href="#joinhouse" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" style="width:100px;">Join House</a>
+                    </div>
+                    <div class="form-item center ui-callout-btn">
+                        <h4>Friends haven't joined HouseMate yet?</h4>
+                        <a href="#createhouse" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" style="width:100px;">Create House</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div data-role="footer" data-position="fixed" class="callout-footer">
+            <div class="calloutMessage">
+                <h5></h5>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- ************ JOIN HOUSE *************-->
+
+    <div data-role="page" data-theme="a" id="joinhouse">
+
+        <header data-role="header">
+            <a href="#housemenu" class="ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-notext ui-btn-left"></a>
+            <h1><div class="header-placeholder"></div><strong>HouseMate</strong></h1>
+        </header>
+
+        <div data-role="ui-content" class="page-container">
+            <div class="section-container">
+                <div class="form-container">
+                    <h2>Join House</h2>
+                        <div class="form-item">
+                            <label for="join-name">House Name:</label>
+                            <input type="text" id="join-name" placeholder="Star Command" required>
+                        </div>
+                        <div class="form-item">
+                            <label for="join-password">Password:</label>
+                            <input type="password" id="join-password" placeholder="**********" required>
+                        </div>
+                        <div class="form-item" style="text-align: center">
+                            <a href="#" id="joinSubmit" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" style="width:100px;">Join</a>
+                        </div>
+                    <h5><a href="#createhouse">Friends haven't signed up yet?</a></h5>
+                </div>
+            </div>
+            <div data-role="footer" data-position="fixed" class="callout-footer">
+                <div class="calloutMessage">
+                    <h5></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- ************ CREATE HOUSE *************-->
+
+    <div data-role="page" data-theme="a" id="createhouse">
+
+        <header data-role="header">
+            <a href="#housemenu" class="ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-notext ui-btn-left"></a>
+            <h1><div class="header-placeholder"></div><strong>HouseMate</strong></h1>
+        </header>
+
+        <div data-role="ui-content" class="page-container">
+            <div class="section-container">
+                <div class="form-container">
+                    <h2>Create House</h2>
+                        <div class="form-item">
+                            <label for="create-name">House Name:</label>
+                            <input type="text" id="create-name" placeholder="Zurg's Lair" required>
+                        </div>
+                        <div class="form-item">
+                            <label for="create-password">House Password:</label>
+                            <input type="password" id="create-password" placeholder="**********" required>
+                        </div>
+                        <div class="form-item-inline" style="width: 58%; max-width: 175px;">
+                            <label for="create-city">City:</label>
+                            <input type="text" id="create-city" placeholder="Newcastle" required>
+                        </div>
+                        <div class="form-item-inline" style="width: 40%; max-width: 125px;">
+                            <label for="create-state">State:</label>
+                            <input type="text" id="create-state" placeholder="NSW" required>
+                        </div>
+                        <div class="form-item" style="text-align: center">
+                            <a href="#" id="createSubmit" class="ui-btn ui-corner-all ui-shadow ui-btn-inline">Create</a>
+                        </div>
+                    <h5><a href="#joinhouse">House already setup? Join here.</a></h5>
+                </div>
+            </div>
+        </div>
+        <div data-role="footer" data-position="fixed" class="callout-footer">
+            <div class="calloutMessage">
+                <h5></h5>
+            </div>
+        </div>
+    </div>
+
+
+
+
+	<!-- ************ HOME PAGE/MAIN MENU *************-->
+	
+	<div data-role="page" data-theme="a" id="home">
+		
+		<header data-role="header">
+            <a href="#nav-panel" data-icon="bars" class="ui-btn ui-corner-all ui-icon-bars ui-btn-icon-notext ui-btn-left">Menu</a>
+            <h1><div class="header-placeholder"></div><strong>HouseMate</strong></h1>
+            <a href="#homeinfo" data-icon="info" class="ui-btn ui-corner-all ui-icon-info ui-btn-icon-notext ui-btn-right"></a>
+		</header>
+
+		<div data-role="ui-content" class="page-container">
+			<div class="section-container">
+                <div class="logo">
+                    <div class="logo-placeholder"></div>
+                </div>
+                <div class="ui-grid-a main-nav">
+                    <div class="ui-block-a">
+                        <div class="ui-bar ui-bar-a main-nav-item bills-nav">
+                            <a href="#bills" style="margin-left: 20px;" data-transition="slide">
+                                <img src="img/red-placeholder.png" height="62px" width="62px" alt="Bills"/>
+                                <h2>BILLS</h2>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ui-block-b" style="border-bottom: 1px solid #d6d6d6;">
+                        <div class="ui-bar ui-bar-a main-nav-item shopping-nav">
+                            <a href="#shopping" style="margin-right: 20px;" data-transition="slide" >
+                                <img src="img/blue-placeholder.png" height="62px" width="62px" alt="Shopping"/>
+                                <h2>SHOPPING</h2>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ui-block-a">
+                        <div class="ui-bar ui-bar-a main-nav-item notices-nav">
+                            <a href="#notices" style="margin-left: 20px;" data-transition="slide">
+                                <img src="img/purple-placeholder.png" height="62px" width="62px" alt="Notices"/>
+                                <h2>NOTICES</h2>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ui-block-b">
+                        <div class="ui-bar ui-bar-a main-nav-item chores-nav">
+                            <a href="#chores" style="margin-right: 20px;" data-transition="slide">
+                                <img src="img/yellow-placeholder.png" height="62px" width="62px" alt="Chores"/>
+                                <h2>CHORES</h2>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+			</div>
+        </div>
+        <div data-role="panel" data-position="left" data-position-fixed="false" data-display="overlay" id="nav-panel" data-theme="a">
+            <ul data-role="listview" data-theme="a">
+                <li  data-role="list-divider" >
+                    <a href="#" data-rel="close">Close Menu <span class="ui-icon-close"></span></a>
+                </li>
+                <li>
+                    <a href="#houseinfo" class="ui-btn ui-icon-home ui-btn-icon-left">House Info</a>
+                </li>
+                <li>
+                    <a href="#analytics" class="ui-btn ui-icon-bullets ui-btn-icon-left">Analytics <span class="coming-soon">Coming soon!</span></a>
+                </li>
+                <li>
+                    <a href="#about" class="ui-btn ui-icon-info ui-btn-icon-left">About</a>
+                </li>
+                <li>
+                    <a href="#settings" class="ui-btn ui-icon-gear ui-btn-icon-left">Settings</a>
+                </li>
+                <li>
+                    <a href="#login" id="logoutButton" class="ui-btn ui-icon-power ui-btn-icon-left">Logout</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- <div data-role="footer" data-position="fixed">
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#houseinfo" data-icon="home">House</a></li>
+                    <li><a href="#analytics" data-icon="bullets">Analytics</a></li>
+                    <li><a href="#about" data-icon="info">About</a></li>
+                    <li><a href="#settings" data-icon="gear">Settings</a></li>
+                </ul>
+            </div>
+        </div> -->
+    </div>
+
+
+
+
+
+    <!-- ************ BILLS PAGE *************-->
+
+    <div data-role="page" data-theme="d" id="bills">
+
+        <header data-role="header">
+            <a href="#home" data-icon="home" class="ui-btn ui-icon-home ui-btn-icon-notext ui-corner-all" data-transition="slide" data-direction="reverse"></a>
+            <h1><strong>BILLS</strong></h1>
+            <a href="#billsinfo" data-icon="info" class="ui-btn ui-corner-all ui-icon-info ui-btn-icon-notext ui-btn-right"></a>
+        </header>
+
+        <div data-role="ui-content" class="page-container">
+            <div class="section-container">
+                <div id="billsList" class="ui-body-d ui-content">
+                    <div class="list-container">
+                        <ul data-role="listview" data-inset="true">
+                            <ul class="billsList" data-role="listview" data-theme="f" data-inset="true">
+
+                            </ul>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <a href="#undoPurchase" id="undoBillButton" data-rel="popup" role="button" class="ui-shadow ui-btn ui-icon-back ui-btn-icon-notext ui-corner-all" data-transition="slidedown">Undo</a>
+            <a href="#addBill" id="addBillButton" data-rel="popup" role="button" class="ui-shadow ui-btn ui-icon-plus ui-btn-icon-notext ui-corner-all" data-transition="slidedown">Add</a>
+        </div>
+
+        <!-- ************ ADD BILL POPUP ************* -->
+
+        <div data-role="popup" id="addBill" class="ui-dialog-contain ui-overlay-shadow ui-corner-all" style="min-width: 300px; max-width: 375px;" data-position-to="window" >
+            <div data-role="header" data-theme="d">
+                <h1>Add Item</h1>
+                <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+            </div>
+            <div role="main" class="ui-content">
+                <form action="" method="">
+                    <label>Bill Type:</label>
+                    <select name="billTypes">
+                        <option value="electricity">ELECTRICITY</option>
+                        <option value="gas">GAS</option>
+                        <option value="internet">INTERNET</option>
+                        <option value="rent">RENT</option>
+                        <option value="other..">OTHER..</option>
+                    </select>
+                    <label>Due Date:</label>
+                    <input type="date" id="datepicker">
+                </form>
+            </div>
+        </div>
+    </div>
+
+	<!-- ************ SHOPPING LIST PAGE *************-->
+
+	<div data-role="page" data-theme="b" id="shopping">
+		
+		<header data-role="header">
+			<a href="#home" data-icon="home" class="ui-btn ui-icon-home ui-btn-icon-notext ui-corner-all" data-transition="slide" data-direction="reverse"></a>
+			<h1><strong>SHOPPING</strong></h1>
+		</header>
+
+		<div data-role="ui-content" class="page-container">
+			<div class="section-container">
+				<div data-role="tabs" id="tabs">
+                      <div data-role="navbar">
+                            <ul class="shopping-nav">
+                                  <li style="border: none !important"><a href="#foodList" class="ui-btn-active ui-state-focus">FOOD</a></li>
+                                  <li><a href="#cleaningList">CLEANING</a></li>
+                                  <li><a href="#otherList">OTHER</a></li>
+                            </ul>
+                      </div>
+                      <div id="foodList" class="ui-body-d ui-content">
+                            <div class="list-container">
+                                <ul data-role="listview" data-inset="true">
+                                        <ul class="foodList" data-role="listview" data-theme="f" data-inset="true">
+
+                                                <!-- SHOPPING ITEMS ARE DYNAMICALLY ADDED HERE-->
+
+                                            <!-- <li data-icon="false">
+                                                <a href="#">
+                                                     <h3>MILK</h3>
+                                                     <p>Full Cream (Dairy Farmers)</p>
+                                                </a>
+
+                                                <div class="right-radio">
+                                                    <input type="checkbox" id="checkbox-1a" unchecked />
+                                                    <label for="checkbox-1a"></label>
+                                                </div>
+                                            </li> -->
+                                        </ul>
+                                </ul>
+                            </div>
+                      </div>
+
+                      <div id="cleaningList" class="ui-body-d ui-content">
+                            <div class="list-container">
+                                <ul class="cleaningList" data-role="listview" data-theme="f" data-inset="true">
+
+                                        <!-- CLEANING ITEMS ARE DYNAMICALLY ADDED HERE -->
+
+                                </ul>
+                            </div>
+                      </div>
+
+                      <div id="otherList" class="ui-body-d ui-content">
+                            <div class="list-container">
+                                <ul class="otherList" data-role="listview"  data-theme="f" data-inset="true">
+
+                                        <!-- 'OTHER' ITEMS ARE DYNAMICALLY ADDED HERE -->
+
+                                </ul>
+                            </div>
+                      </div>
+			    </div>
+            </div>
+            <a href="#undoPurchase" id="undoPurchaseButton" data-rel="popup" role="button" class="ui-shadow ui-btn ui-icon-back ui-btn-icon-notext ui-corner-all" data-transition="slidedown">Undo</a>
+            <a href="#addShopping" id="addItemButton" data-rel="popup" role="button" class="ui-shadow ui-btn ui-icon-plus ui-btn-icon-notext ui-corner-all" data-transition="slidedown">Add</a>
+        </div>
+
+
+        <!-- ************ ADD ITEM POPUP ************* -->
+
+        <div data-role="popup" id="addShopping" class="ui-dialog-contain ui-overlay-shadow ui-corner-all" style="min-width: 300px; max-width: 375px;" data-position-to="window" >
+            <div data-role="header" data-theme="b">
+                <h1>Add Item</h1>
+                <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+            </div>
+            <div role="main" class="ui-content">
+                <form action="" method="">
+                    <label for="add-item-name">Enter Item Name:</label>
+                    <input type="text" id="add-item-name" placeholder="Milk" required>
+                    <label for="add-item-desc">Description (Optional):</label>
+                    <input type="text" id="add-item-desc" placeholder="Full Cream (Dairy Farmers)">
+
+                    <fieldset data-role="controlgroup" data-type="horizontal" id="addItemCategory">
+                        <input type="radio" name="radio-choice-category" id="radio-choice-food" checked="checked">
+                        <label for="radio-choice-food">Food</label>
+                        <input type="radio" name="radio-choice-category" id="radio-choice-util">
+                        <label for="radio-choice-util">Cleaning</label>
+                        <input type="radio" name="radio-choice-category" id="radio-choice-other">
+                        <label for="radio-choice-other">Other</label>
+                    </fieldset>
+                        <a href="#" id="addItemToList" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" data-rel="back" data-transition="slide" data-direction="reverse">Add</a>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- ************ NOTICES PAGE ************* -->
+
+    <div data-role="page" data-theme="c" id="notices">
+
+        <header data-role="header">
+            <a href="#home" data-icon="home" class="ui-btn ui-icon-home ui-btn-icon-notext ui-corner-all" data-transition="slide" data-direction="reverse"></a>
+            <h1><strong>NOTICES</strong></h1>
+        </header>
+
+        <div data-role="ui-content" class="page-container">
+            <div class="section-container">
+                <div id="noticesList" class="ui-body-d ui-content">
+                    <div class="notice-container">
+                        <div class="notice">
+                            <h3>Kane Marzol</h3>
+                            <p>All over it, yo.</p>
+                        </div>
+                        <div class="notice">
+                            <h3>Harrison Dempsey</h3>
+                            <p>So, this HouseMate app thing is pretty cool. We should probably get that Kane on it at some point.</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- ************ CHORES PAGE ************* -->
+
+    <div data-role="page" data-theme="e" id="chores">
+
+        <header data-role="header">
+            <a href="#home" data-icon="home" class="ui-btn ui-icon-home ui-btn-icon-notext ui-corner-all" data-transition="slide" data-direction="reverse"></a>
+            <h1><strong>CHORES</strong></h1>
+        </header>
+
+        <div data-role="ui-content" class="page-container">
+            <div class="section-container">
+                <div id="billsList" class="ui-body-d ui-content">
+                    <div class="list-container">
+                        <ul data-role="listview" data-inset="true">
+                            <ul class="billsList" data-role="listview" data-theme="f" data-inset="true">
+                                <li data-icon="false">
+                                    <a href="#">
+                                        <h3>ELECTRICITY</h3>
+                                        <p>DATE:</p>
+                                    </a>
+
+                                    <div class="right-radio">
+                                        <input type="checkbox" id="checkbox-1a" checked="false" />
+                                    </div>
+                                </li>
+                            </ul>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+     <!-- ************ HOUSE INFO PAGE ************* -->
+
+    <div data-role="page" data-theme="a" id="houseinfo">
+        
+        <header data-role="header">
+            <a href="#home" data-icon="home" class="ui-btn ui-icon-home ui-btn-icon-notext ui-corner-all"></a>
+            <h1>House Info</h1>
+            <!-- <a href="#" data-icon="info" class="ui-btn-right ui-btn-no-text" id="help-button">Info</a> -->
+        </header>
+
+        <div data-role="ui-content" class="page-container">
+            <div class="section-container">
+                
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+         <!-- ************ ABOUT PAGE ************* -->
+
+    <div data-role="page" data-theme="a" id="about">
+        
+        <header data-role="header">
+            <a href="#home" data-icon="home" class="ui-btn ui-icon-home ui-btn-icon-notext ui-corner-all"></a>
+            <h1><div class="header-placeholder"></div><strong>HouseMate</strong></h1>
+            <a href="#homeinfo" data-icon="info" class="ui-btn ui-corner-all ui-icon-info ui-btn-icon-notext ui-btn-right"></a>
+            <!-- <a href="#" data-icon="info" class="ui-btn-right ui-btn-no-text" id="help-button">Info</a> -->
+        </header>
+
+        <div data-role="ui-content" class="page-container">
+            <div class="section-container">
+                <div class="logo">
+                    <div class="about-placeholder"></div>
+                </div>
+                <div class="about-container">
+                    <p>HouseMate is a companion application designed to streamline the sharehouse living experience - helping you organise your bills, shopping, notices, and chores all in a single, user-friendly interface.</p>
+                    
+                    <p>It was developed by a group of final-year students for their capstone project:</p>
+                    <ul>
+                        <li><a href="http://twitter.com/_harrisondemp">Harrison Dempsey</a></li>
+                        <li><a href="http://twitter.com/roflinmywaffle">Kane Marzol</a></li>
+                        <li><a href="http://twitter.com/romeshpanditha">Romesh Wickramasekera</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

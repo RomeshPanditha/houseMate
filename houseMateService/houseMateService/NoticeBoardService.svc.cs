@@ -16,11 +16,11 @@ namespace HouseMateService.Services
     {
         NoticeDAL DAL = new NoticeDAL();
 
-        public Notice[] getNotices(int houseID, string type)
+        public Notice[] getNotices(int houseID)
         {
             if (Convert.ToInt32(HttpContext.Current.Session["loggedIn"]) >= 0)
             {
-                return DAL.GetNotices(houseID, type).ToArray();
+                return DAL.GetNotices(houseID).ToArray();
             }
             else
             {
@@ -33,7 +33,7 @@ namespace HouseMateService.Services
             if(Convert.ToInt32(HttpContext.Current.Session["loggedIn"]) >= 0)
             {
                 DAL.addNotice(houseID, tenantID, title, message, type);
-                return getNotices(houseID, type);
+                return getNotices(houseID);
             }
             else
             {
