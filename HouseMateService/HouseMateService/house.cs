@@ -30,6 +30,9 @@ namespace HouseMateService
         public Nullable<int> postcode { get; set; }
         public string state { get; set; }
         public string password { get; set; }
+        public string wifiPass { get; set; }
+        public string binNight { get; set; }
+        public Nullable<sbyte> recycOrGreen { get; set; }
     
         public virtual ICollection<chore> chores { get; set; }
         public virtual ICollection<house_bill> house_bill { get; set; }

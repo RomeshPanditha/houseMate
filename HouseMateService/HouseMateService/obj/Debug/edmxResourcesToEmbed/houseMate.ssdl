@@ -111,6 +111,9 @@
     <Property Name="city" Type="varchar" MaxLength="45" />
     <Property Name="postcode" Type="int" />
     <Property Name="state" Type="varchar" MaxLength="20" />
+    <Property Name="wifiPass" Type="varchar" MaxLength="45" />
+    <Property Name="binNight" Type="varchar" MaxLength="10" />
+    <Property Name="recycOrGreen" Type="tinyint" />
   </EntityType>
   <EntityType Name="house_bill">
     <Key>
@@ -287,6 +290,7 @@
     <Property Name="PK_tenantID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="FK_houseID" Type="int" Nullable="false" />
     <Property Name="FK_aspMemberID" Type="int" Nullable="false" />
+    <Property Name="isCurrent" Type="tinyint" Nullable="false" />
   </EntityType>
   <Association Name="allocation_to_chore">
     <End Role="chores" Type="houseMateModel.Store.chores" Multiplicity="1" />

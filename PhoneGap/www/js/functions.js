@@ -46,7 +46,6 @@ $( document ).on( "pagecreate", "#login", function() {
                     localStorage.setItem("userID", json.UID);
                     localStorage.setItem("userName", loginUsername);
                     localStorage.setItem("userPassword", loginPassword);
-                    getTennantID();
                     window.location.href = '#housemenu';
                 }
             }
@@ -269,7 +268,7 @@ $( document ).on( "pagecreate", "#shopping", function() {
                         $('.cleaningList').append(utilItem).listview("refresh");
                     }
                     else if (value.category == "other") {
-                        otherItem = '<li data-icon="false" class="other"><a href="#"><h3>' + value.name + '</h3><p>' + value.desc + '</p></a><div class="right-radio"></div><label for="checkbox-other' + value.itemID + '"></label><input type="checkbox" id="checkbox-other' + value.itemID + '" /></div></li>';
+                        otherItem = '<li data-icon="false" class="other"><a href="#"><h3>' + value.name + '</h3><p>' + value.desc + '</p></a><div class="right-radio"><label for="checkbox-other' + value.itemID + '"></label><input type="checkbox" id="checkbox-other' + value.itemID + '" /></div></li>';
                         $('.otherList').append(otherItem).listview("refresh");
                     }
                 });
@@ -355,7 +354,7 @@ $( document ).on( "pagecreate", "#bills", function() {
                     //var jsonDate = ;
                     var date = new Date(parseInt(value.dueDate.substr(6)));
                     var shortDate = formatDate(date);
-                    output += '<li data-icon="false" class=" ' + value.category + '"><a href="#"><h3>' + value.category + ' - $' + value.totalAmount + '</h3><p> DUE: ' + shortDate + ' <br /><ul class="' + ulID + '" data-role="listview" data-theme="f" data-inset="true">' + tenants + '</ul><br /></p></a></li>';
+                    output += '<li data-icon="false" class=" ' + value.category + '"><a href="#"><h3>' + value.category + ' - $' + value.totalAmount + '</h3><p> DUE: ' + shortDate + ' </p><ul class="' + ulID + '" data-role="listview" data-theme="f" data-inset="true">' + tenants + '</ul></a></li>';
                     //getIndv(value.billID, ulID);
 
                 });
@@ -386,6 +385,7 @@ $( document ).on( "pagecreate", "#notices", function() {
             addNotice();
         } else{
             $( '#noticeForm' ).slideDown();
+            $( '#addNoticeBtn' ).html("Add").removeClass("ui-btn-icon-notext").css("height", "18px");
         }
     });
 
@@ -396,6 +396,7 @@ $( document ).on( "pagecreate", "#notices", function() {
             addIOU();
         } else{
             $( '#iouForm' ).slideDown();
+            $( '#addIouBtn' ).html("Add").removeClass("ui-btn-icon-notext").css("height", "18px");
         }
     });
 
@@ -417,11 +418,11 @@ $( document ).on( "pagecreate", "#notices", function() {
                     var shortDate = formatDate(d);
 
                     if (value.type == "notice") {
-                        notice = '<div class="notice"><h3>' + value.noticeTitle + ' - ' + shortDate + '</h3><p>' + value.noticeDesc + '</p><div class="tenantName">- ' + value.tenantName + '</div></div>';
+                        notice = '<div class="notice"><h3>' + value.noticeTitle + ' - ' + shortDate + '</h3><p>' + value.noticeDesc + '</p><p class="tenantName">- ' + value.tenantName + '</p></div>';
                         $('.notice-container').append(notice);
                     }
                     else if (value.type == "iou") {
-                        iou = '<div class="iou"><h3>I.O.U - ' + value.noticeTitle + '</h3><p>' + value.noticeDesc + '</p><div class="tenantName">- ' + value.tenantName + ' ' + shortDate + '</div></div>';
+                        iou = '<div class="iou"><h3>IOU - <span class="iou-title">' + value.noticeTitle + '</span></h3><p>' + value.noticeDesc + '</p><p class="tenantName">- ' + value.tenantName + ' ' + shortDate + '</p></div>';
                         $('.iou-container').append(iou);
                     }
                 });

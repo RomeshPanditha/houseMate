@@ -27,11 +27,11 @@
                     <h2>Signup</h2>
                         <div class="form-item">
                             <label for="signup-username">Username:</label>
-                            <input type="text" id="signup-username" placeholder="Buzz Lightyear" required>
+                            <input type="text" id="signup-username" placeholder="2infinity" required>
                         </div>
                         <div class="form-item">
-                            <label for="signup-email">Email:</label>
-                            <input type="email" id="signup-email" placeholder="buzz@starcommand.com" required>
+                            <label for="signup-name">First Name:</label>
+                            <input type="text" id="signup-name" placeholder="Buzz" required>
                         </div>
                         <div class="form-item">
                             <label for="signup-password">Password:</label>
@@ -461,30 +461,35 @@
 
                     <div id="noticeBoard" class="ui-body-d ui-content">
                         <div id="noticeForm">
-                            <form action="" method="">
+                            <form>
                                 <label for="add-notice-title">Title:</label>
-                                <input type="text" id="add-notice-title" placeholder="Hey guys..." required>
+                                <input type="text" id="add-notice-title" placeholder="Howdy" required>
                                 <label for="add-notice-message">Message:</label>
-                                <textarea rows="3" maxlength="200" type="text" id="add-notice-message" placeholder="This week I am...." required></textarea>
+                                <textarea rows="3" maxlength="200" type="text" id="add-notice-message" placeholder="I think we should..." required></textarea>
                             </form>
                         </div>
-                        <div id="addNoticeBtn" class="addNote ui-shadow ui-btn ui-icon-plus ui-btn-icon-notext ui-corner-all"></div>
+                        <a id="addNoticeBtn" class="addNote ui-shadow ui-btn ui-icon-plus ui-btn-icon-notext ui-page-theme-c" style="width: 60% !important;"></a>
 
                         <div class="notice-container">
+
+                            <!-- NOTICES GET DYNAMICALLY ADDED HERE -->
 
                         </div>
                     </div>
                     <div id="iouBoard" class="ui-body-d ui-content">
                         <div id="iouForm">
-                            <form action="" method="">
+                            <form>
                                 <label for="add-iou-title">For:</label>
-                                <input type="text" id="add-iou-title" placeholder="'who you owe'" required>
+                                <input type="text" id="add-iou-title" placeholder="Who do you owe?" required>
                                 <label for="add-iou-message">Message:</label>
-                                <textarea rows="3" maxlength="200" type="text" id="add-iou-message" placeholder="'what you owe'" required></textarea>
+                                <textarea rows="3" maxlength="200" id="add-iou-message" placeholder="What do you owe?" required></textarea>
                             </form>
                         </div>
-                        <div id="addIouBtn" class="addNote ui-shadow ui-btn ui-icon-plus ui-btn-icon-notext ui-corner-all"></div>
+                        <a id="addIouBtn" class="addNote ui-shadow ui-btn ui-icon-plus ui-btn-icon-notext ui-page-theme-c"  style="width: 60% !important;"></a>
+
                         <div class="iou-container">
+
+                            <!-- IOU'S GET DYNAMICALLY ADDED HERE -->
 
                         </div>
                     </div>
@@ -541,7 +546,7 @@
                 <div id="billsList" class="ui-body-d ui-content">
                     <div class="list-container">
                         <ul data-role="listview" data-inset="true">
-                            <ul class="billsList" data-role="listview" data-theme="f" data-inset="true">
+                            <ul class="choresList" data-role="listview" data-theme="f" data-inset="true">
                                 <li data-icon="false">
                                     <a href="#">
                                         <h3>CLEAN LOUNGEROOM</h3>

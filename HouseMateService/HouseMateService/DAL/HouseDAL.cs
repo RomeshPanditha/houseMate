@@ -8,12 +8,103 @@ namespace HouseMateService.DAL
 {
     public class HouseDAL
     {
+        public HouseInfo getInfo(int houseID)
+        {
+            using (var context = new houseMateEntities01())
+            {
+                house currH = context.houses
+                                .Where(h => h.PK_houseID == houseID)
+                                .Select(h => h).Single();
+
+                return new HouseInfo(currH.wifiPass, currH.binNight, Convert.ToInt32(currH.recycOrGreen));
+            }
+        }
+
+        public void setInfo(int houseID, string wifi, string binNight, string recOrGre)
+        {
+            using (var context = new houseMateEntities01())
+            {
+                house currH = context.houses
+                                .First(h => h.PK_houseID == houseID);
+                if(wifi != "") currH.wifiPass = wifi;
+                if (binNight != "") currH.binNight = binNight;
+                if (recOrGre != "")
+                {
+                    if (recOrGre == "recycling") currH.recycOrGreen = 0;
+                    else currH.recycOrGreen = 1;
+                }
+                context.SaveChanges();
+            }
+        }
+
+        public string getHouseName(int houseID)
+        {
+            using (var context = new houseMateEntities01())
+            {
+                return context.houses
+                    .Where(h=> h.PK_houseID == houseID)
+                    .Select(h=> h.houseName).Single();
+            }
+        }
+
+        public string getHousePass(int houseID)
+        {
+            using (var context = new houseMateEntities01())
+            {
+                return context.houses
+                    .Where(h => h.PK_houseID == houseID)
+                    .Select(h => h.password).Single();
+            }
+        }
+
+        public void setHouseName(int houseID, string newHouseName)
+        {
+            using (var context = new houseMateEntities01())
+            {
+                house current = context.houses
+                    .First(h=> h.PK_houseID == houseID);
+                current.houseName = newHouseName;
+                context.SaveChanges();
+            }
+
+        }
+
+        public void setHousePass(int houseID, string newHousePass)
+        {
+            using (var context = new houseMateEntities01())
+            {
+                house current = context.houses
+                    .First(h => h.PK_houseID == houseID);
+                current.password = newHousePass;
+                context.SaveChanges();
+            }
+        }
+
+        public int leaveHouse(int uid)
+        {
+            using (var context = new houseMateEntities01())
+            {
+                try
+                {
+                    tenant current = context.tenants
+                                .First(t => t.my_aspnet_membership.userId == uid);
+                    current.isCurrent = 1;
+                    context.SaveChanges();
+                    return 1;
+                }
+                catch
+                {
+                    return -1;
+                }
+            }
+        }
+
         public int getTID(int uid)
         {
             using (var context = new houseMateEntities01())
             {
                 return Convert.ToInt32(context.tenants
-                    .Where(t=> t.FK_aspMemberID == uid)
+                    .Where(t=> t.FK_aspMemberID == uid && t.isCurrent == 0)
                     .Select(t=> t.PK_tenantID).FirstOrDefault());
             }
         }
@@ -22,20 +113,27 @@ namespace HouseMateService.DAL
         {
             using (var context = new houseMateEntities01())
             {
-                int hID = Convert.ToInt32(context.houses
-                    .Where(h => h.houseName.Equals(houseName) && h.password.Equals(password))
-                    .Select(h => h.PK_houseID).FirstOrDefault());
-                    
-
-                tenant newTennant = new tenant
+                if (getTID(userID) <= 0)
                 {
-                    FK_houseID = hID,
-                    FK_aspMemberID = userID
-                };
-                context.tenants.Add(newTennant);
-                context.SaveChanges();
+                    int hID = Convert.ToInt32(context.houses
+                        .Where(h => h.houseName.Equals(houseName) && h.password.Equals(password))
+                        .Select(h => h.PK_houseID).FirstOrDefault());
 
-                return getHouse(userID); 
+
+                    tenant newTennant = new tenant
+                    {
+                        FK_houseID = hID,
+                        FK_aspMemberID = userID
+                    };
+                    context.tenants.Add(newTennant);
+                    context.SaveChanges();
+
+                    return getHouse(userID);
+                }
+                else
+                {
+                    return new House(-1, "already in a house");
+                }
             }
         }
 
@@ -47,12 +145,12 @@ namespace HouseMateService.DAL
                 try
                 {
                     var hn = (from t in context.tenants
-                             where t.FK_aspMemberID == userID
+                             where t.FK_aspMemberID == userID && t.isCurrent == 0
                              select t.house.houseName).Single();
                     string hName = hn;
 
                     return new House(Convert.ToInt32((from t in context.tenants
-                                                     where t.FK_aspMemberID == userID
+                                                      where t.FK_aspMemberID == userID && t.isCurrent == 0
                                                      select t.house.PK_houseID).FirstOrDefault()),  hName); 
                                                  
                 }
@@ -69,39 +167,46 @@ namespace HouseMateService.DAL
             {
                 if (!houseExists(housename))
                 {
-                    // create the new house
-                    house newHouse = new house
+                    if (getTID(userID) <= 0)
                     {
-                        houseName = housename,
-                        password = password,
-                        address = _addr,
-                        city = _city,
-                        state = _state
-                    };
-                    context.houses.Add(newHouse);
-                    context.SaveChanges();
+                        // create the new house
+                        house newHouse = new house
+                        {
+                            houseName = housename,
+                            password = password,
+                            address = _addr,
+                            city = _city,
+                            state = _state
+                        };
+                        context.houses.Add(newHouse);
+                        context.SaveChanges();
 
-                    // create the list for that house
-                    list newList = new list
+                        // create the list for that house
+                        list newList = new list
+                        {
+                            FK_houseID = newHouse.PK_houseID
+                        };
+                        context.lists.Add(newList);
+                        context.SaveChanges();
+
+                        // create the notice board for that house
+                        notice_board newNBoard = new notice_board
+                        {
+                            FK_houseID = newHouse.PK_houseID
+                        };
+                        context.notice_board.Add(newNBoard);
+                        context.SaveChanges();
+
+                        return joinHouse(housename, password, userID);
+                    }
+                    else
                     {
-                        FK_houseID = newHouse.PK_houseID
-                    };
-                    context.lists.Add(newList);
-                    context.SaveChanges();
-
-                    // create the notice board for that house
-                    notice_board newNBoard = new notice_board
-                    {
-                        FK_houseID = newHouse.PK_houseID
-                    };
-                    context.notice_board.Add(newNBoard);
-                    context.SaveChanges();
-
-                    return joinHouse(housename, password, userID);
+                        return new House(-1, "already in a house");
+                    }
                 }
                 else
                 {
-                    return new House(-1, "no house");
+                    return new House(-1, "house doesn't exist");
                 }
             }
         }

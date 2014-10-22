@@ -116,6 +116,9 @@
           <Property Name="city" Type="varchar" MaxLength="45" />
           <Property Name="postcode" Type="int" />
           <Property Name="state" Type="varchar" MaxLength="20" />
+          <Property Name="wifiPass" Type="varchar" MaxLength="45" />
+          <Property Name="binNight" Type="varchar" MaxLength="10" />
+          <Property Name="recycOrGreen" Type="tinyint" />
         </EntityType>
         <EntityType Name="house_bill">
           <Key>
@@ -292,6 +295,7 @@
           <Property Name="PK_tenantID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="FK_houseID" Type="int" Nullable="false" />
           <Property Name="FK_aspMemberID" Type="int" Nullable="false" />
+          <Property Name="isCurrent" Type="tinyint" Nullable="false" />
         </EntityType>
         <Association Name="allocation_to_chore">
           <End Role="chores" Type="houseMateModel.Store.chores" Multiplicity="1" />
@@ -603,6 +607,9 @@
           <NavigationProperty Name="notice_board" Relationship="houseMateModel.noticeboard_constraint" FromRole="house" ToRole="notice_board" />
           <NavigationProperty Name="tenants" Relationship="houseMateModel.tenant_constraint" FromRole="house" ToRole="tenant" />
           <Property Type="String" Name="password" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="wifiPass" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="binNight" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="SByte" Name="recycOrGreen" />
         </EntityType>
         <EntityType Name="house_bill">
           <Key>
@@ -800,6 +807,7 @@
           <NavigationProperty Name="list_records" Relationship="houseMateModel.tenant_to_record" FromRole="tenant" ToRole="list_records" />
           <NavigationProperty Name="my_aspnet_membership" Relationship="houseMateModel.memberConstraint" FromRole="tenant" ToRole="my_aspnet_membership" />
           <NavigationProperty Name="notices" Relationship="houseMateModel.tenant_notice_constraint" FromRole="tenant" ToRole="notice" />
+          <Property Type="SByte" Name="isCurrent" Nullable="false" />
         </EntityType>
         <Association Name="allocation_to_chore">
           <End Role="chores" Type="houseMateModel.chore" Multiplicity="1" />
@@ -1010,6 +1018,9 @@
           <EntitySetMapping Name="houses">
             <EntityTypeMapping TypeName="houseMateModel.house">
               <MappingFragment StoreEntitySet="house">
+                <ScalarProperty Name="recycOrGreen" ColumnName="recycOrGreen" />
+                <ScalarProperty Name="binNight" ColumnName="binNight" />
+                <ScalarProperty Name="wifiPass" ColumnName="wifiPass" />
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="PK_houseID" ColumnName="PK_houseID" />
                 <ScalarProperty Name="houseName" ColumnName="houseName" />
@@ -1205,6 +1216,7 @@
           <EntitySetMapping Name="tenants">
             <EntityTypeMapping TypeName="houseMateModel.tenant">
               <MappingFragment StoreEntitySet="tenant">
+                <ScalarProperty Name="isCurrent" ColumnName="isCurrent" />
                 <ScalarProperty Name="PK_tenantID" ColumnName="PK_tenantID" />
                 <ScalarProperty Name="FK_houseID" ColumnName="FK_houseID" />
                 <ScalarProperty Name="FK_aspMemberID" ColumnName="FK_aspMemberID" />

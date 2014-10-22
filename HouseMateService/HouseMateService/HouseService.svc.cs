@@ -64,5 +64,80 @@ namespace HouseMateService
                 return -1;
             }
         }
+
+
+        public int leaveHouse(int uid)
+        {
+            if (Convert.ToInt32(HttpContext.Current.Session["loggedIn"]) >= 0)
+            {
+                return DAL.leaveHouse(uid);
+            }
+            else
+            {
+                return -1;
+            }
+        }
+
+
+        public string getHouseName(int hid)
+        {
+            if (Convert.ToInt32(HttpContext.Current.Session["loggedIn"]) >= 0)
+            {
+                return DAL.getHouseName(hid);
+            }
+            else
+            {
+                return "";
+            }
+        }
+
+        public string getHousePass(int hid)
+        {
+            if (Convert.ToInt32(HttpContext.Current.Session["loggedIn"]) >= 0)
+            {
+                return DAL.getHousePass(hid);
+            }
+            else
+            {
+                return "";
+            }
+        }
+
+        public void setHouseName(int hid, string newN)
+        {
+            if (Convert.ToInt32(HttpContext.Current.Session["loggedIn"]) >= 0)
+            {
+                DAL.setHouseName(hid, newN);
+            }
+        }
+
+        public void setHousePass(int hid, string newP)
+        {
+            if (Convert.ToInt32(HttpContext.Current.Session["loggedIn"]) >= 0)
+            {
+                DAL.setHousePass(hid, newP);
+            }
+        }
+
+
+        public HouseInfo getInfo(int hid)
+        {
+            if (Convert.ToInt32(HttpContext.Current.Session["loggedIn"]) >= 0)
+            {
+                return DAL.getInfo(hid);
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public void setInfo(int hid, string wifi, string binNight, string recOrGre)
+        {
+            if (Convert.ToInt32(HttpContext.Current.Session["loggedIn"]) >= 0)
+            {
+                DAL.setInfo(hid, wifi, binNight, recOrGre);
+            }
+        }
     }
 }

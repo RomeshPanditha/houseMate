@@ -120,6 +120,9 @@
     <NavigationProperty Name="notice_board" Relationship="houseMateModel.noticeboard_constraint" FromRole="house" ToRole="notice_board" />
     <NavigationProperty Name="tenants" Relationship="houseMateModel.tenant_constraint" FromRole="house" ToRole="tenant" />
     <Property Type="String" Name="password" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="wifiPass" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="binNight" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="SByte" Name="recycOrGreen" />
   </EntityType>
   <EntityType Name="house_bill">
     <Key>
@@ -317,6 +320,7 @@
     <NavigationProperty Name="list_records" Relationship="houseMateModel.tenant_to_record" FromRole="tenant" ToRole="list_records" />
     <NavigationProperty Name="my_aspnet_membership" Relationship="houseMateModel.memberConstraint" FromRole="tenant" ToRole="my_aspnet_membership" />
     <NavigationProperty Name="notices" Relationship="houseMateModel.tenant_notice_constraint" FromRole="tenant" ToRole="notice" />
+    <Property Type="SByte" Name="isCurrent" Nullable="false" />
   </EntityType>
   <Association Name="allocation_to_chore">
     <End Role="chores" Type="houseMateModel.chore" Multiplicity="1" />

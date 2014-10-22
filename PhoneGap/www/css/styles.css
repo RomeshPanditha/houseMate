@@ -83,7 +83,7 @@ h5 > a:visited {
 
 .right-radio input[type="checkbox"] {
     width: 50px;
-    margin: 30px 0 0 20px;
+    margin: 31px 0 0 18px
 }
 
 li > a > h3 {
@@ -197,6 +197,14 @@ li > a > p:first-letter {
     width: 100px;
 }
 
+.billsList ul {
+    list-style-type: disc;
+    margin: -15px 0 0 85px;
+}
+#tenants li {
+    text-transform: capitalize;
+}
+
 
 /* NOTICES PAGE STYLES*/
 
@@ -227,6 +235,52 @@ li > a > p:first-letter {
 .notice > p {
     margin: 5px 0;
 }
+
+.addNote {
+    width: 80%;
+    height: 35px;
+    margin:auto;
+    background-color: #9b59b6 !important;
+    border-color: #8720b1 !important;
+}
+
+.tenantName {
+    text-align: right;
+    text-transform: uppercase;
+}
+
+.iou-container {
+    width: 100% !important;
+    margin: auto !important;
+    text-align: center;
+}
+
+.iou {
+    width: 100%;
+    max-width: 250px;
+    margin: 15px auto;
+    padding: 20px;
+    background: #f6f6f6;
+    text-align: left;
+    border: 1px solid #dddddd;
+    border-radius: 0.4em;
+}
+
+.iou > h3 {
+    margin: 0;
+}
+
+.iou > p {
+    margin: 5px 0;
+}
+
+.iou-title {
+    text-transform: capitalize;
+}
+
+
+
+
 
 /* POPUP GENERAL STYLES*/
 
@@ -443,65 +497,6 @@ li > a > p:first-letter {
 
 
 
-/* NOTICES PAGE STYLES*/
-
-.notice-container {
-    width: 100% !important;
-    margin: auto !important;
-    text-align: center;
-}
-
-.notice {
-    width: 100%;
-    max-width: 250px;
-    margin: 15px auto;
-    padding: 20px;
-    background: #f6f6f6;
-    text-align: left;
-    border: 1px solid #dddddd;
-    border-radius: 0.4em;
-}
-
-.notice > h3 {
-    margin: 0;
-}
-
-.notice > p {
-    margin: 5px 0;
-}
-
-.addNote {
-    width:100%;
-}
-
-.tenantName {
-    float:right;
-}
-
-.iou-container {
-    width: 100% !important;
-    margin: auto !important;
-    text-align: center;
-}
-
-.iou {
-    width: 100%;
-    max-width: 250px;
-    margin: 15px auto;
-    padding: 20px;
-    background: #f6f6f6;
-    text-align: left;
-    border: 1px solid #dddddd;
-    border-radius: 0.4em;
-}
-
-.iou > h3 {
-    margin: 0;
-}
-
-.iou > p {
-    margin: 5px 0;
-}
 
 
 

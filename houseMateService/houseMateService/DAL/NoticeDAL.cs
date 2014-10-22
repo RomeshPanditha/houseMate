@@ -16,12 +16,12 @@ namespace HouseMateService.DAL
             {
                 List<notice> nList = new List<notice>();
                 nList.AddRange(from n in context.notices
-                                where n.notice_board.FK_houseID == houseID
+                                where n.notice_board.FK_houseID == houseID && n.tenant.isCurrent == 0
                                 select n);
                 nList.Reverse();
                 foreach (notice n in nList)
                 {
-                    string name = System.Web.Security.Membership.GetUserNameByEmail(n.tenant.my_aspnet_membership.Email);
+                    string name = n.tenant.my_aspnet_membership.Email;
 
                     noticeList.Add(new Notice(n.PK_noticeID, n.title, n.message, n.datePosted, name, n.type));
                 }
