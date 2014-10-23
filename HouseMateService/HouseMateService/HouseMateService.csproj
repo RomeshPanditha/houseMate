@@ -146,6 +146,7 @@
     </Compile>
     <Compile Include="Models\House.cs" />
     <Compile Include="Models\HouseInfo.cs" />
+    <Compile Include="Models\myTenant.cs" />
     <Compile Include="Models\Notice.cs" />
     <Compile Include="Models\tenantBill.cs" />
     <Compile Include="BillService.svc.cs">
