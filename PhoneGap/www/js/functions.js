@@ -129,6 +129,7 @@ $( document ).on( "pagecreate", "#housemenu", function() {
 
 
 
+
 // ------------------ CREATE HOUSE FUNCTIONS ---------------------
 
 $( document ).on( "pagecreate", "#createhouse", function() {
@@ -244,10 +245,6 @@ $( document ).on( "pagecreate", "#shopping", function() {
 
     getItems();
 
-    //$("#foodUL li").click(function(){
-        //alert($(this).attr('id'));
-    //});
-
     $("#foodUL").on("click", "li", function(){
         var removeItemID = $(this).attr('id');
         buyItem(removeItemID);
@@ -343,6 +340,9 @@ $( document ).on( "pagecreate", "#shopping", function() {
             $('.otherList').append(otherItem).listview("refresh");
         }
 
+        $('#add-item-name').val("");
+        $('#add-item-desc').val("");
+
         $.ajax({
             url: 'http://www.housemate-app.com/service/ShoppingService.svc/addItem?houseID=' + localStorage.getItem("houseID") + '&name=' + itemName + '&desc=' + itemDesc + '&category=' + itemCategory + '',
             jsonpCallback: 'jsonCallback',
@@ -373,17 +373,17 @@ $( document ).on( "pagecreate", "#bills", function() {
             url: 'http://www.housemate-app.com/service/BillService.svc/getBills?houseID=' + localStorage.getItem("houseID"),
             jsonpCallback: 'jsonCallback',
             contentType: 'application/json',
-            dataType: 'jsonp',})
+            dataType: 'jsonp'})
             .done(function(json){
                 var output = '';
 
                 $.each(json, function (index, value) {
-                    var tenants = '<div id="tenants" style="">';
+                    var tenants = '';
                     for(i=0;i<value.tNum;i++)
                     {
                         tenants += '<li>'+ value.tNames[i] + ' - $' + value.tAmounts[i] +'</li>';
                     }
-                    tenants += "</div>";
+                    tenants += "";
 
                     IDs.push(value.billID);
                     var ulID = 'invList' + value.billID;
@@ -391,20 +391,47 @@ $( document ).on( "pagecreate", "#bills", function() {
                     var date = new Date(parseInt(value.dueDate.substr(6)));
                     var shortDate = formatDate(date);
                     output += '<li data-icon="false" class=" ' + value.category + '"><a href="#"><h3>' + value.category + ' - $' + value.totalAmount + '</h3><p> DUE: ' + shortDate + ' </p><ul class="' + ulID + '" data-role="listview" data-theme="f" data-inset="true">' + tenants + '</ul></a></li>';
-                    //getIndv(value.billID, ulID);
 
                 });
-
                 $('.billsList').append(output).listview("refresh");
+          });
+        }
 
-                // $.each(json, function (index, value) {
-                //       var ulID = 'invList' + value.billID;
-                //      getIndv(value.billID, ulID);
-                //  });
+    function getTenants(){
+        $.ajax({
+            url: 'http://www.housemate-app.com/service/BillService.svc/getBills?houseID=' + localStorage.getItem("houseID"),
+            jsonpCallback: 'jsonCallback',
+            contentType: 'application/json',
+            dataType: 'jsonp'})
+            .done(function(json){
+                var output = '';
+
+                $.each(json, function (index, value) {
+                    var tenants = '';
+                    for(i=0;i<value.tNum;i++)
+                    {
+                        tenants += '<li>'+ value.tNames[i] + ' - $' + value.tAmounts[i] +'</li>';
+                    }
+                    tenants += "";
+
+                    IDs.push(value.billID);
+                    var ulID = 'tenantList' + value.billID;
+                    //var jsonDate = ;
+                    var date = new Date(parseInt(value.dueDate.substr(6)));
+                    var shortDate = formatDate(date);
+                    output += '<li data-icon="false" class=" ' + value.category + '"><a href="#"><h3>' + value.category + ' - $' + value.totalAmount + '</h3><p> DUE: ' + shortDate + ' </p><ul class="' + ulID + '" data-role="listview" data-theme="f" data-inset="true">' + tenants + '</ul></a></li>';
+
+                });
+                $('.billsList').append(output).listview("refresh");
             });
+
     }
+
 });
 
+
+
+// ------------------ NOTICE FUNCTIONS ---------------------
 
 $( document ).on( "pagecreate", "#notices", function() {
 
@@ -509,7 +536,7 @@ $( document ).on( "pagecreate", "#notices", function() {
 
 });
 
-// ------------------ BILLS FUNCTIONS ---------------------
+// ------------------ HOUSEINFO FUNCTIONS ---------------------
 
 $( document ).on( "pagecreate", "#houseinfo", function() {
 
