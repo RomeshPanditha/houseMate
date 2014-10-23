@@ -79,45 +79,45 @@ namespace HouseMateService
         }
 
 
-        public string getHouseName(int hid)
-        {
-            if (Convert.ToInt32(HttpContext.Current.Session["loggedIn"]) >= 0)
-            {
-                return DAL.getHouseName(hid);
-            }
-            else
-            {
-                return "";
-            }
-        }
+        //public string getHouseName(int hid)
+        //{
+        //    if (Convert.ToInt32(HttpContext.Current.Session["loggedIn"]) >= 0)
+        //    {
+        //        return DAL.getHouseName(hid);
+        //    }
+        //    else
+        //    {
+        //        return "";
+        //    }
+        //}
 
-        public string getHousePass(int hid)
-        {
-            if (Convert.ToInt32(HttpContext.Current.Session["loggedIn"]) >= 0)
-            {
-                return DAL.getHousePass(hid);
-            }
-            else
-            {
-                return "";
-            }
-        }
+        //public string getHousePass(int hid)
+        //{
+        //    if (Convert.ToInt32(HttpContext.Current.Session["loggedIn"]) >= 0)
+        //    {
+        //        return DAL.getHousePass(hid);
+        //    }
+        //    else
+        //    {
+        //        return "";
+        //    }
+        //}
 
-        public void setHouseName(int hid, string newN)
-        {
-            if (Convert.ToInt32(HttpContext.Current.Session["loggedIn"]) >= 0)
-            {
-                DAL.setHouseName(hid, newN);
-            }
-        }
+        //public void setHouseName(int hid, string newN)
+        //{
+        //    if (Convert.ToInt32(HttpContext.Current.Session["loggedIn"]) >= 0)
+        //    {
+        //        DAL.setHouseName(hid, newN);
+        //    }
+        //}
 
-        public void setHousePass(int hid, string newP)
-        {
-            if (Convert.ToInt32(HttpContext.Current.Session["loggedIn"]) >= 0)
-            {
-                DAL.setHousePass(hid, newP);
-            }
-        }
+        //public void setHousePass(int hid, string newP)
+        //{
+        //    if (Convert.ToInt32(HttpContext.Current.Session["loggedIn"]) >= 0)
+        //    {
+        //        DAL.setHousePass(hid, newP);
+        //    }
+        //}
 
 
         public HouseInfo getInfo(int hid)
@@ -132,11 +132,11 @@ namespace HouseMateService
             }
         }
 
-        public void setInfo(int hid, string wifi, string binNight, string recOrGre)
+        public void setInfo(int hid, string hName, string hPwd, string wifi, string binNight, string recOrGre)
         {
             if (Convert.ToInt32(HttpContext.Current.Session["loggedIn"]) >= 0)
             {
-                DAL.setInfo(hid, wifi, binNight, recOrGre);
+                DAL.setInfo(hid, hName, hPwd, wifi, binNight, recOrGre);
             }
         }
     }

@@ -278,8 +278,17 @@ li > a > p:first-letter {
     text-transform: capitalize;
 }
 
+/* INFO/SETTINGS STYLES*/
 
+.infoContainer td {
+    width:50%;
+    height:50px;
+}
 
+.infoContainer table {
+    margin-top:10%;
+    margin-left: 30px;
+}
 
 
 /* POPUP GENERAL STYLES*/

@@ -9,17 +9,25 @@ namespace HouseMateService.Models
     [DataContract]
     public class HouseInfo
     {
+        private string houseName_;
+        private string housePwd_;
         private string wifi_;
         private string binNight_;
         private int recycOrGreen_;
 
-        public HouseInfo(string wifi, string binNight,int recycOrGreen)
+        public HouseInfo(string houseName, string housePwd, string wifi, string binNight,int recycOrGreen)
         {
+            houseName_ = houseName;
+            housePwd_ = housePwd;
             wifi_ = wifi;
             binNight_ = binNight;
             recycOrGreen_ = recycOrGreen;
         }
 
+        [DataMember]
+        public string houseName { get { return houseName_; } set { houseName_ = value; } }
+        [DataMember]
+        public string housePwd { get { return housePwd_; } set { housePwd_ = value; } }
         [DataMember]
         public string wifi { get { return wifi_; } set { wifi_ = value; } }
         [DataMember]

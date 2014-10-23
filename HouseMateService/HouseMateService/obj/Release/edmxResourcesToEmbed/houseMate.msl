@@ -24,6 +24,9 @@
     <EntitySetMapping Name="houses">
       <EntityTypeMapping TypeName="houseMateModel.house">
         <MappingFragment StoreEntitySet="house">
+          <ScalarProperty Name="recycOrGreen" ColumnName="recycOrGreen" />
+          <ScalarProperty Name="binNight" ColumnName="binNight" />
+          <ScalarProperty Name="wifiPass" ColumnName="wifiPass" />
           <ScalarProperty Name="password" ColumnName="password" />
           <ScalarProperty Name="PK_houseID" ColumnName="PK_houseID" />
           <ScalarProperty Name="houseName" ColumnName="houseName" />
@@ -219,6 +222,7 @@
     <EntitySetMapping Name="tenants">
       <EntityTypeMapping TypeName="houseMateModel.tenant">
         <MappingFragment StoreEntitySet="tenant">
+          <ScalarProperty Name="isCurrent" ColumnName="isCurrent" />
           <ScalarProperty Name="PK_tenantID" ColumnName="PK_tenantID" />
           <ScalarProperty Name="FK_houseID" ColumnName="FK_houseID" />
           <ScalarProperty Name="FK_aspMemberID" ColumnName="FK_aspMemberID" />

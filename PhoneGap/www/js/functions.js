@@ -403,7 +403,7 @@ $( document ).on( "pagecreate", "#notices", function() {
     function getNotices()
     {
         $.ajax({
-            url: 'http://www.housemate-app.com/service/NoticeBoardService.svc/getNotices?houseID=' + localStorage.getItem("houseID"),
+            url: 'http://www.housemate-app.com/service/NoticeBoardService.svc/getNotices?houseID=' + localStorage.getItem("houseID") + '',
             jsonpCallback: 'jsonCallback',
             contentType: 'application/json',
             dataType: 'jsonp',
@@ -436,6 +436,8 @@ $( document ).on( "pagecreate", "#notices", function() {
         var title = $('#add-notice-title').val();
         var message = $('#add-notice-message').val();
         var type = "notice";
+        var d = new Date();
+        var shortDate = formatDate(d);
 
         $.ajax({
             url: 'http://www.housemate-app.com/service/NoticeBoardService.svc/addNotice?houseID=' + houseID + '&tenantID=' + tenantID + '&title=' + title + '&message=' + message + '&type=' + type + '',
@@ -443,7 +445,7 @@ $( document ).on( "pagecreate", "#notices", function() {
             contentType: 'application/json',
             dataType: 'jsonp',
             success: function (json) {
-                $('.foodList').listview("refresh");
+                $('.notice-container').prepend('<div class="notice"><h3>' + title + ' - ' + shortDate + '</h3><p>' + message + '</p><p class="tenantName">- ' + name + '</p></div>');
             }
         });
     }
@@ -451,10 +453,12 @@ $( document ).on( "pagecreate", "#notices", function() {
     function addIOU()
     {
         var houseID = localStorage.getItem("houseID");
-        var tenantID = localStorage.getItem("houseID");
+        var tenantID = localStorage.getItem("tennantID");
         var title = $('#add-iou-title').val();
         var message = $('#add-iou-message').val();
         var type = "iou";
+        var d = new Date();
+        var shortDate = formatDate(d);
 
         $.ajax({
             url: 'http://www.housemate-app.com/service/NoticeBoardService.svc/addNotice?houseID=' + houseID + '&tenantID=' + tenantID + '&title=' + title + '&message=' + message + '&type=' + type + '',
@@ -462,7 +466,90 @@ $( document ).on( "pagecreate", "#notices", function() {
             contentType: 'application/json',
             dataType: 'jsonp',
             success: function (json) {
-                $('#iouForm').listview("refresh");
+                $('.iou-container').prepend('<div class="iou"><h3>IOU - <span class="iou-title">' + title + '</span></h3><p>' + message + '</p><p class="tenantName">- ' + name + ' ' + shortDate + '</p></div>');
+            }
+        });
+    }
+
+});
+
+// ------------------ BILLS FUNCTIONS ---------------------
+
+$( document ).on( "pagecreate", "#houseinfo", function() {
+
+    var editing = false;
+
+    fillInfo();
+
+    $(".space").hide();
+    $(".inputs").hide();
+    $(".labels").show();
+    $("#editInfoBtn").click(function(){
+
+        if(editing)
+        {
+            editInfo();
+            $(".inputs").hide();
+            $(".labels").show();
+            // refresh page somehow
+            editing = false;
+        }
+        else
+        {
+            $(".inputs").show();
+            $(".labels").hide();
+            fillTxtBoxes();
+            editing = true;
+        }
+
+        
+    });
+
+    function fillInfo()
+    {
+        var houseID = localStorage.getItem("houseID");
+
+        $.ajax({
+            url: 'http://www.housemate-app.com/service/HouseService.svc/getInfo?hid=' + houseID + '',
+            jsonpCallback: 'jsonCallback',
+            contentType: 'application/json',
+            dataType: 'jsonp',
+            success: function (json) {
+                $("#hNameLbl").append(json.houseName);
+                $("#hPwdLbl").append(json.housePwd);
+                $("#wifiLbl").append(json.wifi);
+                $("#binLbl").append(json.binNight);
+            }
+        });
+    }
+
+    function fillTxtBoxes()
+    {
+        $("#addhName").val($("#hNameLbl").html());
+        $("#addhPwd").val($("#hPwdLbl").html());
+        $("#addWifi").val($("#wifiLbl").html());
+        $("#addBin").val($("#binLbl").html());
+    }
+
+    function editInfo()
+    {
+        var hid = localStorage.getItem("houseID");
+        var name = $("#addhName").val();
+        var pwd = $("#addhPwd").val();
+        var wifi = $("#addWifi").val();
+        var bin = $("#addBin").val();
+
+
+        $.ajax({
+            url: 'http://www.housemate-app.com/service/HouseService.svc/setInfo?hid=' + hid + '&hName=' + name + '&hPwd=' + pwd + '&wifi=' + wifi + '&binNight=' + bin + '&recOrGre=recycling',
+            jsonpCallback: 'jsonCallback',
+            contentType: 'application/json',
+            dataType: 'jsonp',
+            success: function (json) {
+                $("#hNameLbl").html($("#addhName").val());
+                $("#hPwdLbl").html($("#addhPwd").val());
+                $("#wifiLbl").html($("#addWifi").val());
+                $("#binLbl").html($("#addBin").val());
             }
         });
     }

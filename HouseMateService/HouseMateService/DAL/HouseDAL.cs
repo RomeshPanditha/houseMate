@@ -16,16 +16,18 @@ namespace HouseMateService.DAL
                                 .Where(h => h.PK_houseID == houseID)
                                 .Select(h => h).Single();
 
-                return new HouseInfo(currH.wifiPass, currH.binNight, Convert.ToInt32(currH.recycOrGreen));
+                return new HouseInfo(currH.houseName, currH.password, currH.wifiPass, currH.binNight, Convert.ToInt32(currH.recycOrGreen));
             }
         }
 
-        public void setInfo(int houseID, string wifi, string binNight, string recOrGre)
+        public void setInfo(int houseID, string houseName, string housePwd, string wifi, string binNight, string recOrGre)
         {
             using (var context = new houseMateEntities01())
             {
                 house currH = context.houses
                                 .First(h => h.PK_houseID == houseID);
+                if (houseName != "") currH.houseName = houseName;
+                if (housePwd != "") currH.password = housePwd;
                 if(wifi != "") currH.wifiPass = wifi;
                 if (binNight != "") currH.binNight = binNight;
                 if (recOrGre != "")
@@ -37,48 +39,48 @@ namespace HouseMateService.DAL
             }
         }
 
-        public string getHouseName(int houseID)
-        {
-            using (var context = new houseMateEntities01())
-            {
-                return context.houses
-                    .Where(h=> h.PK_houseID == houseID)
-                    .Select(h=> h.houseName).Single();
-            }
-        }
+        //public string getHouseName(int houseID)
+        //{
+        //    using (var context = new houseMateEntities01())
+        //    {
+        //        return context.houses
+        //            .Where(h=> h.PK_houseID == houseID)
+        //            .Select(h=> h.houseName).Single();
+        //    }
+        //}
 
-        public string getHousePass(int houseID)
-        {
-            using (var context = new houseMateEntities01())
-            {
-                return context.houses
-                    .Where(h => h.PK_houseID == houseID)
-                    .Select(h => h.password).Single();
-            }
-        }
+        //public string getHousePass(int houseID)
+        //{
+        //    using (var context = new houseMateEntities01())
+        //    {
+        //        return context.houses
+        //            .Where(h => h.PK_houseID == houseID)
+        //            .Select(h => h.password).Single();
+        //    }
+        //}
 
-        public void setHouseName(int houseID, string newHouseName)
-        {
-            using (var context = new houseMateEntities01())
-            {
-                house current = context.houses
-                    .First(h=> h.PK_houseID == houseID);
-                current.houseName = newHouseName;
-                context.SaveChanges();
-            }
+        //public void setHouseName(int houseID, string newHouseName)
+        //{
+        //    using (var context = new houseMateEntities01())
+        //    {
+        //        house current = context.houses
+        //            .First(h=> h.PK_houseID == houseID);
+        //        current.houseName = newHouseName;
+        //        context.SaveChanges();
+        //    }
 
-        }
+        //}
 
-        public void setHousePass(int houseID, string newHousePass)
-        {
-            using (var context = new houseMateEntities01())
-            {
-                house current = context.houses
-                    .First(h => h.PK_houseID == houseID);
-                current.password = newHousePass;
-                context.SaveChanges();
-            }
-        }
+        //public void setHousePass(int houseID, string newHousePass)
+        //{
+        //    using (var context = new houseMateEntities01())
+        //    {
+        //        house current = context.houses
+        //            .First(h => h.PK_houseID == houseID);
+        //        current.password = newHousePass;
+        //        context.SaveChanges();
+        //    }
+        //}
 
         public int leaveHouse(int uid)
         {

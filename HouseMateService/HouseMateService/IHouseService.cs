@@ -39,25 +39,25 @@ namespace HouseMateService
         House createHouse(string housename, string password, int uid, string addr, string city, string state);
 
 
-        [OperationContract]
-        [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
-            ResponseFormat = WebMessageFormat.Json, UriTemplate = "gHouseN?hid={hid}")]
-        string getHouseName(int hid);
+        //[OperationContract]
+        //[WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
+        //    ResponseFormat = WebMessageFormat.Json, UriTemplate = "gHouseN?hid={hid}")]
+        //string getHouseName(int hid);
 
-        [OperationContract]
-        [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
-            ResponseFormat = WebMessageFormat.Json, UriTemplate = "gHouseP?hid={hid}")]
-        string getHousePass(int hid);
+        //[OperationContract]
+        //[WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
+        //    ResponseFormat = WebMessageFormat.Json, UriTemplate = "gHouseP?hid={hid}")]
+        //string getHousePass(int hid);
 
-        [OperationContract]
-        [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
-            ResponseFormat = WebMessageFormat.Json, UriTemplate = "sHouseN?hid={hid}&newN={newN}")]
-        void setHouseName(int hid, string newN);
+        //[OperationContract]
+        //[WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
+        //    ResponseFormat = WebMessageFormat.Json, UriTemplate = "sHouseN?hid={hid}&newN={newN}")]
+        //void setHouseName(int hid, string newN);
 
-        [OperationContract]
-        [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
-            ResponseFormat = WebMessageFormat.Json, UriTemplate = "sHouseP?hid={hid}&newP={newP}")]
-        void setHousePass(int hid, string newP);
+        //[OperationContract]
+        //[WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
+        //    ResponseFormat = WebMessageFormat.Json, UriTemplate = "sHouseP?hid={hid}&newP={newP}")]
+        //void setHousePass(int hid, string newP);
 
         [OperationContract]
         [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
@@ -66,8 +66,8 @@ namespace HouseMateService
 
         [OperationContract]
         [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
-            ResponseFormat = WebMessageFormat.Json, UriTemplate = "setInfo?hid={hid}&wifi={wifi}&binNight={binNight}&recOrGre={recOrGre}")]
-        void setInfo(int hid, string wifi, string binNight, string recOrGre);
+            ResponseFormat = WebMessageFormat.Json, UriTemplate = "setInfo?hid={hid}&hName={hName}&hPwd={hPwd}&wifi={wifi}&binNight={binNight}&recOrGre={recOrGre}")]
+        void setInfo(int hid, string hName, string hPwd, string wifi, string binNight, string recOrGre);
 
 
     }
