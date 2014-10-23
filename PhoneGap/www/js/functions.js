@@ -244,6 +244,42 @@ $( document ).on( "pagecreate", "#shopping", function() {
 
     getItems();
 
+    //$("#foodUL li").click(function(){
+        //alert($(this).attr('id'));
+    //});
+
+    $("#foodUL").on("click", "li", function(){
+        var removeItemID = $(this).attr('id');
+        buyItem(removeItemID);
+        $(this).slideUp();
+    });
+
+    $("#cleanUL").on("click", "li", function(){
+        var removeItemID = $(this).attr('id');
+        buyItem(removeItemID);
+        $(this).slideUp();
+    });
+
+    $("#otherUL").on("click", "li", function(){
+        var removeItemID = $(this).attr('id');
+        buyItem(removeItemID);
+        $(this).slideUp();
+    });
+
+    function buyItem(itemID)
+    {
+        var hid = localStorage.getItem("houseID");
+
+        $.ajax({
+            url: 'http://www.housemate-app.com/service/ShoppingService.svc/buyItem?itemID='+itemID+'&houseID='+hid+'',
+            jsonpCallback: 'jsonCallback',
+            contentType: 'application/json',
+            dataType: 'jsonp',
+            success: function (json) {
+            }
+        });
+    }
+
     // Populates Shopping List with Items
     function getItems() {
         $.ajax({
@@ -260,15 +296,15 @@ $( document ).on( "pagecreate", "#shopping", function() {
                 $.each(json, function (index, value) {
 
                     if (value.category == "food") {
-                        foodItem = '<li data-icon="false" class="food"><a href="#"><h3>' + value.name + '</h3><p>' + value.desc + '</p></a><div class="right-radio"><label for="checkbox-food' + value.itemID + '"></label><input type="checkbox" id="checkbox-food' + value.itemID + '" /></div></li>';
+                        foodItem = '<li data-icon="false" id="' + value.itemID + '" class="food"><a href="#"><h3>' + value.name + '</h3><p>' + value.desc + '</p></a><div class="right-radio"><label for="checkbox-food' + value.itemID + '"></label><input type="checkbox" id="checkbox-food' + value.itemID + '" /></div></li>';
                         $('.foodList').append(foodItem).listview("refresh");
                     }
                     else if (value.category == "util") {
-                        utilItem = '<li data-icon="false" class="util"><a href="#"><h3>' + value.name + '</h3><p>' + value.desc + '</p></a><div class="right-radio"><label for="checkbox-util' + value.itemID + '"></label><input type="checkbox" id="checkbox-util' + value.itemID + '" /></div></li>';
+                        utilItem = '<li data-icon="false" id="' + value.itemID + '" class="util"><a href="#"><h3>' + value.name + '</h3><p>' + value.desc + '</p></a><div class="right-radio"><label for="checkbox-util' + value.itemID + '"></label><input type="checkbox" id="checkbox-util' + value.itemID + '" /></div></li>';
                         $('.cleaningList').append(utilItem).listview("refresh");
                     }
                     else if (value.category == "other") {
-                        otherItem = '<li data-icon="false" class="other"><a href="#"><h3>' + value.name + '</h3><p>' + value.desc + '</p></a><div class="right-radio"><label for="checkbox-other' + value.itemID + '"></label><input type="checkbox" id="checkbox-other' + value.itemID + '" /></div></li>';
+                        otherItem = '<li data-icon="false" id="' + value.itemID + '" class="other"><a href="#"><h3>' + value.name + '</h3><p>' + value.desc + '</p></a><div class="right-radio"><label for="checkbox-other' + value.itemID + '"></label><input type="checkbox" id="checkbox-other' + value.itemID + '" /></div></li>';
                         $('.otherList').append(otherItem).listview("refresh");
                     }
                 });
