@@ -20,11 +20,9 @@ body, h1, h2, h3, h4, h5, h6, p, label, .ui-btn {
     padding: 0 !important;
 }
 
-
 .ui-tabs > .ui-block-a:first-child {
     border: none;
 }
-
 
 .ui-tabs-nav >  li .ui-btn-active {
     border: none;
@@ -52,6 +50,9 @@ body, h1, h2, h3, h4, h5, h6, p, label, .ui-btn {
 h5 > a:visited {
     color: #384047 !important;
 }
+
+
+
 
 
 /**** SHOPPING/LIST STYLES ****/
@@ -136,7 +137,6 @@ li > a > p:first-letter {
     margin-top: 0;
 }
 
-
 .list-container {
     width: 80% !important;
     margin: auto !important;
@@ -157,8 +157,9 @@ li > a > p:first-letter {
 
 
 
-/* BILLS PAGE STYLES*/
 
+
+/* BILLS PAGE STYLES*/
 
 #addBillButton {
     width: 38px;
@@ -185,7 +186,6 @@ li > a > p:first-letter {
     opacity: 1;
     border-radius: 0;
     border: none;
-
 }
 
 #addBillCategory {
@@ -199,23 +199,23 @@ li > a > p:first-letter {
 
 .billsList ul {
     list-style-type: disc;
-    margin: -15px 0 0 85px;
+    float: right;
 }
 #tenants li {
     text-transform: capitalize;
 }
 
 
+
+
+
 /* NOTICES PAGE STYLES*/
-
-
 
 .notice-container {
     width: 100% !important;
     margin: auto !important;
     text-align: center;
 }
-
 
 .notice {
     width: 100%;
@@ -291,6 +291,8 @@ li > a > p:first-letter {
 }
 
 
+
+
 /* POPUP GENERAL STYLES*/
 
 .ui-popup > .ui-header > .ui-btn {
@@ -329,7 +331,6 @@ li > a > p:first-letter {
     margin: auto;
     border-radius: 10px;
 }
-
 
 .main-nav-item {
     text-align: center;
@@ -476,19 +477,6 @@ li > a > p:first-letter {
     text-align: center;
 }
 
-.about-container {
-    margin: 0 20px;
-}
-
-.about-placeholder {
-    width:125px;
-    height: 125px;
-    background: url('http://placehold.it/125x125');
-    margin: auto;
-    border-radius: 10px;
-}
-
-
 .ui-callout-btn {
     margin: 40px auto 40px auto;
 }
@@ -501,6 +489,24 @@ li > a > p:first-letter {
     max-width: 115px;
     min-width: 90px;
     display: inline-block;
+}
+
+
+
+
+
+/**** ABOUT STYLES ****/
+
+.about-container {
+    margin: 0 20px;
+}
+
+.about-placeholder {
+    width:125px;
+    height: 125px;
+    background: url('http://placehold.it/125x125');
+    margin: auto;
+    border-radius: 10px;
 }
 
 
