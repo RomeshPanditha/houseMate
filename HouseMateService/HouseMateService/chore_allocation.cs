@@ -18,7 +18,7 @@ namespace HouseMateService
         public int FK_choreID { get; set; }
         public int FK_tenantID { get; set; }
         public string dayOfWeek { get; set; }
-        public Nullable<int> cycle { get; set; }
+        public Nullable<sbyte> cycle { get; set; }
     
         public virtual chore chore { get; set; }
         public virtual tenant tenant { get; set; }

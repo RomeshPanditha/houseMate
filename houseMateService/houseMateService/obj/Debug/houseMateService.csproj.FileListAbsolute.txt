@@ -33,3 +33,9 @@ D:\Documents\GitHub\houseMatePC\houseMate\HouseMateService\HouseMateService\obj\
 D:\Documents\GitHub\houseMatePC\houseMate\HouseMateService\HouseMateService\obj\Debug\HouseMateService.pdb
 D:\Documents\GitHub\houseMatePC\houseMate\HouseMateService\HouseMateService\bin\MySql.Web.dll
 C:\Users\Romesh\Documents\houseMate\houseMateService\HouseMateService\bin\MySql.Web.dll
+D:\Documents\GitHub\houseMatePC\houseMate\HouseMateService\HouseMateService\bin\Common.Logging.dll
+D:\Documents\GitHub\houseMatePC\houseMate\HouseMateService\HouseMateService\bin\Quartz.dll
+D:\Documents\GitHub\houseMatePC\houseMate\HouseMateService\HouseMateService\bin\Common.Logging.pdb
+D:\Documents\GitHub\houseMatePC\houseMate\HouseMateService\HouseMateService\bin\Common.Logging.xml
+D:\Documents\GitHub\houseMatePC\houseMate\HouseMateService\HouseMateService\bin\Quartz.pdb
+D:\Documents\GitHub\houseMatePC\houseMate\HouseMateService\HouseMateService\bin\Quartz.xml

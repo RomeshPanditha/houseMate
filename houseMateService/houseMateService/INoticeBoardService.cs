@@ -7,7 +7,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 
-namespace HouseMateService.Services
+namespace HouseMateService
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "INoticeBoardService" in both code and config file together.
     [ServiceContract]
