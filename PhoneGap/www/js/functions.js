@@ -292,16 +292,20 @@ $( document ).on( "pagecreate", "#shopping", function() {
                 console.log(json);
                 $.each(json, function (index, value) {
 
+                    var name = value.name.replace("jsonCallback", "??");
+                    var desc = value.desc.replace("jsonCallback", "??");
+
+
                     if (value.category == "food") {
-                        foodItem = '<li data-icon="false" id="' + value.itemID + '" class="food"><a href="#"><h3>' + value.name + '</h3><p>' + value.desc + '</p></a><div class="right-radio"><label for="checkbox-food' + value.itemID + '"></label><input type="checkbox" id="checkbox-food' + value.itemID + '" /></div></li>';
+                        foodItem = '<li data-icon="false" id="' + value.itemID + '" class="food"><a href="#"><h3>' + name + '</h3><p>' + desc + '</p></a><div class="right-radio"><label for="checkbox-food' + value.itemID + '"></label><input type="checkbox" id="checkbox-food' + value.itemID + '" /></div></li>';
                         $('.foodList').append(foodItem).listview("refresh");
                     }
                     else if (value.category == "util") {
-                        utilItem = '<li data-icon="false" id="' + value.itemID + '" class="util"><a href="#"><h3>' + value.name + '</h3><p>' + value.desc + '</p></a><div class="right-radio"><label for="checkbox-util' + value.itemID + '"></label><input type="checkbox" id="checkbox-util' + value.itemID + '" /></div></li>';
+                        utilItem = '<li data-icon="false" id="' + value.itemID + '" class="util"><a href="#"><h3>' + name + '</h3><p>' + desc + '</p></a><div class="right-radio"><label for="checkbox-util' + value.itemID + '"></label><input type="checkbox" id="checkbox-util' + value.itemID + '" /></div></li>';
                         $('.cleaningList').append(utilItem).listview("refresh");
                     }
                     else if (value.category == "other") {
-                        otherItem = '<li data-icon="false" id="' + value.itemID + '" class="other"><a href="#"><h3>' + value.name + '</h3><p>' + value.desc + '</p></a><div class="right-radio"><label for="checkbox-other' + value.itemID + '"></label><input type="checkbox" id="checkbox-other' + value.itemID + '" /></div></li>';
+                        otherItem = '<li data-icon="false" id="' + value.itemID + '" class="other"><a href="#"><h3>' + name + '</h3><p>' + desc + '</p></a><div class="right-radio"><label for="checkbox-other' + value.itemID + '"></label><input type="checkbox" id="checkbox-other' + value.itemID + '" /></div></li>';
                         $('.otherList').append(otherItem).listview("refresh");
                     }
                 });
@@ -480,12 +484,15 @@ $( document ).on( "pagecreate", "#notices", function() {
                     var d = new Date(parseInt(value.date.substr(6)));
                     var shortDate = formatDate(d);
 
+                    var message = value.noticeDesc.replace("jsonCallback", "??");
+                    var title = value.noticeTitle.replace("jsonCallback", "??");
+
                     if (value.type == "notice") {
-                        notice = '<div class="notice"><h3>' + value.noticeTitle + ' - ' + shortDate + '</h3><p>' + value.noticeDesc + '</p><p class="tenantName">- ' + value.tenantName + '</p></div>';
+                        notice = '<div class="notice"><h3>' + title + ' - ' + shortDate + '</h3><p>' + message + '</p><p class="tenantName">- ' + value.tenantName + '</p></div>';
                         $('.notice-container').append(notice);
                     }
                     else if (value.type == "iou") {
-                        iou = '<div class="iou"><h3>IOU - <span class="iou-title">' + value.noticeTitle + '</span></h3><p>' + value.noticeDesc + '</p><p class="tenantName">- ' + value.tenantName + ' ' + shortDate + '</p></div>';
+                        iou = '<div class="iou"><h3>IOU - <span class="iou-title">' + title + '</span></h3><p>' + message + '</p><p class="tenantName">- ' + value.tenantName + ' ' + shortDate + '</p></div>';
                         $('.iou-container').append(iou);
                     }
                 });
@@ -503,7 +510,7 @@ $( document ).on( "pagecreate", "#notices", function() {
         var shortDate = formatDate(d);
 
         $.ajax({
-            url: 'http://www.housemate-app.com/service/NoticeBoardService.svc/addNotice?houseID=' + houseID + '&tenantID=' + tenantID + '&title=' + title + '&message=' + message + '&type=' + type + '',
+            url: 'http://www.housemate-app.com/service/NoticeBoardService.svc/addNotice?houseID=' + houseID + '&tenantID=' + tenantID + '&title=' + title + '&message=' + message + ' &type=' + type + '',
             jsonpCallback: 'jsonCallback',
             contentType: 'application/json',
             dataType: 'jsonp',
