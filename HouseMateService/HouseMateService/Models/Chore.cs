@@ -12,13 +12,17 @@ namespace HouseMateService.Models
         private string choreName_;
         private string tenantName_;
         private string dayOfWeek_;
+        private int cNum_;
+        private string[] cNames_;
 
 
-        public Chore(string c, string t, string d)
+        public Chore(string c, string t, string d, int cNo, string[] cNames)
         {
             choreName_ = c;
             tenantName_ = t;
             dayOfWeek_ = d;
+            cNum_ = cNo;
+            cNames_ = cNames;
         }
 
         [DataMember]
@@ -27,6 +31,9 @@ namespace HouseMateService.Models
         public string tenName { get { return tenantName_; } set { tenantName_ = value;  } }
         [DataMember]
         public string dow { get { return dayOfWeek_; } set { dayOfWeek_ = value; } }
-
+        [DataMember]
+        public int cNum { get { return cNum_; } set { cNum_ = value; } }
+        [DataMember]
+        public string[] cNames { get { return cNames_; } set { cNames_ = value; } }
     }
 }
