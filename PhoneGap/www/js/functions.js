@@ -551,7 +551,7 @@ $( document ).on( "pagecreate", "#chores", function() {
     function fillChores()
     {
         $.ajax({
-            url: 'http://www.housemate-app.com/service/ChoresService.svc/getChores?hid=' + localStorage.getItem("houseID") + '',
+            url: 'http://www.housemate-app.com/service/ChoreService.svc/getChores?hid=' + localStorage.getItem("houseID") + '',
             jsonpCallback: 'jsonCallback',
             contentType: 'application/json',
             dataType: 'jsonp',
@@ -559,25 +559,19 @@ $( document ).on( "pagecreate", "#chores", function() {
 
                 var chore = '';
                 var allo = '';
-                console.log(json);
+
+                for(i=0;i<json[0].cNum;i++)
+                {
+                    chore += '<li data-icon="false" class="chore"><a href="#"><h3>' + json[0].cNames[i] + '</h3></a></li>';
+                }
+                $('.choreList').append(chore).listview("refresh");  
+
                 $.each(json, function (index, value) {
 
-
-                    $.each(json, function (index, value) {
-                        for(i=0;i<value.cNum;i++)
-                        {
-                            chore += '<li data-icon="false" class="chore"><a href="#"><h3>' + value.cNames[i] + '</h3></a></li>';
-                        }
-
-
-                        allo += '<li data-icon="false" class="allo"><a href="#"><h3>' + value.choreName + '</h3><p>Who: ' + value.tenName + '<br />When: ' + value.dow + '</p></a></li>';
-                       
-                        
-                    });
-                    $('.choreList').append(chore).listview("refresh");
-                    $('.alloList').append(allo).listview("refresh");
-
-                });
+                    allo += '<li data-icon="false" class="allo"><a href="#"><h3>' + value.choreName + '</h3><p>Who: ' + value.tenName + '<br />When: ' + value.dow + '</p></a></li>';
+      
+                });  
+                $('.alloList').append(allo).listview("refresh");
             }
         });
     }

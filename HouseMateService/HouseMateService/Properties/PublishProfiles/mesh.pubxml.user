@@ -65,7 +65,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/13/2014 12:50:32</publishTime>
     </File>
     <File Include="NoticeBoardService.svc">
-      <publishTime>09/18/2014 15:32:22</publishTime>
+      <publishTime>10/30/2014 15:39:44</publishTime>
     </File>
     <File Include="packages.config">
       <publishTime>10/30/2014 14:00:43</publishTime>
@@ -95,7 +95,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/02/2014 13:38:03</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>10/30/2014 15:06:39</publishTime>
+      <publishTime>10/30/2014 15:41:55</publishTime>
     </File>
   </ItemGroup>
 </Project>

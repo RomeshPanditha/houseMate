@@ -566,34 +566,39 @@
 
         <div data-role="ui-content" class="page-container">
             <div class="section-container">
-                <div id="choresList" class="ui-body-d ui-content">
+                <div data-role="tabs" id="chore-tabs">
+
                     <div data-role="navbar">
                         <ul class="chore-nav">
-                              <li style="border: none !important"><a href="#choreList" class="ui-btn-active ui-state-focus">CHORES</a></li>
-                              <li><a href="#alloList">ALLOCATION</a></li>
+                              <li style="border: none !important"><a href="#chore-List" class="ui-btn-active ui-state-focus">CHORES</a></li>
+                              <li><a href="#alList">ALLOCATION</a></li>
                         </ul>
                     </div>
-                    <div id="choreList" class="ui-body-d ui-content">
-                        <div class="list-container">
-                            <ul id="choreUL" class="choreList" data-role="listview" data-theme="e" data-inset="true">
 
-                                        <!-- SHOPPING ITEMS ARE DYNAMICALLY ADDED HERE-->
+                    <div id="choresList" class="ui-body-d ui-content">
+                        
+                        <div id="chore-List" class="ui-body-d ui-content">
+                            <div class="list-container">
+                                <ul id="choreUL" class="choreList" data-role="listview" data-theme="f" data-inset="true">
 
-                            </ul>
+                                            <!-- CHORES ARE DYNAMICALLY ADDED HERE-->
+
+                                </ul>
+                            </div>
                         </div>
-                    </div>
 
-                    <div id="alloList" class="ui-body-d ui-content">
-                        <div class="list-container">
-                            <ul id="alloUL" class="alloList" data-role="listview" data-theme="e" data-inset="true">
+                        <div id="alList" class="ui-body-d ui-content">
+                            <div class="list-container">
+                                <ul id="alloUL" class="alloList" data-role="listview" data-theme="f" data-inset="true">
 
-                                        <!-- CLEANING ITEMS ARE DYNAMICALLY ADDED HERE -->
+                                            <!-- ALLOCATIONS ARE DYNAMICALLY ADDED HERE -->
 
-                            </ul>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            
         </div>
     </div>
 
