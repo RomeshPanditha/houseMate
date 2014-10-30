@@ -39,6 +39,23 @@ namespace HouseMateService.DAL
             }
         }
 
+        public List<myTenant> getTenants(int houseID)
+        {
+            List<myTenant> tList = new List<myTenant>();
+            using (var context = new houseMateEntities01())
+            {
+                List<tenant> tenants = new List<tenant>();
+                tenants.AddRange(from t in context.tenants
+                                 where(t.FK_houseID == houseID && t.isCurrent == 0)
+                                 select t);
+                foreach (tenant t in tenants)
+                {
+                    tList.Add(new myTenant(t.PK_tenantID, t.my_aspnet_membership.Email));
+                }
+            }
+            return tList;
+        }
+
         //public string getHouseName(int houseID)
         //{
         //    using (var context = new houseMateEntities01())

@@ -139,5 +139,18 @@ namespace HouseMateService
                 DAL.setInfo(hid, hName, hPwd, wifi, binNight, recOrGre);
             }
         }
+
+
+        public myTenant[] getTenants(int hid)
+        {
+            if (Convert.ToInt32(HttpContext.Current.Session["loggedIn"]) >= 0)
+            {
+                return DAL.getTenants(hid).ToArray();
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }

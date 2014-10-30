@@ -91,17 +91,17 @@
           <Key>
             <PropertyRef Name="PK_allocationID" />
           </Key>
-          <Property Name="PK_allocationID" Type="int" Nullable="false" />
+          <Property Name="PK_allocationID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="FK_choreID" Type="int" Nullable="false" />
           <Property Name="FK_tenantID" Type="int" Nullable="false" />
           <Property Name="dayOfWeek" Type="varchar" MaxLength="10" />
-          <Property Name="cycle" Type="int" />
+          <Property Name="cycle" Type="tinyint" />
         </EntityType>
         <EntityType Name="chores">
           <Key>
             <PropertyRef Name="PK_choreID" />
           </Key>
-          <Property Name="PK_choreID" Type="int" Nullable="false" />
+          <Property Name="PK_choreID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="FK_houseID" Type="int" />
           <Property Name="choreName" Type="varchar" MaxLength="45" />
         </EntityType>
@@ -577,7 +577,7 @@
           <Property Name="FK_choreID" Type="Int32" Nullable="false" />
           <Property Name="FK_tenantID" Type="Int32" Nullable="false" />
           <Property Name="dayOfWeek" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
-          <Property Name="cycle" Type="Int32" />
+          <Property Name="cycle" Type="SByte" />
           <NavigationProperty Name="chore" Relationship="houseMateModel.allocation_to_chore" FromRole="chore_allocation" ToRole="chores" />
           <NavigationProperty Name="tenant" Relationship="houseMateModel.allocation_to_tenant" FromRole="chore_allocation" ToRole="tenant" />
         </EntityType>

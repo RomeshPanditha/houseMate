@@ -69,6 +69,11 @@ namespace HouseMateService
             ResponseFormat = WebMessageFormat.Json, UriTemplate = "setInfo?hid={hid}&hName={hName}&hPwd={hPwd}&wifi={wifi}&binNight={binNight}&recOrGre={recOrGre}")]
         void setInfo(int hid, string hName, string hPwd, string wifi, string binNight, string recOrGre);
 
+        [OperationContract]
+        [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
+            ResponseFormat = WebMessageFormat.Json, UriTemplate = "getTenants?hid={hid}")]
+        myTenant[] getTenants(int hid);
+
 
     }
 }
