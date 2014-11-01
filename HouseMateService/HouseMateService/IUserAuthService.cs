@@ -30,7 +30,7 @@ namespace HouseMateService
 
         [OperationContract]
         [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
-         ResponseFormat = WebMessageFormat.Json, UriTemplate = "getData?value={value}")]
-        string GetData(int value);
+         ResponseFormat = WebMessageFormat.Json, UriTemplate = "getTenant?tid={tid}")]
+        string GetTenant(int tid);
     }
 }

@@ -32,15 +32,32 @@ namespace HouseMateService.DAL
                 foreach (house_bill h in billL)
                 {
                     // get individual amouts for each bill
-                    tenantBill[] tenList = getInividuals(h.PK_houseBillID).ToArray();
+                    List<tenantBill> tList = getInividuals(h.PK_houseBillID);
+                    tenantBill[] tenList = new tenantBill[tNum];
+                    int incr = 0;
+                    foreach (tenantBill t in tList)
+                    {
+                        tenList[incr] = t;
+                        incr++;
+                    }
+                    
                     string[] names = new string[tNum];
                     string[] amounts = new string[tNum];
                     string[] paid = new string[tNum];
                     for (int i = 0; i < tNum; i++ )
                     {
-                        names[i] = tenList[i].tenantName;
-                        amounts[i] = tenList[i].amount.ToString();
-                        paid[i] = tenList[i].paid;
+                        if (tenList[i] != null)
+                        {
+                            names[i] = tenList[i].tenantName;
+                            amounts[i] = tenList[i].amount.ToString();
+                            paid[i] = tenList[i].paid;
+                        }
+                        else
+                        {
+                            names[i] = "";
+                            amounts[i] = "";
+                            paid[i] = "";
+                        }
                     }
 
                     // add bills to a list to be returned

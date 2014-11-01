@@ -66,11 +66,11 @@ $( document ).on( "pagecreate", "#signup", function() {
 
     function signup() {
         var signupUsername = $('#signup-username').val();
-        var signupEmail = $('#signup-email').val();
+        var signupName = $('#signup-name').val();
         var signupPassword = $('#signup-password').val();
 
         $.ajax({
-            url: 'http://www.housemate-app.com/Service/UserAuthService.svc/createUser?username=' + signupUsername + '&password=' + signupPassword + '&email=' + signupEmail,
+            url: 'http://www.housemate-app.com/Service/UserAuthService.svc/createUser?username=' + signupUsername + '&password=' + signupPassword + '&email=' + signupName,
             jsonpCallback: 'jsonCallback',
             contentType: 'application/json',
             dataType: 'jsonp',
@@ -178,11 +178,11 @@ $( document ).on( "pagecreate", "#joinhouse", function() {
     });
 
     function joinHouse() {
-        var joinUsername = $('#join-username').val();
+        var joinUsername = $('#join-name').val();
         var joinPassword = $('#join-password').val();
 
         $.ajax({
-            url: 'http://www.housemate-app.com/Service/HouseService.svc/joinHouse?housename=' + joinUsername + '&password=' + joinPassword + '&uid=' + localStorage.getItem("userID"),
+            url: 'http://www.housemate-app.com/Service/HouseService.svc/joinHouse?housename=' + joinUsername + '&password=' + joinPassword + '&uid=' + localStorage.getItem("userID") + '',
             jsonpCallback: 'jsonCallback',
             contentType: 'application/json',
             dataType: 'jsonp',
@@ -611,6 +611,11 @@ $( document ).on( "pagecreate", "#houseinfo", function() {
         
     });
 
+    $("#leaveHouseBtn").click(function(){
+        leaveHouse();
+
+    });
+
     function fillInfo()
     {
         var houseID = localStorage.getItem("houseID");
@@ -631,7 +636,7 @@ $( document ).on( "pagecreate", "#houseinfo", function() {
 
     function fillTxtBoxes()
     {
-        $("#addhName").val($("#hNameLbl").html());
+        //$("#addhName").val($("#hNameLbl").html());
         $("#addhPwd").val($("#hPwdLbl").html());
         $("#addWifi").val($("#wifiLbl").html());
         $("#addBin").val($("#binLbl").html());
@@ -647,12 +652,12 @@ $( document ).on( "pagecreate", "#houseinfo", function() {
 
 
         $.ajax({
-            url: 'http://www.housemate-app.com/service/HouseService.svc/setInfo?hid=' + hid + '&hName=' + name + '&hPwd=' + pwd + '&wifi=' + wifi + '&binNight=' + bin + '&recOrGre=recycling',
+            url: 'http://www.housemate-app.com/service/HouseService.svc/setInfo?hid=' + hid + '&hName=&hPwd=' + pwd + '&wifi=' + wifi + '&binNight=' + bin + '&recOrGre=recycling',
             jsonpCallback: 'jsonCallback',
             contentType: 'application/json',
             dataType: 'jsonp',
             success: function (json) {
-                $("#hNameLbl").html($("#addhName").val());
+                //$("#hNameLbl").html($("#addhName").val());
                 $("#hPwdLbl").html($("#addhPwd").val());
                 $("#wifiLbl").html($("#addWifi").val());
                 $("#binLbl").html($("#addBin").val());
@@ -660,8 +665,61 @@ $( document ).on( "pagecreate", "#houseinfo", function() {
         });
     }
 
+    function leaveHouse()
+    {
+        $.ajax({
+            url: 'http://www.housemate-app.com/service/HouseService.svc/leaveHouse?uid=' + localStorage.getItem("userID") + '',
+            jsonpCallback: 'jsonCallback',
+            contentType: 'application/json',
+            dataType: 'jsonp',
+            success: function (json) {
+                window.location.href = '#joinhouse';
+            }
+        });
+    }
+
 });
 
+// ------------------ SETTINGS FUNCTIONS ---------------------
+
+$( document ).on( "pagecreate", "#settings", function() {
+
+    var editing = false;
+    var pwdEditing = false;
+    fillInfo();
+
+    $(".space").hide();
+    $(".inputs").hide();
+    $(".labels").show();
+    $(".pwdReset").hide();
+
+    $("#editInfoBtn").click(function(){
+
+        
+    });
+
+    $("#editPwdBtn").click(function(){
+
+        if(pwdEditing)
+        {
+            $(".pwdReset").hide();
+            // refresh page somehow
+            pwdEditing = false;
+        }
+        else
+        {
+            $(".pwdReset").show();
+            pwdEditing = true;
+        }
+        
+    });
+
+    function fillInfo()
+    {
+        $("#logLbl").append(localStorage.getItem("userName"));
+    }
+
+});
 
 // ------------------ GENERAL FUNCTIONS ---------------------
 
