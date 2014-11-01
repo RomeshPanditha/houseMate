@@ -496,11 +496,6 @@ $( document ).on( "pageshow", "#bills", function() {
           });
     }
 
-    function checkOverdue(date1, date2, value)
-    {
-        
-    }
-
     function getTenants(){
         $.ajax({
             url: 'http://www.housemate-app.com/service/BillService.svc/getBills?houseID=' + localStorage.getItem("houseID"),
