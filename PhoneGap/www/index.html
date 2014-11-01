@@ -8,10 +8,8 @@
 	<script src="js/jquery-1.11.1.min.js"></script>
 	<script src="js/jquery.mobile-1.4.2.js"></script>
 	<script src="js/functions.js"></script>
-    <script src="js/messi.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="css/styles.css"/>
-    <link rel="stylesheet" href="css/messi.css"/>
 </head>
 <body>
 
@@ -693,20 +691,19 @@
         <div data-role="ui-content" class="page-container">
             <div class="section-container">
 
-                    <table>
+                    <table class="user-details">
                         <tr>
                             <td>
                                 <div id="logLbl"><b>Logged in as: </b></div>
                             </td>
                             <td>
                                 <div id="uNameLbl" class="label"></div>
-                                <input type="text" id="addUserName" class="inputs">
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <div><b>Name:</b></div>
-                                <input class="space">
+                                <div><b>Display Name:</b></div>
+                                
                             </td>
                             <td>
                                 <div id="nameLbl" class="labels"></div>
@@ -716,7 +713,7 @@
                         
                     </table>
 
-                    <input type="submit" value="Edit" id="editInfoBtn" class="ui-btn ui-corner-all ui-shadow ui-btn-inline"/>
+                    <input type="submit" value="Edit Display Name" id="editInfoBtn" class="ui-btn ui-corner-all ui-shadow ui-btn-inline"/>
 
                     <table class="pwdReset">
                         <tr>
@@ -739,7 +736,7 @@
                         </tr>
                     </table>
 
-                    <input type="submit" value="Change Password" id="editPwdBtn" class="ui-btn ui-corner-all ui-shadow ui-btn-inline"/>
+                    <input type="submit"  value="Change Password"  id="editPwdBtn" class="ui-btn ui-corner-all ui-shadow ui-btn-inline"/>
                 
             </div>
         </div>

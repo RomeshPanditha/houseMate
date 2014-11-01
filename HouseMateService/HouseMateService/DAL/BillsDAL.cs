@@ -44,6 +44,7 @@ namespace HouseMateService.DAL
                     string[] names = new string[tNum];
                     string[] amounts = new string[tNum];
                     string[] paid = new string[tNum];
+                    int[] tIDs = new int[tNum];
                     for (int i = 0; i < tNum; i++ )
                     {
                         if (tenList[i] != null)
@@ -51,17 +52,19 @@ namespace HouseMateService.DAL
                             names[i] = tenList[i].tenantName;
                             amounts[i] = tenList[i].amount.ToString();
                             paid[i] = tenList[i].paid;
+                            tIDs[i] = tenList[i].tenID;
                         }
                         else
                         {
                             names[i] = "";
                             amounts[i] = "";
                             paid[i] = "";
+                            tIDs[i] = -1;
                         }
                     }
 
                     // add bills to a list to be returned
-                    billList.Add(new Bill(h.PK_houseBillID, h.amount, h.billType, Convert.ToDateTime(h.dueDate), names, amounts, paid, tNum));
+                    billList.Add(new Bill(h.PK_houseBillID, h.amount, h.billType, Convert.ToDateTime(h.dueDate), names, amounts, paid, tIDs, tNum));
                 } 
             }
             return billList;
@@ -87,7 +90,7 @@ namespace HouseMateService.DAL
                     if (i.datePaid != null) date = (DateTime)i.datePaid;
                     else date = null;
 
-                    tenList.Add(new tenantBill(i.FK_houseBillID, name, Convert.ToDouble(i.splitAmount), date));
+                    tenList.Add(new tenantBill(i.FK_houseBillID, name, Convert.ToDouble(i.splitAmount), date, i.FK_tenantID));
                 }
             }
             return tenList;

@@ -299,6 +299,21 @@ li > a > p:first-letter {
     margin: 0 auto;
 }
 
+.user-details tr {
+    padding-top:30%;
+    padding-bottom: 30%;
+}
+
+.user-details {
+    margin: 0 auto;
+}
+
+#settings .section-container .ui-btn{
+    width:150px;
+}
+
+
+
 
 
 
