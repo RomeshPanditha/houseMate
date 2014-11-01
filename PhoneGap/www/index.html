@@ -82,7 +82,7 @@
                         <div class="form-item center">
                             <input type="submit" value="Login" id="loginSubmit" class="ui-btn ui-corner-all ui-shadow ui-btn-inline"/>
                         </div>
-                    <h5><a href="#">Forgot your password?</a></h5>
+                    <h5><a href="#signup">Don't have an account?</a></h5>
 				</div>
 			</div>
 		</div>
@@ -516,14 +516,14 @@
 
                     <div id="noticeBoard" class="ui-body-d ui-content">
                         <div id="noticeForm">
-                            <form>
+                            <form data-theme="c">
                                 <label for="add-notice-title">Title:</label>
-                                <input type="text" id="add-notice-title" placeholder="Howdy" required autofocus>
+                                <input data-theme="c" type="text" id="add-notice-title" placeholder="Howdy" required autofocus>
                                 <label for="add-notice-message">Message:</label>
-                                <textarea rows="3" maxlength="200" type="text" id="add-notice-message" placeholder="I think we should..." required></textarea>
+                                <textarea rows="3" maxlength="200" type="text" id="add-notice-message" placeholder="I think we should..." required data-theme="c"></textarea>
                             </form>
                         </div>
-                        <a id="addNoticeBtn" class="addNote ui-shadow ui-btn ui-icon-plus ui-btn-icon-notext ui-page-theme-c" style="width: 60% !important;"></a>
+                        <a id="addNoticeBtn" class="addNotice ui-shadow ui-btn">Add Notice</a>
 
                         <div class="notice-container">
 
@@ -535,12 +535,12 @@
                         <div id="iouForm">
                             <form>
                                 <label for="add-iou-title">For:</label>
-                                <input type="text" id="add-iou-title" placeholder="Who do you owe?" required>
+                                <input type="text" id="add-iou-title" placeholder="Who do you owe?" data-theme="c" required>
                                 <label for="add-iou-message">Message:</label>
-                                <textarea rows="3" maxlength="200" id="add-iou-message" placeholder="What do you owe?" required></textarea>
+                                <textarea rows="3" maxlength="200" id="add-iou-message" placeholder="What do you owe?" required data-theme="c"></textarea>
                             </form>
                         </div>
-                        <a id="addIouBtn" class="addNote ui-shadow ui-btn ui-icon-plus ui-btn-icon-notext ui-page-theme-c"  style="width: 60% !important;"></a>
+                        <a id="addIouBtn" class="addNotice ui-shadow ui-btn">Add IOU</a>
 
                         <div class="iou-container">
 

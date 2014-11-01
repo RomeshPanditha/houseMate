@@ -236,9 +236,8 @@ li > a > p:first-letter {
     margin: 5px 0;
 }
 
-.addNote {
-    width: 80%;
-    height: 35px;
+.addNotice {
+    width: 50%;
     margin:auto;
     background-color: #9b59b6 !important;
     border-color: #8720b1 !important;
