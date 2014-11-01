@@ -208,7 +208,7 @@ $( document ).on( "pagecreate", "#joinhouse", function() {
 
 $( document ).on( "pagecreate", "#home", function() {
 
-    getTennantID();
+    getTenantID();
 
     $('#logoutButton').click(function() {
         $('.calloutMessage').html("<h5>You have been logged out.</h5>");
@@ -219,7 +219,7 @@ $( document ).on( "pagecreate", "#home", function() {
 
     });
 
-    function getTennantID() {
+    function getTenantID() {
 
         $.ajax({
             url: 'http://www.housemate-app.com/Service/HouseService.svc/getTID?uid=' + localStorage.getItem("userID"),
@@ -229,7 +229,7 @@ $( document ).on( "pagecreate", "#home", function() {
             success: function (json) {
                 console.log(json);
                 if (json> 0) {
-                    localStorage.setItem("tennantID", json);
+                    localStorage.setItem("tenantID", json);
                 }
             }
         });
@@ -368,8 +368,23 @@ $( document ).on( "pagecreate", "#shopping", function() {
 
 $( document ).on( "pagecreate", "#bills", function() {
 
+    var tenID = localStorage.getItem("tenantID");
+
+
     var IDs = [];
     getBills();
+
+
+    $(".billsList").on("click", "li", function(){
+        var payBillID = $(this).attr('id');
+        payBill(payBillID, tenID);
+
+        var d = new Date();
+        var shortDate = formatDate(d);
+
+        $("#tenant" + payBillID + "").prepend("<strike>").listview("refresh");
+        $("#tenant" + payBillID + "").append("</strike><br />PAID: "+ shortDate +"").listview("refresh");
+    });
 
 
     function getBills() {
@@ -385,21 +400,50 @@ $( document ).on( "pagecreate", "#bills", function() {
                     var tenants = '';
                     for(i=0;i<value.tNum;i++)
                     {
-                        tenants += '<li>'+ value.tNames[i] + ' - $' + value.tAmounts[i] +'</li>';
+                        if(value.tIDs[i] != -1)
+                        {
+                            if(value.tPaid[i] != "")
+                            {
+                                var datePaid = value.tPaid[i].substr(0,10);
+                                tenants += '<li id="tenant'+value.tIDs[i]+'"><strike>'+ value.tNames[i] + ' - $' + value.tAmounts[i] + '</strike><br /><p style="font-size:x-small; color:green;">PAID: '+ datePaid +'</p></li>';
+                            }
+                            else
+                            { 
+                                tenants += '<li id="tenant'+value.tIDs[i]+'">'+ value.tNames[i] + ' - $' + value.tAmounts[i] +'</li>';
+                            }
+                            
+                        }
                     }
                     tenants += "";
 
                     IDs.push(value.billID);
                     var ulID = 'invList' + value.billID;
                     //var jsonDate = ;
-                    var date = new Date(parseInt(value.dueDate.substr(6)));
-                    var shortDate = formatDate(date);
-                    output += '<li data-icon="false" class=" ' + value.category + '"><a href="#"><h3>' + value.category + ' - $' + value.totalAmount + '</h3><p> DUE: ' + shortDate + ' </p><ul class="' + ulID + '" data-role="listview" data-theme="f" data-inset="true">' + tenants + '</ul></a></li>';
+                    var dueDate = new Date(parseInt(value.dueDate.substr(6)));
+                    var shortDate = formatDate(dueDate);
+
+                    var today_L = new Date();
+
+                    if(today_L.setHours(0,0,0,0) > dueDate.setHours(0,0,0,0))
+                    {
+                        output += '<li data-icon="false" id="' + value.billID + '"class=" ' + value.category + '"><a href="#"><h3>' + value.category + ' - $' + value.totalAmount + '</h3><p> DUE: <b style="color: red;">' + shortDate + ' (OVERDUE)</b> </p><ul class="' + ulID + '" data-role="listview" data-theme="f" data-inset="true">' + tenants + '</ul></a></li>';
+                    }
+                    else
+                    {
+                        output += '<li data-icon="false" id="' + value.billID + '"class=" ' + value.category + '"><a href="#"><h3>' + value.category + ' - $' + value.totalAmount + '</h3><p> DUE: ' + shortDate + ' </p><ul class="' + ulID + '" data-role="listview" data-theme="f" data-inset="true">' + tenants + '</ul></a></li>';
+                    }
+
+                    
 
                 });
                 $('.billsList').append(output).listview("refresh");
           });
-        }
+    }
+
+    function checkOverdue(date1, date2, value)
+    {
+        
+    }
 
     function getTenants(){
         $.ajax({
@@ -430,6 +474,19 @@ $( document ).on( "pagecreate", "#bills", function() {
             });
 
     }
+
+    function payBill(billID, tenID)
+    {
+        $.ajax({
+            url: 'http://www.housemate-app.com/service/BillService.svc/payBill?billID=' + billID + '&tenantID=' + tenID + '',
+            jsonpCallback: 'jsonCallback',
+            contentType: 'application/json',
+            dataType: 'jsonp',
+            success: function(json){
+
+            }
+        }); 
+    } 
 
 });
 
@@ -502,7 +559,7 @@ $( document ).on( "pagecreate", "#notices", function() {
 
     function addNotice() {
         var houseID = localStorage.getItem("houseID");
-        var tenantID = localStorage.getItem("tennantID");
+        var tenantID = localStorage.getItem("tenantID");
         var title = $('#add-notice-title').val();
         var message = $('#add-notice-message').val();
         var type = "notice";
@@ -523,7 +580,7 @@ $( document ).on( "pagecreate", "#notices", function() {
     function addIOU()
     {
         var houseID = localStorage.getItem("houseID");
-        var tenantID = localStorage.getItem("tennantID");
+        var tenantID = localStorage.getItem("tenantID");
         var title = $('#add-iou-title').val();
         var message = $('#add-iou-message').val();
         var type = "iou";
@@ -717,6 +774,16 @@ $( document ).on( "pagecreate", "#settings", function() {
     function fillInfo()
     {
         $("#logLbl").append(localStorage.getItem("userName"));
+
+        $.ajax({
+            url: 'http://www.housemate-app.com/service/UserAuthService.svc/getTenant?tid=' + localStorage.getItem("userID") + '',
+            jsonpCallback: 'jsonCallback',
+            contentType: 'application/json',
+            dataType: 'jsonp',
+            success: function (json) {
+                $("#nameLbl").append(json);
+            }
+        });
     }
 
 });

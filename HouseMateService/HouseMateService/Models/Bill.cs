@@ -17,10 +17,11 @@ namespace HouseMateService.Models
         private string[] tenantNames;
         private string[] tenantAmounts;
         private string[] tenPaid;
+        private int[] tenIDs;
         private int numT;
         
 
-        public Bill(int billID, double totalAmount, string category, DateTime dueDate, string[] names, string[] amounts, string[] tPaid, int numTenants)
+        public Bill(int billID, double totalAmount, string category, DateTime dueDate, string[] names, string[] amounts, string[] tPaid, int[] tIDs, int numTenants)
         {
             billID_ = billID;
             totalAmount_ = totalAmount;
@@ -29,6 +30,7 @@ namespace HouseMateService.Models
             tenantNames = names;
             tenantAmounts = amounts;
             tenPaid = tPaid;
+            tenIDs = tIDs;
             numT = numTenants;
         }
         
@@ -42,6 +44,8 @@ namespace HouseMateService.Models
         public string category { get { return category_; } set { category_ = value; } }
         [DataMember]
         public DateTime dueDate { get { return dueDate_; } set { dueDate_ = value; } }
+        [DataMember]
+        public int[] tIDs { get { return tenIDs; } set { } }
         [DataMember]
         public string[] tNames { get { return tenantNames; } set { } }
         [DataMember]
