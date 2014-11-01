@@ -492,14 +492,8 @@ $( document ).on( "pageshow", "#bills", function() {
                     }
                 });
                 $('.billsList').append(output).listview("refresh");
-
                 $.mobile.loading('hide');
           });
-    }
-
-    function checkOverdue(date1, date2, value)
-    {
-        
     }
 
     function getTenants(){
@@ -527,7 +521,7 @@ $( document ).on( "pageshow", "#bills", function() {
                     output += '<li data-icon="false" class=" ' + value.category + '"><a href="#"><h3>' + value.category + ' - $' + value.totalAmount + '</h3><p> DUE: ' + shortDate + ' </p><ul class="' + ulID + '" data-role="listview" data-theme="f" data-inset="true">' + tenants + '</ul></a></li>';
 
                 });
-                
+
                 $('.billsList').append(output).listview("refresh");
                 $.mobile.loading('hide');
             });
