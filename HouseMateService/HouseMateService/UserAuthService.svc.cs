@@ -52,9 +52,9 @@ namespace HouseMateService
         }
 
 
-        public string GetData(int value)
+        public string GetTenant(int tid)
         {
-            return string.Format("You entered: {0}", value);
+            return DAL.getTenName(tid);
         }
 
         public void logout()

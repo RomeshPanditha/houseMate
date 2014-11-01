@@ -8,10 +8,6 @@ namespace HouseMateService.DAL
 {
     public class ShoppingDAL
     {
-        
-        public ShoppingDAL()
-        {   
-        }
 
         public List<Item> getShoppingList(int houseID)
         {

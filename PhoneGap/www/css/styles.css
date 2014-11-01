@@ -290,6 +290,16 @@ li > a > p:first-letter {
     margin-left: 30px;
 }
 
+.pwdReset tr {
+    padding-top:30%;
+    padding-bottom: 30%;
+}
+
+.pwdReset {
+    margin: 0 auto;
+}
+
+
 
 
 

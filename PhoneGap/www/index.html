@@ -8,8 +8,10 @@
 	<script src="js/jquery-1.11.1.min.js"></script>
 	<script src="js/jquery.mobile-1.4.2.js"></script>
 	<script src="js/functions.js"></script>
+    <script src="js/messi.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="css/styles.css"/>
+    <link rel="stylesheet" href="css/messi.css"/>
 </head>
 <body>
 
@@ -601,7 +603,7 @@
             
         </div>
     </div>
-
+</div>
 
 
 
@@ -625,8 +627,8 @@
                                 <input class="space">
                             </td>
                             <td>
-                                <div id="hNameLbl" class="labels"></div>
-                                <input type="text" id="addhName" class="inputs">
+                                <div id="hNameLbl" class="label"></div>
+                                <input class="space">
                             </td>
                         </tr>
                         <tr>
@@ -662,6 +664,8 @@
                     </table>
 
                     <input type="submit" value="Edit Info" id="editInfoBtn" class="ui-btn ui-corner-all ui-shadow ui-btn-inline"/>
+
+                    <input type="submit" value="Leave House" id="leaveHouseBtn" class="ui-btn ui-corner-all ui-shadow ui-btn-inline"/>
                     
                 </div>
             </div>
@@ -684,6 +688,54 @@
 
         <div data-role="ui-content" class="page-container">
             <div class="section-container">
+
+                    <table>
+                        <tr>
+                            <td>
+                                <div id="logLbl"><b>Logged in as: </b></div>
+                            </td>
+                            <td>
+                                <div id="uNameLbl" class="label"></div>
+                                <input type="text" id="addUserName" class="inputs">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div><b>Name:</b></div>
+                                <input class="space">
+                            </td>
+                            <td>
+                                <div id="nameLbl" class="labels"></div>
+                                <input type="text" id="addName" class="inputs">                         
+                            </td>
+                        </tr>
+                        
+                    </table>
+
+                    <input type="submit" value="Edit" id="editInfoBtn" class="ui-btn ui-corner-all ui-shadow ui-btn-inline"/>
+
+                    <table class="pwdReset">
+                        <tr>
+                            <td>
+                                <div><b>Old Password:</b></div>
+                                <input type="text" id="oldPwd" class="pwdInputs"> 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div><b>New Password:</b></div>
+                                <input type="text" id="newPwd" class="pwdInputs"> 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div><b>Confirm New Password:</b></div>
+                                <input type="text" id="confNewPwd" class="pwdInputs"> 
+                            </td>
+                        </tr>
+                    </table>
+
+                    <input type="submit" value="Change Password" id="editPwdBtn" class="ui-btn ui-corner-all ui-shadow ui-btn-inline"/>
                 
             </div>
         </div>
