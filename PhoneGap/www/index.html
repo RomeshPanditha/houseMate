@@ -18,7 +18,7 @@
     <div data-role="page" data-theme="a" id="signup">
 
         <header data-role="header">
-            <h1><div class="header-placeholder"></div><strong>HouseMate</strong></h1>
+            <h1><div class="header-logo"></div><strong style="vertical-align: middle;">HouseMate</strong></h1>
         </header>
 
         <div data-role="ui-content" class="page-container">
@@ -64,7 +64,7 @@
 	<div data-role="page" data-theme="a" id="login">
 		
 		<header data-role="header">
-			 <h1><div class="header-placeholder"></div><strong>HouseMate</strong></h1>
+			 <h1><div class="header-logo"></div><strong style="vertical-align: middle;">HouseMate</strong></h1>
 		</header>
 
 		<div data-role="ui-content" class="page-container">
@@ -100,7 +100,7 @@
     <div data-role="page" data-theme="a" id="housemenu">
 
         <header data-role="header">
-            <h1><div class="header-placeholder"></div><strong>HouseMate</strong></h1>
+            <h1><div class="header-logo"></div><strong style="vertical-align: middle;">HouseMate</strong></h1>
         </header>
 
         <div data-role="ui-content" class="page-container">
@@ -134,7 +134,7 @@
 
         <header data-role="header">
             <a href="#housemenu" class="ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-notext ui-btn-left"></a>
-            <h1><div class="header-placeholder"></div><strong>HouseMate</strong></h1>
+            <h1><div class="header-logo"></div><strong style="vertical-align: middle;">HouseMate</strong></h1>
         </header>
 
         <div data-role="ui-content" class="page-container">
@@ -173,7 +173,7 @@
 
         <header data-role="header">
             <a href="#housemenu" class="ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-notext ui-btn-left"></a>
-            <h1><div class="header-placeholder"></div><strong>HouseMate</strong></h1>
+            <h1><div class="header-logo"></div><strong style="vertical-align: middle;">HouseMate</strong></h1>
         </header>
 
         <div data-role="ui-content" class="page-container">
@@ -223,20 +223,20 @@
 		
 		<header data-role="header">
             <a href="#nav-panel" data-icon="bars" class="ui-btn ui-corner-all ui-icon-bars ui-btn-icon-notext ui-btn-left">Menu</a>
-            <h1><div class="header-placeholder"></div><strong>HouseMate</strong></h1>
+            <h1><div class="header-logo"></div><strong style="vertical-align: middle;">HouseMate</strong></h1>
             <a href="#homeinfo" data-icon="info" class="ui-btn ui-corner-all ui-icon-info ui-btn-icon-notext ui-btn-right"></a>
 		</header>
 
 		<div data-role="ui-content" class="page-container">
 			<div class="section-container">
                 <div class="logo">
-                    <div class="logo-placeholder"></div>
+                    <div class="logo-item"></div>
                 </div>
                 <div class="ui-grid-a main-nav">
                     <div class="ui-block-a">
                         <div class="ui-bar ui-bar-a main-nav-item bills-nav">
                             <a href="#bills" style="margin-left: 20px;" data-transition="slide">
-                                <img src="img/red-placeholder.png" height="62px" width="62px" alt="Bills"/>
+                                <div class="menu-icon" style="background-position: 261px 1px;"></div>
                                 <h2>BILLS</h2>
                             </a>
                         </div>
@@ -244,7 +244,7 @@
                     <div class="ui-block-b" style="border-bottom: 1px solid #d6d6d6;">
                         <div class="ui-bar ui-bar-a main-nav-item shopping-nav">
                             <a href="#shopping" style="margin-right: 20px;" data-transition="slide" >
-                                <img src="img/blue-placeholder.png" height="62px" width="62px" alt="Shopping"/>
+                                <div class="menu-icon" style="background-position: 201px 1px;"></div>
                                 <h2>SHOPPING</h2>
                             </a>
                         </div>
@@ -252,7 +252,7 @@
                     <div class="ui-block-a">
                         <div class="ui-bar ui-bar-a main-nav-item notices-nav">
                             <a href="#notices" style="margin-left: 20px;" data-transition="slide">
-                                <img src="img/purple-placeholder.png" height="62px" width="62px" alt="Notices"/>
+                                <div class="menu-icon" style="background-position: 201px 79px;"></div>
                                 <h2>NOTICES</h2>
                             </a>
                         </div>
@@ -260,7 +260,7 @@
                     <div class="ui-block-b">
                         <div class="ui-bar ui-bar-a main-nav-item chores-nav">
                             <a href="#chores" style="margin-right: 20px;" data-transition="slide">
-                                <img src="img/yellow-placeholder.png" height="62px" width="62px" alt="Chores"/>
+                                <div class="menu-icon" style="background-position: 261.5px 79px;"></div>
                                 <h2>CHORES</h2>
                             </a>
                         </div>
@@ -411,6 +411,10 @@
 		<header data-role="header">
 			<a href="#home" data-icon="home" class="ui-btn ui-icon-home ui-btn-icon-notext ui-corner-all" data-transition="slide" data-direction="reverse"></a>
 			<h1><strong>SHOPPING</strong></h1>
+            <a href="#shoppinginfo" data-icon="info" class="ui-btn ui-corner-all ui-icon-info ui-btn-icon-notext ui-btn-right" data-position-to="origin"></a>
+            <div data-role="popup" id="shoppinginfo">
+                <p>Add items to your house's shopping list.</p>
+            </div>
 		</header>
 
 		<div data-role="ui-content" class="page-container">
@@ -598,7 +602,7 @@
                         </div>
                     </div>
                 </div>
-            
+            </div>
         </div>
     </div>
 
@@ -698,7 +702,7 @@
         
         <header data-role="header">
             <a href="#home" data-icon="home" class="ui-btn ui-icon-home ui-btn-icon-notext ui-corner-all"></a>
-            <h1><div class="header-placeholder"></div><strong>HouseMate</strong></h1>
+            <h1><div class="header-logo"></div><strong>HouseMate</strong></h1>
         </header>
 
         <div data-role="ui-content" class="page-container">
