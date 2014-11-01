@@ -385,18 +385,28 @@ $( document ).on( "pageshow", "#bills", function() {
     getBills();
 
     function clearList() {
-        $('#billsList > li').remove();
+        $('.billsList > li').remove();
     }
+
 
     $(".billsList").on("click", "li", function(){
         var payBillID = $(this).attr('id');
-        payBill(payBillID, tenID);
+ 
 
-        var d = new Date();
-        var shortDate = formatDate(d);
+        if(!($('.' + payBillID + ' > .tenant' + tenID + ':contains("PAID")').length > 0))
+        {
+            payBill(payBillID, tenID);
 
-        $("#tenant" + payBillID + "").prepend("<strike>").listview("refresh");
-        $("#tenant" + payBillID + "").append("</strike><br />PAID: "+ shortDate +"").listview("refresh");
+            var d = new Date();
+            var shortDate = formatDate(d);
+
+            var value = $('.' + payBillID + ' > .tenant' + tenID + '').html();
+            $('.' + payBillID + ' > .tenant' + tenID + '').html("");
+            $('.' + payBillID + ' > .tenant' + tenID + '').html('<strike>' + value + '</strike><br /><p style="font-size:x-small; color:green;">PAID: '+ shortDate +'</p>');
+        }
+
+        
+
     });
 
 
@@ -413,7 +423,7 @@ $( document ).on( "pageshow", "#bills", function() {
                 var output = '';
 
                 $.each(json, function (index, value) {
-                    var tenants = '';
+                    var tenants = '<ul class="' + value.billID + '">';
                     for(i=0;i<value.tNum;i++)
                     {
                         if(value.tIDs[i] != -1)
@@ -421,16 +431,16 @@ $( document ).on( "pageshow", "#bills", function() {
                             if(value.tPaid[i] != "")
                             {
                                 var datePaid = value.tPaid[i].substr(0,10);
-                                tenants += '<li id="tenant'+value.tIDs[i]+'"><strike>'+ value.tNames[i] + ' - $' + value.tAmounts[i] + '</strike><br /><p style="font-size:x-small; color:green;">PAID: '+ datePaid +'</p></li>';
+                                tenants += '<li class="tenant'+value.tIDs[i]+'" disabled><strike>'+ value.tNames[i] + ' - $' + value.tAmounts[i] + '</strike><br /><p style="font-size:x-small; color:green;">PAID: '+ datePaid +'</p></li>';
                             }
                             else
                             { 
-                                tenants += '<li id="tenant'+value.tIDs[i]+'">'+ value.tNames[i] + ' - $' + value.tAmounts[i] +'</li>';
+                                tenants += '<li class="tenant'+value.tIDs[i]+'" disabled>'+ value.tNames[i] + ' - $' + value.tAmounts[i] +'</li>';
                             }
                             
                         }
                     }
-                    tenants += "";
+                    tenants += "</ul>";
 
                     IDs.push(value.billID);
                     var ulID = 'invList' + value.billID;
@@ -453,6 +463,7 @@ $( document ).on( "pageshow", "#bills", function() {
 
                 });
                 $('.billsList').append(output).listview("refresh");
+
           });
     }
 
