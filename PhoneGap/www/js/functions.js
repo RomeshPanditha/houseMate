@@ -7,6 +7,7 @@ if(localStorage.getItem("userID") > 0) {
         jsonpCallback: 'jsonCallback',
         contentType: 'application/json',
         dataType: 'jsonp',
+
         success: function (json) {
             if(json.UID > 0) {
                 window.location.href = '#housemenu';
@@ -15,21 +16,30 @@ if(localStorage.getItem("userID") > 0) {
         }
     });
 }
-
-
-
+$(document).on({
+    ajaxStart: function() {
+        $.mobile.loading('show');
+    },
+    ajaxStop: function() {
+        $.mobile.loading('hide');
+    }
+});
 
 // ------------------ LOGIN FUNCTIONS ---------------------
 
 $( document ).on( "pageshow", "#login", function() {
 
+
     $('#loginSubmit').click(function() {
         login();
     });
 
+
     function login() {
         var loginUsername = $('#login-username').val();
         var loginPassword = $('#login-password').val();
+
+        $.mobile.loading('show');
 
         $.ajax({
             url: 'http://www.housemate-app.com/Service/UserAuthService.svc/login?username=' + loginUsername + '&password=' + loginPassword,
@@ -40,6 +50,7 @@ $( document ).on( "pageshow", "#login", function() {
                 if (json.UID < 0) {
                     $('.calloutMessage').html("<h5>Please check that you entered your details correctly.</h5>");
                     $('.callout-footer').show().css('background', '#d6372d');
+                    $.mobile.loading('hide');
                 }
                 if (json.UID > 0) {
                     //sets user details to localStorage on login
@@ -47,6 +58,8 @@ $( document ).on( "pageshow", "#login", function() {
                     localStorage.setItem("userName", loginUsername);
                     localStorage.setItem("userPassword", loginPassword);
                     window.location.href = '#housemenu';
+
+                    $.mobile.loading('hide');
                 }
             }
         });
@@ -69,6 +82,8 @@ $( document ).on( "pageshow", "#signup", function() {
         var signupName = $('#signup-name').val();
         var signupPassword = $('#signup-password').val();
 
+        $.mobile.loading('show');
+
         $.ajax({
             url: 'http://www.housemate-app.com/Service/UserAuthService.svc/createUser?username=' + signupUsername + '&password=' + signupPassword + '&email=' + signupName,
             jsonpCallback: 'jsonCallback',
@@ -86,10 +101,12 @@ $( document ).on( "pageshow", "#signup", function() {
 
                     window.location.href = 'index.html#housemenu';
                     $('.callout-footer').hide();
+                    $.mobile.loading('hide');
                 }
                 else if (json.createdSuccess === false) {
                     $('.calloutMessage').html("<h5>Please ensure all fields are entered correctly.</h5>");
                     $('.callout-footer').show().css('background', '#d6372d');
+                    $.mobile.loading('hide');
                 }
             }
         });
@@ -108,6 +125,8 @@ $( document ).on( "pageshow", "#housemenu", function() {
     //checks whether the user currently has a house
     function checkHouse() {
 
+        $.mobile.loading('show');
+
         $.ajax({
             url: 'http://www.housemate-app.com/Service/HouseService.svc/getHouse?uid=' + localStorage.getItem("userID"),
             jsonpCallback: 'jsonCallback',
@@ -116,11 +135,13 @@ $( document ).on( "pageshow", "#housemenu", function() {
             success: function (json) {
                 if (json.HID < 0) {
                     //console.log("No HouseID");
+                    $.mobile.loading('hide');
                 }
                 if (json.HID > 0) {
                     //console.log("House ID Check worked");
                     localStorage.setItem("houseID", json.HID);
                     window.location.href = '#home';
+                    $.mobile.loading('hide');
                 }
             }
         });
@@ -145,6 +166,7 @@ $( document ).on( "pageshow", "#createhouse", function() {
         var createHouseCity = $('#create-city').val();
         var createHouseState = $('#create-state').val();
 
+        $.mobile.loading('show');
 
         $.ajax({
             url: 'http://www.housemate-app.com/Service/HouseService.svc/createHouse?housename=' + createHouseName + '&password=' + createHousePass + '&uid=' + localStorage.getItem("userID") + '&addr=' +  createHouseAddress + '&city=' + createHouseCity + '&state=' + createHouseState,
@@ -157,10 +179,12 @@ $( document ).on( "pageshow", "#createhouse", function() {
                 if (json.HID < 0) {
                     $('.calloutMessage').html("<h5>Please check that you entered your details correctly.</h5>");
                     $('.callout-footer').show().css('background', '#d6372d');
+                    $.mobile.loading('hide');
                 }
                 if (json.HID > 0) {
                     localStorage.setItem("houseID", json.HID);
                     window.location.href = '#home';
+                    $.mobile.loading('hide');
                 }
             }
         });
@@ -181,6 +205,8 @@ $( document ).on( "pageshow", "#joinhouse", function() {
         var joinUsername = $('#join-name').val();
         var joinPassword = $('#join-password').val();
 
+        $.mobile.loading('show');
+
         $.ajax({
             url: 'http://www.housemate-app.com/Service/HouseService.svc/joinHouse?housename=' + joinUsername + '&password=' + joinPassword + '&uid=' + localStorage.getItem("userID") + '',
             jsonpCallback: 'jsonCallback',
@@ -191,10 +217,12 @@ $( document ).on( "pageshow", "#joinhouse", function() {
                 if (json < 0) {
                     $('.calloutMessage').html("<h5>Please check that you entered your details correctly.</h5>");
                     $('.callout-footer').show().css('background', '#d6372d');
+                    $.mobile.loading('hide');
                 }
                 if (json > 0) {
                     localStorage.setItem("houseID", json.HID);
                     window.location.href = '#home';
+                    $.mobile.loading('hide');
                 }
             }
         });
@@ -288,7 +316,10 @@ $( document ).on( "pageshow", "#shopping", function() {
     // Populates Shopping List with Items
     function getItems() {
 
+        $.mobile.loading('show');
+
         clearList();
+
         $.ajax({
             url: 'http://www.housemate-app.com/service/ShoppingService.svc/getList?houseID=' + localStorage.getItem("houseID"),
             jsonpCallback: 'jsonCallback',
@@ -319,6 +350,8 @@ $( document ).on( "pageshow", "#shopping", function() {
                         $('.otherList').append(otherItem).listview("refresh");
                     }
                 });
+
+                $.mobile.loading('hide');
             }
         });
     }
@@ -357,6 +390,8 @@ $( document ).on( "pageshow", "#shopping", function() {
         $('#add-item-name').val("");
         $('#add-item-desc').val("");
 
+        $.mobile.loading('show');
+
         $.ajax({
             url: 'http://www.housemate-app.com/service/ShoppingService.svc/addItem?houseID=' + localStorage.getItem("houseID") + '&name=' + itemName + '&desc=' + itemDesc + '&category=' + itemCategory + '',
             jsonpCallback: 'jsonCallback',
@@ -366,6 +401,7 @@ $( document ).on( "pageshow", "#shopping", function() {
                 $('.foodList').listview("refresh");
                 $('.cleaningList').listview("refresh");
                 $('.otherList').listview("refresh");
+                $.mobile.loading('hide');
             }
         });
     }
@@ -414,6 +450,8 @@ $( document ).on( "pageshow", "#bills", function() {
 
         clearList();
 
+        $.mobile.loading('show');
+
         $.ajax({
             url: 'http://www.housemate-app.com/service/BillService.svc/getBills?houseID=' + localStorage.getItem("houseID"),
             jsonpCallback: 'jsonCallback',
@@ -458,12 +496,14 @@ $( document ).on( "pageshow", "#bills", function() {
                     {
                         output += '<li data-icon="false" id="' + value.billID + '"class=" ' + value.category + '"><a href="#"><h3>' + value.category + ' - $' + value.totalAmount + '</h3><p> DUE: ' + shortDate + ' </p><ul class="' + ulID + '" data-role="listview" data-theme="f" data-inset="true">' + tenants + '</ul></a></li>';
                     }
-
-                    
-
                 });
-                $('.billsList').append(output).listview("refresh");
 
+                $('.billsList').append(output).listview("refresh");
+<<<<<<< HEAD
+
+=======
+                $.mobile.loading('hide');
+>>>>>>> 487700893270d274d5d79e25fb9a669232a11de6
           });
     }
 
@@ -497,9 +537,10 @@ $( document ).on( "pageshow", "#bills", function() {
                     output += '<li data-icon="false" class=" ' + value.category + '"><a href="#"><h3>' + value.category + ' - $' + value.totalAmount + '</h3><p> DUE: ' + shortDate + ' </p><ul class="' + ulID + '" data-role="listview" data-theme="f" data-inset="true">' + tenants + '</ul></a></li>';
 
                 });
+                
                 $('.billsList').append(output).listview("refresh");
+                $.mobile.loading('hide');
             });
-
     }
 
     function payBill(billID, tenID)
@@ -551,6 +592,8 @@ $( document ).on( "pageshow", "#notices", function() {
 
     function getNotices()
     {
+        $.mobile.loading('show');
+
         $.ajax({
             url: 'http://www.housemate-app.com/service/NoticeBoardService.svc/getNotices?houseID=' + localStorage.getItem("houseID") + '',
             jsonpCallback: 'jsonCallback',
@@ -578,6 +621,8 @@ $( document ).on( "pageshow", "#notices", function() {
                         $('.iou-container').append(iou);
                     }
                 });
+
+                $.mobile.loading('hide');
             }
         });
     }
@@ -642,6 +687,8 @@ $( document ).on( "pageshow", "#chores", function() {
 
     function fillChores()
     {
+        $.mobile.loading('show');
+
         $.ajax({
             url: 'http://www.housemate-app.com/service/ChoreService.svc/getChores?hid=' + localStorage.getItem("houseID") + '',
             jsonpCallback: 'jsonCallback',
@@ -662,8 +709,11 @@ $( document ).on( "pageshow", "#chores", function() {
 
                     allo += '<li data-icon="false" class="allo"><a href="#"><h3>' + value.choreName + '</h3><p>Who: ' + value.tenName + '<br />When: ' + value.dow + '</p></a></li>';
       
-                });  
+                });
+
                 $('.alloList').append(allo).listview("refresh");
+
+                $.mobile.loading('hide');
             }
         });
     }
