@@ -29,11 +29,11 @@ body, h1, h2, h3, h4, h5, h6, p, label, .ui-btn {
     padding-bottom: 11px;
 }
 
-.header-placeholder {
+.header-logo {
     width: 25px;
     height: 25px;
-    background: #2ecc71;
-    border-radius: 2px;
+    background: url('../img/sprite-sheet.png');
+    background-position: -3px -3px;
     display: inline-block;
     vertical-align: middle;
     margin: 0 10px 0 0;
@@ -334,10 +334,11 @@ li > a > p:first-letter {
     text-align: center;
 }
 
-.logo-placeholder {
-    width:125px;
-    height: 125px;
-    background: #2ecc71;
+.logo-item {
+    width: 130px;
+    height: 130px;
+    background: url('../img/sprite-sheet.png');
+    background-position: 134px -3px;
     margin: auto;
     border-radius: 10px;
 }
@@ -381,6 +382,13 @@ li > a > p:first-letter {
 
 .ui-block-a:first-child {
     border-bottom: 1px solid #d6d6d6;
+}
+
+.menu-icon {
+    width: 62px;
+    height: 62px;
+    background: url('../img/sprite-sheet.png');
+    margin: auto;
 }
 
 .bills-nav > a > h2 {
