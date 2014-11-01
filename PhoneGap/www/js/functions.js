@@ -499,11 +499,7 @@ $( document ).on( "pageshow", "#bills", function() {
                 });
 
                 $('.billsList').append(output).listview("refresh");
-<<<<<<< HEAD
-
-=======
                 $.mobile.loading('hide');
->>>>>>> 487700893270d274d5d79e25fb9a669232a11de6
           });
     }
 
@@ -537,7 +533,7 @@ $( document ).on( "pageshow", "#bills", function() {
                     output += '<li data-icon="false" class=" ' + value.category + '"><a href="#"><h3>' + value.category + ' - $' + value.totalAmount + '</h3><p> DUE: ' + shortDate + ' </p><ul class="' + ulID + '" data-role="listview" data-theme="f" data-inset="true">' + tenants + '</ul></a></li>';
 
                 });
-                
+
                 $('.billsList').append(output).listview("refresh");
                 $.mobile.loading('hide');
             });
