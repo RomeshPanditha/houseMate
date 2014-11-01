@@ -16,14 +16,10 @@ if(localStorage.getItem("userID") > 0) {
         }
     });
 }
-$(document).on({
-    ajaxStart: function() {
-        $.mobile.loading('show');
-    },
-    ajaxStop: function() {
-        $.mobile.loading('hide');
-    }
-});
+
+
+
+
 
 // ------------------ LOGIN FUNCTIONS ---------------------
 
@@ -440,8 +436,6 @@ $( document ).on( "pageshow", "#bills", function() {
 
         clearList();
 
-        $.mobile.loading('show');
-
         $.ajax({
             url: 'http://www.housemate-app.com/service/BillService.svc/getBills?houseID=' + localStorage.getItem("houseID"),
             jsonpCallback: 'jsonCallback',
@@ -487,9 +481,7 @@ $( document ).on( "pageshow", "#bills", function() {
                         output += '<li data-icon="false" id="' + value.billID + '"class=" ' + value.category + '"><a href="#"><h3>' + value.category + ' - $' + value.totalAmount + '</h3><p> DUE: ' + shortDate + ' </p><ul class="' + ulID + '" data-role="listview" data-theme="f" data-inset="true">' + tenants + '</ul></a></li>';
                     }
                 });
-
                 $('.billsList').append(output).listview("refresh");
-                $.mobile.loading('hide');
           });
     }
 
