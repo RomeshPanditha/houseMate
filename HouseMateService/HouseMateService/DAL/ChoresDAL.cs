@@ -49,9 +49,16 @@ namespace HouseMateService.DAL
                 cList.AddRange(from c in context.chore_allocation
                                where(c.chore.FK_houseID == houseID)
                                select c);
+
+                List<string> nameLi = new List<string>();
+                nameLi.AddRange(from c in context.chores
+                                select c.choreName);
+                string[] names = nameLi.ToArray();
+                int numChores = names.Length;
+
                 foreach (chore_allocation c in cList)
                 {
-                    choreList.Add(new Chore(c.chore.choreName, c.tenant.my_aspnet_membership.Email, c.dayOfWeek));
+                    choreList.Add(new Chore(c.chore.choreName, c.tenant.my_aspnet_membership.Email, c.dayOfWeek, numChores, names));
                 }
             }
             return choreList;

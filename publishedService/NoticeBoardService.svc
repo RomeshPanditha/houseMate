@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="HouseMateService.Services.NoticeBoardService" CodeBehind="NoticeBoardService.svc.cs" %>
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="HouseMateService.NoticeBoardService" CodeBehind="NoticeBoardService.svc.cs" %>

@@ -446,7 +446,7 @@ $( document ).on( "pagecreate", "#notices", function() {
 
     $(".notices-nav").click(function(){$("#noticeForm").hide();$("#iouForm").hide();});
 
-    $("#addNoticeBtn").click(function(){
+    $("#addNoticeBtn").click(function(){ 
         if($( '#noticeForm' ).is(":visible")){
             $( '#noticeForm' ).slideUp();
             addNotice();
@@ -540,6 +540,42 @@ $( document ).on( "pagecreate", "#notices", function() {
             }
         });
     }
+
+});
+
+// ------------------ CHORES FUNCTIONS ---------------------
+$( document ).on( "pagecreate", "#chores", function() {
+
+    fillChores();
+
+    function fillChores()
+    {
+        $.ajax({
+            url: 'http://www.housemate-app.com/service/ChoreService.svc/getChores?hid=' + localStorage.getItem("houseID") + '',
+            jsonpCallback: 'jsonCallback',
+            contentType: 'application/json',
+            dataType: 'jsonp',
+            success: function (json) {
+
+                var chore = '';
+                var allo = '';
+
+                for(i=0;i<json[0].cNum;i++)
+                {
+                    chore += '<li data-icon="false" class="chore"><a href="#"><h3>' + json[0].cNames[i] + '</h3></a></li>';
+                }
+                $('.choreList').append(chore).listview("refresh");  
+
+                $.each(json, function (index, value) {
+
+                    allo += '<li data-icon="false" class="allo"><a href="#"><h3>' + value.choreName + '</h3><p>Who: ' + value.tenName + '<br />When: ' + value.dow + '</p></a></li>';
+      
+                });  
+                $('.alloList').append(allo).listview("refresh");
+            }
+        });
+    }
+
 
 });
 

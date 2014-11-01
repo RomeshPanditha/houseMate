@@ -566,49 +566,39 @@
 
         <div data-role="ui-content" class="page-container">
             <div class="section-container">
-                <div id="billsList" class="ui-body-d ui-content">
-                    <div class="list-container">
-                        <ul data-role="listview" data-inset="true">
-                            <ul class="choresList" data-role="listview" data-theme="f" data-inset="true">
-                                <li data-icon="false">
-                                    <a href="#">
-                                        <h3>CLEAN LOUNGEROOM</h3>
-                                        <p>DATE: Tuesday, 22/10/2014</p>
-                                        <p>REPEAT: Weekly</p>
-                                    </a>
+                <div data-role="tabs" id="chore-tabs">
 
-                                    <div class="right-radio">
-                                        <input type="checkbox" id="checkbox-1a" checked="false" />
-                                    </div>
-                                </li>
-
-                                <li data-icon="false">
-                                    <a href="#">
-                                        <h3>TAKE OUT GARBAGE</h3>
-                                        <p>DATE: Monday, 27/10/2014</p>
-                                        <p>REPEAT: Weekly</p>
-                                    </a>
-
-                                    <div class="right-radio">
-                                        <input type="checkbox" id="checkbox-1b" checked="false" />
-                                    </div>
-                                </li>
-                                <li data-icon="false">
-                                    <a href="#">
-                                        <h3>FEED THE FISH</h3>
-                                        <p>DATE: Wednesday, 22/10/2014</p>
-                                        <p>REPEAT: Daily</p>
-                                    </a>
-
-                                    <div class="right-radio">
-                                        <input type="checkbox" id="checkbox-1c" checked="false" />
-                                    </div>
-                                </li>
-                            </ul>
+                    <div data-role="navbar">
+                        <ul class="chore-nav">
+                              <li style="border: none !important"><a href="#chore-List" class="ui-btn-active ui-state-focus">CHORES</a></li>
+                              <li><a href="#alList">ALLOCATION</a></li>
                         </ul>
                     </div>
+
+                    <div id="choresList" class="ui-body-d ui-content">
+                        
+                        <div id="chore-List" class="ui-body-d ui-content">
+                            <div class="list-container">
+                                <ul id="choreUL" class="choreList" data-role="listview" data-theme="f" data-inset="true">
+
+                                            <!-- CHORES ARE DYNAMICALLY ADDED HERE-->
+
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div id="alList" class="ui-body-d ui-content">
+                            <div class="list-container">
+                                <ul id="alloUL" class="alloList" data-role="listview" data-theme="f" data-inset="true">
+
+                                            <!-- ALLOCATIONS ARE DYNAMICALLY ADDED HERE -->
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            
         </div>
     </div>
 
