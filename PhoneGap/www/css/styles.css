@@ -269,8 +269,14 @@ li > a > p:first-letter {
 }
 
 
+/* CHORES STYLES*/
 
-
+.addChore {
+    width: 50%;
+    margin:auto;
+    background-color: #fdc22d !important;
+    border-color: #e5b228 !important;
+}
 
 
 /* INFO/SETTINGS STYLES*/

@@ -451,7 +451,7 @@
     </div>
 
 
-        <!-- ************ ADD ITEM POPUP ************* -->
+        <!-- ************ ADD ITEM PAGE ************* -->
 
         <div data-role="page" id="addShopping" data-theme="b">
             <header data-role="header">
@@ -460,7 +460,7 @@
             </header>
             <div data-role="ui-content" class="page-container">
                 <div class="section-container">
-                    <div class="form-container" style="margin: 25px auto">
+                    <div class="form-container" style="margin: 70px auto">
                         <div class="form-item">
                             <label for="add-item-name">Enter Item Name:</label>
                             <input type="text" id="add-item-name" placeholder="Milk" required autofocus>
@@ -567,43 +567,70 @@
 
                     <div data-role="navbar">
                         <ul class="chore-nav">
-                              <li style="border: none !important"><a href="#chore-List" class="ui-btn-active ui-state-focus">CHORES</a></li>
+                              <li style="border: none !important"><a href="#choresList" class="ui-btn-active ui-state-focus">CHORES</a></li>
                               <li><a href="#alList">ALLOCATION</a></li>
                         </ul>
                     </div>
 
                     <div id="choresList" class="ui-body-d ui-content">
-                        
-                        <div id="chore-List" class="ui-body-d ui-content">
-                            <div class="list-container">
-                                <ul id="choreUL" class="choreList" data-role="listview" data-theme="f" data-inset="true">
-
-                                            <!-- CHORES ARE DYNAMICALLY ADDED HERE-->
-
-                                </ul>
+                        <div class="list-container">
+                            <div id="choreForm">
+                                <form data-theme="e">
+                                    <label for="add-chore-name">Chore Name:</label>
+                                    <input data-theme="c" type="text" id="add-chore-name" placeholder="Sweep" required autofocus>
+                                </form>
                             </div>
+                            <a id="openChoreBtn" class="addChore ui-shadow ui-btn">Add Chore</a>
+                            <a id="addChoreBtn" class="addChore ui-shadow ui-btn">Add Chore</a>
+                            <ul id="choreUL" class="choreList" data-role="listview" data-theme="f" data-inset="true">
+
+                                        <!-- CHORES ARE DYNAMICALLY ADDED HERE-->
+
+                            </ul>
                         </div>
+                    </div>
+                    <div id="alList" class="ui-body-d ui-content">
+                        <div class="list-container">
+                            <div id="allocateForm">
+                                <form data-theme="e">
+                                    <label for="add-chore-type">Chore Type:</label>
+                                    <select name="add-chore-type" id="add-chore-type" data-theme="e">
+                                        <option value="Sweep">SWEEP</option>
 
-                        <div id="alList" class="ui-body-d ui-content">
-                            <div class="list-container">
-                                <ul id="alloUL" class="alloList" data-role="listview" data-theme="f" data-inset="true">
+                                        <!-- CHORES GO HERE-->
 
-                                            <!-- ALLOCATIONS ARE DYNAMICALLY ADDED HERE -->
+                                    </select>
+                                    <label for="add-notice-message">Chore Day:</label>
+                                    <input data-theme="c" type="text" id="add-chore-date" placeholder="Wednesday" required autofocus>
+                                    <label for="add-chore-tenant">Select Tenant</label>
+                                    <select name="addbill-type" id="add-chore-tenant" data-theme="e">
+                                        <option value="rent">SALLY</option>
 
-                                </ul>
+                                            <!-- TENANTS GO HERE-->
+
+                                    </select>
+                                </form>
                             </div>
+                            <a id="openAllocateBtn" class="addChore ui-shadow ui-btn">Allocate Chore</a>
+                            <a id="addAllocateBtn" class="addChore ui-shadow ui-btn">Allocate Chore</a>
+                            <ul id="alloUL" class="alloList" data-role="listview" data-theme="f" data-inset="true">
+
+                                        <!-- ALLOCATIONS ARE DYNAMICALLY ADDED HERE -->
+
+                            </ul>
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 
 
 
-     <!-- ************ HOUSE INFO PAGE ************* -->
+
+    <!-- ************ HOUSE INFO PAGE ************* -->
 
     <div data-role="page" data-theme="a" id="houseinfo">
         

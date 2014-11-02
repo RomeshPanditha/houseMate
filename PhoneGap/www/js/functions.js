@@ -369,20 +369,16 @@ $( document ).on( "pageshow", "#shopping", function() {
         var itemDesc = $('#add-item-desc').val();
         var itemCategory = '';
 
+
+
         if ($('#radio-choice-food').prop("checked")) {
             itemCategory = "food";
-            var foodItem = '<li data-icon="false" class="food"><a href="#"><h3>' + itemName + '</h3><p>' + itemDesc + '</p></a><div class="right-radio"><label for="checkbox-food"></label><input type="checkbox" id="checkbox-food" /></div></li>';
-            $('.foodList').append(foodItem).listview("refresh");
         }
         else if ($('#radio-choice-util').prop("checked")) {
             itemCategory = "util";
-            var utilItem = '<li data-icon="false" class="util"><a href="#"><h3>' + itemName + '</h3><p>' + itemDesc + '</p></a><div class="right-radio"><label for="checkbox-util"></label><input type="checkbox" id="checkbox-util" /></div></li>';
-            $('.cleaningList').append(utilItem).listview("refresh");
         }
         else {
             itemCategory = "other";
-            var otherItem = '<li data-icon="false" class="util"><a href="#"><h3>' + itemName + '</h3><p>' + itemDesc + '</p></a><div class="right-radio"><label for="checkbox-util"></label><input type="checkbox" id="checkbox-util" /></div></li>';
-            $('.otherList').append(otherItem).listview("refresh");
         }
 
         $('#add-item-name').val("");
@@ -396,9 +392,6 @@ $( document ).on( "pageshow", "#shopping", function() {
             contentType: 'application/json',
             dataType: 'jsonp',
             success: function (json) {
-                $('.foodList').listview("refresh");
-                $('.cleaningList').listview("refresh");
-                $('.otherList').listview("refresh");
                 $.mobile.loading('hide');
             }
         });
@@ -427,7 +420,7 @@ $( document ).on( "pageshow", "#bills", function() {
 
     $(".billsList").on("click", "li", function(){
         var payBillID = $(this).attr('id');
- 
+
 
         if(!($('.' + payBillID + ' > .tenant' + tenID + ':contains("PAID")').length > 0))
         {
