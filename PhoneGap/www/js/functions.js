@@ -1048,13 +1048,12 @@ $( document ).on( "pageshow", "#chores", function() {
 
 // ------------------ HOUSEINFO FUNCTIONS ---------------------
 
-$( document ).on( "pagecreate", "#houseinfo", function() {
+$( document ).on( "pageshow", "#houseinfo", function() {
 
     var editing = false;
 
     fillInfo();
 
-    $(".space").hide();
     $(".inputs").hide();
     $(".labels").show();
     $("#editInfoBtn").click(function(){
@@ -1158,12 +1157,12 @@ $( document ).on( "pagecreate", "#settings", function() {
     var pwdEditing = false;
     fillInfo();
 
-    $(".space").hide();
     $(".inputs").hide();
     $(".labels").show();
     $(".pwdReset").hide();
 
-    $("#editInfoBtn").click(function(){
+    $("#editSettingsBtn").click(function(){
+
 
         
     });
