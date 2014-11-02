@@ -687,12 +687,12 @@
                         <input type="text" id="addhPwd" class="inputs" required>
                     </div>
                     <div class="form-item">
-                        <label>Wifi Password</label>
+                        <label>Wifi Password:</label>
                         <label id="wifiLbl" class="labels"></label>
                         <input type="text" id="addWifi" class="inputs" required>
                     </div>
                     <div class="form-item">
-                        <label>Bill Night</label>
+                        <label>Bill Night:</label>
                         <label id="binLbl" class="labels"></label>
                         <input type="text" id="addBin" class="inputs" required>
                     </div>
@@ -721,54 +721,38 @@
 
         <div data-role="ui-content" class="page-container">
             <div class="section-container">
-
-                    <table class="user-details">
-                        <tr>
-                            <td>
-                                <div id="logLbl"><b>Logged in as: </b></div>
-                            </td>
-                            <td>
-                                <div id="uNameLbl" class="label"></div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div><b>Display Name:</b></div>
-                                
-                            </td>
-                            <td>
-                                <div id="nameLbl" class="labels"></div>
-                                <input type="text" id="addName" class="inputs">                         
-                            </td>
-                        </tr>
-                        
-                    </table>
-
-                    <input type="submit" value="Edit Display Name" id="editInfoBtn" class="ui-btn ui-corner-all ui-shadow ui-btn-inline"/>
-
-                    <table class="pwdReset">
-                        <tr>
-                            <td>
-                                <div><b>Old Password:</b></div>
-                                <input type="text" id="oldPwd" class="pwdInputs"> 
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div><b>New Password:</b></div>
-                                <input type="text" id="newPwd" class="pwdInputs"> 
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div><b>Confirm New Password:</b></div>
-                                <input type="text" id="confNewPwd" class="pwdInputs"> 
-                            </td>
-                        </tr>
-                    </table>
-
-                    <input type="submit"  value="Change Password"  id="editPwdBtn" class="ui-btn ui-corner-all ui-shadow ui-btn-inline"/>
-                
+                <div class="form-container">
+                    <div class="form-item">
+                        <label>Logged In As:</label>
+                        <label id="logLbl" class="labels"></label>
+                        <input type="text" id="uNameLbl" class="inputs" required autofocus disabled>
+                    </div>
+                    <div class="form-item">
+                        <label>Display Name:</label>
+                        <label id="nameLbl" class="labels"></label>
+                        <input type="text" id="addName" class="inputs" required>
+                    </div>
+                    <div class="form-item" style="text-align: center">
+                        <input type="submit" value="Edit Info" id="editSettingsBtn"  class="ui-btn ui-corner-all ui-shadow ui-btn-inline" disabled/>
+                    </div>
+                    <div class="pwdReset">
+                        <div class="form-item">
+                            <label>Old Password:</label>
+                            <input type="password" id="oldPwd" class="pwdInputs" placeholder="********" required autofocus>
+                        </div>
+                        <div class="form-item">
+                            <label>New Password:</label>
+                            <input type="password" id="newPwd" class="pwdInputs" placeholder="********"  required>
+                        </div>
+                        <div class="form-item">
+                            <label>Confirm Password:</label>
+                            <input type="password" id="confNewPwd" class="pwdInputs" placeholder="********" required>
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <input type="submit"  value="Change Password"  id="editPwdBtn" class="ui-btn ui-corner-all ui-shadow ui-btn-inline"/>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -786,10 +770,13 @@
         
             <meta name = "viewport" content = "initial-scale = 1, user-scalable = no">
         <div data-role="ui-content" class="page-container">
-            <div class="section-container">
-                <canvas id="canvas" height="250" width="250"></canvas>
+            <div class="analytics-container">
+                <div class="canvas-container">
+                    <canvas id="canvas" height="250" width="250"></canvas>
+                </div>
 
-                
+                <h3>Sorry! Analytics is coming soon.</h3>
+                <h5>See housemate-app.com for details</h5>
             </div>
         </div>
     </div>

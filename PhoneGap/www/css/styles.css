@@ -514,7 +514,21 @@ li > a > p:first-letter {
 
 
 
+/**** ANALYTICS STYLES ****/
 
+.canvas-container {
+    margin: 50px auto;
+    width: 250px;
+}
+
+.analytics-container {
+    text-align: center;
+    color: #384047;
+}
+
+.analytics-container > h3, h5 {
+    margin: 10px auto;
+}
 
 
 

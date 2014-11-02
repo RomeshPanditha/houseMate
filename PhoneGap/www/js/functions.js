@@ -1054,7 +1054,6 @@ $( document ).on( "pageshow", "#houseinfo", function() {
 
     fillInfo();
 
-    $(".space").hide();
     $(".inputs").hide();
     $(".labels").show();
     $("#editInfoBtn").click(function(){
@@ -1158,12 +1157,12 @@ $( document ).on( "pagecreate", "#settings", function() {
     var pwdEditing = false;
     fillInfo();
 
-    $(".space").hide();
     $(".inputs").hide();
     $(".labels").show();
     $(".pwdReset").hide();
 
-    $("#editInfoBtn").click(function(){
+    $("#editSettingsBtn").click(function(){
+
 
         
     });
