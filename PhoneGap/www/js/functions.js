@@ -439,7 +439,7 @@ $( document ).on( "pageshow", "#bills", function() {
             $('.' + payBillID + ' > .tenant' + tenID + '').html('<strike>' + value + '</strike><br /><p style="font-size:x-small; color:green;">PAID: '+ shortDate +'</p>');
         }
 
-        
+
 
     });
 
@@ -576,20 +576,77 @@ $( document ).on( "pageshow", "#notices", function() {
         $('.iou-container').children().remove();
     }
 
-
+    $('#addNoticeBtn').hide();
+    $('#addIouBtn').hide();
     $("#noticeForm").hide();
     $("#iouForm").hide();
 
-    $("#addNoticeBtn").click(function(){ 
-        if($( '#noticeForm' ).is(":visible")){
-            $( '#noticeForm' ).slideUp();
+//    $("#addNoticeBtn").click(function(){
+//        if($( '#noticeForm' ).is(":visible")){
+//            $( '#noticeForm' ).slideUp();
+//            addNotice();
+//        } else{
+//            $( '#noticeForm' ).slideDown();
+//        }
+//    });
+
+    $('#openNoticeBtn').click(function(){
+        $('#openNoticeBtn').hide();
+        $('#addNoticeBtn').show();
+        $('#noticeForm').slideDown();
+
+
+
+        $('#addNoticeBtn').click(function(){
+
+            var title = $('#add-notice-title').val();
+            var message = $('#add-notice-message').val();
+            if(title.length === 0 || message.length === 0){
+                $('#openNoticeBtn').show();
+                $('#addNoticeBtn').hide();
+                $('#noticeForm').slideUp();
+            }
+            else {
                 addNotice();
-        } else{
-            $( '#noticeForm' ).slideDown();
-            $( '#addNoticeBtn' ).html("Add").removeClass("ui-btn-icon-notext").css("ui-icon-plus");
-        }
+                $('#openNoticeBtn').show();
+                $('#addNoticeBtn').hide();
+
+                //clear input and hide form
+                $('#add-notice-title').val("");
+                $('#add-notice-message').val("");
+                $('#noticeForm').slideUp();
+            }
+        });
     });
 
+    $('#openIouBtn').click(function(){
+        $('#openIouBtn').hide();
+        $('#addIouBtn').show();
+        $('#iouForm').slideDown();
+
+
+
+        $('#addIouBtn').click(function(){
+
+            var title = $('#add-iou-title').val();
+            var message = $('#add-iou-message').val();
+            if(title.length === 0 || message.length === 0){
+                $('#openIouBtn').show();
+                $('#addIouBtn').hide();
+                $('#iouForm').slideUp();
+            }
+            else {
+                addNotice();
+                $('#openIouBtn').show();
+                $('#addIouBtn').hide();
+
+                //clear input and hide form
+                $('#add-iou-title').val("");
+                $('#add-iou-message').val("");
+                $('#iouForm').slideUp();
+            }
+        });
+    });
 
     $("#addIouBtn").click(function(){
         if($( '#iouForm' ).is(":visible")){
