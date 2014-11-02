@@ -518,6 +518,11 @@ $( document ).on( "pageshow", "#bills", function() {
 
 $( document ).on( "pageshow", "#addBill", function() {
     var hid = localStorage.getItem("houseID");
+
+    var numTenants = 0;
+    var IDs = [];
+
+
     getTenants(hid);
     $(".tenantList").hide();
 
@@ -526,10 +531,79 @@ $( document ).on( "pageshow", "#addBill", function() {
         if($(".tenantList").is(":visible")){
             $(".tenantList").slideUp();
         } 
-        else
-        {
+        else{
             $(".tenantList").slideDown();
         }     
+    });
+
+    // $("#addbill-amount").change(function(){
+        
+    // });
+
+    $("#addbill-amount").on('input propertychange paste', function(){
+        console.log("lol");
+        var total = $("#addbill-amount").val();
+        var singleCost = total/numTenants;
+        $(".tenant-inputs").val(singleCost);
+    });
+
+    $(".tenant-inputs").on('input propertychange paste', function(){
+        $(".tenant-inputs").each(function(){
+            
+        });
+    });
+
+    
+    $("#addBillSubmit").click(function(){
+        
+        var type = $("#addbill-type").val();
+        var amount = $("#addbill-amount").val();
+
+
+        var tenantIDs = '';
+        for(i=0;i<numTenants;i++)
+        {
+            var ID = $('#ten'+IDs[i]+'').attr('id');
+            var nID = ID.replace("ten", "");
+
+            if(i+1 == numTenants) tenantIDs += nID;
+            else tenantIDs += nID + '~';
+        }
+
+
+        var tAmounts = '';
+        if($('#checkbox-split').is(':checked'))
+        {
+            var cost = amount / numTenants;
+            for(i=0;i<numTenants;i++)
+            {
+                if(i+1 == numTenants) tAmounts += cost;
+                else tAmounts += cost + '~';
+            }
+
+        }
+        else
+        {
+            for(i=0;i<numTenants;i++)
+            {
+                var tmpC = $('#ten'+IDs[i]+'').val();
+                var cost = '';
+                if(tmpC.length > 0)
+                {
+                    cost = tmpC
+                }
+                else
+                {
+                    cost = "0";
+                }
+
+                if(i+1 == numTenants) tAmounts += cost;
+                else tAmounts += cost + '~';
+                
+            }
+        }
+
+        addBill(hid, type, amount, tenantIDs, tAmounts);
     });
 
     function clearList() {
@@ -547,12 +621,13 @@ $( document ).on( "pageshow", "#addBill", function() {
             dataType: 'jsonp',
             success: function(json){
 
-                console.log($(json).length);
+                numTenants = $(json).length;
 
                 tenants = '';
 
                 $.each(json, function (index, value) {
-                    tenants += '<li><label for="' + value.tenID + '">' + value.tenName + '</label><input class="tenant-inputs" type="text" id="' + value.tenID + '" placeholder="$" required></li>';
+                    tenants += '<li><label for="' + value.tenID + '">' + value.tenName + '</label><input class="tenant-inputs" type="text" id="ten' + value.tenID + '" placeholder="$" required></li>';
+                    IDs.push(value.tenID);
                 });
 
                 $(".tenantList").append(tenants).listview("refresh");
@@ -561,7 +636,22 @@ $( document ).on( "pageshow", "#addBill", function() {
         }); 
     }
 
+    function addBill(hid, type, amount, tenants, tAmounts)
+    {
+        $.ajax({
+            url: 'http://www.housemate-app.com/service/BillService.svc/addBill?houseID='+hid+'&billType='+type+'&amount='+amount+'&tenantIDs='+tenants+'&tenantAmounts='+tAmounts+'' + '',
+            jsonpCallback: 'jsonCallback',
+            contentType: 'application/json',
+            dataType: 'jsonp',
+            success: function(json){
+
+            }
+        });
+    }
+
 });
+
+
 
 
 
