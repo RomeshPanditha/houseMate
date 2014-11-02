@@ -1048,7 +1048,7 @@ $( document ).on( "pageshow", "#chores", function() {
 
 // ------------------ HOUSEINFO FUNCTIONS ---------------------
 
-$( document ).on( "pagecreate", "#houseinfo", function() {
+$( document ).on( "pageshow", "#houseinfo", function() {
 
     var editing = false;
 
