@@ -1104,17 +1104,17 @@ $( document ).on( "pagecreate", "#houseinfo", function() {
             contentType: 'application/json',
             dataType: 'jsonp',
             success: function (json) {
-                $("#hNameLbl").append(json.houseName);
-                $("#hPwdLbl").append(json.housePwd);
-                $("#wifiLbl").append(json.wifi);
-                $("#binLbl").append(json.binNight);
+                $("#hNameLbl").html(json.houseName);
+                $("#hPwdLbl").html(json.housePwd);
+                $("#wifiLbl").html(json.wifi);
+                $("#binLbl").html(json.binNight);
             }
         });
     }
 
     function fillTxtBoxes()
     {
-        //$("#addhName").val($("#hNameLbl").html());
+        $("#addhName").val($("#hNameLbl").html());
         $("#addhPwd").val($("#hPwdLbl").html());
         $("#addWifi").val($("#wifiLbl").html());
         $("#addBin").val($("#binLbl").html());
@@ -1135,7 +1135,7 @@ $( document ).on( "pagecreate", "#houseinfo", function() {
             contentType: 'application/json',
             dataType: 'jsonp',
             success: function (json) {
-                //$("#hNameLbl").html($("#addhName").val());
+                $("#hNameLbl").html($("#addhName").val());
                 $("#hPwdLbl").html($("#addhPwd").val());
                 $("#wifiLbl").html($("#addWifi").val());
                 $("#binLbl").html($("#addBin").val());

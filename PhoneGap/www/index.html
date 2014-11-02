@@ -360,7 +360,7 @@
                             <input type="text" id="addbill-amount" placeholder="$" required>
                         </div>
                         <div class="form-item">
-                            <label for="addbill-date">Date Due:</label>
+                            <label>Date Due:</label>
                             <input data-role="date" type="date" id="datepicker" required>
                         </div>
                         <div class="form-item ten-list" >
@@ -676,87 +676,30 @@
         <div data-role="ui-content" class="page-container">
             <div class="section-container">
                 <div class="form-container">
-                    <div class="form-item-inline">
+                    <div class="form-item">
                         <label>House Name:</label>
+                        <label id="hNameLbl" class="labels"></label>
+                        <input type="text" id="addhName" class="inputs" required autofocus>
                     </div>
-                    <div class="form-item-inline">
-                        <label for="hNameLbl">l</label>
-                        <input type="text" id="hNameLbl" required autofocus disabled>
-                    </div>
-                    <div class="form-item-inline">
+                    <div class="form-item">
                         <label>House Password:</label>
-                    </div>
-                    <div class="form-item-inline">
-                        <label for="hPwdLbl">l</label>
-                        <input type="text" id="hPwdLbl" required disabled>
+                        <label id="hPwdLbl" class="labels"></label>
+                        <input type="text" id="addhPwd" class="inputs" required>
                     </div>
                     <div class="form-item">
                         <label>Wifi Password</label>
-                        <label for="wifiLbl">l</label>
-                        <input type="text" id="wifiLbl" required>
+                        <label id="wifiLbl" class="labels"></label>
+                        <input type="text" id="addWifi" class="inputs" required>
                     </div>
                     <div class="form-item">
-                        <label for="binLbl">Confirm Password:</label>
-                        <input type="text" id="signup-password2" placeholder="**********" required>
+                        <label>Bill Night</label>
+                        <label id="binLbl" class="labels"></label>
+                        <input type="text" id="addBin" class="inputs" required>
                     </div>
                     <div class="form-item" style="text-align: center">
-                        <input type="submit" value="Signup" id="signupSubmit" class="ui-btn ui-corner-all ui-shadow ui-btn-inline"/>
+                        <input type="submit" value="Edit Info" id="editInfoBtn"  class="ui-btn ui-corner-all ui-shadow ui-btn-inline"/>
+                        <a href="#" id="leaveHouseBtn" class="leaveHouse ui-btn ui-corner-all ui-shadow ui-btn-inline" style="background: #d6372c !important; border: 1px solid #EA665D; margin: 35px auto;">Leave House</a>
                     </div>
-
-
-
-
-
-
-
-
-                    <table>
-                        <tr>
-                            <td>
-                                <div><b>House Name:</b></div>
-                                <input class="space">
-                            </td>
-                            <td>
-                                <div id="hNameLbl" class="label"></div>
-                                <input class="space">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div><b>House Password:</b></div>
-                                <input class="space">
-                            </td>
-                            <td>
-                                <div id="hPwdLbl" class="labels"></div>
-                                <input type="text" id="addhPwd" class="inputs">                         
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div><b>Wifi Password:</b></div>
-                                <input class="space">
-                            </td>
-                            <td>
-                                <div id="wifiLbl" class="labels"></div>
-                                <input type="text" id="addWifi" class="inputs">                  
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div><b>Bin Night:</b></div>
-                                <input class="space">
-                            </td>
-                            <td>
-                                <div id="binLbl" class="labels"></div>
-                                <input type="text" id="addBin" class="inputs">     
-                            </td>
-                        </tr>
-                    </table>
-
-                    <input type="submit" value="Edit Info" id="editInfoBtn" class="ui-btn ui-corner-all ui-shadow ui-btn-inline"/>
-
-                    <input type="submit" value="Leave House" id="leaveHouseBtn" class="ui-btn ui-corner-all ui-shadow ui-btn-inline"/>
-                    
                 </div>
             </div>
         </div>
