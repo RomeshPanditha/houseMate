@@ -14,7 +14,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/18/2014 15:32:22</publishTime>
     </File>
     <File Include="bin/Common.Logging.dll">
-      <publishTime>10/25/2014 17:22:00</publishTime>
+      <publishTime>11/02/2014 00:16:16</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>09/12/2014 21:48:38</publishTime>
@@ -23,10 +23,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/12/2014 21:48:38</publishTime>
     </File>
     <File Include="bin/HouseMateService.dll">
-      <publishTime>11/01/2014 18:12:34</publishTime>
+      <publishTime>11/02/2014 17:09:03</publishTime>
     </File>
     <File Include="bin/MySql.Data.dll">
-      <publishTime>10/30/2014 14:00:40</publishTime>
+      <publishTime>11/02/2014 00:16:16</publishTime>
     </File>
     <File Include="bin/mysql.data.entity.EF6.dll">
       <publishTime>09/12/2014 21:48:38</publishTime>
@@ -35,10 +35,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/13/2014 12:24:56</publishTime>
     </File>
     <File Include="bin/Quartz.dll">
-      <publishTime>10/25/2014 17:22:01</publishTime>
+      <publishTime>11/02/2014 00:16:16</publishTime>
     </File>
     <File Include="ChoreService.svc">
-      <publishTime>10/25/2014 14:24:20</publishTime>
+      <publishTime>11/02/2014 00:16:15</publishTime>
     </File>
     <File Include="Global.asax">
       <publishTime>10/02/2014 17:08:25</publishTime>
@@ -47,7 +47,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/13/2014 11:49:35</publishTime>
     </File>
     <File Include="houseMate.edmx.diagram">
-      <publishTime>10/25/2014 14:39:57</publishTime>
+      <publishTime>11/02/2014 00:16:15</publishTime>
     </File>
     <File Include="houseMate.tt">
       <publishTime>10/13/2014 11:49:36</publishTime>
@@ -65,10 +65,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/13/2014 12:50:32</publishTime>
     </File>
     <File Include="NoticeBoardService.svc">
-      <publishTime>10/30/2014 15:39:44</publishTime>
+      <publishTime>11/02/2014 00:16:16</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>10/30/2014 14:00:43</publishTime>
+      <publishTime>11/02/2014 00:16:16</publishTime>
     </File>
     <File Include="Service1.svc">
       <publishTime>09/18/2014 15:32:22</publishTime>
@@ -80,7 +80,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/15/2014 13:51:30</publishTime>
     </File>
     <File Include="Services/quartz.config">
-      <publishTime>10/25/2014 18:21:17</publishTime>
+      <publishTime>11/02/2014 00:16:15</publishTime>
     </File>
     <File Include="Services/Service1.svc">
       <publishTime>09/14/2014 14:18:49</publishTime>
@@ -95,7 +95,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/02/2014 13:38:03</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/01/2014 18:12:35</publishTime>
+      <publishTime>11/02/2014 17:09:03</publishTime>
     </File>
   </ItemGroup>
 </Project>
