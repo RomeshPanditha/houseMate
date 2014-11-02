@@ -118,6 +118,7 @@ $( document ).on( "pageshow", "#housemenu", function() {
 
     checkHouse();
 
+
     //checks whether the user currently has a house
     function checkHouse() {
 
@@ -130,8 +131,9 @@ $( document ).on( "pageshow", "#housemenu", function() {
             dataType: 'jsonp',
             success: function (json) {
                 if (json.HID < 0) {
-                    //console.log("No HouseID");
                     $.mobile.loading('hide');
+                    $(".housemenu-btn").css('opacity', '1');
+
                 }
                 if (json.HID > 0) {
                     //console.log("House ID Check worked");
