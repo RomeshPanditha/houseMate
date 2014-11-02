@@ -508,10 +508,6 @@ $( document ).on( "pageshow", "#bills", function() {
 
 // ------------------ ADD BILLS FUNCTIONS ---------------------
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 82cf7348812df70b726e9e19a874cdf1ddb496d6
 $( document ).on( "pageshow", "#addBill", function() {
 
      
