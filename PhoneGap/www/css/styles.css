@@ -243,10 +243,11 @@ li > a > p:first-letter {
     max-width: 250px;
     margin: 15px auto;
     padding: 20px;
-    background: #f6f6f6;
+    background: #fafafa;
     text-align: left;
-    border: 1px solid #dddddd;
-    border-radius: 0.4em;
+    border: 1px solid;
+    border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+    border-radius: 3px;
 }
 
 .notice > h3 {
@@ -269,6 +270,12 @@ li > a > p:first-letter {
     text-transform: uppercase;
 }
 
+#noticeForm, #iouForm {
+    max-width: 380px;
+    margin: auto;
+}
+
+
 .iou-container {
     width: 100% !important;
     margin: auto !important;
@@ -280,10 +287,11 @@ li > a > p:first-letter {
     max-width: 250px;
     margin: 15px auto;
     padding: 20px;
-    background: #f6f6f6;
+    background: #fafafa;
     text-align: left;
-    border: 1px solid #dddddd;
-    border-radius: 0.4em;
+    border: 1px solid;
+    border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+    border-radius: 3px;
 }
 
 .iou > h3 {
@@ -297,6 +305,11 @@ li > a > p:first-letter {
 .iou-title {
     text-transform: capitalize;
 }
+
+
+
+
+
 
 /* INFO/SETTINGS STYLES*/
 
@@ -532,6 +545,10 @@ li > a > p:first-letter {
 
 .ui-callout-btn {
     margin: 40px auto 40px auto;
+}
+
+.housemenu-btn {
+    opacity: .5;
 }
 
 .callout-footer {

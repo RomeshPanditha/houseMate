@@ -109,11 +109,11 @@
                     <h2>Welcome!</h2>
                     <div class="form-item center ui-callout-btn">
                         <h4>Already Setup? Join your friends now.</h4>
-                        <a href="#joinhouse" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" style="width:100px;">Join House</a>
+                        <a href="#joinhouse" class="housemenu-btn ui-btn ui-corner-all ui-shadow ui-btn-inline" style="width:100px;">Join House</a>
                     </div>
                     <div class="form-item center ui-callout-btn">
                         <h4>Friends haven't joined HouseMate yet?</h4>
-                        <a href="#createhouse" class="ui-btn ui-corner-all ui-shadow ui-btn-inline" style="width:100px;">Create House</a>
+                        <a href="#createhouse" class="housemenu-btn ui-btn ui-corner-all ui-shadow ui-btn-inline" style="width:100px;">Create House</a>
                     </div>
                 </div>
             </div>
@@ -449,10 +449,10 @@
 
         <!-- ************ ADD ITEM POPUP ************* -->
 
-        <div data-role="popup" id="addShopping" class="ui-dialog-contain ui-overlay-shadow ui-corner-all" style="min-width: 300px; max-width: 375px;" data-position-to="window" >
-            <div data-role="header" data-theme="b">
+        <div data-role="page" id="addShopping" data-theme="b">
+            <div data-role="header">
+                <a href="#home" data-icon="home" class="ui-btn ui-icon-home ui-btn-icon-notext ui-corner-all" data-transition="slide" data-direction="reverse"></a>
                 <h1>Add Item</h1>
-                <a href="#" data-rel="back" class="ui-btn ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
             </div>
             <div role="main" class="ui-content">
                 <form action="">
@@ -507,6 +507,7 @@
                                 <textarea rows="3" maxlength="200" type="text" id="add-notice-message" placeholder="I think we should..." required data-theme="c"></textarea>
                             </form>
                         </div>
+                        <a id="openNoticeBtn" class="addNotice ui-shadow ui-btn">Add Notice</a>
                         <a id="addNoticeBtn" class="addNotice ui-shadow ui-btn">Add Notice</a>
 
                         <div class="notice-container">
@@ -524,6 +525,7 @@
                                 <textarea rows="3" maxlength="200" id="add-iou-message" placeholder="What do you owe?" required data-theme="c"></textarea>
                             </form>
                         </div>
+                        <a id="openIouBtn" class="addNotice ui-shadow ui-btn">Add IOU</a>
                         <a id="addIouBtn" class="addNotice ui-shadow ui-btn">Add IOU</a>
 
                         <div class="iou-container">
