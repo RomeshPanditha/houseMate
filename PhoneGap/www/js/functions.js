@@ -952,14 +952,17 @@ $( document ).on( "pageshow", "#chores", function() {
 
         $('#addAllocateBtn').click(function(){
 
-            var name = $('#add-allocate-name').val();
-            if(name.length === 0){
+            var name = $('#add-chore-type').val();
+            var realName = $('#add-chore-tenant option:selected').text();
+            var day = $('#add-chore-date').val();
+            var tid = $('#add-chore-tenant').val();
+            if(name.length === 0 && tid.length === 0){
                 $('#openAllocateBtn').show();
                 $('#addAllocateBtn').hide();
                 $('#allocateForm').slideUp();
             }
             else {
-                allocateChore();
+                allocateChore(name, realName, tid, day);
                 $('#openAllocateBtn').show();
                 $('#addAllocateBtn').hide();
 
@@ -991,9 +994,17 @@ $( document ).on( "pageshow", "#chores", function() {
         });
     }
 
-    function allocateChore()
+    function allocateChore(name, realName, tid, dow)
     {
-
+        $.ajax({
+            url: 'http://www.housemate-app.com/service/ChoreService.svc/allocateChore?hid=' + localStorage.getItem("houseID") + '&cName='+name+'&tID='+tid+'&dow='+dow+'&cyc='+0+'',
+            jsonpCallback: 'jsonCallback',
+            contentType: 'application/json',
+            dataType: 'jsonp',
+            success: function (json) {
+                $('.alloList').append('<li data-icon="false" class="allo"><a href="#"><h3>' + name + '</h3><p>Who: ' + realName + '<br />When: ' + dow + '</p></a></li>').listview("refresh"); 
+            }
+        });
     }
 
     function fillChores()
