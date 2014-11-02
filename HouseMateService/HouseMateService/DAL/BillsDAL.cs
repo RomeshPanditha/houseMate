@@ -115,14 +115,18 @@ namespace HouseMateService.DAL
                 // create individual bills for each tenant in the house
                 for (int i = 0; i < _tenantID.Length; i++)
                 {
-                    individual_bills newIndividualBill = new individual_bills
+                    if(_tenantAmounts[i] != "0")
                     {
-                        FK_houseBillID = newHouseBill.PK_houseBillID,
-                        FK_tenantID = Convert.ToInt32(_tenantID[i]),
-                        splitAmount = Convert.ToDouble(_tenantAmounts[i])
-                    };
-                    context.individual_bills.Add(newIndividualBill);
-                    context.SaveChanges();
+                        individual_bills newIndividualBill = new individual_bills
+                        {
+                            FK_houseBillID = newHouseBill.PK_houseBillID,
+                            FK_tenantID = Convert.ToInt32(_tenantID[i]),
+                            splitAmount = Convert.ToDouble(_tenantAmounts[i])
+                        };
+                        context.individual_bills.Add(newIndividualBill);
+                        context.SaveChanges();
+                    }
+                    
                 }
             }
         }

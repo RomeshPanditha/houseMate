@@ -206,6 +206,27 @@ li > a > p:first-letter {
 }
 
 
+/* ADD BILLS PAGE STYLES*/
+
+.tenant-inputs {
+    width:40px;
+}
+
+.tenantList > li {
+    float:left;
+}
+
+.tenantList {
+    width:100%;
+
+}
+
+.splitCB {
+    width:0px;
+    height:0px;
+    padding:20px;  
+}
+
 
 
 
