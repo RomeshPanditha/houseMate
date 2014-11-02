@@ -580,6 +580,8 @@ $( document ).on( "pageshow", "#notices", function() {
     $('#addIouBtn').hide();
     $("#noticeForm").hide();
     $("#iouForm").hide();
+    $('#openNoticeBtn').show();
+    $('#openIouBtn').show();
 
 //    $("#addNoticeBtn").click(function(){
 //        if($( '#noticeForm' ).is(":visible")){

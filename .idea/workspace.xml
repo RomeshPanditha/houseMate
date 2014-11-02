@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c7178b6f-6d61-490f-96a8-85df682d4b6b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PhoneGap/www/js/functions.js" afterPath="$PROJECT_DIR$/PhoneGap/www/js/functions.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PhoneGap/www/index.html" afterPath="$PROJECT_DIR$/PhoneGap/www/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PhoneGap/www/css/styles.css" afterPath="$PROJECT_DIR$/PhoneGap/www/css/styles.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="HouseMate.iws" />
@@ -33,8 +31,8 @@
           <file leaf-file-name="index.html" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/PhoneGap/www/index.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.38593483" vertical-offset="7125" max-vertical-offset="11535">
-                  <caret line="505" column="61" selection-start-line="505" selection-start-column="61" selection-end-line="505" selection-end-column="61" />
+                <state vertical-scroll-proportion="0.09005146" vertical-offset="4770" max-vertical-offset="11535">
+                  <caret line="325" column="0" selection-start-line="325" selection-start-column="0" selection-end-line="325" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -47,12 +45,12 @@
           <file leaf-file-name="functions.js" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/PhoneGap/www/js/functions.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.394958" vertical-offset="8425" max-vertical-offset="14310">
-                  <caret line="593" column="35" selection-start-line="593" selection-start-column="35" selection-end-line="593" selection-end-column="35" />
+                <state vertical-scroll-proportion="0.40756303" vertical-offset="8410" max-vertical-offset="14340">
+                  <caret line="593" column="0" selection-start-line="593" selection-start-column="0" selection-end-line="593" selection-end-column="0" />
                   <folding>
-                    <marker date="1414895843000" expanded="false" signature="15388:15419" placeholder="..." />
-                    <marker date="1414895843000" expanded="false" signature="16452:16483" placeholder="..." />
-                    <marker date="1414895843000" expanded="false" signature="17535:17546" placeholder="..." />
+                    <marker date="1414897528000" expanded="false" signature="15388:15419" placeholder="..." />
+                    <marker date="1414897528000" expanded="false" signature="16452:16483" placeholder="..." />
+                    <marker date="1414897528000" expanded="false" signature="17535:17546" placeholder="..." />
                   </folding>
                 </state>
               </provider>
@@ -62,7 +60,7 @@
             <entry file="file://$PROJECT_DIR$/PhoneGap/www/css/styles.css">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0" vertical-offset="3312" max-vertical-offset="8970">
-                  <caret line="272" column="21" selection-start-line="272" selection-start-column="21" selection-end-line="272" selection-end-column="21" />
+                  <caret line="288" column="18" selection-start-line="288" selection-start-column="18" selection-end-line="288" selection-end-column="18" />
                   <folding />
                 </state>
               </provider>
@@ -83,9 +81,9 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/PhoneGap/www/js/functions.js" />
-        <option value="$PROJECT_DIR$/PhoneGap/www/index.html" />
         <option value="$PROJECT_DIR$/PhoneGap/www/css/styles.css" />
+        <option value="$PROJECT_DIR$/PhoneGap/www/index.html" />
+        <option value="$PROJECT_DIR$/PhoneGap/www/js/functions.js" />
       </list>
     </option>
   </component>
@@ -301,13 +299,18 @@
       <created>1414892215070</created>
       <updated>1414892215070</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Fixed noticeForm hide/show and added basic validation">
+      <created>1414896628670</created>
+      <updated>1414896628670</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="97" y="65" width="1631" height="1300" extended-state="0" />
     <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.056864336" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -322,7 +325,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.056864336" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -349,7 +351,8 @@
     <MESSAGE value="Removes loading on Bills" />
     <MESSAGE value="Merge branch 'master' of https://github.com/HarrisonDempsey/houseMate&#10;&#10;Conflicts:&#10;&#9;PhoneGap/www/js/functions.js&#10;" />
     <MESSAGE value="Added clearList() to Notices, various other style tweaks" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added clearList() to Notices, various other style tweaks" />
+    <MESSAGE value="Fixed noticeForm hide/show and added basic validation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed noticeForm hide/show and added basic validation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -370,9 +373,9 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="4950" max-vertical-offset="13455">
           <caret line="330" column="0" selection-start-line="330" selection-start-column="0" selection-end-line="330" selection-end-column="0" />
           <folding>
-            <marker date="1414895843000" expanded="false" signature="15388:15419" placeholder="..." />
-            <marker date="1414895843000" expanded="false" signature="16452:16483" placeholder="..." />
-            <marker date="1414895843000" expanded="false" signature="17535:17546" placeholder="..." />
+            <marker date="1414897528000" expanded="false" signature="15388:15419" placeholder="..." />
+            <marker date="1414897528000" expanded="false" signature="16452:16483" placeholder="..." />
+            <marker date="1414897528000" expanded="false" signature="17535:17546" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -398,9 +401,9 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="9940" max-vertical-offset="13125">
           <caret line="689" column="30" selection-start-line="689" selection-start-column="30" selection-end-line="689" selection-end-column="30" />
           <folding>
-            <marker date="1414895843000" expanded="false" signature="15388:15419" placeholder="..." />
-            <marker date="1414895843000" expanded="false" signature="16452:16483" placeholder="..." />
-            <marker date="1414895843000" expanded="false" signature="17535:17546" placeholder="..." />
+            <marker date="1414897528000" expanded="false" signature="15388:15419" placeholder="..." />
+            <marker date="1414897528000" expanded="false" signature="16452:16483" placeholder="..." />
+            <marker date="1414897528000" expanded="false" signature="17535:17546" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -426,9 +429,9 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="6045" max-vertical-offset="13215">
           <caret line="417" column="0" selection-start-line="417" selection-start-column="0" selection-end-line="417" selection-end-column="0" />
           <folding>
-            <marker date="1414895843000" expanded="false" signature="15388:15419" placeholder="..." />
-            <marker date="1414895843000" expanded="false" signature="16452:16483" placeholder="..." />
-            <marker date="1414895843000" expanded="false" signature="17535:17546" placeholder="..." />
+            <marker date="1414897528000" expanded="false" signature="15388:15419" placeholder="..." />
+            <marker date="1414897528000" expanded="false" signature="16452:16483" placeholder="..." />
+            <marker date="1414897528000" expanded="false" signature="17535:17546" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -454,9 +457,9 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="6495" max-vertical-offset="12915">
           <caret line="490" column="5" selection-start-line="490" selection-start-column="5" selection-end-line="490" selection-end-column="5" />
           <folding>
-            <marker date="1414895843000" expanded="false" signature="15388:15419" placeholder="..." />
-            <marker date="1414895843000" expanded="false" signature="16452:16483" placeholder="..." />
-            <marker date="1414895843000" expanded="false" signature="17535:17546" placeholder="..." />
+            <marker date="1414897528000" expanded="false" signature="15388:15419" placeholder="..." />
+            <marker date="1414897528000" expanded="false" signature="16452:16483" placeholder="..." />
+            <marker date="1414897528000" expanded="false" signature="17535:17546" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -482,9 +485,9 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="12975">
           <caret line="43" column="30" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
           <folding>
-            <marker date="1414895843000" expanded="false" signature="15388:15419" placeholder="..." />
-            <marker date="1414895843000" expanded="false" signature="16452:16483" placeholder="..." />
-            <marker date="1414895843000" expanded="false" signature="17535:17546" placeholder="..." />
+            <marker date="1414897528000" expanded="false" signature="15388:15419" placeholder="..." />
+            <marker date="1414897528000" expanded="false" signature="16452:16483" placeholder="..." />
+            <marker date="1414897528000" expanded="false" signature="17535:17546" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -510,9 +513,9 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="12360">
           <caret line="387" column="12" selection-start-line="387" selection-start-column="12" selection-end-line="387" selection-end-column="12" />
           <folding>
-            <marker date="1414895843000" expanded="false" signature="15388:15419" placeholder="..." />
-            <marker date="1414895843000" expanded="false" signature="16452:16483" placeholder="..." />
-            <marker date="1414895843000" expanded="false" signature="17535:17546" placeholder="..." />
+            <marker date="1414897528000" expanded="false" signature="15388:15419" placeholder="..." />
+            <marker date="1414897528000" expanded="false" signature="16452:16483" placeholder="..." />
+            <marker date="1414897528000" expanded="false" signature="17535:17546" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -535,27 +538,27 @@
     <entry file="file://$PROJECT_DIR$/PhoneGap/www/css/styles.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="3312" max-vertical-offset="8970">
-          <caret line="272" column="21" selection-start-line="272" selection-start-column="21" selection-end-line="272" selection-end-column="21" />
+          <caret line="288" column="18" selection-start-line="288" selection-start-column="18" selection-end-line="288" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/PhoneGap/www/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38593483" vertical-offset="7125" max-vertical-offset="11535">
-          <caret line="505" column="61" selection-start-line="505" selection-start-column="61" selection-end-line="505" selection-end-column="61" />
+        <state vertical-scroll-proportion="0.09005146" vertical-offset="4770" max-vertical-offset="11535">
+          <caret line="325" column="0" selection-start-line="325" selection-start-column="0" selection-end-line="325" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/PhoneGap/www/js/functions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.394958" vertical-offset="8425" max-vertical-offset="14310">
-          <caret line="593" column="35" selection-start-line="593" selection-start-column="35" selection-end-line="593" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.40756303" vertical-offset="8410" max-vertical-offset="14340">
+          <caret line="593" column="0" selection-start-line="593" selection-start-column="0" selection-end-line="593" selection-end-column="0" />
           <folding>
-            <marker date="1414895843000" expanded="false" signature="15388:15419" placeholder="..." />
-            <marker date="1414895843000" expanded="false" signature="16452:16483" placeholder="..." />
-            <marker date="1414895843000" expanded="false" signature="17535:17546" placeholder="..." />
+            <marker date="1414897528000" expanded="false" signature="15388:15419" placeholder="..." />
+            <marker date="1414897528000" expanded="false" signature="16452:16483" placeholder="..." />
+            <marker date="1414897528000" expanded="false" signature="17535:17546" placeholder="..." />
           </folding>
         </state>
       </provider>
