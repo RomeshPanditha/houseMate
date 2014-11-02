@@ -506,12 +506,15 @@ $( document ).on( "pageshow", "#bills", function() {
 
 });
 
+
 // ------------------ ADD BILLS FUNCTIONS ---------------------
 
-<<<<<<< HEAD
+$(function(){
+    $.datepicker.setDefaults({
+            dateFormat: "yy-mm-dd",
+        });
+});
 
-=======
->>>>>>> 82cf7348812df70b726e9e19a874cdf1ddb496d6
 $( document ).on( "pageshow", "#addBill", function() {
 
      
@@ -1034,9 +1037,10 @@ $( document ).on( "pageshow", "#chores", function() {
 
 
                 $.each(json, function (index, value) {
-
-                    allo += '<li data-icon="false" class="allo"><a href="#"><h3>' + value.choreName + '</h3><p>Who: ' + value.tenName + '<br />When: ' + value.dow + '</p></a></li>';
-      
+                    if(value.choreName != "")
+                    {
+                        allo += '<li data-icon="false" class="allo"><a href="#"><h3>' + value.choreName + '</h3><p>Who: ' + value.tenName + '<br />When: ' + value.dow + '</p></a></li>';
+                    }
                 });
 
                 $('.alloList').append(allo).listview("refresh");
