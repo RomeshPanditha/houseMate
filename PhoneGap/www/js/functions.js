@@ -410,6 +410,8 @@ $( document ).on( "pageshow", "#shopping", function() {
 
 $( document ).on( "pageshow", "#bills", function() {
 
+    $.mobile.loading('show');
+
     var tenID = localStorage.getItem("tenantID");
 
 
@@ -496,37 +498,6 @@ $( document ).on( "pageshow", "#bills", function() {
           });
     }
 
-    function getTenants(){
-        $.ajax({
-            url: 'http://www.housemate-app.com/service/BillService.svc/getBills?houseID=' + localStorage.getItem("houseID"),
-            jsonpCallback: 'jsonCallback',
-            contentType: 'application/json',
-            dataType: 'jsonp'})
-            .done(function(json){
-                var output = '';
-
-                $.each(json, function (index, value) {
-                    var tenants = '';
-                    for(i=0;i<value.tNum;i++)
-                    {
-                        tenants += '<li>'+ value.tNames[i] + ' - $' + value.tAmounts[i] +'</li>';
-                    }
-                    tenants += "";
-
-                    IDs.push(value.billID);
-                    var ulID = 'tenantList' + value.billID;
-                    //var jsonDate = ;
-                    var date = new Date(parseInt(value.dueDate.substr(6)));
-                    var shortDate = formatDate(date);
-                    output += '<li data-icon="false" class=" ' + value.category + '"><a href="#"><h3>' + value.category + ' - $' + value.totalAmount + '</h3><p> DUE: ' + shortDate + ' </p><ul class="' + ulID + '" data-role="listview" data-theme="f" data-inset="true">' + tenants + '</ul></a></li>';
-
-                });
-
-                $('.billsList').append(output).listview("refresh");
-                $.mobile.loading('hide');
-            });
-    }
-
     function payBill(billID, tenID)
     {
         $.ajax({
@@ -536,9 +507,54 @@ $( document ).on( "pageshow", "#bills", function() {
             dataType: 'jsonp',
             success: function(json){
 
+
             }
         }); 
     } 
+
+});
+
+$( document ).on( "pageshow", "#addBill", function() {
+    var hid = localStorage.getItem("houseID");
+    getTenants(hid);
+    $(".tenantList").hide();
+
+    $('#checkbox-split').change(function() {
+        if($(this).is(":checked")) {
+            $(".tenantList").hide();
+            //$(this).attr("checked", returnVal);
+        }
+        $(".tenantList").show();       
+    });
+
+    function clearList() {
+        $(".tenantList > li").remove();
+    }
+
+    function getTenants(houseID)
+    {
+        clearList();
+
+        $.ajax({
+            url: 'http://www.housemate-app.com/service/HouseService.svc/getTenants?hid=' + houseID + '',
+            jsonpCallback: 'jsonCallback',
+            contentType: 'application/json',
+            dataType: 'jsonp',
+            success: function(json){
+
+                console.log($(json).length);
+
+                tenants = '';
+
+                $.each(json, function (index, value) {
+                    tenants += '<li><label for="' + value.tenID + '">' + value.tenName + '</label><input class="tenant-inputs" type="text" id="' + value.tenID + '" placeholder="$" required></li>';
+                });
+
+                $(".tenantList").append(tenants).listview("refresh");
+
+            }
+        }); 
+    }
 
 });
 

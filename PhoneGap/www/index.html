@@ -351,11 +351,18 @@
                             <label for="addbill-date">Date Due:</label>
                             <input type="date" id="addbill-date" required>
                         </div>
-                        <div class="form-item">
-                            <div data-role="collapsible" data-mini="true" data-iconpos="right" data-content-theme="false" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+                        <div class="form-item ten-list" >
+                            <input type="checkbox" name="checkbox-split" id="checkbox-split" checked>
+                            <label for="checkbox-split" id="cb"class="splitCB"></label>
+                            <div>Split evenly</div>
+                            <ul data-role="listview" class="tenantList">
+                            </ul>
+
+                    <!--   <div data-role="collapsible" data-mini="true" data-iconpos="right" data-content-theme="false" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
                                 <h4>Tenants</h4>
-                                <ul data-role="listview">
-                                    <fieldset data-role="controlgroup" class="tenantList" data-iconpos="right" data-theme="f">
+                                
+
+                                <fieldset data-role="controlgroup" class="tenantList" data-iconpos="right" data-theme="f">
                                         <input type="checkbox" name="checkbox-v-2a" id="checkbox-v-2a">
                                         <label for="checkbox-v-2a" data-theme="d">Sally</label>
                                         <input type="checkbox" name="checkbox-v-2b" id="checkbox-v-2b" >
@@ -364,12 +371,13 @@
                                         <label for="checkbox-v-2c">Toby</label>
                                         <input type="checkbox" name="checkbox-v-2d" id="checkbox-v-2d">
                                         <label for="checkbox-v-2d">Jane</label>
-                                    </fieldset>
-                                </ul>
-                            </div>
+                                    </fieldset> 
+
+                                
+                            </div>-->
 
                         </div>
-                        <div class="form-item" style="text-align: center">
+                        <div class="form-item" style="text-align: center; clear:left;">
                             <input type="submit" value="Add" id="addBillSubmit" class="ui-btn ui-corner-all ui-shadow ui-btn-inline"/>
                         </div>
                 </div>
