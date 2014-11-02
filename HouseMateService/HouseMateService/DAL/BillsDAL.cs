@@ -65,9 +65,11 @@ namespace HouseMateService.DAL
 
                     // add bills to a list to be returned
                     billList.Add(new Bill(h.PK_houseBillID, h.amount, h.billType, Convert.ToDateTime(h.dueDate), names, amounts, paid, tIDs, tNum));
+
                 } 
             }
-            return billList;
+            List<Bill> orderedBillList = billList.OrderBy(o => o.dueDate).ToList();
+            return orderedBillList;
         }
 
         public List<tenantBill> getInividuals(int billID)

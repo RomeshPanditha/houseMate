@@ -511,12 +511,6 @@ $( document ).on( "pageshow", "#bills", function() {
 
 // ------------------ ADD BILLS FUNCTIONS ---------------------
 
-$(function(){
-    $.datepicker.setDefaults({
-            dateFormat: "yy-mm-dd",
-        });
-});
-
 
 $( document ).on( "pageshow", "#addBill", function() {
 
@@ -920,10 +914,100 @@ $( document ).on( "pageshow", "#notices", function() {
 $( document ).on( "pageshow", "#chores", function() {
 
     fillChores();
+    $('#openChoreBtn').show();
+    $('#openAllocateBtn').show();
+
+    $("#choreForm").hide();
+    $("#addChoreBtn").hide();
+    $("#allocateForm").hide();
+    $("#addAllocateBtn").hide();
+
+    $('#openChoreBtn').click(function(){
+        $('#openChoreBtn').hide();
+        $('#addChoreBtn').show();
+        $('#choreForm').slideDown();
+
+
+
+        $('#addChoreBtn').click(function(){
+
+            var name = $('#add-chore-name').val();
+            if(name.length === 0){
+                $('#openChoreBtn').show();
+                $('#addChoreBtn').hide();
+                $('#choreForm').slideUp();
+            }
+            else {
+                addChore(name);
+                $('#openChoreBtn').show();
+                $('#addChoreBtn').hide();
+
+                //clear input and hide form
+                $('#add-chore-name').val("");
+                $('#choreForm').slideUp();
+            }
+        });
+    });
+
+
+    $('#openAllocateBtn').click(function(){
+        $('#openAllocateBtn').hide();
+        $('#addAllocateBtn').show();
+        $('#allocateForm').slideDown();
+
+
+
+        $('#addAllocateBtn').click(function(){
+
+            var name = $('#add-allocate-name').val();
+            if(name.length === 0){
+                $('#openAllocateBtn').show();
+                $('#addAllocateBtn').hide();
+                $('#allocateForm').slideUp();
+            }
+            else {
+                allocateChore();
+                $('#openAllocateBtn').show();
+                $('#addAllocateBtn').hide();
+
+                //clear input and hide form
+                $('#add-allocate-name').val("");
+                $('#allocateForm').slideUp();
+            }
+        });
+    });
+
+    function clearList()
+    {
+        $('.choreList > li').remove();
+        $('.alloList > li').remove();
+        $("#add-chore-tenant > option").remove();
+        $("#add-chore-type > option").remove();
+    }
+
+    function addChore(name)
+    {
+        $.ajax({
+            url: 'http://www.housemate-app.com/service/ChoreService.svc/addChore?hid=' + localStorage.getItem("houseID") + '&cName=' + name + '',
+            jsonpCallback: 'jsonCallback',
+            contentType: 'application/json',
+            dataType: 'jsonp',
+            success: function (json) {
+                $('.choreList').append('<li data-icon="false" class="chore"><a href="#"><h3>' + name + '</h3></a></li>').listview("refresh"); 
+            }
+        });
+    }
+
+    function allocateChore()
+    {
+
+    }
 
     function fillChores()
     {
         $.mobile.loading('show');
+
+        clearList();
 
         $.ajax({
             url: 'http://www.housemate-app.com/service/ChoreService.svc/getChores?hid=' + localStorage.getItem("houseID") + '',
@@ -935,11 +1019,19 @@ $( document ).on( "pageshow", "#chores", function() {
                 var chore = '';
                 var allo = '';
 
-                for(i=0;i<json[0].cNum;i++)
-                {
-                    chore += '<li data-icon="false" class="chore"><a href="#"><h3>' + json[0].cNames[i] + '</h3></a></li>';
-                }
-                $('.choreList').append(chore).listview("refresh");  
+                var tenNs = '';
+                for(i=0;i<json[0].tNames.length;i++) tenNs += '<option value="' + json[0].tids[i] + '">' + json[0].tNames[i] + '</option>';
+                $("#add-chore-tenant").append(tenNs);
+
+
+                var cNames = '';
+                for(i=0;i<json[0].cNames.length;i++) cNames += '<option value="' + json[0].cNames[i] + '">' + json[0].cNames[i] + '</option>';
+                $("#add-chore-type").append(cNames);
+
+
+                for(i=0;i<json[0].cNum;i++) chore += '<li data-icon="false" class="chore"><a href="#"><h3>' + json[0].cNames[i] + '</h3></a></li>';
+                $('.choreList').append(chore).listview("refresh"); 
+
 
                 $.each(json, function (index, value) {
 
@@ -1148,26 +1240,3 @@ $( document ).on( "pagecreate", "#analytics", function() {
 function myFormatDate(value) {
     return value.getDate() + "/" + (value.getMonth() + 1) + "/" + (value.getYear() - 100);
 }
-
-function ConfirmDialog(message){
-    $('<div></div>').appendTo('body')
-                    .html('<div><h6>'+message+'?</h6></div>')
-                    .dialog({
-                        modal: true, title: 'Delete message', zIndex: 10000, autoOpen: true,
-                        width: 'auto', resizable: false,
-                        buttons: {
-                            Yes: function () {
-                                // $(obj).removeAttr('onclick');                                
-                                // $(obj).parents('.Parent').remove();
-
-                                $(this).dialog("close");
-                            },
-                            No: function () {
-                                $(this).dialog("close");
-                            }
-                        },
-                        close: function (event, ui) {
-                            $(this).remove();
-                        }
-                    });
-    };
