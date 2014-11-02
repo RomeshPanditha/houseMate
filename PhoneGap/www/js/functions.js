@@ -427,7 +427,7 @@ $( document ).on( "pageshow", "#bills", function() {
             payBill(payBillID, tenID);
 
             var d = new Date();
-            var shortDate = formatDate(d);
+            var shortDate = myFormatDate(d);
 
             var value = $('.' + payBillID + ' > .tenant' + tenID + '').html();
             $('.' + payBillID + ' > .tenant' + tenID + '').html("");
@@ -475,7 +475,7 @@ $( document ).on( "pageshow", "#bills", function() {
                     var ulID = 'invList' + value.billID;
                     //var jsonDate = ;
                     var dueDate = new Date(parseInt(value.dueDate.substr(6)));
-                    var shortDate = formatDate(dueDate);
+                    var shortDate = myFormatDate(dueDate);
 
                     var today_L = new Date();
 
@@ -511,7 +511,17 @@ $( document ).on( "pageshow", "#bills", function() {
 
 // ------------------ ADD BILLS FUNCTIONS ---------------------
 
+$(function(){
+    $.datepicker.setDefaults({
+            dateFormat: "yy-mm-dd",
+        });
+});
+
+
 $( document ).on( "pageshow", "#addBill", function() {
+
+     
+
     var hid = localStorage.getItem("houseID");
 
     var numTenants = 0;
@@ -534,96 +544,139 @@ $( document ).on( "pageshow", "#addBill", function() {
     // $("#addbill-amount").change(function(){
         
     // });
+    $(function(){ $("#datepicker").datepicker({dateFormat: "yy-mm-dd"}) });
 
     $("#addbill-amount").on('input propertychange paste', function(){
         var total = $("#addbill-amount").val();
         var singleCost = total/numTenants;
         $(".tenant-inputs").val(singleCost);
+
+        console.log("lol");
     });
 
-    $(".tenant-inputs").on('input propertychange paste', function(){
-            // var total = $("#addbill-amount").val();
-            // var split = total / numTenants;
-            // var curr = $(this).val();
-
-            // var sub = true;
-
-            // var diff;
-            // if(curr > split) {diff = curr - split; sub = false;}
-            // else {duff = split - curr; sub = true;}
-
-            // $(".tenant-inputs").each(function(index, value){
-
-            //     if(sub)
-            //     {
-            //         var cost = this.val() - diff;
-            //         $(this).val(cost);
-            //     }
-            //     else
-            //     {
-            //         var cost = this.val() + diff;
-            //         $(this).val(cost);
-            //     }
-            // });
-
-            // $(this).val(curr);
-            console.log("lol");
-        });
-
-
-    
-
-    
-    $("#addBillSubmit").click(function(){
-        
-        var type = $("#addbill-type").val();
-        var amount = $("#addbill-amount").val();
-
-
-        var tenantIDs = '';
+    $(".tenantList").click(function(){
         for(i=0;i<numTenants;i++)
         {
-            var ID = $('#ten'+IDs[i]+'').attr('id');
-            var nID = ID.replace("ten", "");
+            $('#ten'+IDs[i]+'').on('input propertychange paste', function(){
 
-            if(i+1 == numTenants) tenantIDs += nID;
-            else tenantIDs += nID + '~';
+
+
+                // var total = parseFloat($("#addbill-amount").val());
+                // var split = parseFloat(total / numTenants);
+                // var curr = parseFloat($(this).val());
+
+                // var sub = true;
+
+                // var diff;
+                // if(curr > split) {diff = parseFloat(curr - split); sub = false;}
+                // else {diff = parseFloat(split - curr); sub = true;}
+
+                // $(".tenant-inputs").each(function(){
+
+                //     if(sub)
+                //     {
+                //         //var c = parseFloat($(this).val());
+                //         var cost = split + diff;
+                //         $(this).val(cost);
+                //     }
+                //     else
+                //     {
+                //         //var c = parseFloat($(this).val());
+                //         var cost = split - diff;
+                //         $(this).val(cost);
+                //     }
+                // });
+
+                // $(this).val(curr);
+            }); 
+        }
+    });
+
+    function checkSum()
+    {
+        var total = parseInt($("#addbill-amount").val());
+        var sum = 0;
+        for(i=0;i<numTenants;i++)
+        {
+            sum += parseInt($('#ten'+IDs[i]+'').val());
         }
 
+        console.log(sum);
+        console.log(total);
 
-        var tAmounts = '';
-        if($('#checkbox-split').is(':checked'))
+        if(total == sum)
         {
-            var cost = amount / numTenants;
-            for(i=0;i<numTenants;i++)
-            {
-                if(i+1 == numTenants) tAmounts += cost;
-                else tAmounts += cost + '~';
-            }
-
+            return true;
         }
         else
         {
+            return false;
+        }      
+    }
+
+   
+    $("#addBillSubmit").click(function(){
+        
+        if(checkSum())
+        {
+            var type = $("#addbill-type").val();
+            var amount = $("#addbill-amount").val();
+
+
+            var tenantIDs = '';
             for(i=0;i<numTenants;i++)
             {
-                var tmpC = $('#ten'+IDs[i]+'').val();
-                var cost = '';
-                if(tmpC.length > 0)
+                var ID = $('#ten'+IDs[i]+'').attr('id');
+                var nID = ID.replace("ten", "");
+
+                if(i+1 == numTenants) tenantIDs += nID;
+                else tenantIDs += nID + '~';
+            }
+
+
+            var tAmounts = '';
+            if($('#checkbox-split').is(':checked'))
+            {
+                var cost = amount / numTenants;
+                for(i=0;i<numTenants;i++)
                 {
-                    cost = tmpC
-                }
-                else
-                {
-                    cost = "0";
+                    if(i+1 == numTenants) tAmounts += cost;
+                    else tAmounts += cost + '~';
                 }
 
-                if(i+1 == numTenants) tAmounts += cost;
-                else tAmounts += cost + '~';
-                
             }
+            else
+            {
+                for(i=0;i<numTenants;i++)
+                {
+                    var tmpC = $('#ten'+IDs[i]+'').val();
+                    var cost = '';
+                    if(tmpC.length > 0)
+                    {
+                        cost = tmpC
+                    }
+                    else
+                    {
+                        cost = "0";
+                    }
+
+                    if(i+1 == numTenants) tAmounts += cost;
+                    else tAmounts += cost + '~';
+                    
+                }
+            }
+
+            var date = $("#datepicker").val();
+
+            addBill(hid, type, amount, date, tenantIDs, tAmounts);
+            alert("paid");
+        }
+        else
+        {
+            alert("split amounts must equal overall cost");
         }
 
-        addBill(hid, type, amount, tenantIDs, tAmounts);
+        
     });
 
     function clearList() {
@@ -656,10 +709,10 @@ $( document ).on( "pageshow", "#addBill", function() {
         }); 
     }
 
-    function addBill(hid, type, amount, tenants, tAmounts)
+    function addBill(hid, type, amount, date, tenants, tAmounts)
     {
         $.ajax({
-            url: 'http://www.housemate-app.com/service/BillService.svc/addBill?houseID='+hid+'&billType='+type+'&amount='+amount+'&tenantIDs='+tenants+'&tenantAmounts='+tAmounts+'' + '',
+            url: 'http://www.housemate-app.com/service/BillService.svc/addBill?houseID='+hid+'&billType='+type+'&amount='+amount+'&dueDate='+date+'&tenantIDs='+tenants+'&tenantAmounts='+tAmounts+'' + '',
             jsonpCallback: 'jsonCallback',
             contentType: 'application/json',
             dataType: 'jsonp',
@@ -668,6 +721,8 @@ $( document ).on( "pageshow", "#addBill", function() {
             }
         });
     }
+
+
 
 });
 
@@ -788,7 +843,7 @@ $( document ).on( "pageshow", "#notices", function() {
                 $.each(json, function (index, value) {
 
                     var d = new Date(parseInt(value.date.substr(6)));
-                    var shortDate = formatDate(d);
+                    var shortDate = myFormatDate(d);
 
                     var message = value.noticeDesc.replace("jsonCallback", "??");
                     var title = value.noticeTitle.replace("jsonCallback", "??");
@@ -815,7 +870,7 @@ $( document ).on( "pageshow", "#notices", function() {
         var message = $('#add-notice-message').val();
         var type = "notice";
         var d = new Date();
-        var shortDate = formatDate(d);
+        var shortDate = myFormatDate(d);
 
         if(title === "" || message === "" ) {
             console.log("empty");
@@ -841,7 +896,7 @@ $( document ).on( "pageshow", "#notices", function() {
         var message = $('#add-iou-message').val();
         var type = "iou";
         var d = new Date();
-        var shortDate = formatDate(d);
+        var shortDate = myFormatDate(d);
 
         if(title === "" || message === "" ) {
             console.log("empty");
@@ -935,8 +990,11 @@ $( document ).on( "pagecreate", "#houseinfo", function() {
     });
 
     $("#leaveHouseBtn").click(function(){
-        leaveHouse();
-
+        var r = confirm("Are you sure you want the leave the house?");
+        if(r == true)
+        {
+            leaveHouse();
+        }        
     });
 
     function fillInfo()
@@ -1054,8 +1112,62 @@ $( document ).on( "pagecreate", "#settings", function() {
 
 });
 
+// ------------------ ANALYTICS FUNCTIONS ---------------------
+$( document ).on( "pagecreate", "#analytics", function() {
+
+    var pieData = [
+                        {
+                            value : 90,
+                            color : "#384047",
+                            label : 'Soon',
+                            labelColor : '#F5F5F5',
+                            labelFontSize : '1.1em',
+                            labelAlign : 'center'
+                        },
+                        {
+                            value : 180,
+                            color : '#2ecc71    ',
+                            label : 'Coming',
+                            labelColor : "#F5F5F5",
+                            labelFontSize : '1.1em',
+                            labelAlign : 'center'
+                        }
+                    ];
+
+
+                    var myChart = new Chart(document.getElementById("canvas").getContext("2d"));
+                    var myPie = myChart.Pie(pieData, {
+                                animationSteps: 100,
+                                animationEasing: 'easeOutBounce'
+                            });
+
+});
+
 // ------------------ GENERAL FUNCTIONS ---------------------
 
-function formatDate(value) {
+function myFormatDate(value) {
     return value.getDate() + "/" + (value.getMonth() + 1) + "/" + (value.getYear() - 100);
 }
+
+function ConfirmDialog(message){
+    $('<div></div>').appendTo('body')
+                    .html('<div><h6>'+message+'?</h6></div>')
+                    .dialog({
+                        modal: true, title: 'Delete message', zIndex: 10000, autoOpen: true,
+                        width: 'auto', resizable: false,
+                        buttons: {
+                            Yes: function () {
+                                // $(obj).removeAttr('onclick');                                
+                                // $(obj).parents('.Parent').remove();
+
+                                $(this).dialog("close");
+                            },
+                            No: function () {
+                                $(this).dialog("close");
+                            }
+                        },
+                        close: function (event, ui) {
+                            $(this).remove();
+                        }
+                    });
+    };

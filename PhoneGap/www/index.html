@@ -8,6 +8,7 @@
 	<script src="js/jquery-1.11.1.min.js"></script>
 	<script src="js/jquery.mobile-1.4.2.js"></script>
 	<script src="js/functions.js"></script>
+    <script src="js/Chart.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="css/styles.css"/>
 </head>
@@ -347,7 +348,7 @@
                         </div>
                         <div class="form-item">
                             <label for="addbill-date">Date Due:</label>
-                            <input type="date" id="addbill-date" required>
+                            <input type="date" id="datepicker" required>
                         </div>
                         <div class="form-item ten-list" >
                             <input type="checkbox" name="checkbox-split" id="checkbox-split" checked>
@@ -762,6 +763,25 @@
     </div>
 
 
+    <!-- ************ ANALYTICS PAGE ************* -->
+
+    <div data-role="page" data-theme="a" id="analytics">
+
+        <header data-role="header">
+            <a href="#home" data-icon="home" class="ui-btn ui-icon-home ui-btn-icon-notext ui-corner-all"></a>
+            <h1>Analytics</h1>
+            <!-- <a href="#" data-icon="info" class="ui-btn-right ui-btn-no-text" id="help-button">Info</a> -->
+        </header>
+        
+            <meta name = "viewport" content = "initial-scale = 1, user-scalable = no">
+        <div data-role="ui-content" class="page-container">
+            <div class="section-container">
+                <canvas id="canvas" height="250" width="250"></canvas>
+
+                
+            </div>
+        </div>
+    </div>
 
 
      <!-- ************ ABOUT PAGE ************* -->

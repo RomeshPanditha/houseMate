@@ -25,8 +25,8 @@ namespace HouseMateService
 
         [OperationContract]
         [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
-            ResponseFormat = WebMessageFormat.Json, UriTemplate = "addBill?houseID={houseID}&billType={billType}&amount={amount}&tenantIDs={tenantIDs}&tenantAmounts={tenantAmounts}")]
-        void addBill(int houseID, string billType, double amount, string tenantIDs, string tenantAmounts);
+            ResponseFormat = WebMessageFormat.Json, UriTemplate = "addBill?houseID={houseID}&billType={billType}&amount={amount}&dueDate={dueDate}&tenantIDs={tenantIDs}&tenantAmounts={tenantAmounts}")]
+        void addBill(int houseID, string billType, double amount, DateTime dueDate, string tenantIDs, string tenantAmounts);
 
         [OperationContract]
         [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,

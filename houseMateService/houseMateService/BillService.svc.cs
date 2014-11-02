@@ -45,11 +45,11 @@ namespace HouseMateService
         }
 
 
-        public void addBill(int houseID, string billType, double amount, string tenantIDs, string tenantAmounts)
+        public void addBill(int houseID, string billType, double amount, DateTime dueDate, string tenantIDs, string tenantAmounts)
         {
             if (Convert.ToInt32(HttpContext.Current.Session["loggedIn"]) >= 0)
             {
-                DAL.addBill(houseID, billType, amount, tenantIDs.Split('~'), tenantAmounts.Split('~'));
+                DAL.addBill(houseID, billType, amount, dueDate, tenantIDs.Split('~'), tenantAmounts.Split('~'));
                 getBills(houseID);
             }
         }

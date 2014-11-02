@@ -96,7 +96,7 @@ namespace HouseMateService.DAL
             return tenList;
         }
 
-        public void addBill(int _houseID, string _billType, double _amount, string[] _tenantID, string[] _tenantAmounts)
+        public void addBill(int _houseID, string _billType, double _amount, DateTime dueDate, string[] _tenantID, string[] _tenantAmounts)
         {
             using (var context = new houseMateEntities01())
             {
@@ -106,7 +106,7 @@ namespace HouseMateService.DAL
                     FK_houseID = _houseID,
                     billType = _billType,
                     amount = _amount,
-                    dueDate = DateTime.Now,
+                    dueDate = dueDate,
                     paid_ = 0
                 };
                 context.house_bill.Add(newHouseBill);
