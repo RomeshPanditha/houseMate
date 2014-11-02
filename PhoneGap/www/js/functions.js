@@ -571,6 +571,12 @@ $( document ).on( "pageshow", "#notices", function() {
 
     getNotices();
 
+    function clearList() {
+        $('.notice-container').children().remove();
+        $('.iou-container').children().remove();
+    }
+
+
     $("#noticeForm").hide();
     $("#iouForm").hide();
 
@@ -597,6 +603,7 @@ $( document ).on( "pageshow", "#notices", function() {
 
     function getNotices()
     {
+        clearList();
         $.mobile.loading('show');
 
         $.ajax({
