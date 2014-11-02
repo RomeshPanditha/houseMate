@@ -514,17 +514,22 @@ $( document ).on( "pageshow", "#bills", function() {
 
 });
 
+// ------------------ ADD BILLS FUNCTIONS ---------------------
+
 $( document ).on( "pageshow", "#addBill", function() {
     var hid = localStorage.getItem("houseID");
     getTenants(hid);
     $(".tenantList").hide();
 
     $('#checkbox-split').change(function() {
-        if($(this).is(":checked")) {
-            $(".tenantList").hide();
-            //$(this).attr("checked", returnVal);
-        }
-        $(".tenantList").show();       
+
+        if($(".tenantList").is(":visible")){
+            $(".tenantList").slideUp();
+        } 
+        else
+        {
+            $(".tenantList").slideDown();
+        }     
     });
 
     function clearList() {
