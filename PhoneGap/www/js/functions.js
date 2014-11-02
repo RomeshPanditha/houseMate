@@ -369,8 +369,6 @@ $( document ).on( "pageshow", "#shopping", function() {
         var itemDesc = $('#add-item-desc').val();
         var itemCategory = '';
 
-
-
         if ($('#radio-choice-food').prop("checked")) {
             itemCategory = "food";
         }
@@ -381,9 +379,6 @@ $( document ).on( "pageshow", "#shopping", function() {
             itemCategory = "other";
         }
 
-        $('#add-item-name').val("");
-        $('#add-item-desc').val("");
-
         $.mobile.loading('show');
 
         $.ajax({
@@ -393,6 +388,8 @@ $( document ).on( "pageshow", "#shopping", function() {
             dataType: 'jsonp',
             success: function (json) {
                 $.mobile.loading('hide');
+                $('#add-item-name').val("");
+                $('#add-item-desc').val("");
             }
         });
     }
@@ -510,13 +507,6 @@ $( document ).on( "pageshow", "#bills", function() {
 });
 
 // ------------------ ADD BILLS FUNCTIONS ---------------------
-
-$(function(){
-    $.datepicker.setDefaults({
-            dateFormat: "yy-mm-dd",
-        });
-});
-
 
 $( document ).on( "pageshow", "#addBill", function() {
 
