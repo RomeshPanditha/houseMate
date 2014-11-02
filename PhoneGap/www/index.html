@@ -650,22 +650,27 @@
 
         <div data-role="ui-content" class="page-container">
             <div class="section-container">
-                <div class="infoContainer">
+                <div class="form-container">
                     <div class="form-item">
-                        <label for="hNameLbl">House Name:</label>
-                        <input type="text" id="hNameLbl" placeholder="NerdHQ" required autofocus disabled>
+                        <label>House Name:</label>
+                        <label for="hNameLbl">l</label>
+                        <input type="text" id="hNameLbl" required autofocus disabled>
+                    </div>
+                    <div class="form-item-inline">
+                        <label>House Password:</label>
+                    </div>
+                    <div class="form-item-inline">
+                        <label for="hPwdLbl">l</label>
+                        <input type="text" id="hPwdLbl" required disabled>
                     </div>
                     <div class="form-item">
-                        <label for="hPwdLbl">House Password:</label>
-                        <input type="text" id="hPwdLbl" placeholder="Buzz" required disabled>
+                        <label>Wifi Password</label>
+                        <label for="wifiLbl">l</label>
+                        <input type="text" id="wifiLbl" required>
                     </div>
                     <div class="form-item">
-                        <label for="signup-password">Password:</label>
-                        <input type="password" id="signup-password" placeholder="**********" required>
-                    </div>
-                    <div class="form-item">
-                        <label for="signup-password2">Confirm Password:</label>
-                        <input type="password" id="signup-password2" placeholder="**********" required>
+                        <label for="binLbl">Confirm Password:</label>
+                        <input type="text" id="signup-password2" placeholder="**********" required>
                     </div>
                     <div class="form-item" style="text-align: center">
                         <input type="submit" value="Signup" id="signupSubmit" class="ui-btn ui-corner-all ui-shadow ui-btn-inline"/>

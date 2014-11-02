@@ -511,7 +511,7 @@ $( document ).on( "pageshow", "#bills", function() {
 
 $(function(){
     $.datepicker.setDefaults({
-            dateFormat: "yy-mm-dd",
+            dateFormat: "yy-mm-dd"
         });
 });
 
@@ -800,7 +800,7 @@ $( document ).on( "pageshow", "#notices", function() {
                 $('#iouForm').slideUp();
             }
             else {
-                addNotice();
+                addIOU();
                 $('#openIouBtn').show();
                 $('#addIouBtn').hide();
 
@@ -810,16 +810,6 @@ $( document ).on( "pageshow", "#notices", function() {
                 $('#iouForm').slideUp();
             }
         });
-    });
-
-    $("#addIouBtn").click(function(){
-        if($( '#iouForm' ).is(":visible")){
-            $( '#iouForm' ).slideUp();
-            addIOU();
-        } else{
-            $( '#iouForm' ).slideDown();
-            $( '#addIouBtn' ).html("Add").removeClass("ui-btn-icon-notext").css("height", "18px");
-        }
     });
 
     function getNotices()

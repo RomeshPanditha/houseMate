@@ -317,32 +317,6 @@ li > a > p:first-letter {
 
 
 
-
-
-/* POPUP GENERAL STYLES*/
-
-.ui-popup > .ui-header > .ui-btn {
-    background: #227fbe;
-}
-
-.blur-filter {
-    z-index: 100;
-    -webkit-filter: blur(2px);
-    -moz-filter: blur(2px);
-    -o-filter: blur(2px);
-    -ms-filter: blur(2px);
-    filter: blur(2px);
-}
-
-.ui-overlay-shadow {
-    -webkit-box-shadow: 0 0 12px rgba(0,0,0,.3);
-    -moz-box-shadow: 0 0 12px rgba(0,0,0,.3);
-    box-shadow: 0 0 12px rgba(0,0,0,.3);
-}
-
-
-
-
 /**** HOME/MAIN MENU STYLES ****/
 
 .logo {
