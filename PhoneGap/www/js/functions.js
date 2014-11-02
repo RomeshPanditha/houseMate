@@ -517,8 +517,6 @@ $(function(){
 
 $( document ).on( "pageshow", "#addBill", function() {
 
-     
-
     var hid = localStorage.getItem("houseID");
 
     var numTenants = 0;
@@ -538,9 +536,6 @@ $( document ).on( "pageshow", "#addBill", function() {
         }     
     });
 
-    // $("#addbill-amount").change(function(){
-        
-    // });
     $(function(){ $("#datepicker").datepicker({dateFormat: "yy-mm-dd"}) });
 
     $("#addbill-amount").on('input propertychange paste', function(){
@@ -555,9 +550,6 @@ $( document ).on( "pageshow", "#addBill", function() {
         for(i=0;i<numTenants;i++)
         {
             $('#ten'+IDs[i]+'').on('input propertychange paste', function(){
-
-
-
                 // var total = parseFloat($("#addbill-amount").val());
                 // var split = parseFloat(total / numTenants);
                 // var curr = parseFloat($(this).val());
