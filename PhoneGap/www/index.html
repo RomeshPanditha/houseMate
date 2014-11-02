@@ -348,7 +348,7 @@
                         </div>
                         <div class="form-item">
                             <label for="addbill-date">Date Due:</label>
-                            <input type="date" data-role="date" required>
+                            <input type="date" id="datepicker" required>
                         </div>
                         <div class="form-item ten-list" >
                             <input type="checkbox" name="checkbox-split" id="checkbox-split" checked>
@@ -593,22 +593,31 @@
                         <div class="list-container">
                             <div id="allocateForm">
                                 <form data-theme="e">
+
                                     <label for="add-chore-type">Chore Type:</label>
                                     <select name="add-chore-type" id="add-chore-type" data-theme="e">
-                                        <option value="Sweep">SWEEP</option>
 
-                                        <!-- CHORES GO HERE-->
+                                        <!-- CHORE NAMES ARE DYNAMICALLY ADDED HERE-->
 
                                     </select>
-                                    <label for="add-notice-message">Chore Day:</label>
-                                    <input data-theme="c" type="text" id="add-chore-date" placeholder="Wednesday" required autofocus>
+
+                                    <label for="add-chore-date">Chore Day:</label>
+                                    <select id="add-chore-date" name="add-chore-date" data-theme="e">
+                                        <option value="Monday">Monday</option>
+                                        <option value="Tuesday">Tuesday</option>
+                                        <option value="Wednesday">Wednesday</option>
+                                        <option value="Thursday">Thursday</option>
+                                        <option value="Friday">Friday</option>
+                                        <option value="Saturday">Saturday</option>
+                                        <option value="Sunday">Sunday</option>
+                                    </select>
+
                                     <label for="add-chore-tenant">Select Tenant</label>
-                                    <select name="addbill-type" id="add-chore-tenant" data-theme="e">
-                                        <option value="rent">SALLY</option>
-
-                                            <!-- TENANTS GO HERE-->
+                                    <select name="add-chore-tenant" id="add-chore-tenant" data-theme="e">
+                                            <!-- TENANT NAMES ARE DYNAMICALLY ADDED HERE-->
 
                                     </select>
+
                                 </form>
                             </div>
                             <a id="openAllocateBtn" class="addChore ui-shadow ui-btn">Allocate Chore</a>
