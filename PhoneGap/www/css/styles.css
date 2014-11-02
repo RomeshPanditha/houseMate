@@ -177,6 +177,10 @@ li > a > p:first-letter {
 .tenantList > li {
     float:left;
 }
+.ten-list > .ui-checkbox {
+    width: 40px;
+    margin: auto;
+}
 
 .tenantList {
     width:100%;
