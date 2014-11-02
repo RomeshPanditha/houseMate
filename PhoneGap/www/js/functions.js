@@ -528,7 +528,7 @@ $( document ).on( "pageshow", "#addBill", function() {
     getTenants(hid);
     $(".tenantList").hide();
 
-    $('#checkbox-split').change(function() {
+    $('#checkbox-split').click(function() {
 
         if($(".tenantList").is(":visible")){
             $(".tenantList").slideUp();
@@ -543,17 +543,42 @@ $( document ).on( "pageshow", "#addBill", function() {
     // });
 
     $("#addbill-amount").on('input propertychange paste', function(){
-        console.log("lol");
         var total = $("#addbill-amount").val();
         var singleCost = total/numTenants;
         $(".tenant-inputs").val(singleCost);
     });
 
     $(".tenant-inputs").on('input propertychange paste', function(){
-        $(".tenant-inputs").each(function(){
-            
+            // var total = $("#addbill-amount").val();
+            // var split = total / numTenants;
+            // var curr = $(this).val();
+
+            // var sub = true;
+
+            // var diff;
+            // if(curr > split) {diff = curr - split; sub = false;}
+            // else {duff = split - curr; sub = true;}
+
+            // $(".tenant-inputs").each(function(index, value){
+
+            //     if(sub)
+            //     {
+            //         var cost = this.val() - diff;
+            //         $(this).val(cost);
+            //     }
+            //     else
+            //     {
+            //         var cost = this.val() + diff;
+            //         $(this).val(cost);
+            //     }
+            // });
+
+            // $(this).val(curr);
+            console.log("lol");
         });
-    });
+
+
+    
 
     
     $("#addBillSubmit").click(function(){
