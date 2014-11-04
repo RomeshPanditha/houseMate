@@ -7,6 +7,6 @@ MOAR CHANGES!
 
 Team:
 
-- Harrison Dempsey (http://harrisondempsey.com)
+- Harrison Dempsey (http://harrisondempsey.com)!
 - Romesh Wickramasekera
 - Kane Marzol
