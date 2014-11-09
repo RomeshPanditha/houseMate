@@ -1,0 +1,72 @@
+<?xml version"1.0" encoding="UTF-8"?>
+    <widget xmlns        = "http://www.w3.org/ns/widgets"
+        xmlns:gap    = "http://phonegap.com/ns/1.0"
+        id           = "com.housemate-app.houseMate" 
+        version      = "0.5.0">
+
+    <name>houseMate</name>
+
+    <description>
+        Provides a simple way to manage day-to-day sharehouse life.
+    </description>
+
+    <author href="housemate-app.com" email="kane@kanemarzol.com">
+        houseMate Dev Team
+    </author>
+
+    <preference name="permissions" value="none"/>
+
+    <preference name="phonegap-version" value="3.5.0" /> 
+    <preference name="orientation" value="portrait" />
+    <preference name="target-device" value="universal" /> 
+    <preference name="fullscreen" value="false" />
+    <preference name="webviewbounce" value="false" /> 
+    <preference name="DisallowOverscroll" value="false"/>
+    <preference name="ios-statusbarstyle" value="green-opaque" /> 
+    <preference name="exit-on-suspend" value="false" />
+    <preference name="prerendered-icon" value="true" />
+    <preference name="show-splash-screen-spinner" value="false" />
+    <preference name="android-installLocation" value="auto" />
+
+    <gap:plugin name="org.apache.cordova.battery-status" />
+    <gap:plugin name="org.apache.cordova.camera" />
+    <gap:plugin name="org.apache.cordova.media-capture" />
+    <gap:plugin name="org.apache.cordova.console" />
+    <gap:plugin name="org.apache.cordova.contacts" />
+    <gap:plugin name="org.apache.cordova.device" />
+    <gap:plugin name="org.apache.cordova.device-motion" />
+    <gap:plugin name="org.apache.cordova.device-orientation" />
+    <gap:plugin name="org.apache.cordova.dialogs" />
+    <gap:plugin name="org.apache.cordova.file" />
+    <gap:plugin name="org.apache.cordova.file-transfer" />
+    <gap:plugin name="org.apache.cordova.geolocation" />
+    <gap:plugin name="org.apache.cordova.globalization" />
+    <gap:plugin name="org.apache.cordova.inappbrowser" />
+    <gap:plugin name="org.apache.cordova.media" />
+    <gap:plugin name="org.apache.cordova.network-information" />
+    <gap:plugin name="org.apache.cordova.splashscreen" />
+    <gap:plugin name="org.apache.cordova.vibration" />
+
+    <icon src="icon.png" />
+    <icon src="res/icons/android/drawable-mdpi/ic_launcher.png" gap:platform="android" gap:qualifier="mdpi" />
+    <icon src="res/icons/android/drawable-hdpi/ic_launcher.png" gap:platform="android" gap:qualifier="hdpi" />
+    <icon src="res/icons/android/drawable-xhdpi/ic_launcher.png" gap:platform="android" gap:qualifier="xhdpi" />
+    <icon src="res/icons/android/drawable-xxhdpi/ic_launcher.png" gap:platform="android" gap:qualifier="xxhdpi" />
+    <icon src="res/icons/android/drawable-xxxhdpi/ic_launcher.png" gap:platform="android" gap:qualifier="xxxhdpi" />
+    
+    <icon src="res/icons/ios/iPhone-6.png" gap:platform="ios" width="120" height="120" />
+    
+    <icon src="res/icons/winphone8/WP8-small.png" gap:platform="winphone" />
+    <icon src="res/icons/winphone8/WP8-medium.png" gap:platform="winphone" gap:role="background" />
+
+    <gap:splash src="res/screen/android/drawable-mdpi/Android-mdpi.9.png" gap:platform="android" gap:qualifier="port-mdpi" />
+    <gap:splash src="res/screen/android/drawable-hdpi/Android-hdpi.9.png" gap:platform="android" gap:qualifier="port-hdpi" />
+    <gap:splash src="res/screen/android/drawable-xhdpi/Android-xhdpi.9.png" gap:platform="android" gap:qualifier="port-xhdpi" />
+
+    <gap:splash src="res/screen/ios/iPhone-6.png" gap:platform="ios" width="750" height="1334" />
+    
+    <gap:splash src="res/screen/winphone8/winphone8.jpg" gap:platform="winphone" />
+
+<access origin="*"/>
+
+</widget>

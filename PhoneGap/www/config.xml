@@ -26,7 +26,10 @@
     <preference name="exit-on-suspend" value="false" />
     <preference name="prerendered-icon" value="true" />
     <preference name="show-splash-screen-spinner" value="false" />
+    <preference name="SplashScreen" value="splash" />
+    <preference name="SplashScreenDelay" value="5000" />
     <preference name="android-installLocation" value="auto" />
+
 
     <gap:plugin name="org.apache.cordova.battery-status" />
     <gap:plugin name="org.apache.cordova.camera" />
@@ -47,23 +50,25 @@
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.vibration" />
 
-    <icon src="icon.png" />
+    <icon src="res/icons/icon.png" />
     <icon src="res/icons/android/drawable-mdpi/ic_launcher.png" gap:platform="android" gap:qualifier="mdpi" />
     <icon src="res/icons/android/drawable-hdpi/ic_launcher.png" gap:platform="android" gap:qualifier="hdpi" />
     <icon src="res/icons/android/drawable-xhdpi/ic_launcher.png" gap:platform="android" gap:qualifier="xhdpi" />
     <icon src="res/icons/android/drawable-xxhdpi/ic_launcher.png" gap:platform="android" gap:qualifier="xxhdpi" />
     <icon src="res/icons/android/drawable-xxxhdpi/ic_launcher.png" gap:platform="android" gap:qualifier="xxxhdpi" />
     
-    <icon src="res/icons/ios/iPhone-6.png" gap:platform="ios" width="120" height="120" />
+    <icon src="res/icons/ios/iphone6.png" gap:platform="ios" width="120" height="120" />
     
     <icon src="res/icons/winphone8/WP8-small.png" gap:platform="winphone" />
     <icon src="res/icons/winphone8/WP8-medium.png" gap:platform="winphone" gap:role="background" />
 
+    <gap:splash src="res/screen/splash.png" />
     <gap:splash src="res/screen/android/drawable-mdpi/Android-mdpi.9.png" gap:platform="android" gap:qualifier="port-mdpi" />
     <gap:splash src="res/screen/android/drawable-hdpi/Android-hdpi.9.png" gap:platform="android" gap:qualifier="port-hdpi" />
     <gap:splash src="res/screen/android/drawable-xhdpi/Android-xhdpi.9.png" gap:platform="android" gap:qualifier="port-xhdpi" />
+    <gap:splash src="res/screen/android/drawable-xxhdpi/Android-xxhdpi.9.png" gap:platform="android" gap:qualifier="port-xxhdpi" />
 
-    <gap:splash src="res/screen/ios/iPhone-6.png" gap:platform="ios" width="750" height="1334" />
+    <gap:splash src="res/screen/ios/iphone6.png" gap:platform="ios" width="750" height="1334" />
     
     <gap:splash src="res/screen/winphone8/winphone8.jpg" gap:platform="winphone" />
 
