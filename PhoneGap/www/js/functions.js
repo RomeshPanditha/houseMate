@@ -1,6 +1,7 @@
 
 // if a userID has been stored in localStorage, attempt to auto-login
 if(localStorage.getItem("userID") > 0) {
+    $.mobile.loading('hide');
     $.ajax({
         url: 'http://www.housemate-app.com/Service/UserAuthService.svc/login?username=' + localStorage.getItem("userName") + '&password=' + localStorage.getItem("userPassword"),
         jsonpCallback: 'jsonCallback',
@@ -9,14 +10,54 @@ if(localStorage.getItem("userID") > 0) {
 
         success: function (json) {
             if(json.UID > 0) {
-                window.location.href = '#housemenu';
+                window.location.href = '#loadingHouse';
+            }
+            else
+            {
+                window.location.href = '#signup';
             }
 
         }
     });
 }
+else
+{
+    window.location.href = '#signup';
+}
+
+// ------------------ LOADING FUNCTIONS ---------------------
+
+$( document ).on( "pageshow", "#loadingHouse", function() {
+
+    checkHouse();
 
 
+    //checks whether the user currently has a house
+    function checkHouse() {
+
+        $.mobile.loading('show');
+
+        $.ajax({
+            url: 'http://www.housemate-app.com/Service/HouseService.svc/getHouse?uid=' + localStorage.getItem("userID"),
+            jsonpCallback: 'jsonCallback',
+            contentType: 'application/json',
+            dataType: 'jsonp',
+            success: function (json) {
+                if (json.HID < 0) {
+                    $.mobile.loading('hide');
+                    window.location.href = '#housemenu';
+                }
+                if (json.HID > 0) {
+                    //console.log("House ID Check worked");
+                    localStorage.setItem("houseID", json.HID);
+                    window.location.href = '#home';
+                    $.mobile.loading('hide');
+                }
+            }
+        });
+    }
+
+});
 
 // ------------------ LOGIN FUNCTIONS ---------------------
 
@@ -50,7 +91,7 @@ $( document ).on( "pageshow", "#login", function() {
                     localStorage.setItem("userID", json.UID);
                     localStorage.setItem("userName", loginUsername);
                     localStorage.setItem("userPassword", loginPassword);
-                    window.location.href = '#housemenu';
+                    window.location.href = '#loadingHouse';
 
                     $.mobile.loading('hide');
                 }
