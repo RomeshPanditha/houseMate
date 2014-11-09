@@ -8,6 +8,7 @@
 	<script src="js/jquery-1.11.1.min.js"></script>
 	<script src="js/jquery.mobile-1.4.2.js"></script>
 	<script src="js/functions.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
     <script src="js/Chart.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="css/styles.css"/>
@@ -15,6 +16,12 @@
 <body>
 
     <!-- ************ SIGNUP *************-->
+    <script>
+    cordova.plugins.notification.badge.hasPermission(function (granted) {
+            alert(granted);
+    });
+    </script>
+
 
     <div data-role="page" data-theme="a" id="signup">
 

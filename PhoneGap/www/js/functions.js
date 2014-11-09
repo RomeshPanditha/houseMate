@@ -1,4 +1,7 @@
 
+// cordova.plugins.notification.badge.promptForPermission();
+// cordova.plugins.notification.badge.set(1);
+
 
 // if a userID has been stored in localStorage, attempt to auto-login
 if(localStorage.getItem("userID") > 0) {
@@ -16,8 +19,6 @@ if(localStorage.getItem("userID") > 0) {
         }
     });
 }
-
-
 
 
 
@@ -68,6 +69,7 @@ $( document ).on( "pageshow", "#login", function() {
 // ------------------ SIGNUP FUNCTIONS ---------------------
 
 $( document ).on( "pageshow", "#signup", function() {
+
 
     $('#signupSubmit').click(function() {
         signup();
