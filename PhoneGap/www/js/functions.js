@@ -1,8 +1,4 @@
 
-// cordova.plugins.notification.badge.promptForPermission();
-// cordova.plugins.notification.badge.set(1);
-
-
 // if a userID has been stored in localStorage, attempt to auto-login
 if(localStorage.getItem("userID") > 0) {
     $.ajax({
@@ -530,7 +526,7 @@ $( document ).on( "pageshow", "#addBill", function() {
 
     $('#checkbox-split').click(function() {
 
-        if($(".tenantList").is(":visible")){
+        if($("#checkbox-split").is(":checked")){
             $(".tenantList").slideUp();
         } 
         else{

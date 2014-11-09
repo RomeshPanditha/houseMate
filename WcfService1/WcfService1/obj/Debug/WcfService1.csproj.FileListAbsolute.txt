@@ -1,4 +1,0 @@
-D:\Documents\GitHub\houseMate\WcfService1\WcfService1\bin\WcfService1.dll
-D:\Documents\GitHub\houseMate\WcfService1\WcfService1\bin\WcfService1.pdb
-D:\Documents\GitHub\houseMate\WcfService1\WcfService1\obj\Debug\WcfService1.dll
-D:\Documents\GitHub\houseMate\WcfService1\WcfService1\obj\Debug\WcfService1.pdb

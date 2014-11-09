@@ -50,7 +50,7 @@
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.vibration" />
 
-    <gap:plugin name="de.appplant.cordova.plugin.badge"/>
+
 
     <icon src="res/icons/icon.png" />
 

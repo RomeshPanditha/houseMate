@@ -16,12 +16,6 @@
 <body>
 
     <!-- ************ SIGNUP *************-->
-    <script>
-    cordova.plugins.notification.badge.hasPermission(function (granted) {
-            alert(granted);
-    });
-    </script>
-
 
     <div data-role="page" data-theme="a" id="signup">
 
@@ -338,6 +332,8 @@
         </div>
     </div>
 
+    <!-- ************ ADD BILLS PAGE *************-->
+
     <div data-role="page" data-theme="d" id="addBill">
 
         <header data-role="header">
@@ -376,27 +372,9 @@
                             <div>Split evenly</div>
                             <ul data-role="listview" class="tenantList">
                             </ul>
-
-                    <!--   <div data-role="collapsible" data-mini="true" data-iconpos="right" data-content-theme="false" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
-                                <h4>Tenants</h4>
-                                
-
-                                <fieldset data-role="controlgroup" class="tenantList" data-iconpos="right" data-theme="f">
-                                        <input type="checkbox" name="checkbox-v-2a" id="checkbox-v-2a">
-                                        <label for="checkbox-v-2a" data-theme="d">Sally</label>
-                                        <input type="checkbox" name="checkbox-v-2b" id="checkbox-v-2b" >
-                                        <label for="checkbox-v-2b">Bob</label>
-                                        <input type="checkbox" name="checkbox-v-2c" id="checkbox-v-2c">
-                                        <label for="checkbox-v-2c">Toby</label>
-                                        <input type="checkbox" name="checkbox-v-2d" id="checkbox-v-2d">
-                                        <label for="checkbox-v-2d">Jane</label>
-                                    </fieldset> 
-
-                                
-                            </div>-->
-
                         </div>
                         <div class="form-item" style="text-align: center; clear:left;">
+                            
                             <input type="submit" value="Add" id="addBillSubmit" class="ui-btn ui-corner-all ui-shadow ui-btn-inline"/>
                         </div>
                 </div>
