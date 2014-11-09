@@ -1,0 +1,546 @@
+
+
+/**** GENERAL STYLES ****/
+
+body, h1, h2, h3, h4, h5, h6, p, label, .ui-btn {
+    text-shadow: none !important;
+}
+
+.ui-header > h1 {
+    color: #fff;
+}
+
+.ui-header > .ui-btn{
+    background: transparent;
+    border: none;
+    margin: 2px 5px;
+}
+
+.ui-tabs {
+    padding: 0 !important;
+}
+
+.ui-tabs > .ui-block-a:first-child {
+    border: none;
+}
+
+.ui-tabs-nav >  li .ui-btn-active {
+    border: none;
+    padding-bottom: 11px;
+}
+
+.header-logo {
+    width: 25px;
+    height: 25px;
+    background: url('../img/sprite-sheet.png');
+    background-position: -3px -3px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 10px 0 0;
+}
+
+.center {
+    text-align: center;
+}
+
+#footer {
+    background: rgba(56, 64, 71, .95);
+}
+
+h5 > a:visited {
+    color: #384047 !important;
+}
+
+
+
+
+
+/**** SHOPPING/LIST STYLES ****/
+
+.list .ui-link-inherit {
+    margin-right: 48px !important;
+}
+.right-radio {
+    position: absolute;
+    top: 0; bottom: 0; right: 0;
+    width: 55px;
+    border-left: 1px solid rgb(204, 204, 204);
+}
+
+.right-radio > label {
+    width: 40px;
+    height: 40px;
+    margin: auto;
+}
+.right-radio > label {
+    background-image: none;
+    background-color: transparent;
+    border: 0;
+    margin: 0;
+    width: 55px;
+    height: 80px;
+    position: absolute;
+}
+
+.right-radio input[type="checkbox"] {
+    width: 50px;
+    margin: 31px 0 0 18px
+}
+
+li > a > h3 {
+    text-transform: uppercase;
+    font-size: 0.92em !important;
+}
+
+li > a > p:first-letter {
+    text-transform: uppercase;
+}
+
+.addShopping {
+    width: 50%;
+    margin:auto;
+    background-color: #3498db !important;
+    border-color: #1d7ebf !important;
+}
+
+#addItemToList {
+    margin: 20px 0 15px 65px !important;
+    width: 100px;
+}
+
+#addItemCategory {
+    margin: 20px 0 0 8px;
+}
+
+.ui-filter-inset {
+    margin-top: 0;
+}
+
+.list-container {
+    width: 80% !important;
+    margin: auto !important;
+    text-align: center;
+}
+
+.food > .ui-btn{
+    padding: 8px 0 8px 15px !important;
+}
+
+.util > .ui-btn{
+    padding: 8px 0 8px 15px !important;
+}
+
+.other > .ui-btn{
+    padding: 8px 0 8px 15px !important;
+}
+
+
+
+
+
+/* BILLS PAGE STYLES*/
+
+#addBillCategory {
+    margin: 20px 0 0 8px;
+}
+
+#addBillToList {
+    margin: 20px 0 15px 65px !important;
+    width: 100px;
+}
+
+.billsList ul {
+    list-style-type: disc;
+    float: right;
+}
+#tenants li {
+    text-transform: capitalize;
+}
+
+.addBill {
+    width: 50%;
+    margin:auto;
+    background-color: #E0405C !important;
+    border-color: #B8213F !important;
+}
+
+
+
+
+
+/* ADD BILLS PAGE STYLES*/
+
+.tenant-inputs {
+    width:40px;
+}
+
+.tenantList > li {
+    float:left;
+}
+.ten-list > .ui-checkbox {
+    width: 40px;
+    margin: auto;
+}
+
+.tenantList {
+    width:100%;
+
+}
+
+.splitCB {
+    width:0px;
+    height:0px;
+    padding:20px;  
+}
+
+
+
+
+/* NOTICES PAGE STYLES*/
+
+.notice-container {
+    width: 100% !important;
+    margin: auto !important;
+    text-align: center;
+}
+
+.notice {
+    width: 100%;
+    max-width: 250px;
+    margin: 15px auto;
+    padding: 20px;
+    background: #fafafa;
+    text-align: left;
+    border: 1px solid;
+    border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+    border-radius: 3px;
+}
+
+.notice > h3 {
+    margin: 0;
+}
+
+.notice > p {
+    margin: 5px 0;
+}
+
+.addNotice {
+    width: 50%;
+    margin:auto;
+    background-color: #9b59b6 !important;
+    border-color: #8720b1 !important;
+}
+
+.tenantName {
+    text-align: right;
+    text-transform: uppercase;
+}
+
+#noticeForm, #iouForm {
+    max-width: 380px;
+    margin: auto;
+}
+
+
+.iou-container {
+    width: 100% !important;
+    margin: auto !important;
+    text-align: center;
+}
+
+.iou {
+    width: 100%;
+    max-width: 250px;
+    margin: 15px auto;
+    padding: 20px;
+    background: #fafafa;
+    text-align: left;
+    border: 1px solid;
+    border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+    border-radius: 3px;
+}
+
+.iou > h3 {
+    margin: 0;
+}
+
+.iou > p {
+    margin: 5px 0;
+}
+
+.iou-title {
+    text-transform: capitalize;
+}
+
+
+/* CHORES STYLES*/
+
+.addChore {
+    width: 50%;
+    margin:auto;
+    background-color: #fdc22d !important;
+    border-color: #e5b228 !important;
+}
+
+
+/* INFO/SETTINGS STYLES*/
+
+.pwdReset tr {
+    padding-top:30%;
+    padding-bottom: 30%;
+}
+
+.pwdReset {
+    margin: 0 auto;
+}
+
+.user-details tr {
+    padding-top:30%;
+    padding-bottom: 30%;
+}
+
+.user-details {
+    margin: 0 auto;
+}
+
+#settings .section-container .ui-btn{
+    width:150px;
+}
+
+
+
+
+
+/**** HOME/MAIN MENU STYLES ****/
+
+.logo {
+    margin: 42.5px;
+    text-align: center;
+}
+
+.logo-item {
+    width: 130px;
+    height: 130px;
+    background: url('../img/sprite-sheet.png');
+    background-position: 134px -3px;
+    margin: auto;
+    border-radius: 10px;
+}
+
+.main-nav-item {
+    text-align: center;
+    margin: auto;
+}
+
+.main-nav-item img {
+    text-align: center;
+}
+
+.main-nav-item a {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none;
+}
+
+.main-nav-item h2 {
+    margin: 8px 0 0 0;
+    font-size: 12pt;
+    display: block;
+    text-align: center;
+}
+
+.coming-soon {
+    font-size: 8pt;
+    margin: 0 0 0 28px;
+    opacity: .6;
+}
+
+.ui-bar-a, .ui-page-theme-a, .ui-footer {
+    background: #fff;
+    border: none !important;
+}
+
+.ui-block-a {
+    border-right: 1px solid #d6d6d6;
+}
+
+.ui-block-a:first-child {
+    border-bottom: 1px solid #d6d6d6;
+}
+
+.menu-icon {
+    width: 62px;
+    height: 62px;
+    background: url('../img/sprite-sheet.png');
+    margin: auto;
+}
+
+.bills-nav > a > h2 {
+    color: #e0405c;
+}
+
+.shopping-nav > a > h2 {
+    color: #3498db;
+}
+
+.notices-nav > a > h2 {
+    color: #9b59b6;
+}
+
+.chores-nav > a > h2 {
+    color: #fdc22d;
+}
+
+.ui-grid-c > li > a {
+    background: #384047 !important;
+    border: none;
+    height: auto;
+}
+
+.ui-grid-c > .ui-block-a {
+    border: none !important;
+}
+
+#nav-panel {
+    background: rgba(56, 64, 71, .95);
+    border: none;
+    border-right: 1px solid #384047;
+    width: 220px;
+}
+
+#nav-panel .ui-li-divider {
+    height: 31px;
+    padding: 15px 0 0 0;
+    text-align: center;
+    background: transparent;
+}
+
+#nav-panel .ui-li-divider a {
+    color: #fff;
+    text-shadow: none;
+    text-decoration: none;
+    padding: 15px 73px;
+}
+
+#nav-panel a {
+    background: transparent;
+    border-top: 2px solid #384047;
+}
+
+#nav-panel a:hover {
+    background: #384047;
+}
+
+#nav-panel li:last-child > a{
+    border-bottom: 2px solid #384047;
+}
+
+
+
+
+/**** LOGIN / SIGNUP / JOIN / CREATE STYLES ****/
+
+.form-container {
+    margin: 60px auto 30px auto;
+    max-width: 315px;
+    width: 80%;
+    min-width: 250px !important;
+}
+
+.form-container > h2, h5 {
+    text-align: center;
+}
+
+.form-item {
+     margin: 15px auto;
+ }
+
+.form-item > h4 {
+    margin-bottom: 5px;
+}
+
+.ui-input-btn {
+    width: 100px;
+    margin: auto;
+}
+
+#logoutMessage {
+    display: none;
+}
+
+.menu-container {
+    margin: 60px auto 30px auto;
+    max-width: 315px;
+    width: 87%;
+    min-width: 250px !important;
+}
+
+.menu-container > h2, h5 {
+    text-align: center;
+}
+
+.ui-callout-btn {
+    margin: 40px auto 40px auto;
+}
+
+.housemenu-btn {
+    opacity: .5;
+}
+
+.callout-footer {
+    display: none;
+}
+
+.form-item-inline {
+    max-width: 115px;
+    min-width: 90px;
+    display: inline-block;
+}
+
+
+
+
+
+/**** ABOUT STYLES ****/
+
+.about-container {
+    margin: 0 20px;
+}
+
+.about-placeholder {
+    width:125px;
+    height: 125px;
+    background: url('http://placehold.it/125x125');
+    margin: auto;
+    border-radius: 10px;
+}
+
+
+
+
+/**** ANALYTICS STYLES ****/
+
+.canvas-container {
+    margin: 50px auto;
+    width: 250px;
+}
+
+.analytics-container {
+    text-align: center;
+    color: #384047;
+}
+
+.analytics-container > h3, h5 {
+    margin: 10px auto;
+}
+
+
+
+
+
+
+
+
+
+
+
