@@ -33,3 +33,17 @@ Due to restrictions with licensing and development environments the process of t
 (more information about this process found at http://app.phonegap.com/)
 
 NOTE: In the phonegap application you can quad tap on the app to refresh, simulating application close and re-open.
+
+Login Information:
+ For ease of testing, we've included some pre-existing user accounts and houses.
+ Login details are as follows:
+  - Username: Sally
+  - Password: Pokemon123
+  
+  - Username: Billy
+  - Password: billy45
+  
+  - Username: Toby
+  - Password: Pokemon123
+
+  They are all assigned to the same house, and can interact with each-other accordingly.
