@@ -7,21 +7,18 @@ if(localStorage.getItem("userID") > 0) {
         jsonpCallback: 'jsonCallback',
         contentType: 'application/json',
         dataType: 'jsonp',
-
         success: function (json) {
+
             if(json.UID > 0) {
                 window.location.href = '#loadingHouse';
             }
-            else
-            {
+            else {
                 window.location.href = '#signup';
             }
-
         }
     });
 }
-else
-{
+else {
     window.location.href = '#signup';
 }
 
@@ -43,12 +40,12 @@ $( document ).on( "pageshow", "#loadingHouse", function() {
             contentType: 'application/json',
             dataType: 'jsonp',
             success: function (json) {
+
                 if (json.HID < 0) {
                     $.mobile.loading('hide');
                     window.location.href = '#housemenu';
                 }
                 if (json.HID > 0) {
-                    //console.log("House ID Check worked");
                     localStorage.setItem("houseID", json.HID);
                     window.location.href = '#home';
                     $.mobile.loading('hide');
@@ -63,11 +60,9 @@ $( document ).on( "pageshow", "#loadingHouse", function() {
 
 $( document ).on( "pageshow", "#login", function() {
 
-
     $('#loginSubmit').click(function() {
         login();
     });
-
 
     function login() {
         var loginUsername = $('#login-username').val();
@@ -81,11 +76,15 @@ $( document ).on( "pageshow", "#login", function() {
             contentType: 'application/json',
             dataType: 'jsonp',
             success: function (json) {
+
+                // checks whether a userID exists
                 if (json.UID < 0) {
                     $('.calloutMessage').html("<h5>Please check that you entered your details correctly.</h5>");
                     $('.callout-footer').show().css('background', '#d6372d');
                     $.mobile.loading('hide');
                 }
+
+                //if userID exists, store details in local storage and redirect to next page
                 if (json.UID > 0) {
                     //sets user details to localStorage on login
                     localStorage.setItem("userID", json.UID);
@@ -125,14 +124,13 @@ $( document ).on( "pageshow", "#signup", function() {
             contentType: 'application/json',
             dataType: 'jsonp',
             success: function (json) {
-                console.log(json);
+
+                //if user is sucsessfully created, set user details to localStorage
                 if(json.createdSuccess === true ) {
-                    //sets user details to localStorage on signup
                     localStorage.setItem("userID", json.UID);
                     localStorage.setItem("userName", signupUsername);
                     localStorage.setItem("userPassword", signupPassword);
                     var userID = localStorage.getItem("userID");
-                    console.log(userID);
 
                     window.location.href = 'index.html#housemenu';
                     $('.callout-footer').hide();
@@ -169,13 +167,15 @@ $( document ).on( "pageshow", "#housemenu", function() {
             contentType: 'application/json',
             dataType: 'jsonp',
             success: function (json) {
+
+                // if houseID does not exist, show join/create buttons
                 if (json.HID < 0) {
                     $.mobile.loading('hide');
                     $(".housemenu-btn").css('opacity', '1');
 
                 }
+                // if houseID exists, store in localStorage and redirect to home
                 if (json.HID > 0) {
-                    //console.log("House ID Check worked");
                     localStorage.setItem("houseID", json.HID);
                     window.location.href = '#home';
                     $.mobile.loading('hide');
@@ -211,13 +211,14 @@ $( document ).on( "pageshow", "#createhouse", function() {
             contentType: 'application/json',
             dataType: 'jsonp',
             success: function (json) {
-                console.log("success");
-                console.log(json);
+
+                // if house exists show error message
                 if (json.HID < 0) {
-                    $('.calloutMessage').html("<h5>Please check that you entered your details correctly.</h5>");
+                    $('.calloutMessage').html("<h5>That House already exists. Try another?</h5>");
                     $('.callout-footer').show().css('background', '#d6372d');
                     $.mobile.loading('hide');
                 }
+                // if hosue exists, store HouseID in localStorage and redirect to home
                 if (json.HID > 0) {
                     localStorage.setItem("houseID", json.HID);
                     window.location.href = '#home';
@@ -250,7 +251,8 @@ $( document ).on( "pageshow", "#joinhouse", function() {
             contentType: 'application/json',
             dataType: 'jsonp',
             success: function (json) {
-                console.log(json);
+
+                // if house does not exist, show error message
                 if (json < 0) {
                     $('.calloutMessage').html("<h5>Please check that you entered your details correctly.</h5>");
                     $('.callout-footer').show().css('background', '#d6372d');
@@ -1253,7 +1255,7 @@ $( document ).on( "pagecreate", "#analytics", function() {
                         },
                         {
                             value : 180,
-                            color : '#2ecc71    ',
+                            color : '#2ecc71',
                             label : 'Coming',
                             labelColor : "#F5F5F5",
                             labelFontSize : '1.1em',
