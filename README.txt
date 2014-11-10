@@ -47,3 +47,7 @@ Login Information:
   - Password: Pokemon123
 
   They are all assigned to the same house, and can interact with each-other accordingly.
+
+NB: Test push notification functionality currently exists within the Android app (iOS and WP8 functionality will be 
+implemented when we are able to port to the respective app stores). The connections exist, as well as the knowledge 
+among group members, however we simply did not have time before submission to intergrate this fully in time.
