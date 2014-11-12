@@ -26,6 +26,7 @@ namespace HouseMateService
         public int FK_houseID { get; set; }
         public int FK_aspMemberID { get; set; }
         public sbyte isCurrent { get; set; }
+        public string registrationID { get; set; }
     
         public virtual ICollection<chore_allocation> chore_allocation { get; set; }
         public virtual house house { get; set; }

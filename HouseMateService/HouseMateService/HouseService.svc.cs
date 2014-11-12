@@ -78,48 +78,6 @@ namespace HouseMateService
             }
         }
 
-
-        //public string getHouseName(int hid)
-        //{
-        //    if (Convert.ToInt32(HttpContext.Current.Session["loggedIn"]) >= 0)
-        //    {
-        //        return DAL.getHouseName(hid);
-        //    }
-        //    else
-        //    {
-        //        return "";
-        //    }
-        //}
-
-        //public string getHousePass(int hid)
-        //{
-        //    if (Convert.ToInt32(HttpContext.Current.Session["loggedIn"]) >= 0)
-        //    {
-        //        return DAL.getHousePass(hid);
-        //    }
-        //    else
-        //    {
-        //        return "";
-        //    }
-        //}
-
-        //public void setHouseName(int hid, string newN)
-        //{
-        //    if (Convert.ToInt32(HttpContext.Current.Session["loggedIn"]) >= 0)
-        //    {
-        //        DAL.setHouseName(hid, newN);
-        //    }
-        //}
-
-        //public void setHousePass(int hid, string newP)
-        //{
-        //    if (Convert.ToInt32(HttpContext.Current.Session["loggedIn"]) >= 0)
-        //    {
-        //        DAL.setHousePass(hid, newP);
-        //    }
-        //}
-
-
         public HouseInfo getInfo(int hid)
         {
             if (Convert.ToInt32(HttpContext.Current.Session["loggedIn"]) >= 0)
@@ -150,6 +108,15 @@ namespace HouseMateService
             else
             {
                 return null;
+            }
+        }
+
+
+        public void updateRegID(int tid, string regID)
+        {
+            if (Convert.ToInt32(HttpContext.Current.Session["loggedIn"]) >= 0)
+            {
+                DAL.updateRegID(tid, regID);
             }
         }
     }

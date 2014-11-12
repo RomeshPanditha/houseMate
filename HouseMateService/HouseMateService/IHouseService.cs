@@ -38,27 +38,6 @@ namespace HouseMateService
             ResponseFormat = WebMessageFormat.Json, UriTemplate = "createHouse?housename={housename}&password={password}&uid={uid}&addr={addr}&city={city}&state={state}")]
         House createHouse(string housename, string password, int uid, string addr, string city, string state);
 
-
-        //[OperationContract]
-        //[WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
-        //    ResponseFormat = WebMessageFormat.Json, UriTemplate = "gHouseN?hid={hid}")]
-        //string getHouseName(int hid);
-
-        //[OperationContract]
-        //[WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
-        //    ResponseFormat = WebMessageFormat.Json, UriTemplate = "gHouseP?hid={hid}")]
-        //string getHousePass(int hid);
-
-        //[OperationContract]
-        //[WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
-        //    ResponseFormat = WebMessageFormat.Json, UriTemplate = "sHouseN?hid={hid}&newN={newN}")]
-        //void setHouseName(int hid, string newN);
-
-        //[OperationContract]
-        //[WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
-        //    ResponseFormat = WebMessageFormat.Json, UriTemplate = "sHouseP?hid={hid}&newP={newP}")]
-        //void setHousePass(int hid, string newP);
-
         [OperationContract]
         [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
             ResponseFormat = WebMessageFormat.Json, UriTemplate = "getInfo?hid={hid}")]
@@ -74,6 +53,9 @@ namespace HouseMateService
             ResponseFormat = WebMessageFormat.Json, UriTemplate = "getTenants?hid={hid}")]
         myTenant[] getTenants(int hid);
 
-
+        [OperationContract]
+        [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Bare,
+            ResponseFormat = WebMessageFormat.Json, UriTemplate = "updateRegID?tid={tid}&regID={regID}")]
+        void updateRegID(int tid, string regID);
     }
 }

@@ -291,6 +291,7 @@
     <Property Name="FK_houseID" Type="int" Nullable="false" />
     <Property Name="FK_aspMemberID" Type="int" Nullable="false" />
     <Property Name="isCurrent" Type="tinyint" Nullable="false" />
+    <Property Name="registrationID" Type="varchar" MaxLength="500" />
   </EntityType>
   <Association Name="allocation_to_chore">
     <End Role="chores" Type="houseMateModel.Store.chores" Multiplicity="1" />

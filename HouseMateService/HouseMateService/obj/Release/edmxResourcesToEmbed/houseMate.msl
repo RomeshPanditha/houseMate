@@ -222,6 +222,7 @@
     <EntitySetMapping Name="tenants">
       <EntityTypeMapping TypeName="houseMateModel.tenant">
         <MappingFragment StoreEntitySet="tenant">
+          <ScalarProperty Name="registrationID" ColumnName="registrationID" />
           <ScalarProperty Name="isCurrent" ColumnName="isCurrent" />
           <ScalarProperty Name="PK_tenantID" ColumnName="PK_tenantID" />
           <ScalarProperty Name="FK_houseID" ColumnName="FK_houseID" />

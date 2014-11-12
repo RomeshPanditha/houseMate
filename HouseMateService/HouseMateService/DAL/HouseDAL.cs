@@ -156,6 +156,25 @@ namespace HouseMateService.DAL
             }
         }
 
+        public void updateRegID(int tenID, string regID)
+        {
+            using (var context = new houseMateEntities01())
+            {
+                try
+                {
+                    var ten1 = (from t in context.tenants
+                                where t.PK_tenantID == tenID
+                                select t).FirstOrDefault();
+                    ten1.registrationID = regID;
+                    context.SaveChanges();
+                }
+                catch
+                {
+
+                }
+            }
+        }
+
         // if a user is associated with a house, return that house
         public House getHouse(int userID)
         {
